@@ -9,6 +9,7 @@ import Menu from "./components/menu";
 import Home from "./components/home";
 import Landing from "./components/landing";
 
+
 import "./index.css";
 const App = () => (
   <BrowserRouter>

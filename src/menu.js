@@ -44,7 +44,7 @@ export const badgerBurger = {
     "http://www.fatpourchicago.com/files/2016/08/Fatpour_2016_023-768x512.jpg"
 };
 
-export const blackHawkBurger = {
+export const blackhawkBurger = {
   name: "Blackhawk Burger",
   ingredients: [
     ingredients.BEET_ROOT,
