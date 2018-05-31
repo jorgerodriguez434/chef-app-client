@@ -1,5 +1,4 @@
 import React from "react";
-import * as menu from "../menu";
 
 const Burger = (props) => (
   <div>
