@@ -1,7 +1,4 @@
 import React from "react";
-import FatpourBurger from "./fatpour-burger";
-import BadgerBurger from "./badger-burger";
-import BlackhawkBurger from "./blackhawk-burger";
 
 export default class DashBoard extends React.Component {
   render() {
