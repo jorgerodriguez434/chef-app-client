@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import * as menu from "../menu";
 
 export default class Checkboxes extends React.Component {
