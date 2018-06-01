@@ -39,7 +39,7 @@ export const badgerBurger = {
   hasGluten: true,
   hasMeat: true,
   hasCheese: true,
-  hasEgg: true,
+  hasEgg: false,
   glutenItems: [ingredients.FRIED_ONION, ingredients.BUN],
   meatItems: [ingredients.BEEF, ingredients.PORK_BELLY],
   cheeseItems: ingredients.CHEESE_CURDS,
