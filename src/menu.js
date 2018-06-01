@@ -17,9 +17,11 @@ export const fatpourBurger = {
   hasGluten: true,
   hasMeat: true,
   hasCheese: true,
+  hasEgg: true,
   glutenItems: [ingredients.FRIED_ONION, ingredients.TEXAS_TOAST],
   meatItems: [ingredients.BEEF, ingredients.BACON],
   cheeseItems: [ingredients.MERKTS_CHEDDAR_CHEESE],
+  eggItems: ingredients.FRIED_EGG,
   image:
     "http://www.fatpourchicago.com/files/2016/08/Fatpour_2016_003-1200x800.jpg"
 };
@@ -37,9 +39,11 @@ export const badgerBurger = {
   hasGluten: true,
   hasMeat: true,
   hasCheese: true,
+  hasEgg: true,
   glutenItems: [ingredients.FRIED_ONION, ingredients.BUN],
   meatItems: [ingredients.BEEF, ingredients.PORK_BELLY],
-  cheeseItems: [ingredients.CHEESE_CURDS],
+  cheeseItems: ingredients.CHEESE_CURDS,
+  eggItems: "none",
   image:
     "http://www.fatpourchicago.com/files/2016/08/Fatpour_2016_023-768x512.jpg"
 };
@@ -60,9 +64,11 @@ export const blackhawkBurger = {
   hasGluten: true,
   hasMeat: false,
   hasCheese: false,
+  hasEgg: true,
   glutenItems: ingredients.BUN,
   meatItems: ingredients.NO_MEAT,
   cheeseItems: ingredients.NO_CHEESE,
+  eggItems: ingredients.PARMESAN_MAYO,
   image:
     "https://photos-6.dropbox.com/t/2/AADs2NTtJt0nS1baRjOh_eYJt-CHfpMYJXCbyatL4923mA/12/562285687/jpeg/32x32/1/_/1/2/blackhawk-burger.JPG/ELHXksEEGAMgAigC/REw5IaDd122urAmJlIaUgXMjAzuOEG7DrR1naKT2QSE?size=2048x1536&size_mode=3"
 };

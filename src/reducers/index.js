@@ -1,5 +1,4 @@
 import * as constants from "../constants/actions.constants";
-//import { LOGIN_SUCCESS, LOGIN_ERROR } from "../actions/index";
 export const initialState = {
   isLoggedIn: false,
   error: "none"
