@@ -20,4 +20,7 @@ export const PARMESAN_MAYO = "Parmesan mayo";
 export const CUCUMBER = "Cucumber";
 export const NO_MEAT = "No meat";
 export const NO_CHEESE = "No cheese";
+export const NO_EGG = "No egg";
+export const NO_GLUTON = "No gluton";
+export const NO_DAIRY = "No dairy";
 export const BEET_ROOT = "Beet root";
