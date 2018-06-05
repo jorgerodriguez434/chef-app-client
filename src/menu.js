@@ -31,7 +31,7 @@ export const fatpourBurger = {
 export const badgerBurger = {
   name: "Badger Burger",
   type: "burger",
-  substance: "meat",
+  category: "meat",
   ingredients: [
     ingredients.BEEF,
     ingredients.PORK_BELLY,
@@ -55,7 +55,7 @@ export const badgerBurger = {
 export const blackhawkBurger = {
   name: "Blackhawk Burger",
   type: "burger",
-  substance: "no-meat",
+  category: "no-meat",
   ingredients: [
     ingredients.BEET_ROOT,
     ingredients.QUINOA,
@@ -67,7 +67,7 @@ export const blackhawkBurger = {
     ingredients.CUCUMBER,
     ingredients.PARMESAN_MAYO
   ],
-  hasGluten: true,
+  hasGluten: false,
   hasMeat: false,
   hasDairy: false,
   hasEgg: true,
@@ -82,7 +82,7 @@ export const blackhawkBurger = {
 export const wings = {
   name: "Grilled Wings",
   type: "traditional wings",
-  substance: "no-gluten",
+  category: "no-gluten",
   ingredients: [
     ingredients.PARMESAN_MAYO,
   ],
@@ -92,7 +92,7 @@ export const wings = {
   hasEgg: false,
   glutenItems: ingredients.NO_GLUTEN,
   meatItems: ingredients.NO_MEAT,
-  dairyItems: ingredients.NO_DAIRY,
+  dairyItems: ingredients.BUTTER,
   eggItems: ingredients.NO_EGG,
   image: "https://d1725r39asqzt3.cloudfront.net/fdb14745-6478-4cbd-b11e-c9af859367f4/orig.jpg"
 };

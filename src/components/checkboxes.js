@@ -48,7 +48,7 @@ export default class Checkboxes extends React.Component {
         </form>
         <ul>
           {this.food
-            .filter(dish => this.state.foodFilters.indexOf(dish.substance) >= 0)
+            .filter(dish => this.state.foodFilters.indexOf(dish.category) >= 0)
             .map((filtered, index) => {
               return (
                 <li key={index}>
