@@ -3,7 +3,7 @@ import * as ingredients from "./constants/ingredients.constants";
 export const fatpourBurger = {
   name: "Fatpour Burger",
   type: "burger",
-  substance: "meat",
+  category: "meat",
   ingredients: [
     ingredients.BEEF,
     ingredients.MERKTS_CHEDDAR_CHEESE,

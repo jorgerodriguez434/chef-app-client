@@ -24,7 +24,7 @@ export default class Checkboxes extends React.Component {
   };
 
   render = () => {
-      console.log(this.state.foodFilters)
+    console.log(this.state.foodFilters)
     return (
       <div>
         <h2> This is the Checkboxes component</h2>
@@ -38,7 +38,7 @@ export default class Checkboxes extends React.Component {
           />
           <label htmlFor="meat"> Meat</label>
           <input className="meat" value="meat" type="checkbox" name="meat" />
-          <label htmlFor="no-gluten"> Gluten Free</label>
+          <label htmlFor="no-gluten"> No gluten</label>
           <input
             className="no-gluten"
             value="no-gluten"
@@ -47,8 +47,16 @@ export default class Checkboxes extends React.Component {
           />
         </form>
         <ul>
+
           {this.food
-            .filter(dish => this.state.foodFilters.indexOf(dish.category) >= 0)
+            .filter(dish =>this.state.foodFilters.indexOf(dish.category) >= 0)
+            /*
+            filter creates a new array with all elements that pass the test
+            implemented by the provided function.
+            Therefore, then "filter" is going to look for all the food items
+            that have the value "no-meat" || "meat" || "no-gluton"
+            here is where I get lost
+            */
             .map((filtered, index) => {
               return (
                 <li key={index}>
