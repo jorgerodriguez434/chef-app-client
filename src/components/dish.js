@@ -1,15 +1,23 @@
-/*
 import React from "react";
 
-const Burger = (props) => (
-  <div>
-    <h2> {props.name} </h2>
-    <img src={props.image} alt={props.name} />
-  </div>
+const Dish = (props) => (
+<ul>
+    {props.category.map((dish, index) => {
+            console.log(dish);
+            return(
+            <li key={index}>
+            <h2> {dish.name} </h2>
+             <img src={dish.image} alt={dish.name}/>
+            </li>);
+
+    })}
+
+</ul>
 );
 
-export default Burger;
+export default Dish;
 
+/*
 
 
 
