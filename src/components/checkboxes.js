@@ -58,7 +58,7 @@ export default class Checkboxes extends React.Component {
 
             filter callback:
             Function is a predicate, to test each element of the array.
-            Return true to keep the element, false otherwise, taking three arguments:
+            Return true to keep the element, false otherwise
             */
             .map((filtered, index) => {
               return (
