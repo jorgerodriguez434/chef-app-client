@@ -53,9 +53,12 @@ export default class Checkboxes extends React.Component {
             /*
             filter creates a new array with all elements that pass the test
             implemented by the provided function.
-            Therefore, then "filter" is going to look for all the food items
-            that have the value "no-meat" || "meat" || "no-gluton"
-            here is where I get lost
+            Return the dishes that return >= 0 of index "no-meat" || "meat" || "no-gluten"
+            from foodFilters array
+
+            filter callback:
+            Function is a predicate, to test each element of the array.
+            Return true to keep the element, false otherwise, taking three arguments:
             */
             .map((filtered, index) => {
               return (
