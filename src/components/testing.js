@@ -54,7 +54,6 @@ export default class Testing extends React.Component {
       meat
     });
 
-    console.log(this.state);
   };
 
   displayNoMeat = () => {
@@ -73,10 +72,6 @@ export default class Testing extends React.Component {
     });
   };
 
-  onClick = () => {
-    console.log("clicked!");
-  };
-
   render = () => {
     if (this.state.display === "buttons") {
       return (
@@ -89,9 +84,7 @@ export default class Testing extends React.Component {
           />
         </div>
       );
-    }
-
-    if (this.state.display === "no meat") {
+    } else if (this.state.display === "no meat") {
       return (
         <div>
           <ButtonGroup
@@ -104,9 +97,7 @@ export default class Testing extends React.Component {
           <Dish category={this.state.noMeat} />
         </div>
       );
-    }
-
-    if (this.state.display === "meat") {
+    } else if (this.state.display === "meat") {
       return (
         <div>
           <ButtonGroup
@@ -119,9 +110,7 @@ export default class Testing extends React.Component {
           <Dish category={this.state.meat} />
         </div>
       );
-    }
-
-    if (this.state.display === "no gluten") {
+    } else if (this.state.display === "no gluten") {
       return (
         <div>
           <ButtonGroup
