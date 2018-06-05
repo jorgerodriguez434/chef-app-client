@@ -1,5 +1,6 @@
 import React from "react";
 import * as menu from "../menu";
+import Burger from "./burger";
 
 export default class Checkboxes extends React.Component {
   constructor() {
@@ -11,15 +12,17 @@ export default class Checkboxes extends React.Component {
   }
 
   foodFilter = event => {
-    const checkbox = event.currentTarget;
+    const checkboxes = event.currentTarget.getElementsByTagName("input");
     const foodFilters = [];
-    if (checkbox.checked) {
-      foodFilters.push(checkbox.value);
-    }
-    console.log("food filters " + foodFilters);
-    this.setState({
-      foodFilters
+    Object.values(checkboxes).map(checkbox => {
+      if (checkbox.checked) {
+        foodFilters.push(checkbox.value);
+
+      }
+      return checkbox;
     });
+    this.setState({ foodFilters });
+
   };
 
   noMeatFilter = () => {
@@ -44,36 +47,38 @@ export default class Checkboxes extends React.Component {
   };
 
   render = () => {
-    //create a no meat filter
-    console.log(`render ${this.state.foodFilters}`);
     return (
       <div>
         <h2> This is the Checkboxes component</h2>
-        <label htmlFor="no-meat"> No meat </label>
-        <input
-          className="no-meat"
-          value="no-meat"
-          type="checkbox"
-          name="no-meat"
-          onChange={this.foodFilter}
-        />
-        <label htmlFor="meat"> Meat</label>
-        <input
-          className="meat"
-          value="meat"
-          type="checkbox"
-          name="meat"
-          onChange={this.foodFilter}
-        />
-        <label htmlFor="gluten-free"> Gluten Free</label>
-        <input
-          className="gluten-free"
-          value="gluten-free"
-          type="checkbox"
-          name="gluten-free"
-          onChange={this.foodFilter}
-        />
-        <ul />
+        <form onChange={this.foodFilter}>
+          <label htmlFor="no-meat"> No meat </label>
+          <input
+            className="no-meat"
+            value="no-meat"
+            type="checkbox"
+            name="no-meat"
+          />
+          <label htmlFor="meat"> Meat</label>
+          <input className="meat" value="meat" type="checkbox" name="meat" />
+          <label htmlFor="gluten-free"> Gluten Free</label>
+          <input
+            className="gluten-free"
+            value="gluten-free"
+            type="checkbox"
+            name="gluten-free"
+          />
+        </form>
+        <ul>
+          {this.food
+            .filter(dish => this.state.foodFilters.indexOf(dish.substance) >= 0)
+            .map((filtered, index) => {
+              return (
+                <li key={index}>
+                <Burger name={filtered.name} image={filtered.image} />
+                </li>
+              );
+            })}
+        </ul>
       </div>
     );
   };

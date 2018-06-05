@@ -2,6 +2,8 @@ import * as ingredients from "./constants/ingredients.constants";
 
 export const fatpourBurger = {
   name: "Fatpour Burger",
+  type: "burger",
+  substance: "meat",
   ingredients: [
     ingredients.BEEF,
     ingredients.MERKTS_CHEDDAR_CHEESE,
@@ -28,6 +30,8 @@ export const fatpourBurger = {
 
 export const badgerBurger = {
   name: "Badger Burger",
+  type: "burger",
+  substance: "meat",
   ingredients: [
     ingredients.BEEF,
     ingredients.PORK_BELLY,
@@ -50,6 +54,8 @@ export const badgerBurger = {
 
 export const blackhawkBurger = {
   name: "Blackhawk Burger",
+  type: "burger",
+  substance: "no-meat",
   ingredients: [
     ingredients.BEET_ROOT,
     ingredients.QUINOA,
