@@ -24,3 +24,4 @@ export const NO_EGG = "No egg";
 export const NO_GLUTEN = "No gluten";
 export const NO_DAIRY = "No dairy";
 export const BEET_ROOT = "Beet root";
+export const BUTTER = "Beet root";
