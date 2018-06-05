@@ -5,33 +5,47 @@ export default class Checkboxes extends React.Component {
   constructor() {
     super();
     this.state = {
-      noMeat: [],
-      noDairy:[],
-      noGluton:[],
-      noEgg:[]
+      foodFilters: []
     };
     this.food = [menu.fatpourBurger, menu.badgerBurger, menu.blackhawkBurger];
   }
 
-/*  foodFilter = event => {
+  foodFilter = event => {
     const checkbox = event.currentTarget;
+    const foodFilters = [];
     if (checkbox.checked) {
-      this.setState({
-        foodFilters: [...this.state.foodFilters, checkbox.value]
-      });
+      foodFilters.push(checkbox.value);
     }
-
-  }; */
-
-
-  foodFilter (dish) {
+    console.log("food filters " + foodFilters);
     this.setState({
-      noMeat: [...this.state.noMeat, "majin boo"]
+      foodFilters
     });
+  };
 
-  }
+  noMeatFilter = () => {
+    const foodItems = this.food.filter(dish => dish.hasMeat === false);
+    console.log(foodItems);
+    return foodItems;
+  };
+  noDairyFilter = () => {
+    const foodItems = this.food.filter(dish => dish.hasDairy === false);
+    console.log(foodItems);
+    return foodItems;
+  };
+  noEggFilter = () => {
+    const foodItems = this.food.filter(dish => dish.hasEgg === false);
+    console.log(foodItems);
+    return foodItems;
+  };
+  noGlutenFilter = () => {
+    const foodItems = this.food.filter(dish => dish.hasGluten === false);
+    console.log(foodItems);
+    return foodItems;
+  };
 
   render = () => {
+    //create a no meat filter
+    console.log(`render ${this.state.foodFilters}`);
     return (
       <div>
         <h2> This is the Checkboxes component</h2>
@@ -59,16 +73,7 @@ export default class Checkboxes extends React.Component {
           name="gluten-free"
           onChange={this.foodFilter}
         />
-        <ul>{this.food.filter(dish => {
-          let noMeatItems = []
-                if (dish.hasMeat === false){
-                  noMeatItems.push(dish);
-                
-                }
-            console.log(noMeatItems)
-
-
-        })}</ul>
+        <ul />
       </div>
     );
   };
