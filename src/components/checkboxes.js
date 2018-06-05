@@ -1,6 +1,6 @@
 import React from "react";
 import * as menu from "../menu";
-import Burger from "./burger";
+//import Burger from "./burger";
 
 export default class Checkboxes extends React.Component {
   constructor() {
@@ -8,7 +8,7 @@ export default class Checkboxes extends React.Component {
     this.state = {
       foodFilters: []
     };
-    this.food = [menu.fatpourBurger, menu.badgerBurger, menu.blackhawkBurger];
+    this.food = [menu.fatpourBurger, menu.badgerBurger, menu.blackhawkBurger, menu.wings];
   }
 
   foodFilter = event => {
@@ -23,29 +23,8 @@ export default class Checkboxes extends React.Component {
     this.setState({ foodFilters });
   };
 
-  noMeatFilter = () => {
-    const foodItems = this.food.filter(dish => dish.hasMeat === false);
-    console.log(foodItems);
-    return foodItems;
-  };
-  noDairyFilter = () => {
-    const foodItems = this.food.filter(dish => dish.hasDairy === false);
-    console.log(foodItems);
-    return foodItems;
-  };
-  noEggFilter = () => {
-    const foodItems = this.food.filter(dish => dish.hasEgg === false);
-    console.log(foodItems);
-    return foodItems;
-  };
-  noGlutenFilter = () => {
-    const foodItems = this.food.filter(dish => dish.hasGluten === false);
-    console.log(foodItems);
-    return foodItems;
-  };
-
   render = () => {
-  const noMeatItems=  this.noMeatFilter();
+      console.log(this.state.foodFilters)
     return (
       <div>
         <h2> This is the Checkboxes component</h2>
@@ -59,22 +38,25 @@ export default class Checkboxes extends React.Component {
           />
           <label htmlFor="meat"> Meat</label>
           <input className="meat" value="meat" type="checkbox" name="meat" />
-          <label htmlFor="gluten-free"> Gluten Free</label>
+          <label htmlFor="no-gluten"> Gluten Free</label>
           <input
-            className="gluten-free"
-            value="gluten-free"
+            className="no-gluten"
+            value="no-gluten"
             type="checkbox"
-            name="gluten-free"
+            name="no-gluten"
           />
         </form>
         <ul>
-          {noMeatItems.map((dish, index) => {
-            return (
+          {this.food
+            .filter(dish => this.state.foodFilters.indexOf(dish.substance) >= 0)
+            .map((filtered, index) => {
+              return (
                 <li key={index}>
-                  <Burger name={dish.name} image={dish.image} />
+                <h2> {filtered.name} </h2>
+                 <img src={filtered.image} alt={filtered.name}/>
                 </li>
               );
-          })}
+            })}
         </ul>
       </div>
     );

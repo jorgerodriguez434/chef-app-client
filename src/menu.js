@@ -78,3 +78,21 @@ export const blackhawkBurger = {
   image:
     "https://photos-6.dropbox.com/t/2/AADs2NTtJt0nS1baRjOh_eYJt-CHfpMYJXCbyatL4923mA/12/562285687/jpeg/32x32/1/_/1/2/blackhawk-burger.JPG/ELHXksEEGAMgAigC/REw5IaDd122urAmJlIaUgXMjAzuOEG7DrR1naKT2QSE?size=2048x1536&size_mode=3"
 };
+
+export const wings = {
+  name: "Grilled Wings",
+  type: "traditional wings",
+  substance: "no-gluten",
+  ingredients: [
+    ingredients.PARMESAN_MAYO,
+  ],
+  hasGluten: false,
+  hasMeat: false,
+  hasCheese: false,
+  hasEgg: false,
+  glutenItems: ingredients.NO_GLUTEN,
+  meatItems: ingredients.NO_MEAT,
+  cheeseItems: ingredients.NO_CHEESE,
+  eggItems: ingredients.NO_EGG,
+  image: "https://d1725r39asqzt3.cloudfront.net/fdb14745-6478-4cbd-b11e-c9af859367f4/orig.jpg"
+};
