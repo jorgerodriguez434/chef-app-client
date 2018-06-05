@@ -21,7 +21,9 @@ img {
   width: 400px;
   height: 300px;
 }
-
+li {
+  list-style-type: none;
+}
 .table{
   width: 100px;
   height: 100px;

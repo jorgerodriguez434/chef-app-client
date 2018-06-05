@@ -17,12 +17,10 @@ export default class Checkboxes extends React.Component {
     Object.values(checkboxes).map(checkbox => {
       if (checkbox.checked) {
         foodFilters.push(checkbox.value);
-
       }
       return checkbox;
     });
     this.setState({ foodFilters });
-
   };
 
   noMeatFilter = () => {
@@ -47,6 +45,7 @@ export default class Checkboxes extends React.Component {
   };
 
   render = () => {
+  const noMeatItems=  this.noMeatFilter();
     return (
       <div>
         <h2> This is the Checkboxes component</h2>
@@ -69,15 +68,13 @@ export default class Checkboxes extends React.Component {
           />
         </form>
         <ul>
-          {this.food
-            .filter(dish => this.state.foodFilters.indexOf(dish.substance) >= 0)
-            .map((filtered, index) => {
-              return (
+          {noMeatItems.map((dish, index) => {
+            return (
                 <li key={index}>
-                <Burger name={filtered.name} image={filtered.image} />
+                  <Burger name={dish.name} image={dish.image} />
                 </li>
               );
-            })}
+          })}
         </ul>
       </div>
     );
