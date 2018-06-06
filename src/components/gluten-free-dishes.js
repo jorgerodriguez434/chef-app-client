@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dishes = props => (
+const GlutenFreeDishes = props => (
   <ul>
     {props.category.map((dish, index) => {
       return (
@@ -13,11 +13,10 @@ const Dishes = props => (
                  {ingredient}
               </li>);
           })} </ul>
-          <h3> get it gluten free! </h3>
         </li>
       );
     })}
   </ul>
 );
 
-export default Dishes;
+export default GlutenFreeDishes;

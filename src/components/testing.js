@@ -2,6 +2,7 @@ import React from "react";
 import * as menu from "../menu";
 import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
+import GlutenFreeDishes from "./gluten-free-dishes";
 
 export default class Testing extends React.Component {
   constructor() {
@@ -94,6 +95,7 @@ export default class Testing extends React.Component {
           />
           <h3> Showing no meats: </h3>
           <Dishes category={this.state.noMeat} />
+
         </div>
       );
     } else if (this.state.display === "meat") {
@@ -107,6 +109,7 @@ export default class Testing extends React.Component {
           />
           <h3> Showing meats: </h3>
           <Dishes category={this.state.meat} />
+
         </div>
       );
     } else if (this.state.display === "no gluten") {
@@ -119,7 +122,7 @@ export default class Testing extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing no gluten: </h3>
-          <Dishes category={this.state.noGluten} />
+          <GlutenFreeDishes category={this.state.noGluten} />
         </div>
       );
     }
