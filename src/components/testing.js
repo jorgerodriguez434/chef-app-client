@@ -53,7 +53,6 @@ export default class Testing extends React.Component {
       noGluten,
       meat
     });
-
   };
 
   displayNoMeat = () => {
@@ -77,10 +76,10 @@ export default class Testing extends React.Component {
       return (
         <div>
           <ButtonGroup
-            method1={this.foodFilter}
-            method2={this.displayNoMeat}
-            method3={this.displayMeat}
-            method4={this.displayNoGluten}
+            foodFilter={this.foodFilter}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
           />
         </div>
       );
@@ -88,10 +87,10 @@ export default class Testing extends React.Component {
       return (
         <div>
           <ButtonGroup
-            method1={this.foodFilter}
-            method2={this.displayNoMeat}
-            method3={this.displayMeat}
-            method4={this.displayNoGluten}
+            foodFilter={this.foodFilter}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing no meats: </h3>
           <Dish category={this.state.noMeat} />
@@ -101,10 +100,10 @@ export default class Testing extends React.Component {
       return (
         <div>
           <ButtonGroup
-            method1={this.foodFilter}
-            method2={this.displayNoMeat}
-            method3={this.displayMeat}
-            method4={this.displayNoGluten}
+            foodFilter={this.foodFilter}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing meats: </h3>
           <Dish category={this.state.meat} />
@@ -114,10 +113,10 @@ export default class Testing extends React.Component {
       return (
         <div>
           <ButtonGroup
-            method1={this.foodFilter}
-            method2={this.displayNoMeat}
-            method3={this.displayMeat}
-            method4={this.displayNoGluten}
+            foodFilter={this.foodFilter}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing no gluten: </h3>
           <Dish category={this.state.noGluten} />
