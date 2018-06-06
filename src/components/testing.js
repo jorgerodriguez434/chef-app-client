@@ -1,7 +1,7 @@
 import React from "react";
 import * as menu from "../menu";
 import ButtonGroup from "./button-group";
-import Dish from "./dish";
+import Dishes from "./dish";
 
 export default class Testing extends React.Component {
   constructor() {
@@ -93,7 +93,7 @@ export default class Testing extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing no meats: </h3>
-          <Dish category={this.state.noMeat} />
+          <Dishes category={this.state.noMeat} />
         </div>
       );
     } else if (this.state.display === "meat") {
@@ -106,7 +106,7 @@ export default class Testing extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing meats: </h3>
-          <Dish category={this.state.meat} />
+          <Dishes category={this.state.meat} />
         </div>
       );
     } else if (this.state.display === "no gluten") {
@@ -119,7 +119,7 @@ export default class Testing extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing no gluten: </h3>
-          <Dish category={this.state.noGluten} />
+          <Dishes category={this.state.noGluten} />
         </div>
       );
     }

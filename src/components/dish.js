@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dish = props => (
+const Dishes = props => (
   <ul>
     {props.category.map((dish, index) => {
       return (
@@ -19,4 +19,4 @@ const Dish = props => (
   </ul>
 );
 
-export default Dish;
+export default Dishes;
