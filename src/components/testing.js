@@ -1,7 +1,7 @@
 import React from "react";
 import * as menu from "../menu";
 import ButtonGroup from "./button-group";
-import Dishes from "./dish";
+import Dishes from "./dishes";
 
 export default class Testing extends React.Component {
   constructor() {
