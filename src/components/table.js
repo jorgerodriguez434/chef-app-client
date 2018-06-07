@@ -53,7 +53,7 @@ export default class Table extends React.Component {
             {this.state.buttonName}{" "}
           </button>
           <h5> How many guests will be accompanying you? </h5>
-          <input className="how-many-guests-input my-text"/>
+          <input className="input my-text"/>
         </div>
       );
     }//if
