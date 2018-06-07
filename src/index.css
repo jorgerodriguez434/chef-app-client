@@ -18,6 +18,13 @@ button {
   margin: 6px;
   display: block;
 }
+input{
+  margin:auto;
+  height: 40px;
+  width: 50px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+}
 
 img {
   width: 400px;
@@ -36,6 +43,7 @@ li {
   text-align: center;
   background-color: white;
   margin: auto;
+  cursor: pointer;
 }
 .dish{
 }
@@ -86,4 +94,8 @@ li {
 }
 .link{
   padding-right: 20px;
+}
+.my-text{
+ font-size: 20px;
+ text-align: center;
 }
