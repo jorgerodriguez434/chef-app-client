@@ -42,8 +42,12 @@ li {
 .green{
   background-color: green;
 }
-.white{
-  background-color: white;
+.white-color{
+  color: white;
+}
+.link-group{
+  background-color: grey;
+  padding-bottom: 10px;
 }
 .button {
   border-radius: 5px;
@@ -62,4 +66,7 @@ li {
  }
  .button:hover {
  background-color: #A8A8A8;
+}
+.link{
+  padding-right: 20px;
 }
