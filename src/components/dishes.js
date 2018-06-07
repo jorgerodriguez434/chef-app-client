@@ -4,9 +4,9 @@ const Dishes = props => (
   <ul>
     {props.category.map((dish, index) => {
       return (
-        <li key={index}>
+        <li key={index} className="dish">
           <h2> {dish.name} </h2>
-          <img src={dish.image} alt={dish.name} />
+          <img src={dish.image} alt={dish.name}  />
           <ul> {dish.ingredients.map((ingredient, index) => {
             return(
               <li key={index}>

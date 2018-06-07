@@ -15,12 +15,13 @@ export default class Table extends React.Component {
 
   render() {
     return (
-      <div className="white">
+      <div className="table-row">
         <h2> This is a table </h2>
         <div className={`table ${this.state.classColor}`} onClick={this.changeColor}>
           <p>Table </p>
           <p> {this.props.number} </p>
         </div>
+        <button className="button"> Reserve </button>
       </div>
     );
   }

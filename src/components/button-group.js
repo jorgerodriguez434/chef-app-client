@@ -5,7 +5,7 @@ const ButtonGroup = (props) => (
     <button className="button" onClick={props.foodFilter}> FILTER </button>
     <button className="button" onClick={props.displayNoMeat}> NO MEAT </button>
     <button className="button" onClick={props.displayMeat}> MEAT </button>
-    <button className="button" onClick={props.displayNoGluten}> NO GLUTEN  </button>
+    <button className="button" onClick={props.displayNoGluten}> GLUTEN FREE </button>
 </div>
 );
 

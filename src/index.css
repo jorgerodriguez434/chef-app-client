@@ -4,6 +4,7 @@ body {
   font-family: 'Titillium Web', sans-serif;
   background-color: black;
   color: silver;
+  margin: auto;
 }
 
 label {
@@ -22,6 +23,7 @@ img {
   width: 400px;
   height: 300px;
   border: 3px solid grey;
+
 }
 li {
   list-style-type: none;
@@ -32,6 +34,10 @@ li {
   border: 2px solid black;
   margin-left: 30px;
   text-align: center;
+  background-color: white;
+  margin: auto;
+}
+.dish{
 }
 .red{
   background-color: red;
@@ -44,6 +50,17 @@ li {
 }
 .white-color{
   color: white;
+}
+.white-background{
+  background-color: white;
+}
+.grey-background{
+  background-color: grey;
+}
+.table-row{
+  background-color: white;
+  padding-bottom: 20px;
+  text-align: center;
 }
 .link-group{
   background-color: grey;
