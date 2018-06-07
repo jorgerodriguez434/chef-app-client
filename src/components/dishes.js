@@ -13,7 +13,14 @@ const Dishes = props => (
                  {ingredient}
               </li>);
           })} </ul>
-          <h3> get it gluten free! </h3>
+          <h3> Get it gluten free! </h3>
+          <h4> Remove: </h4>
+          <ul> {dish.glutenItems.map((ingredient, index) => {
+            return(
+              <li key={index}>
+                 {ingredient}
+              </li>);
+          })} </ul>
         </li>
       );
     })}
