@@ -7,7 +7,6 @@ export default class Table extends React.Component {
   }
   handleReserve = () => {
     console.log(`table ${this.props.number} has been clicked!`);
-    //change color
     this.setState({
       reserved: true,
       classColor: "red",
@@ -16,7 +15,6 @@ export default class Table extends React.Component {
   };
   handleCancel = () => {
     console.log(`table ${this.props.number} has been clicked!`);
-    //change color
     this.setState({
       reserved: false,
       classColor: "white",
