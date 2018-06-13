@@ -8,6 +8,7 @@ import Dashboard from "./components/dashboard";
 import Menu from "./components/menu";
 import Home from "./components/home";
 import Seating from "./components/seating";
+import PostDish from "./components/post-dish";
 
 import "./index.css";
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
         <Link className="link" to="/dashboard">Dashboard</Link>
         <Link className="link" to="/menu">Menu</Link>
         <Link className="link" to="/seating">Seating</Link>
+        <Link className="link" to="/post-dish">Post Dish</Link>
       </section>
         <Switch>
           <Route exact path="/" component={LoginForm} />
@@ -26,6 +28,7 @@ const App = () => (
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/menu" component={Menu} />
           <Route exact path="/seating" component={Seating} />
+          <Route exact path="/post-dish" component={PostDish} />
         </Switch>
       </div>
     </Provider>

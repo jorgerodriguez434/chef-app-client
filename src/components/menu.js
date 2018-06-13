@@ -1,5 +1,5 @@
 import React from "react";
-import * as menu from "../menu";
+//import * as menu from "../menu";
 import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
 import GlutenFreeDishes from "./gluten-free-dishes";
@@ -11,7 +11,7 @@ export default class Menu extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      all: [],
+      menu: [],
       noMeat: [],
       noDairy: [],
       noEgg: [],
@@ -19,23 +19,17 @@ export default class Menu extends React.Component {
       meat: [],
       display: "buttons"
     };
-    this.food = [
-      menu.fatpourBurger,
-      menu.badgerBurger,
-      menu.blackhawkBurger,
-      menu.wings
-    ];
   }
 
   componentDidMount() {
     fetch(API_BASE_URL)
       .then(res => res.json())
       .then(
-        (result) => {
-          console.log(result);
+        (dishes) => {
+          console.log(dishes);
           this.setState({
             isLoaded: true,
-            all: result
+            menu: dishes
           });
         },
         // Note: it's important to handle errors here
@@ -56,7 +50,7 @@ export default class Menu extends React.Component {
     const noEgg = [];
     const noGluten = [];
     const meat = [];
-    this.food.map(dish => {
+    this.state.menu.map(dish => {
       if (dish.hasMeat === false) {
         noMeat.push(dish);
       }
