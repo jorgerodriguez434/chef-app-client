@@ -1,14 +1,19 @@
 import React from "react";
 import AddIngredients from "./add-ingredient";
 //import Ingredients from "./ingredients";
+import Categories from "./categories"
+import Type from "./type"
 
 export default class PostDish extends React.Component {
   constructor() {
     super();
     this.state = {
       display: "landing",
-      ingredients:[]
+      ingredients:[],
+      dishName: ""
     };
+    this._dishName = React.createRef();
+
   }
 
   onSubmit = () => {
@@ -23,6 +28,15 @@ export default class PostDish extends React.Component {
     });
   };
 
+  setDishName = e => {
+      e.preventDefault();
+      const dishName = this._dishName.current.value;
+      this.setState({
+        dishName
+      });
+      console.log(dishName);
+  }
+
 
   render = () => {
     if (this.state.display === "landing") {
@@ -30,7 +44,7 @@ export default class PostDish extends React.Component {
         <div>
           <h1> this the PostDish component! </h1>
           <p> Please add a dish by entering the following information </p>
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.setDishName}>
             <label htmlFor="dish-name">Name of dish</label>
             <input
               className="input my-text"
@@ -39,109 +53,15 @@ export default class PostDish extends React.Component {
               placeholder="e.g. Burger Deluxe"
               required
             />
-            <label htmlFor="type">Type</label>
-            <div className="scroll">
-              <select className="scroll" required>
-                <option className="option" value="Burger">
-                  Burger
-                </option>
-                <option value="Salad">Salad</option>
-                <option value="Wings">Wings</option>
-              </select>
-            </div>
+            <Type/>
             <fieldset className="margin-bottom">
               <legend> Categories</legend>
-              <label htmlFor="no-meat"> No meat </label>
-              <input
-                className="checkbox"
-                value="no-meat"
-                type="checkbox"
-                name="no-meat"
-              />
-              <label htmlFor="meat"> Meat </label>
-              <input
-                className="checkbox"
-                value="meat"
-                type="checkbox"
-                name="meat"
-              />
-              <label htmlFor="gluten-free"> Gluten-free </label>
-              <input
-                className="checkbox"
-                value="gluten-free"
-                type="checkbox"
-                name="gluten-free"
-              />
+                <Categories/>
             </fieldset>
 
             <fieldset>
               <legend> Ingredients </legend>
               <AddIngredients/>
-              
-              {/*
-                redux-trell directory is what i need
-                I need to use redux: actions, reducers, store
-                I already have my actions, reducers, and store
-                I need to dispatch an action
-                My reducer needs to handle this action
-                The reducer will update the store
-                Try do redux update on sandbox when you get a chance
-                This will provide more practice for you since you have
-                not done them in a while.
-                So it is best to feel confident in redux.
-                You should be able to build a redux app from scratch
-
-                I need an action called ADD_INGREDIENT
-                I need this action to be handled by a reducer
-                My end goal is to have something that looks like this:
-
-<button className="ingredient-button" type="button" onClick={this.addIngredient}> Add ingredient</button>
-export const ADD_INGREDIENT = "ADD_INGREDIENT";
-export const addIngredient = ingredient => ({
-  type: ADD_INGREDIENT,
-  ingredient
-});              
-
-import { ADD_INGREDIENT } from "../actions/index";
-
-export const ChefAppReducer = (state = initialState, action) => {
-  if (action.type === ADD_INGREDIENT) {
-  
-const initialState = {
-  ingredients: [
-    "Quinoa",
-    "Mushroom",
-    "Walnut",
-    "Lettuce",
-    "Tomato",
-    "Pickled_red_onions",
-    "Cucumber",
-    "Parmesan_mayo",
-    "Bun"
-  ],
-  glutenItems: ["BUN"],
-  meatItems: ["No meat"],
-  dairyItems: ["No dairy"],
-  eggItems: ["Parmesan mayo"],
-  name: "Blackhawk Burger",
-  type: "Burger",
-  category: "No meat",
-  hasGluten: true,
-  hasMeat: false,
-  hasDairy: false,
-  hasEgg: true,
-  created: "2018-06-12T06:11:13.093Z",
-  __v: 0
-};
-    const newState = Object.assign({}, state, {
-        feedback: action.feedback,
-        guesses: [...state.ingredients, action.ingredient]
-      });
-      return newState;
-    }
-  
-
-                */}
             </fieldset>
 
             <button type="submit" className="button">

@@ -43,3 +43,23 @@ export default class AddIngredients extends React.Component {
     );
   }
 }
+
+
+/*
+ <ul>
+      {" "}
+      {this.state.ingredients.map((ingredient, index) => {
+        return (
+          <li key={index}>
+            <label htmlFor="ingredient">Ingredient</label>
+            <input
+              className="input my-text"
+              type="text"
+              ref={this.inputRef}
+              placeholder="e.g. tomato"
+            />
+          </li>
+        );
+      })}{" "}
+    </ul>
+*/
