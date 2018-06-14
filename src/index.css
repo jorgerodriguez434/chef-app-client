@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +8,7 @@ body {
   background-color: black;
   color: silver;
   margin: auto;
+  text-align: center;
 }
 
 label {
@@ -35,8 +39,6 @@ li {
   background-color: white;
   margin: auto;
   cursor: pointer;
-}
-.dish{
 }
 .red{
   background-color: red;
@@ -90,13 +92,42 @@ li {
  font-size: 20px;
  text-align: center;
 }
-.input{
+.guest-input{
   margin:auto;
   height: 40px;
   width: 50px;
   background-color: #f2f2f2;
   margin-bottom: 20px;
 }
+.input{
+  margin:auto;
+  height: 40px;
+  width: 300px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+}
+.scroll{
+ height: 40px;
+ margin-bottom: 20px;
+ 
+}
+.option{
+  color:red;
+}
+.checkbox{
+  margin: auto;
+}
+
+.border{
+  border: 2px solid yellow;
+}
+.margin-bottom{
+  margin-bottom: 20px;
+}
+.ingredient-button{
+  float:right;
+}
+
 /* Non-mobile */
 @media only screen and (min-width: 740px) {
   img {
