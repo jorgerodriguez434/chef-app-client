@@ -1,27 +1,28 @@
 import React from "react";
-import AddIngredient from "./add-ingredient";
+import AddIngredients from "./add-ingredient";
+//import Ingredients from "./ingredients";
 
 export default class PostDish extends React.Component {
   constructor() {
     super();
     this.state = {
-      display: "landing"
+      display: "landing",
+      ingredients:[]
     };
   }
 
   onSubmit = () => {
-    console.log("clicked!");
     this.setState({
       display: "hello world"
     });
   };
 
   goBack = () => {
-    console.log("clicked!");
     this.setState({
       display: "landing"
     });
   };
+
 
   render = () => {
     if (this.state.display === "landing") {
@@ -75,7 +76,8 @@ export default class PostDish extends React.Component {
 
             <fieldset>
               <legend> Ingredients </legend>
-              <AddIngredient/>
+              <AddIngredients/>
+              
               {/*
                 redux-trell directory is what i need
                 I need to use redux: actions, reducers, store
@@ -93,7 +95,7 @@ export default class PostDish extends React.Component {
                 I need this action to be handled by a reducer
                 My end goal is to have something that looks like this:
 
-
+<button className="ingredient-button" type="button" onClick={this.addIngredient}> Add ingredient</button>
 export const ADD_INGREDIENT = "ADD_INGREDIENT";
 export const addIngredient = ingredient => ({
   type: ADD_INGREDIENT,
