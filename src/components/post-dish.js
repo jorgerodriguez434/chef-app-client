@@ -1,5 +1,5 @@
 import React from "react";
-//import Ingredients from "./ingredients";
+import AddIngredient from "./add-ingredient";
 
 export default class PostDish extends React.Component {
   constructor() {
@@ -75,7 +75,7 @@ export default class PostDish extends React.Component {
 
             <fieldset>
               <legend> Ingredients </legend>
-              {/*<Ingredients />*/}
+              <AddIngredient/>
               {/*
                 redux-trell directory is what i need
                 I need to use redux: actions, reducers, store

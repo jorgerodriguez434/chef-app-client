@@ -23,14 +23,3 @@ export default Ingredients;
           {" "}
           Add another
         </button> */
-
-
-        /*
-
-<ul> {dish.ingredients.map((ingredient, index) => {
-            return(
-              <li key={index}>
-                 {ingredient}
-              </li>);
-          })} </ul>
-        */
