@@ -1,8 +1,9 @@
 import React from "react";
 import AddIngredients from "./add-ingredient";
 //import Ingredients from "./ingredients";
-import Categories from "./categories"
-import Type from "./type"
+import Categories from "./categories";
+import Type from "./type";
+//import Contains from "./contains";
 
 export default class PostDish extends React.Component {
   constructor() {
@@ -16,10 +17,12 @@ export default class PostDish extends React.Component {
 
   }
 
-  onSubmit = () => {
+  onSubmit = e => {
+    e.preventDefault();
     this.setState({
       display: "hello world"
     });
+    this.setDishName();
   };
 
   goBack = () => {
@@ -28,23 +31,23 @@ export default class PostDish extends React.Component {
     });
   };
 
-  setDishName = e => {
-      e.preventDefault();
+  setDishName = () => {
       const dishName = this._dishName.current.value;
       this.setState({
         dishName
       });
-      console.log(dishName);
+      console.log(`Dish Name: ${dishName}`);
   }
 
 
   render = () => {
+      
     if (this.state.display === "landing") {
       return (
         <div>
           <h1> this the PostDish component! </h1>
           <p> Please add a dish by entering the following information </p>
-          <form onSubmit={this.setDishName}>
+          <form onSubmit={this.onSubmit}>
             <label htmlFor="dish-name">Name of dish</label>
             <input
               className="input my-text"
@@ -64,6 +67,7 @@ export default class PostDish extends React.Component {
               <AddIngredients/>
             </fieldset>
 
+
             <button type="submit" className="button">
               {" "}
               Post Dish!{" "}
@@ -76,6 +80,7 @@ export default class PostDish extends React.Component {
       return (
         <div>
           <h1> You did it! </h1>
+          <h2> Dish Name: {this.state.dishName}</h2>
           <button onClick={this.goBack} className="button">
             {" "}
             go back{" "}
