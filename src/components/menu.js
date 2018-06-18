@@ -2,7 +2,7 @@ import React from "react";
 //import * as menu from "../menu";
 import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
-import GlutenFreeDishes from "./gluten-free-dishes";
+//import GlutenFreeDishes from "./gluten-free-dishes";
 import  {API_BASE_URL} from '../config';
 import Ingredients from "./ingredients";
 
@@ -12,6 +12,9 @@ export default class Menu extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
+      testing: {
+        test:""
+      },
       menu: [],
       noMeatDishes: [],
       noDairyDishes: [],
@@ -19,13 +22,16 @@ export default class Menu extends React.Component {
       noGlutenDishes: [],
       meatDishes: [],
       display: "buttons",
+      allIngredients: [],
       glutenFreeIngredients: [],
       meatFreeIngredients: [],
       dairyFreeIngredients: [],
       eggFreeIngredients: [],
-      meatIngredients:[]
+      meatIngredients:[],
     };
   }
+
+
 
   componentDidMount() {
     fetch(API_BASE_URL)
@@ -52,14 +58,15 @@ export default class Menu extends React.Component {
 
   categorizeIngredients = () => {
     const glutenFreeIngredients= [];
-    /*const meatFreeIngredients= [];
+    const meatFreeIngredients= [];
     const dairyFreeIngredients= [];
     const eggFreeIngredients= [];
-    const meatIngredients= []; */
+    const meatIngredients= [];
+    const allIngredients = []; 
 
     this.state.menu.map( dish => {
       dish.ingredients.map(ingredient => {
-       /* if (ingredient.hasMeat === false) {
+       if (ingredient.hasMeat === false) {
           meatFreeIngredients.push(ingredient);
         }
         if (ingredient.hasDairy === false) {
@@ -67,39 +74,81 @@ export default class Menu extends React.Component {
         }
         if (ingredient.hasEgg === false) {
           eggFreeIngredients.push(ingredient);
-        }*/
+        }
         if (ingredient.hasGluten === false) {
           glutenFreeIngredients.push(ingredient);
         }
-       /* if (ingredient.hasMeat === true) {
-          meatIngredients.push(ingredient); 
-        } */
+
+      
+        allIngredients.push(ingredient);  
         return ingredient;
       });
       return dish;
     });
    
     this.setState({
+      allIngredients,
       glutenFreeIngredients,
-     /* meatFreeIngredients,
+      meatFreeIngredients,
       eggFreeIngredients,
       dairyFreeIngredients,
-      meatIngredients */
+      meatIngredients,
     }); 
   };
 
-  foodFilter = () => {
-    /*  const noMeatDishes = [];
-      const noDairyDishes=  [];
-      const noEggDishes=[];
-      const noGlutenDishes= [];
-      const meatDishes= []; */
+  testing = () => {
+    this.setState({
+        testing: {
+          test: "123"
+        }
+    });
+  }
 
-     /*
-for every dish, I need a set of ingredients
-if (the dish.ingrdients.meatIngrdienst === 0){
-  then noMeatDishes.push(dish);
-} */
+  foodFilter = () => {
+    const  noMeatDishes = [];
+   const  noDairyDishes =  [];
+    //const  noEggDishes= [];
+   // const  noGlutenDishes= []; 
+    const  meatDishes= [];  
+   const  dairyDishes =  [];
+  //  const  eggDishes= [];
+   // const  glutenDishes= [];   
+
+    this.state.menu.map(dish => {
+      //if dish contains an ingredient where meat === true
+      //the  push to meat list, other wise if meat item not found
+      //then push to no meat list
+      for(let i=0; i<dish.ingredients.length; i++){
+        const ingredient = dish.ingredients[i];
+        if (ingredient.hasMeat === true){
+          meatDishes.push(dish);
+          break;
+        }
+        else if(ingredient.hasMeat === false){
+          noMeatDishes.push(dish);
+          break;
+        }
+
+        if (ingredient.hasDairy === true){
+          dairyDishes.push(dish);
+          break;
+        }
+        else if(ingredient.hasDairy === false){
+          noDairyDishes.push(dish);
+          break;
+        }
+       
+        
+        
+      }
+      return dish;
+      
+    });
+    
+    this.setState({
+      noMeatDishes,
+      meatDishes
+    });
      
   }
 
@@ -125,7 +174,8 @@ if (the dish.ingrdients.meatIngrdienst === 0){
   };
 
   render = () => {
-    console.log(this.state.glutenFreeIngredients);
+    console.log("meat dishes:")
+    console.log(this.state.meatDishes)
     if (this.state.display === "buttons") {
       return (
         <div>
@@ -151,7 +201,6 @@ if (the dish.ingrdients.meatIngrdienst === 0){
             displayIngredients={this.displayIngredients}
           />
           <h3> Showing no meats: </h3>
-          {console.log(this.state.noMeatDishes)}
           <Dishes category={this.state.noMeatDishes} />
         </div>
       );
@@ -182,7 +231,7 @@ if (the dish.ingrdients.meatIngrdienst === 0){
             displayIngredients={this.displayIngredients}
           />
           <h3> Showing no gluten: </h3>
-          <GlutenFreeDishes category={this.state.noGlutenDishes} />
+          <Dishes category={this.state.noGlutenDishes} />
         </div>
       );
     }//else if
@@ -197,8 +246,8 @@ if (the dish.ingrdients.meatIngrdienst === 0){
             displayNoGluten={this.displayNoGluten}
             displayIngredients={this.displayIngredients}
           />
-          <h3> Showing ingredients: </h3>
-          <Ingredients ingredients={this.state.glutenFreeIngredients}/>
+          <h3> Showing all ingredients: </h3>
+          <Ingredients ingredients={this.state.allIngredients}/>
         </div>
       );
     } 

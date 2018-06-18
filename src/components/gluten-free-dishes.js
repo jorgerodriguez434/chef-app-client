@@ -10,7 +10,7 @@ const GlutenFreeDishes = props => (
           <ul> {dish.ingredients.map((ingredient, index) => {
             return(
               <li key={index}>
-                 {ingredient}
+                 {ingredient.name}
               </li>);
           })} </ul>
         </li>
@@ -20,3 +20,8 @@ const GlutenFreeDishes = props => (
 );
 
 export default GlutenFreeDishes;
+
+
+/*
+
+*/
