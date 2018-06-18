@@ -130,6 +130,13 @@ li {
 .center{
   text-align: center;
 }
+.classify-as-checkbox{
+  display: inline-block;
+  }
+.label-for-classify-as{
+  display: inline-block;
+  
+}
 /* Non-mobile */
 @media only screen and (min-width: 740px) {
   img {

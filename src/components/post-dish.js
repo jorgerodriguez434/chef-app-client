@@ -1,7 +1,7 @@
 import React from "react";
 import AddIngredients from "./add-ingredient";
-//import Ingredients from "./ingredients";
-import Categories from "./categories";
+import Ingredients from "./ingredients";
+//import Categories from "./categories";
 import Type from "./type";
 //import Contains from "./contains";
 
@@ -10,8 +10,11 @@ export default class PostDish extends React.Component {
     super();
     this.state = {
       display: "landing",
-      ingredients:[],
-      dishName: ""
+      name: "",
+      type: "",
+      categories: [],
+      ingredients:["tomato"]
+      
     };
     this._dishName = React.createRef();
 
@@ -23,6 +26,7 @@ export default class PostDish extends React.Component {
       display: "hello world"
     });
     this.setDishName();
+    this.setCategories(e);
   };
 
   goBack = () => {
@@ -32,12 +36,27 @@ export default class PostDish extends React.Component {
   };
 
   setDishName = () => {
-      const dishName = this._dishName.current.value;
+      const name = this._dishName.current.value;
       this.setState({
-        dishName
+        name
       });
-      console.log(`Dish Name: ${dishName}`);
+      console.log(`Dish Name: ${name}`);
   }
+
+  setCategories = e => {
+    const checkboxes = e.currentTarget.getElementsByClassName("checkbox")
+    const categories = [];
+    console.log(checkboxes);
+    Object.values(checkboxes).map(checkbox => {
+      
+      if (checkbox.checked) {
+        categories.push(checkbox.value);
+      }
+      return categories;
+    });
+    
+    this.setState({ categories });  
+  };
 
 
   render = () => {
@@ -57,14 +76,14 @@ export default class PostDish extends React.Component {
               required
             />
             <Type/>
-            <fieldset className="margin-bottom">
-              <legend> Categories</legend>
-                <Categories/>
-            </fieldset>
 
-            <fieldset>
-              <legend> Ingredients </legend>
+            <fieldset className="margin-bottom">
+              <legend> Add Ingredients </legend>
               <AddIngredients/>
+              {/* Add ingredient component currently has the value of this.state.ingredients
+               which is tomato
+               So how do I get this value out into another component? Here is where Redux comes in.
+              */}
             </fieldset>
 
 
@@ -80,7 +99,9 @@ export default class PostDish extends React.Component {
       return (
         <div>
           <h1> You did it! </h1>
-          <h2> Dish Name: {this.state.dishName}</h2>
+          <h2> Dish Name: {this.state.name}</h2>
+          <h2> Categories: {this.state.categories}</h2>
+          <h2> Ingredients: <Ingredients ingredients={this.state.ingredients}/> </h2>
           <button onClick={this.goBack} className="button">
             {" "}
             go back{" "}

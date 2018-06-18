@@ -10,7 +10,7 @@ const Dishes = props => (
           <Ingredients ingredients={dish.ingredients}/>
           <h3> Get it gluten free! </h3>
           <h4> Remove: </h4>
-          <Ingredients ingredients={dish.glutenItems}/>
+         {/* <Ingredients ingredients={dish.glutenItems}/> */}
         </li>
       );
     })}

@@ -9,7 +9,7 @@ const Categories = props => (
       type="checkbox"
       name="vegeterian"
     />
-    <label htmlFor="meat"> Meat Lovers </label>
+    <label htmlFor="meat"> Meat </label>
     <input className="checkbox" value="meat" type="checkbox" name="meat" />
 
     <label htmlFor="gluten-free"> Gluten Free </label>
@@ -22,7 +22,7 @@ const Categories = props => (
     <label htmlFor="dairy-free">  Dairy Free</label>
     <input className="checkbox" value="dairy-free" type="checkbox" name="dairy-free" />
     
-    <label htmlFor="vegan-free"> Vegan </label>
+    <label htmlFor="vegan"> Vegan </label>
     <input
       className="checkbox"
       value="vegan"

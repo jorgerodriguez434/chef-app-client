@@ -1,6 +1,6 @@
 import React from "react";
-//import InputIngredients from "./input-ingredients"
-
+//import InputIngredients from "./input-ingredients";
+import ClassifyAs from "./classifyAs";
 export default class AddIngredients extends React.Component {
   constructor() {
     super();
@@ -14,6 +14,7 @@ export default class AddIngredients extends React.Component {
     this.setState({
       ingredients: [...this.state.ingredients, ingredient]
     });
+    //this.props.dispatch(action)
  
   };
   render() {
@@ -33,6 +34,7 @@ export default class AddIngredients extends React.Component {
               ref={this.inputRef}
               placeholder="e.g. tomato"
             />
+            <ClassifyAs/>
           </li>
         );
       })}{" "}

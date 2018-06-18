@@ -4,6 +4,7 @@ import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
 import GlutenFreeDishes from "./gluten-free-dishes";
 import  {API_BASE_URL} from '../config';
+import Ingredients from "./ingredients";
 
 export default class Menu extends React.Component {
   constructor() {
@@ -12,12 +13,17 @@ export default class Menu extends React.Component {
       error: null,
       isLoaded: false,
       menu: [],
-      noMeat: [],
-      noDairy: [],
-      noEgg: [],
-      noGluten: [],
-      meat: [],
-      display: "buttons"
+      noMeatDishes: [],
+      noDairyDishes: [],
+      noEggDishes: [],
+      noGlutenDishes: [],
+      meatDishes: [],
+      display: "buttons",
+      glutenFreeIngredients: [],
+      meatFreeIngredients: [],
+      dairyFreeIngredients: [],
+      eggFreeIngredients: [],
+      meatIngredients:[]
     };
   }
 
@@ -44,38 +50,58 @@ export default class Menu extends React.Component {
       )
   }
 
-  foodFilter = () => {
-    const noMeat = [];
-    const noDairy = [];
-    const noEgg = [];
-    const noGluten = [];
-    const meat = [];
-    this.state.menu.map(dish => {
-      if (dish.hasMeat === false) {
-        noMeat.push(dish);
-      }
-      if (dish.hasDairy === false) {
-        noDairy.push(dish);
-      }
-      if (dish.hasEgg === false) {
-        noEgg.push(dish);
-      }
-      if (dish.hasGluten === false) {
-        noGluten.push(dish);
-      }
-      if (dish.hasMeat === true) {
-        meat.push(dish);
-      }
+  categorizeIngredients = () => {
+    const glutenFreeIngredients= [];
+    /*const meatFreeIngredients= [];
+    const dairyFreeIngredients= [];
+    const eggFreeIngredients= [];
+    const meatIngredients= []; */
+
+    this.state.menu.map( dish => {
+      dish.ingredients.map(ingredient => {
+       /* if (ingredient.hasMeat === false) {
+          meatFreeIngredients.push(ingredient);
+        }
+        if (ingredient.hasDairy === false) {
+          dairyFreeIngredients.push(ingredient);
+        }
+        if (ingredient.hasEgg === false) {
+          eggFreeIngredients.push(ingredient);
+        }*/
+        if (ingredient.hasGluten === false) {
+          glutenFreeIngredients.push(ingredient);
+        }
+       /* if (ingredient.hasMeat === true) {
+          meatIngredients.push(ingredient); 
+        } */
+        return ingredient;
+      });
       return dish;
     });
+   
     this.setState({
-      noMeat,
-      noDairy,
-      noEgg,
-      noGluten,
-      meat
-    });
+      glutenFreeIngredients,
+     /* meatFreeIngredients,
+      eggFreeIngredients,
+      dairyFreeIngredients,
+      meatIngredients */
+    }); 
   };
+
+  foodFilter = () => {
+    /*  const noMeatDishes = [];
+      const noDairyDishes=  [];
+      const noEggDishes=[];
+      const noGlutenDishes= [];
+      const meatDishes= []; */
+
+     /*
+for every dish, I need a set of ingredients
+if (the dish.ingrdients.meatIngrdienst === 0){
+  then noMeatDishes.push(dish);
+} */
+     
+  }
 
   displayNoMeat = () => {
     this.setState({
@@ -92,16 +118,24 @@ export default class Menu extends React.Component {
       display: "no gluten"
     });
   };
+  displayIngredients = () => {
+    this.setState({
+      display: "ingredients"
+    });
+  };
 
   render = () => {
+    console.log(this.state.glutenFreeIngredients);
     if (this.state.display === "buttons") {
       return (
         <div>
           <ButtonGroup
             foodFilter={this.foodFilter}
+            categorizeIngredients={this.categorizeIngredients}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
             displayNoGluten={this.displayNoGluten}
+            displayIngredients={this.displayIngredients}
           />
         </div>
       );
@@ -110,12 +144,15 @@ export default class Menu extends React.Component {
         <div>
           <ButtonGroup
             foodFilter={this.foodFilter}
+            categorizeIngredients={this.categorizeIngredients}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
             displayNoGluten={this.displayNoGluten}
+            displayIngredients={this.displayIngredients}
           />
           <h3> Showing no meats: </h3>
-          <Dishes category={this.state.noMeat} />
+          {console.log(this.state.noMeatDishes)}
+          <Dishes category={this.state.noMeatDishes} />
         </div>
       );
     } else if (this.state.display === "meat") {
@@ -123,12 +160,14 @@ export default class Menu extends React.Component {
         <div>
           <ButtonGroup
             foodFilter={this.foodFilter}
+            categorizeIngredients={this.categorizeIngredients}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
             displayNoGluten={this.displayNoGluten}
+            displayIngredients={this.displayIngredients}
           />
           <h3> Showing meats: </h3>
-          <Dishes category={this.state.meat} />
+          <Dishes category={this.state.meatDishes} />
         </div>
       );
     } else if (this.state.display === "no gluten") {
@@ -136,14 +175,32 @@ export default class Menu extends React.Component {
         <div>
           <ButtonGroup
             foodFilter={this.foodFilter}
+            categorizeIngredients={this.categorizeIngredients}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
             displayNoGluten={this.displayNoGluten}
+            displayIngredients={this.displayIngredients}
           />
           <h3> Showing no gluten: </h3>
-          <GlutenFreeDishes category={this.state.noGluten} />
+          <GlutenFreeDishes category={this.state.noGlutenDishes} />
         </div>
       );
-    }
+    }//else if
+    else if (this.state.display === "ingredients") {
+      return (
+        <div>
+          <ButtonGroup
+            foodFilter={this.foodFilter}
+            categorizeIngredients={this.categorizeIngredients}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
+            displayIngredients={this.displayIngredients}
+          />
+          <h3> Showing ingredients: </h3>
+          <Ingredients ingredients={this.state.glutenFreeIngredients}/>
+        </div>
+      );
+    } 
   }; //render
 } //class
