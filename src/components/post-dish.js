@@ -1,9 +1,10 @@
 import React from "react";
-import AddIngredients from "./add-ingredient";
+//import AddIngredients from "./add-ingredient";
 import Ingredients from "./ingredients";
 //import Categories from "./categories";
 import Type from "./type";
 //import Contains from "./contains";
+import ClassifyAs from "./classifyAs";
 
 export default class PostDish extends React.Component {
   constructor() {
@@ -13,10 +14,11 @@ export default class PostDish extends React.Component {
       name: "",
       type: "",
       categories: [],
-      ingredients:["tomato"]
+      ingredients:[{name: "tomato", hasMeat:false}],
       
     };
     this._dishName = React.createRef();
+    this._ingredientName = React.createRef();
 
   }
 
@@ -25,8 +27,9 @@ export default class PostDish extends React.Component {
     this.setState({
       display: "hello world"
     });
-    this.setDishName();
     this.setCategories(e);
+    this.setChange();
+   
   };
 
   goBack = () => {
@@ -35,16 +38,30 @@ export default class PostDish extends React.Component {
     });
   };
 
-  setDishName = () => {
+  setChange= () => {
       const name = this._dishName.current.value;
-      this.setState({
-        name
-      });
+      const ingredient = this._ingredientName.current.value;
+      /*
+      If category is found, then setState to hasCategory === true
+      */
+      if (this.state.categories.indexOf("contains-meat")){
+        this.setState({
+          name,
+          ingredients: [this.state.ingredients, {name: ingredient, hasMeat: true}]
+  
+        }); 
+      }
+
+      /*this.setState({
+        name,
+        ingredients: [this.state.ingredients, {name: ingredient}]
+
+      }); */
       console.log(`Dish Name: ${name}`);
   }
 
   setCategories = e => {
-    const checkboxes = e.currentTarget.getElementsByClassName("checkbox")
+    const checkboxes = e.currentTarget.getElementsByClassName("classify-as-checkbox")
     const categories = [];
     console.log(checkboxes);
     Object.values(checkboxes).map(checkbox => {
@@ -60,7 +77,8 @@ export default class PostDish extends React.Component {
 
 
   render = () => {
-      
+    console.log(this.state.categories);
+    console.log(this.state.ingredients);
     if (this.state.display === "landing") {
       return (
         <div>
@@ -79,8 +97,9 @@ export default class PostDish extends React.Component {
 
             <fieldset className="margin-bottom">
               <legend> Add Ingredients </legend>
-              <AddIngredients/>
-              {/* Add ingredient component currently has the value of this.state.ingredients
+              <input type="text"  ref={this._ingredientName} className="input my-text"  placeholder="e.g. tomato" required/>
+              <ClassifyAs/>
+              {/*<AddIngredients/> Add ingredient component currently has the value of this.state.ingredients
                which is tomato
                So how do I get this value out into another component? Here is where Redux comes in.
               */}

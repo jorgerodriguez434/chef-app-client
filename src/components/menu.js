@@ -3,7 +3,7 @@ import React from "react";
 import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
 //import GlutenFreeDishes from "./gluten-free-dishes";
-import  {API_BASE_URL} from '../config';
+import { API_BASE_URL } from "../config";
 import Ingredients from "./ingredients";
 
 export default class Menu extends React.Component {
@@ -13,7 +13,7 @@ export default class Menu extends React.Component {
       error: null,
       isLoaded: false,
       testing: {
-        test:""
+        test: ""
       },
       menu: [],
       noMeatDishes: [],
@@ -27,17 +27,15 @@ export default class Menu extends React.Component {
       meatFreeIngredients: [],
       dairyFreeIngredients: [],
       eggFreeIngredients: [],
-      meatIngredients:[],
+      meatIngredients: []
     };
   }
-
-
 
   componentDidMount() {
     fetch(API_BASE_URL)
       .then(res => res.json())
       .then(
-        (dishes) => {
+        dishes => {
           console.log(dishes);
           this.setState({
             isLoaded: true,
@@ -47,26 +45,26 @@ export default class Menu extends React.Component {
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
         // exceptions from actual bugs in components.
-        (error) => {
+        error => {
           this.setState({
             isLoaded: true,
             error
           });
         }
-      )
+      );
   }
 
   categorizeIngredients = () => {
-    const glutenFreeIngredients= [];
-    const meatFreeIngredients= [];
-    const dairyFreeIngredients= [];
-    const eggFreeIngredients= [];
-    const meatIngredients= [];
-    const allIngredients = []; 
+    const glutenFreeIngredients = [];
+    const meatFreeIngredients = [];
+    const dairyFreeIngredients = [];
+    const eggFreeIngredients = [];
+    const meatIngredients = [];
+    const allIngredients = [];
 
-    this.state.menu.map( dish => {
+    this.state.menu.map(dish => {
       dish.ingredients.map(ingredient => {
-       if (ingredient.hasMeat === false) {
+        if (ingredient.hasMeat === false) {
           meatFreeIngredients.push(ingredient);
         }
         if (ingredient.hasDairy === false) {
@@ -79,78 +77,86 @@ export default class Menu extends React.Component {
           glutenFreeIngredients.push(ingredient);
         }
 
-      
-        allIngredients.push(ingredient);  
+        allIngredients.push(ingredient);
         return ingredient;
       });
       return dish;
     });
-   
+
     this.setState({
       allIngredients,
       glutenFreeIngredients,
       meatFreeIngredients,
       eggFreeIngredients,
       dairyFreeIngredients,
-      meatIngredients,
-    }); 
+      meatIngredients
+    });
   };
 
   testing = () => {
     this.setState({
-        testing: {
-          test: "123"
-        }
+      testing: {
+        test: "123"
+      }
     });
-  }
+  };
 
   foodFilter = () => {
-    const  noMeatDishes = [];
-   const  noDairyDishes =  [];
-    //const  noEggDishes= [];
-   // const  noGlutenDishes= []; 
-    const  meatDishes= [];  
-   const  dairyDishes =  [];
-  //  const  eggDishes= [];
-   // const  glutenDishes= [];   
+    const noMeatDishes = [];
+    const noDairyDishes = [];
+    const noEggDishes = [];
+    const noGlutenDishes = [];
+    const meatDishes = [];
+    const dairyDishes = [];
+    const eggDishes = [];
+    const glutenDishes = [];
 
     this.state.menu.map(dish => {
       //if dish contains an ingredient where meat === true
       //the  push to meat list, other wise if meat item not found
       //then push to no meat list
-      for(let i=0; i<dish.ingredients.length; i++){
+      for (let i = 0; i < dish.ingredients.length; i++) {
         const ingredient = dish.ingredients[i];
-        if (ingredient.hasMeat === true){
+        if (ingredient.hasMeat === true) {
           meatDishes.push(dish);
           break;
-        }
-        else if(ingredient.hasMeat === false){
+        } else if (ingredient.hasMeat === false) {
           noMeatDishes.push(dish);
           break;
         }
 
-        if (ingredient.hasDairy === true){
+        if (ingredient.hasDairy === true) {
           dairyDishes.push(dish);
           break;
-        }
-        else if(ingredient.hasDairy === false){
+        } else if (ingredient.hasDairy === false) {
           noDairyDishes.push(dish);
           break;
         }
-       
-        
-        
+
+        if (ingredient.hasEgg === true) {
+          eggDishes.push(dish);
+          break;
+        } else if (ingredient.hasEgg === false) {
+          noEggDishes.push(dish);
+          break;
+        }
+
+        if (ingredient.hasGluten === true) {
+          glutenDishes.push(dish);
+          break;
+        } else if (ingredient.hasDairy === false) {
+          noGlutenDishes.push(dish);
+          break;
+        }
       }
       return dish;
-      
     });
-    
+
     this.setState({
       noMeatDishes,
       meatDishes
     });
-     
-  }
+  };
 
   displayNoMeat = () => {
     this.setState({
@@ -174,8 +180,8 @@ export default class Menu extends React.Component {
   };
 
   render = () => {
-    console.log("meat dishes:")
-    console.log(this.state.meatDishes)
+    console.log("meat dishes:");
+    console.log(this.state.meatDishes);
     if (this.state.display === "buttons") {
       return (
         <div>
@@ -234,7 +240,7 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.noGlutenDishes} />
         </div>
       );
-    }//else if
+    } //else if
     else if (this.state.display === "ingredients") {
       return (
         <div>
@@ -247,9 +253,9 @@ export default class Menu extends React.Component {
             displayIngredients={this.displayIngredients}
           />
           <h3> Showing all ingredients: </h3>
-          <Ingredients ingredients={this.state.allIngredients}/>
+          <Ingredients ingredients={this.state.allIngredients} />
         </div>
       );
-    } 
+    }
   }; //render
 } //class
