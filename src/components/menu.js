@@ -12,9 +12,6 @@ export default class Menu extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      testing: {
-        test: ""
-      },
       menu: [],
       noMeatDishes: [],
       noDairyDishes: [],
@@ -22,12 +19,12 @@ export default class Menu extends React.Component {
       noGlutenDishes: [],
       meatDishes: [],
       display: "buttons",
-      allIngredients: [],
+     /* allIngredients: [],
       glutenFreeIngredients: [],
       meatFreeIngredients: [],
       dairyFreeIngredients: [],
       eggFreeIngredients: [],
-      meatIngredients: []
+      meatIngredients: [] */
     };
   }
 
@@ -55,51 +52,9 @@ export default class Menu extends React.Component {
   }
 
   categorizeIngredients = () => {
-    const glutenFreeIngredients = [];
-    const meatFreeIngredients = [];
-    const dairyFreeIngredients = [];
-    const eggFreeIngredients = [];
-    const meatIngredients = [];
-    const allIngredients = [];
-
-    this.state.menu.map(dish => {
-      dish.ingredients.map(ingredient => {
-        if (ingredient.hasMeat === false) {
-          meatFreeIngredients.push(ingredient);
-        }
-        if (ingredient.hasDairy === false) {
-          dairyFreeIngredients.push(ingredient);
-        }
-        if (ingredient.hasEgg === false) {
-          eggFreeIngredients.push(ingredient);
-        }
-        if (ingredient.hasGluten === false) {
-          glutenFreeIngredients.push(ingredient);
-        }
-
-        allIngredients.push(ingredient);
-        return ingredient;
-      });
-      return dish;
-    });
-
-    this.setState({
-      allIngredients,
-      glutenFreeIngredients,
-      meatFreeIngredients,
-      eggFreeIngredients,
-      dairyFreeIngredients,
-      meatIngredients
-    });
+    //
   };
 
-  testing = () => {
-    this.setState({
-      testing: {
-        test: "123"
-      }
-    });
-  };
 
   foodFilter = () => {
     const noMeatDishes = [];
@@ -112,50 +67,9 @@ export default class Menu extends React.Component {
     const glutenDishes = [];
 
     this.state.menu.map(dish => {
-      //if dish contains an ingredient where meat === true
-      //the  push to meat list, other wise if meat item not found
-      //then push to no meat list
-      for (let i = 0; i < dish.ingredients.length; i++) {
-        const ingredient = dish.ingredients[i];
-        if (ingredient.hasMeat === true) {
-          meatDishes.push(dish);
-          break;
-        } else if (ingredient.hasMeat === false) {
-          noMeatDishes.push(dish);
-          break;
-        }
-
-        if (ingredient.hasDairy === true) {
-          dairyDishes.push(dish);
-          break;
-        } else if (ingredient.hasDairy === false) {
-          noDairyDishes.push(dish);
-          break;
-        }
-
-        if (ingredient.hasEgg === true) {
-          eggDishes.push(dish);
-          break;
-        } else if (ingredient.hasEgg === false) {
-          noEggDishes.push(dish);
-          break;
-        }
-
-        if (ingredient.hasGluten === true) {
-          glutenDishes.push(dish);
-          break;
-        } else if (ingredient.hasDairy === false) {
-          noGlutenDishes.push(dish);
-          break;
-        }
-      }
-      return dish;
+      
     });
-
-    this.setState({
-      noMeatDishes,
-      meatDishes
-    });
+      
   };
 
   displayNoMeat = () => {
@@ -180,8 +94,6 @@ export default class Menu extends React.Component {
   };
 
   render = () => {
-    console.log("meat dishes:");
-    console.log(this.state.meatDishes);
     if (this.state.display === "buttons") {
       return (
         <div>

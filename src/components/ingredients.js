@@ -4,7 +4,7 @@ const Ingredients = props => (
   <ul> {props.ingredients.map((ingredient, index) => {
     return(
       <li key={index}>
-         {ingredient.name}
+         {ingredient}
       </li>);
   })} </ul>
 );

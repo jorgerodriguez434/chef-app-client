@@ -5,6 +5,7 @@ import Ingredients from "./ingredients";
 import Type from "./type";
 //import Contains from "./contains";
 import ClassifyAs from "./classifyAs";
+import { API_BASE_URL } from "../config";
 
 export default class PostDish extends React.Component {
   constructor() {
@@ -13,71 +14,130 @@ export default class PostDish extends React.Component {
       display: "landing",
       name: "",
       type: "",
-      categories: [],
-      ingredients:[{name: "tomato", hasMeat:false}],
-      
+      categories: ["none"],
+      ingredients: [],
+      /*meatIngredients: ["example bacon"],
+      glutenIngredients: ["example gluten"],
+      dairyIngredients: ["cheese"],
+      eggIngredients: [],
+      hasGluten: false,
+      hasMeat: false,
+      hasDairy: false,
+      hasEgg: false, */
     };
     this._dishName = React.createRef();
     this._ingredientName = React.createRef();
-
   }
 
   onSubmit = e => {
     e.preventDefault();
+    this.setCategories(e);
+    this.setName();
+    this.setIngredients();
     this.setState({
       display: "hello world"
-    });
-    this.setCategories(e);
-    this.setChange();
-   
+    }); 
+     setTimeout(this.postRequest, 1000)
+    
   };
+
+  postRequest = () => {
+    //make a post request
+    const data = this.state
+    fetch(API_BASE_URL, {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
+  } 
 
   goBack = () => {
     this.setState({
-      display: "landing"
+      display: "landing",
+      name: "",
+      type: "",
+      categories: ["none"],
+      ingredients: [],
     });
   };
 
-  setChange= () => {
-      const name = this._dishName.current.value;
-      const ingredient = this._ingredientName.current.value;
-      /*
-      If category is found, then setState to hasCategory === true
-      */
-      if (this.state.categories.indexOf("contains-meat")){
-        this.setState({
-          name,
-          ingredients: [this.state.ingredients, {name: ingredient, hasMeat: true}]
-  
-        }); 
-      }
-
-      /*this.setState({
-        name,
-        ingredients: [this.state.ingredients, {name: ingredient}]
-
-      }); */
-      console.log(`Dish Name: ${name}`);
+  setName = () => {
+    const name = this._dishName.current.value;
+    this.setState({
+        name
+    });
+  }
+  setIngredients = () => {
+    const ingredient = this._ingredientName.current.value;
+    this.setState({
+        ingredients: [...this.state.ingredients, ingredient]
+    });
   }
 
-  setCategories = e => {
-    const checkboxes = e.currentTarget.getElementsByClassName("classify-as-checkbox")
-    const categories = [];
-    console.log(checkboxes);
-    Object.values(checkboxes).map(checkbox => {
+ /* setIngredients = () => {
+    const ingredient = this._ingredientName.current.value;
+    
+      /*If category is found, add ingredient list of selected category
+      e.g. glutenFreeIngredients, noMeatIngrdients 
+
       
+     console.log("value received:");
+     console.log(this.state.categories.indexOf("contains-meat"));
+     
+    if (this.state.categories.indexOf("contains-meat") !== -1) {
+      this.setState({
+        meatIngredients: [...this.state.meatIngredients, ingredient],
+        hasMeat: true
+        
+      });
+    }//if
+    if (this.state.categories.indexOf("contains-gluten") !== -1) {
+      this.setState({
+        glutenIngredients: [...this.state.glutenIngredients, ingredient],
+        hasGluten: true
+        
+      });
+    }//if
+    if (this.state.categories.indexOf("contains-dairy") !== -1) {
+      this.setState({
+        dairyIngredients: [...this.state.dairyIngredients, ingredient],
+        hasDairy: true
+        
+      });
+    }//if
+    if (this.state.categories.indexOf("contains-egg") !== -1) {
+      this.setState({
+        eggIngredients: [...this.state.eggIngredients, ingredient],
+        hasEgg: true
+      });
+    }//if
+
+};  */
+
+  setCategories = (e) => {
+    const checkboxes = e.currentTarget.getElementsByClassName(
+      "classify-as-checkbox"
+    );
+    const categories = [];
+    //console.log(checkboxes);
+    Object.values(checkboxes).map(checkbox => {
       if (checkbox.checked) {
         categories.push(checkbox.value);
       }
       return categories;
     });
+
+    this.setState({ categories });
     
-    this.setState({ categories });  
   };
 
-
   render = () => {
-    console.log(this.state.categories);
+    //console.log("categories:");
+    //console.log(this.state.categories);
     console.log(this.state.ingredients);
     if (this.state.display === "landing") {
       return (
@@ -93,19 +153,24 @@ export default class PostDish extends React.Component {
               placeholder="e.g. Burger Deluxe"
               required
             />
-            <Type/>
+            <Type />
 
             <fieldset className="margin-bottom">
               <legend> Add Ingredients </legend>
-              <input type="text"  ref={this._ingredientName} className="input my-text"  placeholder="e.g. tomato" required/>
-              <ClassifyAs/>
+              <input
+                type="text"
+                ref={this._ingredientName}
+                className="input my-text"
+                placeholder="e.g. tomato"
+                required
+              />
+              <ClassifyAs />
               {/*<AddIngredients/> Add ingredient component currently has the value of this.state.ingredients
                which is tomato
                So how do I get this value out into another component? Here is where Redux comes in.
               */}
+              
             </fieldset>
-
-
             <button type="submit" className="button">
               {" "}
               Post Dish!{" "}
@@ -120,13 +185,19 @@ export default class PostDish extends React.Component {
           <h1> You did it! </h1>
           <h2> Dish Name: {this.state.name}</h2>
           <h2> Categories: {this.state.categories}</h2>
-          <h2> Ingredients: <Ingredients ingredients={this.state.ingredients}/> </h2>
+          <h2>
+            {" "}
+            Ingredients: <Ingredients
+              ingredients={this.state.ingredients}
+            />{" "}
+          </h2>
           <button onClick={this.goBack} className="button">
             {" "}
             go back{" "}
           </button>
         </div>
       );
+      //reset State
     }
   };
 }
@@ -169,5 +240,3 @@ export default class PostDish extends React.Component {
             
 
 */
-
-

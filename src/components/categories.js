@@ -33,10 +33,3 @@ const Categories = props => (
 );
 
 export default Categories;
-
-/*
-<Contains name="gluten"/>
-            <Contains name="meat"/>
-            <Contains name="dairy"/>
-            <Contains name="egg"/>
-*/
