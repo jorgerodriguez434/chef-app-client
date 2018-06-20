@@ -16,11 +16,11 @@ export default class PostDish extends React.Component {
       type: "",
       categories: ["none"],
       ingredients: [],
-      /*meatIngredients: ["example bacon"],
+      meatIngredients: ["example bacon"],
       glutenIngredients: ["example gluten"],
       dairyIngredients: ["cheese"],
       eggIngredients: [],
-      hasGluten: false,
+      /*hasGluten: false,
       hasMeat: false,
       hasDairy: false,
       hasEgg: false, */
@@ -31,9 +31,8 @@ export default class PostDish extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.setCategories(e);
+    this.setCategories(e, this.setIngredients);
     this.setName();
-    this.setIngredients();
     this.setState({
       display: "hello world"
     }); 
@@ -71,54 +70,15 @@ export default class PostDish extends React.Component {
         name
     });
   }
-  setIngredients = () => {
+ setIngredients = () => {
     const ingredient = this._ingredientName.current.value;
     this.setState({
         ingredients: [...this.state.ingredients, ingredient]
     });
-  }
+  } 
 
- /* setIngredients = () => {
-    const ingredient = this._ingredientName.current.value;
-    
-      /*If category is found, add ingredient list of selected category
-      e.g. glutenFreeIngredients, noMeatIngrdients 
 
-      
-     console.log("value received:");
-     console.log(this.state.categories.indexOf("contains-meat"));
-     
-    if (this.state.categories.indexOf("contains-meat") !== -1) {
-      this.setState({
-        meatIngredients: [...this.state.meatIngredients, ingredient],
-        hasMeat: true
-        
-      });
-    }//if
-    if (this.state.categories.indexOf("contains-gluten") !== -1) {
-      this.setState({
-        glutenIngredients: [...this.state.glutenIngredients, ingredient],
-        hasGluten: true
-        
-      });
-    }//if
-    if (this.state.categories.indexOf("contains-dairy") !== -1) {
-      this.setState({
-        dairyIngredients: [...this.state.dairyIngredients, ingredient],
-        hasDairy: true
-        
-      });
-    }//if
-    if (this.state.categories.indexOf("contains-egg") !== -1) {
-      this.setState({
-        eggIngredients: [...this.state.eggIngredients, ingredient],
-        hasEgg: true
-      });
-    }//if
-
-};  */
-
-  setCategories = (e) => {
+  setCategories = (e, cb) => {
     const checkboxes = e.currentTarget.getElementsByClassName(
       "classify-as-checkbox"
     );
@@ -132,7 +92,7 @@ export default class PostDish extends React.Component {
     });
 
     this.setState({ categories });
-    
+    cb();
   };
 
   render = () => {
