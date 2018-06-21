@@ -46,8 +46,7 @@ export default class Menu extends React.Component {
   }
 
   foodFilter = () => {
-
-    console.log("food filter clicked")
+    
     const noMeatDishes = [];
     const noDairyDishes = [];
     const noEggDishes = [];
@@ -60,13 +59,21 @@ export default class Menu extends React.Component {
 
     this.state.menu.map(dish => {
       if (dish.categories.indexOf("contains-meat") !== -1) meatDishes.push(dish);
+      //dispatch add meat dish
       else if(dish.categories.indexOf("contains-meat") === -1) noMeatDishes.push(dish);
+      //dispatch add no meat dish
       if (dish.categories.indexOf("contains-gluten") !== -1) glutenDishes.push(dish);
+      //dispatch add gluten dishes
       else if(dish.categories.indexOf("contains-gluten") === -1) noGlutenDishes.push(dish)
+       //dispatch add no gluten dishes
       if (dish.categories.indexOf("contains-dairy") !== -1) dairyDishes.push(dish);
+       //dispatch dairy dishes
       else if (dish.categories.indexOf("contains-dairy") === -1) noDairyDishes.push(dish);
+       //dispatch no dairy dishes
       if (dish.categories.indexOf("contains-egg") !== -1) eggDishes.push(dish);
+       //dispatch egg gluten dishes
       else if (dish.categories.indexOf("contains-egg") === -1) noEggDishes.push(dish); 
+       //dispatch no egg dishes
 
       return dish;
     }); 
@@ -113,8 +120,6 @@ export default class Menu extends React.Component {
   };
 
   render = () => {
-    console.log("displaying:");
-    console.log(this.state.display);
     if (this.state.display === "buttons") {
       return (
         <div>

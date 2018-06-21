@@ -1,13 +1,11 @@
 import React from "react";
 import Ingredients from "./ingredients";
-import UpdateDish from "./update-dish";
 import Dish from "./dish";
 
 export default class Dishes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: this.props.category, //from menu.js
       display: "landing"
     };
   }
@@ -38,15 +36,17 @@ export default class Dishes extends React.Component {
     if (this.state.display === "landing") {
       return (
         <ul>
-          {this.state.category.map((dish, index) => {
+          {this.props.category.map((dish, index) => { //from menu.js the props  <Dishes category={this.state.noMeatDishes} />
             return (
               <Dish 
+                dishId = {dish._id}
                 key={index}
                 index={index}
                 dish={dish}
                 name={dish.name}
                 dishImage={dish.image}
                 ingredients={dish.ingredients}
+                categories = {dish.categories}
               />
             );
           })}
@@ -62,7 +62,6 @@ export default class Dishes extends React.Component {
                 <h2> {dish.name} </h2>
                 <img src={dish.image} alt={dish.name} />
                 <Ingredients ingredients={dish.ingredients} />
-                <UpdateDish />
                 <button className="button"> cancel </button>
               </li>
             );

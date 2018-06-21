@@ -1,7 +1,15 @@
 import * as constants from "../constants/actions.constants";
 export const initialState = {
   isLoggedIn: false,
-  error: "none"
+  error: "none",
+  noMeatDishes: [],
+  noDairyDishes: [],
+  noEggDishes: [],
+  noGlutenDishes: [],
+  meatDishes: [],
+  dairyDishes: [],
+  eggDishes: [],
+  glutenDishes: []
 };
 
 export const myAppReducer = (state = initialState, action) => {

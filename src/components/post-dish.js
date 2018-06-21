@@ -15,6 +15,7 @@ export default class PostDish extends React.Component {
       name: "",
       type: "",
       categories: ["none"],
+      ingredients: [],
       image: ""
     };
     this._dishName = React.createRef();
@@ -32,15 +33,7 @@ export default class PostDish extends React.Component {
     }); 
      setTimeout(this.postRequest, 1000)
 
-     /*
-const reducer = (state = { lastName: "Jordan" }, action) => {
-  if (action.type === "CHANGE_LAST_NAME") {
-    return Object.assign({}, state, { lastName: action.payload });
-  } else {
-    return state;
-  }
-};
-     */
+
     
   };
 
