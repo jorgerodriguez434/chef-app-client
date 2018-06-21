@@ -7,7 +7,7 @@ import Type from "./type";
 import ClassifyAs from "./classifyAs";
 import { API_BASE_URL } from "../config";
 
-export default class PostDish extends React.Component {
+export default class UpdateDish extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -15,6 +15,11 @@ export default class PostDish extends React.Component {
       name: "",
       type: "",
       categories: ["none"],
+      ingredients: [],
+      meatIngredients: ["example bacon"],
+      glutenIngredients: ["example gluten"],
+      dairyIngredients: ["cheese"],
+      eggIngredients: [],
       image: ""
     };
     this._dishName = React.createRef();
@@ -27,28 +32,16 @@ export default class PostDish extends React.Component {
     this.setCategories(e, this.setIngredients);
     this.setName();
     this.setImage();
-    this.setState({
-      display: "hello world"
-    }); 
-     setTimeout(this.postRequest, 1000)
-
-     /*
-const reducer = (state = { lastName: "Jordan" }, action) => {
-  if (action.type === "CHANGE_LAST_NAME") {
-    return Object.assign({}, state, { lastName: action.payload });
-  } else {
-    return state;
-  }
-};
-     */
+  
+    // setTimeout(this.putRequest, 1000)
     
   };
 
-  postRequest = () => {
+  putRequest = () => {
     //make a post request
     const data = this.state
     fetch(API_BASE_URL, {
-      method: 'POST', // or 'PUT'
+      method: 'PUT', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers:{
         'Content-Type': 'application/json'
@@ -60,11 +53,7 @@ const reducer = (state = { lastName: "Jordan" }, action) => {
 
   goBack = () => {
     this.setState({
-      display: "landing",
-      name: "",
-      type: "",
-      categories: ["none"],
-      ingredients: [],
+      display: "cancel"
     });
   };
 
@@ -146,31 +135,31 @@ const reducer = (state = { lastName: "Jordan" }, action) => {
 
             <button type="submit" className="button">
               {" "}
-              Post Dish!{" "}
+              Update Dish!{" "}
             </button>
           </form>
         </div>
       );
     } //if
-    else if (this.state.display === "hello world") {
-      return (
-        <div>
-          <h1> You did it! </h1>
-          <h2> Dish Name: {this.state.name}</h2>
-          <h2> Categories: {this.state.categories}</h2>
-          <h2>
-            {" "}
-            Ingredients: <Ingredients
-              ingredients={this.state.ingredients}
-            />{" "}
-          </h2>
-          <button onClick={this.goBack} className="button">
-            {" "}
-            go back{" "}
-          </button>
-        </div>
-      );
-      //reset State
-    }
+    else if (this.state.display === "cancel") {
+        return (
+          <div>
+            <h1> You did it! </h1>
+            <h2> Dish Name: {this.state.name}</h2>
+            <h2> Categories: {this.state.categories}</h2>
+            <h2>
+              {" "}
+              Ingredients: <Ingredients
+                ingredients={this.state.ingredients}
+              />{" "}
+            </h2>
+            <button onClick={this.goBack} className="button">
+              {" "}
+              go back{" "}
+            </button>
+          </div>
+        );
+        //reset State
+      }
   };
 }

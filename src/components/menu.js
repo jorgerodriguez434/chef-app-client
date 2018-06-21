@@ -18,13 +18,7 @@ export default class Menu extends React.Component {
       noEggDishes: [],
       noGlutenDishes: [],
       meatDishes: [],
-      display: "buttons",
-     /* allIngredients: [],
-      glutenFreeIngredients: [],
-      meatFreeIngredients: [],
-      dairyFreeIngredients: [],
-      eggFreeIngredients: [],
-      meatIngredients: [] */
+      display: "buttons"
     };
   }
 
@@ -51,12 +45,9 @@ export default class Menu extends React.Component {
       );
   }
 
-  categorizeIngredients = () => {
-    //
-  };
-
-
   foodFilter = () => {
+
+    console.log("food filter clicked")
     const noMeatDishes = [];
     const noDairyDishes = [];
     const noEggDishes = [];
@@ -66,10 +57,6 @@ export default class Menu extends React.Component {
     const eggDishes = [];
     const glutenDishes = [];
    // const vegan = [];
-
-    /* console.log(this.state.menu.map(dish => {
-      console.log(dish.categories);
-    })); */
 
     this.state.menu.map(dish => {
       if (dish.categories.indexOf("contains-meat") !== -1) meatDishes.push(dish);
@@ -126,8 +113,8 @@ export default class Menu extends React.Component {
   };
 
   render = () => {
-    console.log("displaying meat dishes:");
-    console.log(this.state.meatDishes);
+    console.log("displaying:");
+    console.log(this.state.display);
     if (this.state.display === "buttons") {
       return (
         <div>
@@ -208,10 +195,12 @@ export default class Menu extends React.Component {
       return (
         <div>
           <ButtonGroup
-            foodFilter={this.foodFilter}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
+           foodFilter={this.foodFilter}
+           displayNoEgg = {this.displayNoEgg}
+           displayNoDairy = {this.displayNoDairy}
+           displayNoMeat={this.displayNoMeat}
+           displayMeat={this.displayMeat}
+           displayNoGluten={this.displayNoGluten}
            
           />
           <h3> Showing no dairy: </h3>
