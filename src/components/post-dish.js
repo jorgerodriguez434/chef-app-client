@@ -117,8 +117,9 @@ export default class PostDish extends React.Component {
 
             <fieldset className="margin-bottom">
               <legend> Add Ingredients </legend>
-              <InputIngredients/> 
-              {/*Input ingredients component currently has the value of this.state.ingredients
+              <InputIngredients/>
+              <button className="ingredient-button" type="button" onClick={this.addIngredient}> Add ingredient</button>
+              {/*  Input ingredients component currently has the value of this.state.ingredients
                which is tomato
                So how do I get this value out into another component? Here is where Redux comes in.
                //every ingredient needs to have its own state
