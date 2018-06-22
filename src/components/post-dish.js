@@ -1,10 +1,10 @@
 import React from "react";
-//import AddIngredients from "./add-ingredient";
+import InputIngredients from "./input-ingredients";
 import Ingredients from "./ingredients";
 //import Categories from "./categories";
 import Type from "./type";
 //import Contains from "./contains";
-import ClassifyAs from "./classifyAs";
+//import ClassifyAs from "./classifyAs";
 import { API_BASE_URL } from "../config";
 
 export default class PostDish extends React.Component {
@@ -33,16 +33,13 @@ export default class PostDish extends React.Component {
     }); 
      setTimeout(this.postRequest, 1000)
 
-
-    
   };
 
   postRequest = () => {
-    //make a post request
     const data = this.state
     fetch(API_BASE_URL, {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
+      method: 'POST', 
+      body: JSON.stringify(data), 
       headers:{
         'Content-Type': 'application/json'
       }
@@ -120,17 +117,11 @@ export default class PostDish extends React.Component {
 
             <fieldset className="margin-bottom">
               <legend> Add Ingredients </legend>
-              <input
-                type="text"
-                ref={this._ingredientName}
-                className="input my-text"
-                placeholder="e.g. tomato"
-                required
-              />
-              <ClassifyAs />
-              {/*<AddIngredients/> Add ingredient component currently has the value of this.state.ingredients
+              <InputIngredients/> 
+              {/*Input ingredients component currently has the value of this.state.ingredients
                which is tomato
                So how do I get this value out into another component? Here is where Redux comes in.
+               //every ingredient needs to have its own state
               */}
               
             </fieldset>

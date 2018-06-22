@@ -10,27 +10,13 @@ export default class Dishes extends React.Component {
     };
   }
 
-  update = () => {
-    //put request
-  };
+ 
   setUpdate = () => {
     this.setState({
       display: "update"
     });
   };
 
-  delete = () => {
-    //delete request
-  };
-
-  clickUpdate = () => {
-    /*
-        trying to get the parent div id
-        on click grab the current div and id
-        how to do this?
-      */
-    console.log("clicked");
-  };
 
   render = () => {
     if (this.state.display === "landing") {
