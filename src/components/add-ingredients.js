@@ -1,19 +1,26 @@
 import React from "react";
 
-const AddIngredients = props => (
-  <ul> {props.ingredients.map((ingredient, index) => {
-    return(
+
+export default class AddIngredients extends React.Component {
+
+
+    render = () => {
+       return (
+           
+        <ul> {this.props.ingredients.map((ingredient, index) => {
+            return(
+                
+            
+          
+              <li key={index} className="add-ingredient" >
+                 {ingredient}
+              </li>
         
-    
-  
-      <li key={index} className="add-ingredient" >
-         {ingredient}
-      </li>
-
-    
-    );
-      
-  })} </ul>
-);
-
-export default AddIngredients;
+            
+            );
+              
+          })} </ul>
+        
+       );
+    }
+}

@@ -6,19 +6,6 @@ import { connect } from "react-redux";
 
 export class PostForm extends React.Component {
 
-    constructor() {
-        super();
-        this._ingredient = React.createRef();
-    }
-    
- /* addIngredient = () => {
-      console.log("clicked!");
-      const ingredient = this._ingredient.current.value;
-      this.props.dispatch(actions.addIngredient(ingredient));
-      //console.log(ingredient);
-      //most likely, I need to dispatch an action
-      //add ingredient to list
-  }  */
 
   render = () => {
     return (
@@ -29,6 +16,7 @@ export class PostForm extends React.Component {
             className="input my-text"
             type="text"
             placeholder="e.g. Burger Deluxe"
+            ref={this.props.ref}
             required
           />
           <Type />

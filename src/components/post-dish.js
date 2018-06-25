@@ -2,11 +2,12 @@ import React from "react";
 //import InputIngredients from "./input-ingredients";
 import Ingredients from "./ingredients";
 //import Categories from "./categories";
-//import Type from "./type";
+import Type from "./type";
 //import Contains from "./contains";
-//import ClassifyAs from "./classifyAs";
+import ClassifyAs from "./classify-as";
+import InputIngredient from "./input-ingredient"
 import { API_BASE_URL } from "../config";
-import PostForm from "./post-form"
+//import PostForm from "./post-form"
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -17,29 +18,32 @@ export class PostDish extends React.Component {
       display: "landing",
       name: "",
       type: "",
-      categories: ["none"],
-      ingredients: [],
       image: ""
     };
     this._dishName = React.createRef();
-    this._ingredientName = React.createRef();
     this._dishImage = React.createRef();
   }
 
   onSubmit = e => {
+    console.log("clicked")
     e.preventDefault();
-    this.setCategories(e, this.setIngredients);
-    this.setName();
-    this.setImage();
-    this.setState({
+    console.log(this.props);  
+    this.addCategory(e);
+     this.setName();
+     this.setState({
       display: "hello world"
     }); 
-     setTimeout(this.postRequest, 1000)
-
+    setTimeout(this.postRequest, 1000); 
+   
   };
 
   postRequest = () => {
-    const data = this.state
+    const data = {
+      name: this.state.name,
+      type: "none",
+      ingredients: this.props.ingredients,
+      categories: this.props.categories
+    }
     fetch(API_BASE_URL, {
       method: 'POST', 
       body: JSON.stringify(data), 
@@ -67,12 +71,6 @@ export class PostDish extends React.Component {
         name
     });
   }
- setIngredients = () => {
-    const ingredient = this._ingredientName.current.value;
-    this.setState({
-        ingredients: [...this.state.ingredients, ingredient]
-    });
-  } 
 
   setImage = () => {
     const image = this._dishImage.current.value;
@@ -81,39 +79,57 @@ export class PostDish extends React.Component {
     });
   }
 
-  testing = event => {
-    event.preventDefault();
-    console.log("testing clicked!");
-  }
-
-  setCategories = (e, cb) => {
+  addCategory = (e) => {
     const checkboxes = e.currentTarget.getElementsByClassName(
       "classify-as-checkbox"
     );
-    const categories = [];
-    //console.log(checkboxes);
+  
     Object.values(checkboxes).map(checkbox => {
       if (checkbox.checked) {
-        //categories.push(checkbox.value);
-        this.props.dispatch(actions.addCategory(checkbox.checked));
+        
+        this.props.dispatch(actions.addCategory(checkbox.value))
       }
-      return categories;
+      return checkbox.value;
     });
 
-    //this.setState({ categories });
-    //this.props.dispatch(actions.addCategory())
-    cb();
+  
   };
 
   render = () => {
  
-    console.log(this.state.image);
+    console.log(this.props.categories);
     if (this.state.display === "landing") {
       return (
         <div>
           <h1> this the PostDish component! </h1>
           <p> Please add a dish by entering the following information </p>
-          <PostForm onSubmit={this.testing}/>
+          <form onSubmit={this.onSubmit}>
+          <label htmlFor="dish-name">Name of dish</label>
+          <input
+            className="input my-text"
+            type="text"
+            placeholder="e.g. Burger Deluxe"
+            ref={this._dishName}
+            required
+          />
+          <Type />
+
+          <fieldset className="margin-bottom">
+            <legend> Add Ingredients </legend>
+            <InputIngredient/>
+            {/* 
+      */}
+          </fieldset>
+
+          <ClassifyAs/>
+          <label htmlFor="dish-img">Choose an image for the dish!</label>
+          <input type="file" className="choose-file-button" ref={this.props.ref} />
+
+          <button type="submit" className="button">
+            {" "}
+            Post Dish!{" "}
+          </button>
+        </form>
         </div>
       );
     } //if
@@ -122,11 +138,11 @@ export class PostDish extends React.Component {
         <div>
           <h1> You did it! </h1>
           <h2> Dish Name: {this.state.name}</h2>
-          <h2> Categories: {this.state.categories}</h2>
+          <h2> Categories: {this.props.categories}</h2>
           <h2>
             {" "}
             Ingredients: <Ingredients
-              ingredients={this.state.ingredients}
+              ingredients={this.props.ingredients}
             />{" "}
           </h2>
           <button onClick={this.goBack} className="button">
@@ -141,8 +157,8 @@ export class PostDish extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  ingredients: [],
-  categories: []
+  ingredients: state.ingredients,
+  categories: state.categories
 });
 
 export default connect(mapStateToProps)(PostDish);

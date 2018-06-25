@@ -3,7 +3,7 @@ export const initialState = {
   isLoggedIn: false,
   error: "none",
   ingredients: [],
-  categories: []
+  categories: ["hi"]
 };
 
 export const myAppReducer = (state = initialState, action) => {

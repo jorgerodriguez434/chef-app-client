@@ -1,6 +1,6 @@
 import React from "react";
 //import SingleInputIngredient from "./single-input-ingredient";
-import ClassifyAs from "./classify-as"
+//import ClassifyAs from "./classify-as"
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import AddIngredients from "./add-ingredients";
@@ -26,7 +26,6 @@ export class InputIngredient extends React.Component {
 }
 
   render() {
-      console.log(this.props.ingredients)
       return (
         <section >
          <label htmlFor="ingredient">Ingredient</label>
@@ -37,7 +36,7 @@ export class InputIngredient extends React.Component {
               ref={this._ingredient}
               
             />
-            <ClassifyAs/>
+            
             <button
               className="ingredient-button"
               type="button"
