@@ -2,14 +2,8 @@ import * as constants from "../constants/actions.constants";
 export const initialState = {
   isLoggedIn: false,
   error: "none",
-  noMeatDishes: [],
-  noDairyDishes: [],
-  noEggDishes: [],
-  noGlutenDishes: [],
-  meatDishes: [],
-  dairyDishes: [],
-  eggDishes: [],
-  glutenDishes: []
+  ingredients: [],
+  categories: []
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -24,7 +18,17 @@ export const myAppReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         error: action.error
       });
+    case constants.ADD_INGREDIENT:
+      return Object.assign({}, state, {
+        ingredients: [...state.ingredients, action.ingredient]
+      });
+    case constants.ADD_CATEGORY:
+      return Object.assign({}, state, {
+        categories: [...state.categories, action.category]
+      });
     default:
       return state;
   }
 };
+
+//guesses: [...state.ingredients, action.ingredient]

@@ -1,2 +1,4 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
+export const ADD_INGREDIENT = "ADD_INGREDIENT";
+export const ADD_CATEGORY = "ADD_CATEGORY";

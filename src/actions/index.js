@@ -9,3 +9,13 @@ export const setLoginError = error => ({
   type: constants.LOGIN_ERROR,
   error
 });
+
+export const addIngredient = ingredient => ({
+  type: constants.ADD_INGREDIENT,
+  ingredient
+});
+
+export const addCategory = category => ({
+  type: constants.ADD_CATEGORY,
+  category
+});
