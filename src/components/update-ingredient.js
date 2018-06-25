@@ -5,28 +5,43 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import AddIngredients from "./add-ingredients";
 
-export class InputIngredient extends React.Component {
+export class UpdateIngredient extends React.Component {
 
   /*
     I dispatched an action, now how do I add to the list? Done
     Now display ingredients
   */
 
-  constructor() {
-    super();
+
+  constructor(props) {
+    super(props);
+   
     this._ingredient = React.createRef();
   }
 
+  componentDidMount() {
+    this.props.stateIngredients.map(ingredient => {
+        this.props.dispatch(actions.addIngredient(ingredient));
+        return ingredient;
+      });
+      this.props.stateCategories.map(category => {
+        this.props.dispatch(actions.addCategory(category));
+        return category;
+      });
+
+      
+  }
  addIngredient = () => {
   console.log("clicked 123");
+  
   const ingredient = this._ingredient.current.value;
   console.log(ingredient);
-  console.log(this.props);
   this.props.dispatch(actions.addIngredient(ingredient));
+
 }
 
   render() {
-    console.log(this.props.ingredients);
+
       return (
         <section >
          <label htmlFor="ingredient">Ingredient</label>
@@ -44,10 +59,10 @@ export class InputIngredient extends React.Component {
               onClick={this.addIngredient}
             >
               {" "}
-              Add to list 1233
+              Add to list 456
             </button>
           <div className="add-ingredients-container">
-            <AddIngredients ingredients={this.props.ingredients}/>
+          <AddIngredients ingredients={this.props.ingredients}/>
           </div>
         </section>
       );
@@ -56,9 +71,9 @@ export class InputIngredient extends React.Component {
 
   }
 }
-
 export const mapStateToProps = state => ({
-  ingredients: state.ingredients
-});
-
-export default connect(mapStateToProps)(InputIngredient);
+    ingredients: state.ingredients,
+    categories: state.categories
+  });
+  
+  export default connect(mapStateToProps)(UpdateIngredient);

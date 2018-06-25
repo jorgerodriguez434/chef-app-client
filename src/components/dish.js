@@ -1,6 +1,10 @@
 import React from "react";
 import Ingredients from "./ingredients";
 import { API_BASE_URL } from "../config";
+import Type from "./type";
+//import InputIngredient from "./input-ingredient"; 
+import UpdateIngredient from "./update-ingredient"; 
+import ClassifyAs from "./classify-as";
 
 export default class Dish extends React.Component {
   constructor(props) {
@@ -44,7 +48,21 @@ export default class Dish extends React.Component {
     });
   }
 
+/*
 
+  onSubmit = e => {
+    console.log("clicked")
+    e.preventDefault();
+    console.log(this.props);  
+    this.addCategory(e);
+     this.setName();
+     this.setState({
+      display: "hello world"
+    }); 
+    setTimeout(this.postRequest, 1000); 
+   
+  };
+*/
   onSubmit = (e) => {
       e.preventDefault();
       console.log("submitted!");
@@ -66,15 +84,13 @@ export default class Dish extends React.Component {
 
 
   render = () => {
-    console.log(this.props.dishId);
     console.log(this.state.name);
-    console.log(this.state.categories);
     if (this.state.display === "landing") {
       return (
         <li key={this.props.index} className="dish">
-          <h2> {this.props.name} </h2>
-          <img src={this.props.dishImage} alt={this.props.name} />
-          <Ingredients ingredients={this.props.ingredients} />
+          <h2> {this.state.name} </h2>
+          <img src={this.props.dishImage} alt={this.state.name} />
+          <Ingredients ingredients={this.state.ingredients} />
 
           <button className="button" onClick={this.setUpdate}>
             {" "}
@@ -85,13 +101,51 @@ export default class Dish extends React.Component {
       );
     } //if
     if (this.state.display === "set update") {
+      console.log(this.state.ingredients)
       return (
         <li key={this.props.index} className="dish">
-          <h2> {this.props.name} </h2>
-          <img src={this.props.dishImage} alt={this.props.name} />
-          <Ingredients ingredients={this.props.ingredients} />
-          <p> update name </p>
-        <form onSubmit={this.onSubmit}>
+          <h2> {this.state.name} </h2>
+          <img src={this.props.dishImage} alt={this.state.name} />
+          <Ingredients ingredients={this.state.ingredients} />
+        <div className="form">
+          <form onSubmit={this.onSubmit} >
+          <label htmlFor="dish-name">update name of dish</label>
+          <input type="text" className="input my-text"  value={this.state.name} onChange={this.handleNameChange.bind(this)}/>
+          <Type />
+
+          <fieldset className="margin-bottom">
+            <legend> update Ingredients </legend>
+            <UpdateIngredient stateIngredients={this.state.ingredients} stateCategories={this.state.categories}/>
+            {/* 
+      */}
+          </fieldset>
+
+          <ClassifyAs/>
+          <label htmlFor="dish-img">Choose an image for the dish!</label>
+          <input type="file" className="choose-file-button" ref={this.props.ref} />
+
+          <button type="submit" className="button">
+            {" "}
+            update Dish!{" "}
+          </button>
+        </form>
+        </div>
+        </li>
+      );
+    } //if
+  };
+}
+
+
+
+
+
+
+
+
+
+/*
+<form onSubmit={this.onSubmit}>
           <input type="text" className="input my-text"  value={this.state.name} onChange={this.handleNameChange.bind(this)}/>
           <p> update ingredients </p>
           <input type="text" className="input my-text" value={this.state.ingredients} onChange={this.handleIngredientsChange.bind(this)}/>
@@ -100,8 +154,5 @@ export default class Dish extends React.Component {
           <button type ="submit" className="button"> confirm </button>
           <button className="button" onClick={this.cancel}> cancel </button>
         </form>
-        </li>
-      );
-    } //if
-  };
-}
+
+*/

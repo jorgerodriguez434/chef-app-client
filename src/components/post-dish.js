@@ -12,8 +12,8 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 export class PostDish extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       display: "landing",
       name: "",

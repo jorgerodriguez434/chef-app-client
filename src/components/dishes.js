@@ -19,6 +19,7 @@ export default class Dishes extends React.Component {
 
 
   render = () => {
+    
     if (this.state.display === "landing") {
       return (
         <ul>
@@ -31,7 +32,9 @@ export default class Dishes extends React.Component {
                 dish={dish}
                 name={dish.name}
                 dishImage={dish.image}
-                ingredients={dish.ingredients}
+                ingredients={dish.ingredients} //its not the same thing, this cannot be global
+                //because it is every individual dish
+                //The global state only works for one dish, only in the post dish component
                 categories = {dish.categories}
               />
             );
