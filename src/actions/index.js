@@ -19,3 +19,12 @@ export const addCategory = category => ({
   type: constants.ADD_CATEGORY,
   category
 });
+
+export const clearThings= () => ({
+  type: constants.CLEAR_THINGS
+});
+
+export const removeIngredient = index => ({
+  type: constants.REMOVE_INGREDIENT,
+  index
+});

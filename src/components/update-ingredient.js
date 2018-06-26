@@ -44,6 +44,9 @@ export class UpdateIngredient extends React.Component {
 
       return (
         <section >
+            <div className="add-ingredients-container">
+          <AddIngredients/>
+          </div>
          <label htmlFor="ingredient">Ingredient</label>
             <input
               className="input my-text"
@@ -61,9 +64,9 @@ export class UpdateIngredient extends React.Component {
               {" "}
               Add to list 456
             </button>
-          <div className="add-ingredients-container">
-          <AddIngredients ingredients={this.props.ingredients}/>
-          </div>
+            
+
+          
         </section>
       );
 

@@ -26,6 +26,12 @@ export const myAppReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         categories: [...state.categories, action.category]
       });
+    case constants.REMOVE_INGREDIENT:
+      return Object.assign({}, state, {
+        ingredients: state.ingredients.filter(ingredient => state.ingredients.indexOf(ingredient) !== action.index)
+      });
+    case constants.CLEAR_THINGS:
+      return [];
     default:
       return state;
   }

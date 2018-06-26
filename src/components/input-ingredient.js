@@ -20,16 +20,17 @@ export class InputIngredient extends React.Component {
  addIngredient = () => {
   console.log("clicked 123");
   const ingredient = this._ingredient.current.value;
-  console.log(ingredient);
-  console.log(this.props);
   this.props.dispatch(actions.addIngredient(ingredient));
 }
 
   render() {
-    console.log(this.props.ingredients);
+    
       return (
         <section >
-         <label htmlFor="ingredient">Ingredient</label>
+          <div className="add-ingredients-container">
+            <AddIngredients/>
+          </div>
+          <label htmlFor="ingredient">Ingredient</label>
             <input
               className="input my-text"
               type="text"
@@ -46,9 +47,7 @@ export class InputIngredient extends React.Component {
               {" "}
               Add to list 1233
             </button>
-          <div className="add-ingredients-container">
-            <AddIngredients ingredients={this.props.ingredients}/>
-          </div>
+          
         </section>
       );
 

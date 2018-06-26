@@ -30,12 +30,12 @@ export default class Dishes extends React.Component {
                 key={index}
                 index={index}
                 dish={dish}
-                name={dish.name}
+                stateName={dish.name}
                 dishImage={dish.image}
-                ingredients={dish.ingredients} //its not the same thing, this cannot be global
+                stateIngredients={dish.ingredients} //its not the same thing, this cannot be global
                 //because it is every individual dish
                 //The global state only works for one dish, only in the post dish component
-                categories = {dish.categories}
+                stateCategories = {dish.categories}
               />
             );
           })}
