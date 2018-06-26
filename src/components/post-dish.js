@@ -58,11 +58,8 @@ export class PostDish extends React.Component {
   goBack = () => {
     this.setState({
       display: "landing",
-      name: "",
-      type: "",
-      categories: ["none"],
-      ingredients: [],
     });
+    this.props.dispatch(actions.clearIngredients());
   };
 
   setName = () => {
@@ -96,7 +93,7 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
-      console.log(this.state);
+      console.log(this.props);
     if (this.state.display === "landing") {
       return (
         <div>

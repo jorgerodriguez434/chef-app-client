@@ -12,13 +12,15 @@ export class UpdateSingleIngredient extends React.Component {
     }
 
     onClick = () => {
-    console.log("clicked");
+    console.log("clicked123");
     console.log(this.state);
     //remove this state, how?
     //this.props.dispatch(actions.setIngredient(this.state.ingredient))
    /* this.setState({
             ingredient: undefined
     }); */
+
+    
     
     }
 

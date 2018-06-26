@@ -2,10 +2,10 @@ import React from "react";
 //import SingleInputIngredient from "./single-input-ingredient";
 //import ClassifyAs from "./classify-as"
 import { connect } from "react-redux";
-//import * as actions from "../actions";
+import * as actions from "../actions";
 import AddUpdateIngredients from "./add-update-ingredients";
 
-export class UpdateIngredient extends React.Component {
+export class UpdateIngredients extends React.Component {
 
   constructor(props) {
     super(props);
@@ -15,8 +15,13 @@ export class UpdateIngredient extends React.Component {
     }
     this._ingredient = React.createRef();
   }
+  /*
+  This is going to add all the this.state.ingredients and all the 
+  this.state.ingredients into the redux store
+  */
+  componentDidMount() {
 
-  /*componentDidMount() {
+    this.props.dispatch(actions.clearIngredients());
     this.props.stateIngredients.map(ingredient => {
         this.props.dispatch(actions.addIngredient(ingredient));
         return ingredient;
@@ -24,24 +29,25 @@ export class UpdateIngredient extends React.Component {
       this.props.stateCategories.map(category => {
         this.props.dispatch(actions.addCategory(category));
         return category;
-      });
-  } */
-
-
+      }); 
+  } 
 
  addIngredient = () => {
-  console.log("clicked 123");
+  
+  console.log("clicked 126");
   const ingredient = this._ingredient.current.value;
-  console.log(ingredient);
-  //this.props.dispatch(actions.addIngredient(ingredient));
+  this.props.dispatch(actions.addIngredient(ingredient));
+  //each selected ingredient is on the store now
   this.setState({
-        ingredients: [...this.state.ingredients, ingredient]
+    ingredients: [...this.state.ingredients, ingredient]
+    //still need to setState to keep in the state since
+    //I will clear the redux store later
   });
 
 }
 
   render() {
-    //console.log(this.state.ingredients);
+        console.log(this.props);
       return (
         <section >
             <div className="add-ingredients-container">
@@ -79,4 +85,4 @@ export const mapStateToProps = state => ({
     categories: state.categories
   });
   
-  export default connect(mapStateToProps)(UpdateIngredient);
+  export default connect(mapStateToProps)(UpdateIngredients);

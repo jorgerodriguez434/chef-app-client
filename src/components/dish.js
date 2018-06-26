@@ -67,7 +67,7 @@ export class Dish extends React.Component {
     if (this.state.display === "landing") {
       return (
         <li key={this.props.index} className="dish">
-          <h2> {this.props.stateName} </h2>
+          <h2> {this.props.state} </h2>
           <img src={this.props.dishImage} alt={this.state.name} />
           <Ingredients ingredients={this.state.ingredients} />
 

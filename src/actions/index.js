@@ -34,3 +34,7 @@ export const setIngredient = ingredient => ({
   ingredient
 });
 
+export const clearIngredients = () => ({
+  type: constants.CLEAR_INGREDIENTS
+});
+
