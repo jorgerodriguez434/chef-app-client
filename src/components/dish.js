@@ -1,9 +1,9 @@
 import React from "react";
 import Ingredients from "./ingredients";
 import { API_BASE_URL } from "../config";
-import Type from "./type";
+//import Type from "./type";
 //import InputIngredient from "./input-ingredient"; 
-import UpdateIngredient from "./update-ingredient"; 
+import UpdateIngredients from "./update-ingredients"; 
 import ClassifyAs from "./classify-as";
 import { connect } from "react-redux";
 
@@ -39,7 +39,6 @@ export class Dish extends React.Component {
     });
   } 
 
-
   onSubmit = (e) => {
       e.preventDefault();
       console.log("submitted!");
@@ -62,7 +61,6 @@ export class Dish extends React.Component {
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
   }
-
 
   render = () => {
   
@@ -92,11 +90,10 @@ export class Dish extends React.Component {
           <form onSubmit={this.onSubmit} >
           <label htmlFor="dish-name">update name of dish</label>
           <input type="text" className="input my-text"  value={this.state.name} onChange={this.handleNameChange.bind(this)}/>
-          <Type />
-
+  
           <fieldset className="margin-bottom">
             <legend> update Ingredients </legend>
-            <UpdateIngredient stateIngredients={this.state.ingredients} stateCategories={this.state.categories}/>
+            <UpdateIngredients stateIngredients={this.state.ingredients} stateCategories={this.state.categories}/>
             {/* 
       */}
           </fieldset>
@@ -124,7 +121,8 @@ export class Dish extends React.Component {
 
 export const mapStateToProps = state => ({
   ingredients: state.ingredients,
-  categories: state.categories
+  categories: state.categories,
+  ingredient: state.ingredient
 });
 
 export default connect(mapStateToProps)(Dish);

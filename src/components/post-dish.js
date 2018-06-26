@@ -2,7 +2,7 @@ import React from "react";
 //import InputIngredients from "./input-ingredients";
 import Ingredients from "./ingredients";
 //import Categories from "./categories";
-import Type from "./type";
+//import Type from "./type";
 //import Contains from "./contains";
 import ClassifyAs from "./classify-as";
 import InputIngredient from "./input-ingredient"
@@ -96,8 +96,7 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
- 
-    console.log(this.props.categories);
+      console.log(this.state);
     if (this.state.display === "landing") {
       return (
         <div>
@@ -112,7 +111,6 @@ export class PostDish extends React.Component {
             ref={this._dishName}
             required
           />
-          <Type />
 
           <fieldset className="margin-bottom">
             <legend> Add Ingredients </legend>

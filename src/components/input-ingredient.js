@@ -20,11 +20,12 @@ export class InputIngredient extends React.Component {
  addIngredient = () => {
   console.log("clicked 123");
   const ingredient = this._ingredient.current.value;
+ // console.log(ingredient);
   this.props.dispatch(actions.addIngredient(ingredient));
 }
 
   render() {
-    
+    console.log(this.props);
       return (
         <section >
           <div className="add-ingredients-container">

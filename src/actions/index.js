@@ -28,3 +28,9 @@ export const removeIngredient = index => ({
   type: constants.REMOVE_INGREDIENT,
   index
 });
+
+export const setIngredient = ingredient => ({
+  type: constants.SET_INGREDIENT,
+  ingredient
+});
+

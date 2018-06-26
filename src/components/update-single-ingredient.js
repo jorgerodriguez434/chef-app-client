@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 //import * as actions from "../actions";
 
-export class SingleIngredient extends React.Component {
+export class UpdateSingleIngredient extends React.Component {
 
     constructor(props){
         super(props);
@@ -14,7 +14,11 @@ export class SingleIngredient extends React.Component {
     onClick = () => {
     console.log("clicked");
     console.log(this.state);
-    //this.props.dispatch(actions.addIngredient(ingredient));
+    //remove this state, how?
+    //this.props.dispatch(actions.setIngredient(this.state.ingredient))
+   /* this.setState({
+            ingredient: undefined
+    }); */
     
     }
 
@@ -23,7 +27,7 @@ export class SingleIngredient extends React.Component {
         return (
 
             <li key={this.props.index} className="add-ingredient">
-            {this.props.ingredient}
+            {this.state.ingredient}
             <button type="button" onClick={this.onClick}> remove123 </button>
           </li>
 
@@ -38,4 +42,4 @@ export const mapStateToProps = state => ({
     categories: state.categories
   });
   
-  export default connect(mapStateToProps)(SingleIngredient);
+  export default connect(mapStateToProps)(UpdateSingleIngredient);

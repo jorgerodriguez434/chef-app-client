@@ -3,7 +3,8 @@ export const initialState = {
   isLoggedIn: false,
   error: "none",
   ingredients: [],
-  categories: ["hi"]
+  categories: [],
+  ingredient: ""
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -29,6 +30,10 @@ export const myAppReducer = (state = initialState, action) => {
     case constants.REMOVE_INGREDIENT:
       return Object.assign({}, state, {
         ingredients: state.ingredients.filter(ingredient => state.ingredients.indexOf(ingredient) !== action.index)
+      });
+      case constants.SET_INGREDIENT:
+      return Object.assign({}, state, {
+        ingredient: action.ingredient
       });
     case constants.CLEAR_THINGS:
       return [];
