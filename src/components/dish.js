@@ -6,6 +6,7 @@ import { API_BASE_URL } from "../config";
 import UpdateIngredients from "./update-ingredients"; 
 import ClassifyAs from "./classify-as";
 import { connect } from "react-redux";
+import * as actions from "../actions";
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -42,7 +43,8 @@ export class Dish extends React.Component {
   onSubmit = (e) => {
       e.preventDefault();
       console.log("submitted!");
-      this.putRequest();
+      this.addCategory(e);
+      setTimeout(this.putRequest, 1000); 
   }
 
   putRequest = () => {
@@ -62,8 +64,25 @@ export class Dish extends React.Component {
       .then(response => console.log('Success:', response));
   }
 
-  render = () => {
+  addCategory = e => {
+    this.props.dispatch(actions.clearCategories());
+    const checkboxes = e.currentTarget.getElementsByClassName(
+      "classify-as-checkbox"
+    );
   
+    Object.values(checkboxes).map(checkbox => {
+      if (checkbox.checked) {
+        
+        this.props.dispatch(actions.addCategory(checkbox.value))
+      }
+      return checkbox.value;
+    }); 
+  
+  
+  }; 
+ 
+  render = () => {
+    console.log(this.props);
     if (this.state.display === "landing") {
       return (
         <li key={this.props.index} className="dish">
@@ -122,7 +141,6 @@ export class Dish extends React.Component {
 export const mapStateToProps = state => ({
   ingredients: state.ingredients,
   categories: state.categories,
-  ingredient: state.ingredient
 });
 
 export default connect(mapStateToProps)(Dish);

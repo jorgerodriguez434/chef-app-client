@@ -20,8 +20,7 @@ export class UpdateSingleIngredient extends React.Component {
             ingredient: undefined
     }); */
 
-    
-    
+  
     }
 
     render = () => {

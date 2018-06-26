@@ -37,9 +37,13 @@ export const myAppReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         ingredient: action.ingredient
       });
-      case constants.CLEAR_INGREDIENTS:
+    case constants.CLEAR_INGREDIENTS:
       return Object.assign({}, state, {
         ingredients: []
+      });
+    case constants.CLEAR_CATEGORIES:
+      return Object.assign({}, state, {
+        categories: []
       });
     default:
       return state;

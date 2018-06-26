@@ -38,3 +38,7 @@ export const clearIngredients = () => ({
   type: constants.CLEAR_INGREDIENTS
 });
 
+export const clearCategories = () => ({
+  type: constants.CLEAR_CATEGORIES
+});
+
