@@ -14,7 +14,17 @@ export class InputIngredient extends React.Component {
 
   constructor() {
     super();
+    this.state = {
+      value: ""
+    }
     this._ingredient = React.createRef();
+  }
+
+  handleChange = e => {
+
+    this.setState({
+            value: e.target.value
+    });
   }
 
  addIngredient = () => {
@@ -22,10 +32,14 @@ export class InputIngredient extends React.Component {
   const ingredient = this._ingredient.current.value;
  // console.log(ingredient);
   this.props.dispatch(actions.addIngredient(ingredient));
+  this.setState({
+    value: ""
+  })
 }
+// <input type="text" className="input my-text"  value={this.state.name} onChange={this.handleNameChange.bind(this)}/> in dish comp
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
       return (
         <section >
           <div className="add-ingredients-container">
@@ -37,6 +51,8 @@ export class InputIngredient extends React.Component {
               type="text"
               placeholder="e.g. lettuce"
               ref={this._ingredient}
+              value={this.state.value}
+              onChange={this.handleChange.bind(this)}
               
             />
             

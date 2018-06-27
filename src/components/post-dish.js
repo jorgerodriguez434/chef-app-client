@@ -45,7 +45,6 @@ export class PostDish extends React.Component {
   postRequest = () => {
     const data = {
       name: this.state.name,
-      type: "none",
       ingredients: this.props.ingredients,
       categories: this.props.categories
     }

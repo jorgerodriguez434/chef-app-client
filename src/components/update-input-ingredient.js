@@ -11,15 +11,16 @@ export class UpdateInputIngredient extends React.Component {
     super(props);
     this.state = {
         ingredients: this.props.stateIngredients,
-        categories: this.props.stateCategories
-        //this comp has an inex
+        categories: this.props.stateCategories,
+        value:""
+        //this comp has an index prop
     }
     this._ingredient = React.createRef();
   }
-  /*
-  This is going to add all the this.state.ingredients and all the 
-  this.state.ingredients into the redux store
-  */
+  
+  //This is going to add all the this.state.ingredients and all the 
+  //this.state.ingredients into the redux store
+
   componentDidMount() {
 
     this.props.dispatch(actions.clearIngredients());
@@ -40,17 +41,24 @@ export class UpdateInputIngredient extends React.Component {
   this.props.dispatch(actions.addIngredient(ingredient));
   //each selected ingredient is on the store now
   this.setState({
-    ingredients: [...this.state.ingredients, ingredient]
+    ingredients: [...this.state.ingredients, ingredient],
+    value: ""
     //still need to setState to keep in the state since
     //I will clear the redux store later
   });
 
 }
 
+handleChange = e => {
+
+  this.setState({
+          value: e.target.value
+  });
+}
+
 
 
   render() {
-        // console.log(this.props);
       return (
         <section >
             <div className="add-ingredients-container">
@@ -62,6 +70,8 @@ export class UpdateInputIngredient extends React.Component {
               type="text"
               placeholder="e.g. lettuce"
               ref={this._ingredient}
+              value={this.state.value}
+              onChange={this.handleChange.bind(this)}
               
             />
             

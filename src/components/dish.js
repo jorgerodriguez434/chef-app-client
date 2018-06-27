@@ -147,7 +147,7 @@ export class Dish extends React.Component {
     if (this.state.display === "dish updated") {
       return (
         <div>
-        <p> This dish has been update! </p>
+        <p> This dish has been updated! </p>
         <Entree  
         key={this.props.index}
         index={this.props.index}
