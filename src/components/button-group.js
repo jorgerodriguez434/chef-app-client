@@ -2,7 +2,6 @@ import React from "react";
 
 const ButtonGroup = (props) => (
   <div>
-    <button className="button" onClick={props.foodFilter}> FILTER </button>
     <button className="button" onClick={props.displayNoMeat}> VEGETERIAN DISHES</button>
     {/*<button className="button" onClick={props.displayVegan}> VEGAN DISHES </button> */}
     <button className="button" onClick={props.displayNoGluten}> GLUTEN FREE DISHES</button>

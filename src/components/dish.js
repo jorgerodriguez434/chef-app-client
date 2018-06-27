@@ -27,10 +27,11 @@ export class Dish extends React.Component {
   
   };
 
- cancel = () => {
+ goBack = () => {
     this.setState({
         display: "landing"
       });
+
  }
 
   handleNameChange = (e) => {
@@ -38,7 +39,8 @@ export class Dish extends React.Component {
     this.setState({
             name: e.target.value
     });
-  } 
+  }
+  
 
   onSubmit = (e) => {
       e.preventDefault();
@@ -46,6 +48,7 @@ export class Dish extends React.Component {
       this.addCategory(e);
       setTimeout(this.putRequest, 1000); 
   }
+  
 
   putRequest = () => {
     const data = {
@@ -53,6 +56,11 @@ export class Dish extends React.Component {
       ingredients: this.props.ingredients,
       categories: this.props.categories
     }
+
+    this.setState({
+      ingredients: this.props.ingredients
+    });
+
     fetch(`${API_BASE_URL}/${this.props.dishId}`, {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -86,7 +94,7 @@ export class Dish extends React.Component {
     if (this.state.display === "landing") {
       return (
         <li key={this.props.index} className="dish">
-          <h2> {this.props.state} </h2>
+          <h2> {this.state.name} </h2>
           <img src={this.props.dishImage} alt={this.state.name} />
           <Ingredients ingredients={this.state.ingredients} />
 
@@ -126,7 +134,7 @@ export class Dish extends React.Component {
             update Dish!{" "}
           </button>
         </form>
-        <button type="button" className="button" onClick={this.cancel}>
+        <button type="button" className="button" onClick={this.goBack}>
             {" "}
             cancel{" "}
           </button>

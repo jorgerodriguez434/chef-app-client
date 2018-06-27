@@ -37,6 +37,7 @@ export class PostDish extends React.Component {
    
   };
 
+
   postRequest = () => {
     const data = {
       name: this.state.name,
@@ -97,7 +98,6 @@ export class PostDish extends React.Component {
     if (this.state.display === "landing") {
       return (
         <div>
-          <h1> this the PostDish component! </h1>
           <p> Please add a dish by entering the following information </p>
           <form onSubmit={this.onSubmit}>
           <label htmlFor="dish-name">Name of dish</label>

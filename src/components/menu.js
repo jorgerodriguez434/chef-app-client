@@ -42,7 +42,7 @@ export default class Menu extends React.Component {
             error
           });
         }
-      );
+      ).then(() => this.foodFilter());
   }
 
   foodFilter = () => {
@@ -91,6 +91,7 @@ export default class Menu extends React.Component {
       
   };
 
+
   displayNoMeat = () => {
     this.setState({
       display: "no meat"
@@ -124,7 +125,6 @@ export default class Menu extends React.Component {
       return (
         <div>
           <ButtonGroup
-            foodFilter={this.foodFilter}
             displayNoEgg = {this.displayNoEgg}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
@@ -137,7 +137,6 @@ export default class Menu extends React.Component {
       return (
         <div>
            <ButtonGroup
-            foodFilter={this.foodFilter}
             displayNoEgg = {this.displayNoEgg}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
@@ -152,7 +151,6 @@ export default class Menu extends React.Component {
       return (
         <div>
           <ButtonGroup
-            foodFilter={this.foodFilter}
             displayNoEgg = {this.displayNoEgg}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
@@ -167,7 +165,6 @@ export default class Menu extends React.Component {
       return (
         <div>
            <ButtonGroup
-            foodFilter={this.foodFilter}
             displayNoEgg = {this.displayNoEgg}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
@@ -183,7 +180,6 @@ export default class Menu extends React.Component {
       return (
         <div>
            <ButtonGroup
-            foodFilter={this.foodFilter}
             displayNoEgg = {this.displayNoEgg}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
@@ -200,7 +196,6 @@ export default class Menu extends React.Component {
       return (
         <div>
           <ButtonGroup
-           foodFilter={this.foodFilter}
            displayNoEgg = {this.displayNoEgg}
            displayNoDairy = {this.displayNoDairy}
            displayNoMeat={this.displayNoMeat}

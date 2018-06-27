@@ -1,7 +1,8 @@
 import React from "react";
-import DashBoard from "./dashboard";
+//import DashBoard from "./dashboard";
 
 import { connect } from "react-redux";
+import PostDish from "./post-dish";
 
 export class LoginForm extends React.Component {
   constructor() {
@@ -36,17 +37,17 @@ export class LoginForm extends React.Component {
   render() {
     console.log(this.state);
     if (this.state.loggedIn) {
-      return <DashBoard />;
+      return <PostDish />;
     } else {
       return (
         <div>
           <h1> Welcome! </h1>
           <form onSubmit={this.testing}>
             <label htmlFor="username">Username</label>
-            <input type="text" ref={this._usernameRef} />
+            <input type="text" ref={this._usernameRef} className="input my-text" />
             <label htmlFor="password">Password</label>
-            <input type="text" ref={this._passwordRef} />
-            <button type="submit">Login</button>
+            <input type="password" ref={this._passwordRef} className="input my-text" />
+            <button className="login-button" type="submit">Login</button>
           </form>
           <h2> {this.props.username}</h2>
           <h2> {this.props.password}</h2>
