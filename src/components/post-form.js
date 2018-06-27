@@ -39,9 +39,18 @@ export class PostForm extends React.Component {
     );
   };
 }
+/*
+import React from "react";
 
-export const mapStateToProps = state => ({
-     ingredients: []
-});
+const Burger = (props) => (
+  <div>
+    <h2> {props.name} </h2>
+    <img src={props.image} alt={props.name} />
+  </div>
+);
 
-export default connect(mapStateToProps)(PostForm);
+export default Burger;
+
+
+*/
+

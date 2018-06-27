@@ -37,6 +37,10 @@ export class PostDish extends React.Component {
    
   };
 
+  componentDidMount = () => {
+    this.props.dispatch(actions.clearIngredients());
+    this.props.dispatch(actions.clearCategories());
+  }
 
   postRequest = () => {
     const data = {

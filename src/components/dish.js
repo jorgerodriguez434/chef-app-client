@@ -3,10 +3,12 @@ import Ingredients from "./ingredients";
 import { API_BASE_URL } from "../config";
 //import Type from "./type";
 //import InputIngredient from "./input-ingredient"; 
-import UpdateIngredients from "./update-ingredients"; 
+import UpdateInputIngredient from "./update-input-ingredient"; 
 import ClassifyAs from "./classify-as";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import Entree from "./entree";
+//import Menu from "./menu";
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -58,7 +60,9 @@ export class Dish extends React.Component {
     }
 
     this.setState({
-      ingredients: this.props.ingredients
+      ingredients: this.props.ingredients,
+      categories: this.props.categories,
+      display: "dish updated"
     });
 
     fetch(`${API_BASE_URL}/${this.props.dishId}`, {
@@ -93,18 +97,16 @@ export class Dish extends React.Component {
     console.log(this.props);
     if (this.state.display === "landing") {
       return (
-        <li key={this.props.index} className="dish">
-          <h2> {this.state.name} </h2>
-          <img src={this.props.dishImage} alt={this.state.name} />
-          <Ingredients ingredients={this.state.ingredients} />
-
-          <button className="button" onClick={this.setUpdate}>
-            {" "}
-            update{" "}
-          </button>
-          <button className="button"> delete </button>
-        </li>
+        <Entree  
+        key={this.props.index}
+        index={this.props.index}
+        name={this.state.name}
+        image={this.props.dishImage}
+        ingredients={this.state.ingredients}
+        setUpdate={this.setUpdate} />
       );
+
+     
     } //if
     if (this.state.display === "set update") {
     
@@ -120,7 +122,7 @@ export class Dish extends React.Component {
   
           <fieldset className="margin-bottom">
             <legend> update Ingredients </legend>
-            <UpdateIngredients stateIngredients={this.state.ingredients} stateCategories={this.state.categories}/>
+            <UpdateInputIngredient stateIngredients={this.state.ingredients} stateCategories={this.state.categories}/>
             {/* 
       */}
           </fieldset>
@@ -131,15 +133,29 @@ export class Dish extends React.Component {
 
           <button type="submit" className="button">
             {" "}
-            update Dish!{" "}
+            UPDATE DISH!{" "}
           </button>
         </form>
         <button type="button" className="button" onClick={this.goBack}>
             {" "}
-            cancel{" "}
+            GO BACK{" "}
           </button>
         </div>
         </li>
+      );
+    } //if
+    if (this.state.display === "dish updated") {
+      return (
+        <div>
+        <p> This dish has been update! </p>
+        <Entree  
+        key={this.props.index}
+        index={this.props.index}
+        name={this.state.name}
+        image={this.props.dishImage}
+        ingredients={this.state.ingredients}
+        setUpdate={this.setUpdate} />
+      </div>
       );
     } //if
   };

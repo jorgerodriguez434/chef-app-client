@@ -5,13 +5,14 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import AddUpdateIngredients from "./add-update-ingredients";
 
-export class UpdateIngredients extends React.Component {
+export class UpdateInputIngredient extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
         ingredients: this.props.stateIngredients,
         categories: this.props.stateCategories
+        //this comp has an inex
     }
     this._ingredient = React.createRef();
   }
@@ -49,7 +50,7 @@ export class UpdateIngredients extends React.Component {
 
 
   render() {
-        console.log(this.props);
+        // console.log(this.props);
       return (
         <section >
             <div className="add-ingredients-container">
@@ -87,4 +88,4 @@ export const mapStateToProps = state => ({
     categories: state.categories
   });
   
-  export default connect(mapStateToProps)(UpdateIngredients);
+  export default connect(mapStateToProps)(UpdateInputIngredient);

@@ -101,6 +101,7 @@ export default class Menu extends React.Component {
     this.setState({
       display: "meat"
     });
+    this.componentDidMount();
   };
   displayNoGluten = () => {
     this.setState({
@@ -118,6 +119,7 @@ export default class Menu extends React.Component {
     this.setState({
       display: "no dairy"
     });
+    this.componentDidMount();
   };
 
   render = () => {
