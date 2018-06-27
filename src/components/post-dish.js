@@ -17,8 +17,7 @@ export class PostDish extends React.Component {
     this.state = {
       display: "landing",
       name: "",
-      type: "",
-      image: ""
+      ingredients: this.props.ingredients
     };
     this._dishName = React.createRef();
     this._dishImage = React.createRef();
@@ -97,7 +96,7 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
-      console.log(this.props);
+     //console.log(this.props);
     if (this.state.display === "landing") {
       return (
         <div>

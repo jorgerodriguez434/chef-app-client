@@ -1,15 +1,10 @@
 import React from "react";
-import Type from "./type";
 import InputIngredient from "./input-ingredient";
-import { connect } from "react-redux";
-//import * as actions from "../actions";
 
-export class PostForm extends React.Component {
+import React from "react";
 
-
-  render = () => {
-    return (
-      <div>
+const Burger = (props) => (
+     <div>
         <form onSubmit={this.props.onSubmit}>
           <label htmlFor="dish-name">Name of dish</label>
           <input
@@ -24,33 +19,17 @@ export class PostForm extends React.Component {
           <fieldset className="margin-bottom">
             <legend> Add Ingredients </legend>
             <InputIngredient/>
-            {/* 
-      */}
-          </fieldset>
-          <label htmlFor="dish-img">Choose an image for the dish!</label>
-          <input type="file" className="choose-file-button" ref={this.props.ref} />
+            
+      </fieldset>
+      <label htmlFor="dish-img">Choose an image for the dish!</label>
+      <input type="file" className="choose-file-button" ref={this.props.ref} />
 
-          <button type="submit" className="button">
-            {" "}
-            Post Dish!{" "}
-          </button>
-        </form>
-      </div>
-    );
-  };
-}
-/*
-import React from "react";
-
-const Burger = (props) => (
-  <div>
-    <h2> {props.name} </h2>
-    <img src={props.image} alt={props.name} />
+      <button type="submit" className="button">
+        {" "}
+        Post Dish!{" "}
+      </button>
+    </form>
   </div>
 );
 
 export default Burger;
-
-
-*/
-

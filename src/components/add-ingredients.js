@@ -4,13 +4,13 @@ import { connect } from "react-redux";
 
 export class AddIngredients extends React.Component {
   render = () => {
-        console.log(this.props)
+        //console.log(this.props)
     return (
       <ul>
         {" "}
         {this.props.ingredients.map((ingredient, index) => {
           return (
-            <SingleIngredient key={index} index={index} ingredient={ingredient}/>
+            <SingleIngredient key={index} index={index} stateIngredient={ingredient}/>
           );
         })}{" "}
       </ul>

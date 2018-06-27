@@ -7,15 +7,11 @@ import AddIngredients from "./add-ingredients";
 
 export class InputIngredient extends React.Component {
 
-  /*
-    I dispatched an action, now how do I add to the list? Done
-    Now display ingredients
-  */
-
   constructor() {
     super();
     this.state = {
       value: ""
+      //ingredients: this.props.ingredients
     }
     this._ingredient = React.createRef();
   }
@@ -27,16 +23,17 @@ export class InputIngredient extends React.Component {
     });
   }
 
+
  addIngredient = () => {
-  console.log("clicked 123");
+  console.log("add ingrdient button clicked!");
   const ingredient = this._ingredient.current.value;
  // console.log(ingredient);
   this.props.dispatch(actions.addIngredient(ingredient));
   this.setState({
-    value: ""
+    value: "",
   })
 }
-// <input type="text" className="input my-text"  value={this.state.name} onChange={this.handleNameChange.bind(this)}/> in dish comp
+
 
   render() {
     //console.log(this.props);
@@ -62,7 +59,7 @@ export class InputIngredient extends React.Component {
               onClick={this.addIngredient}
             >
               {" "}
-              Add to list 1233
+              Add to list
             </button>
           
         </section>
