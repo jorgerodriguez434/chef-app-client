@@ -8,24 +8,29 @@ export class SingleIngredient extends React.Component {
         super(props);
         this.state = {
             ingredient: this.props.stateIngredient
+            //this does not get updated, when it goues throguh the loop again, i dont know why
+            //the ingredient stays with the state, and does not change 
+            //it would only change with this setState
         } 
     }
 
-    onClick = () => {
-    console.log("clicked");
-    console.log(this.state)
+    remove = () => {
+    console.log("remove button clicked");
     const index = this.props.ingredients.indexOf(this.props.stateIngredient);
-    console.log(index);
+    console.log(this.props.ingredients[index] + " has been removed at index "+ index)
     this.props.dispatch(actions.removeIngredient(index));
     }
 
     render = () => {
-        console.log(this.props);
+        /*console.log("this.state")
+        console.log(this.state);
+        console.log("this.props")
+        console.log(this.props); */
         return (
 
             <li key={this.props.index} className="add-ingredient">
             {this.props.stateIngredient}
-            <button type="button" onClick={this.onClick}> remove </button>
+            <button type="button" onClick={this.remove}> remove </button>
           </li>
 
 

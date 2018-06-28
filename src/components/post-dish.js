@@ -30,7 +30,7 @@ export class PostDish extends React.Component {
     this.addCategory(e);
      this.setName();
      this.setState({
-      display: "hello world"
+      display: "Success!"
     }); 
     setTimeout(this.postRequest, 1000); 
    
@@ -114,8 +114,6 @@ export class PostDish extends React.Component {
           <fieldset className="margin-bottom">
             <legend> Add Ingredients </legend>
             <InputIngredient/>
-            {/* 
-      */}
           </fieldset>
 
           <ClassifyAs/>
@@ -130,12 +128,12 @@ export class PostDish extends React.Component {
         </div>
       );
     } //if
-    else if (this.state.display === "hello world") {
+    else if (this.state.display === "Success!") {
       return (
         <div>
-          <h1> You did it! </h1>
+          <h1> Success! </h1>
           <h2> Dish Name: {this.state.name}</h2>
-          <h2> Categories: {this.props.categories}</h2>
+
           <h2>
             {" "}
             Ingredients: <Ingredients

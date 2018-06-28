@@ -16,6 +16,7 @@ export class Dish extends React.Component {
     this.state = {
       display: "landing", 
        name: this.props.stateName, //need to pass these becasue it is for every individual dish
+                                    //and later change the state of name using Onchange 
        ingredients: this.props.stateIngredients,
        categories: this.props.stateCategories
     };
@@ -94,7 +95,7 @@ export class Dish extends React.Component {
   }; 
  
   render = () => {
-    console.log(this.props);
+    //console.log(this.props);
     if (this.state.display === "landing") {
       return (
         <Entree  
@@ -123,7 +124,7 @@ export class Dish extends React.Component {
           <fieldset className="margin-bottom">
             <legend> update Ingredients </legend>
             <UpdateInputIngredient stateIngredients={this.state.ingredients} stateCategories={this.state.categories}/>
-            {/* 
+            {/* need to do this to pass the ingredients for every dish
       */}
           </fieldset>
 

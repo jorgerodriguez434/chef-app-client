@@ -11,7 +11,6 @@ export class InputIngredient extends React.Component {
     super();
     this.state = {
       value: ""
-      //ingredients: this.props.ingredients
     }
     this._ingredient = React.createRef();
   }
@@ -25,7 +24,7 @@ export class InputIngredient extends React.Component {
 
 
  addIngredient = () => {
-  console.log("add ingrdient button clicked!");
+  console.log("add ingredient button clicked!");
   const ingredient = this._ingredient.current.value;
  // console.log(ingredient);
   this.props.dispatch(actions.addIngredient(ingredient));
@@ -36,7 +35,7 @@ export class InputIngredient extends React.Component {
 
 
   render() {
-    //console.log(this.props);
+    console.log(this.props);
       return (
         <section >
           <div className="add-ingredients-container">

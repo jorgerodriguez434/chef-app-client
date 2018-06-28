@@ -10,16 +10,11 @@ export class UpdateInputIngredient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        ingredients: this.props.stateIngredients,
-        categories: this.props.stateCategories,
         value:""
-        //this comp has an index prop
     }
     this._ingredient = React.createRef();
   }
   
-  //This is going to add all the this.state.ingredients and all the 
-  //this.state.ingredients into the redux store
 
   componentDidMount() {
 
@@ -39,9 +34,8 @@ export class UpdateInputIngredient extends React.Component {
   console.log("clicked 126");
   const ingredient = this._ingredient.current.value;
   this.props.dispatch(actions.addIngredient(ingredient));
-  //each selected ingredient is on the store now
   this.setState({
-    ingredients: [...this.state.ingredients, ingredient],
+    ingredients: [...this.props.ingredients, ingredient],
     value: ""
     //still need to setState to keep in the state since
     //I will clear the redux store later
@@ -62,7 +56,7 @@ handleChange = e => {
       return (
         <section >
             <div className="add-ingredients-container">
-          <AddUpdateIngredients stateIngredients={this.state.ingredients}/>
+          <AddUpdateIngredients stateIngredients={this.props.ingredients}/>
           </div>
          <label htmlFor="ingredient">Ingredient</label>
             <input
