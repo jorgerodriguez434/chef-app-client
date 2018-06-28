@@ -10,10 +10,26 @@ body {
   margin: auto;
   text-align: center;
 }
-
+header{
+	  text-align: center;
+	  margin-bottom: 10px;
+  	background-image: url('https://static1.squarespace.com/static/52e968b5e4b04d2aa2a3bba3/535817d6e4b0950857ff2550/53593e12e4b0be1e0c334568/1398357529278/10748270326_e94eeb2435_k.jpg?format=2500w');
+  	background-repeat: no-repeat;
+  	background-size: cover;
+    color: silver;
+    padding-bottom: 60px;
+    opacity: .7;
+    height: 400px;
+    padding-top: 200px;
+}
 label {
   display: block;
   margin: 6px;
+}
+
+
+a{
+	text-decoration: none;
 }
 
 input,
@@ -36,7 +52,7 @@ li {
   border: 2px solid black;
   margin-left: 30px;
   text-align: center;
-  background-color: white;
+  
   margin: auto;
   cursor: pointer;
 }
@@ -176,6 +192,12 @@ li {
   margin-bottom: 10px;
   margin-top: 20px;
  }
+.black{
+  color: black;
+}
+
+
+
 
 /* Non-mobile */
 @media only screen and (min-width: 740px) {
@@ -183,8 +205,20 @@ li {
     width: 400px;
     height: 300px;
     border: 3px solid grey;
-
   }
+  header{
+		height: 785px;
+		padding-top: 200px;
+	}
+	header p{
+		font-size: 25px;
+	}
+	h1{
+		font-size: 50px;
+	}
+	.button{
+		width: 200px;
+	}
 
 
 }

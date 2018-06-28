@@ -1,9 +1,15 @@
 import React from "react";
+import Header from "./header"
 
-const Home = () => (
-  <div>
-    <h2> This is Home! </h2>
-  </div>
-);
+export default class Home extends React.Component {
 
-export default Home;
+
+  render = () => {
+    return (
+
+        <Header/>
+
+
+    );
+  }
+}
