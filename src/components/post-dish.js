@@ -1,13 +1,8 @@
 import React from "react";
-//import InputIngredients from "./input-ingredients";
 import Ingredients from "./ingredients";
-//import Categories from "./categories";
-//import Type from "./type";
-//import Contains from "./contains";
 import ClassifyAs from "./classify-as";
 import InputIngredient from "./input-ingredient"
 import { API_BASE_URL } from "../config";
-//import PostForm from "./post-form"
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
@@ -16,8 +11,8 @@ export class PostDish extends React.Component {
     super(props);
     this.state = {
       display: "landing",
-      name: "",
-      ingredients: this.props.ingredients
+      name: "none",
+      image: "none"
     };
     this._dishName = React.createRef();
     this._dishImage = React.createRef();
@@ -29,6 +24,7 @@ export class PostDish extends React.Component {
     console.log(this.props);  
     this.addCategory(e);
      this.setName();
+     this.setImage();
      this.setState({
       display: "Success!"
     }); 
@@ -45,7 +41,8 @@ export class PostDish extends React.Component {
     const data = {
       name: this.state.name,
       ingredients: this.props.ingredients,
-      categories: this.props.categories
+      categories: this.props.categories,
+      image: this.state.image
     }
     fetch(API_BASE_URL, {
       method: 'POST', 
@@ -74,6 +71,7 @@ export class PostDish extends React.Component {
 
   setImage = () => {
     const image = this._dishImage.current.value;
+    console.log(image)
     this.setState({
           image
     });
@@ -118,7 +116,7 @@ export class PostDish extends React.Component {
 
           <ClassifyAs/>
           <label htmlFor="dish-img">Choose an image for the dish!</label>
-          <input type="file" className="choose-file-button" ref={this.props.ref} />
+          <input type="file" className="choose-file-button" ref={this._dishImage} />
 
           <button type="submit" className="button">
             {" "}
