@@ -97,7 +97,8 @@ export class PostDish extends React.Component {
      //console.log(this.props);
     if (this.state.display === "landing") {
       return (
-        <div>
+      <section className="post-dish-outside-container">
+        <div className="post-dish-container">
           <p> Please add a dish by entering the following information </p>
           <form onSubmit={this.onSubmit}>
           <label htmlFor="dish-name">Name of dish</label>
@@ -115,8 +116,13 @@ export class PostDish extends React.Component {
           </fieldset>
 
           <ClassifyAs/>
-          <label htmlFor="dish-img">Choose an image for the dish!</label>
-          <input type="file" className="choose-file-button" ref={this._dishImage} />
+          <label htmlFor="dish-img">Choose a url image for the dish!</label>
+          <input
+            className="input my-text"
+            type="text"
+            placeholder= "URL image"
+            ref={this._dishImage}
+           />
 
           <button type="submit" className="button">
             {" "}
@@ -124,6 +130,7 @@ export class PostDish extends React.Component {
           </button>
         </form>
         </div>
+      </section>
       );
     } //if
     else if (this.state.display === "Success!") {

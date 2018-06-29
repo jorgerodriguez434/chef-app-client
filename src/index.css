@@ -18,7 +18,7 @@ header{
   	background-size: cover;
     color: silver;
     padding-bottom: 60px;
-    opacity: .7;
+    opacity: .9;
     height: 400px;
     padding-top: 200px;
 }
@@ -186,7 +186,7 @@ li {
   background-color: grey;
   font-size: 17px;
   height: 50px;
-  width: 70%;
+  width: 200px;
   display: block;
   margin: auto;
   margin-bottom: 10px;
@@ -194,6 +194,19 @@ li {
  }
 .black{
   color: black;
+}
+.post-dish-container{
+  
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: black;
+  opacity: .9;
+
+}
+.post-dish-outside-container{
+  background-image: url("https://static1.squarespace.com/static/52e968b5e4b04d2aa2a3bba3/535817d6e4b0950857ff2550/535aafc8e4b0c36446ce4ad8/1398452200863/10748178545_3e1e4056b9_k.jpg?format=2500w");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -218,7 +231,10 @@ li {
 	}
 	.button{
 		width: 200px;
-	}
+  }
+  .login-button{
+    width: 200px;
+  }
 
 
 }
