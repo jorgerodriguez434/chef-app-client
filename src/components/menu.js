@@ -18,6 +18,7 @@ export default class Menu extends React.Component {
       noEggDishes: [],
       noGlutenDishes: [],
       meatDishes: [],
+      veganDishes: [],
       display: "buttons"
     };
   }
@@ -27,7 +28,7 @@ export default class Menu extends React.Component {
       .then(res => res.json())
       .then(
         dishes => {
-          console.log(dishes);
+         // console.log(dishes);
           this.setState({
             isLoaded: true,
             menu: dishes
@@ -55,7 +56,7 @@ export default class Menu extends React.Component {
     const dairyDishes = [];
     const eggDishes = [];
     const glutenDishes = [];
-   // const vegan = [];
+    const veganDishes = [];
 
     this.state.menu.map(dish => {
       if (dish.categories.indexOf("contains-meat") !== -1) meatDishes.push(dish);
@@ -74,6 +75,7 @@ export default class Menu extends React.Component {
        //dispatch egg gluten dishes
       else if (dish.categories.indexOf("contains-egg") === -1) noEggDishes.push(dish); 
        //dispatch no egg dishes
+      if (dish.categories.indexOf("contains-egg") === -1 && dish.categories.indexOf("contains-dairy") === -1 && dish.categories.indexOf("contains-meat") === -1 ) veganDishes.push(dish);
 
       return dish;
     }); 
@@ -86,7 +88,8 @@ export default class Menu extends React.Component {
           meatDishes,
           dairyDishes,
           eggDishes,
-          glutenDishes
+          glutenDishes,
+          veganDishes
     });  
       
   };
@@ -96,23 +99,31 @@ export default class Menu extends React.Component {
     this.setState({
       display: "no meat"
     });
+    console.log("no meat:");
+    console.log(this.state.noMeatDishes);
   };
   displayMeat = () => {
     this.setState({
       display: "meat"
     });
     this.componentDidMount();
+    console.log("meat:");
+    console.log(this.state.meatDishes);
   };
   displayNoGluten = () => {
     this.setState({
       display: "no gluten"
     });
+    console.log("no gluten:");
+    console.log(this.state.noGlutenDishes);
   };
 
   displayNoEgg = () => {
     this.setState({
       display: "no egg"
     });
+    console.log("no egg:");
+    console.log(this.state.noEggDishes);
   };
 
   displayNoDairy = () => {
@@ -120,6 +131,17 @@ export default class Menu extends React.Component {
       display: "no dairy"
     });
     this.componentDidMount();
+    console.log("no dairy:");
+    console.log(this.state.noDairyDishes);
+  };
+
+  displayVegan = () => {
+    this.setState({
+      display: "vegan"
+    });
+    this.componentDidMount();
+    console.log("vegan:");
+    console.log(this.state.veganDishes);
   };
 
   render = () => {
@@ -128,6 +150,7 @@ export default class Menu extends React.Component {
         <div>
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
@@ -138,8 +161,9 @@ export default class Menu extends React.Component {
     } else if (this.state.display === "no meat") {
       return (
         <div>
-           <ButtonGroup
+          <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
@@ -154,6 +178,7 @@ export default class Menu extends React.Component {
         <div>
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
@@ -166,8 +191,9 @@ export default class Menu extends React.Component {
     } else if (this.state.display === "no gluten") {
       return (
         <div>
-           <ButtonGroup
+          <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
@@ -183,6 +209,7 @@ export default class Menu extends React.Component {
         <div>
            <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
             displayNoDairy = {this.displayNoDairy}
             displayNoMeat={this.displayNoMeat}
             displayMeat={this.displayMeat}
@@ -198,15 +225,32 @@ export default class Menu extends React.Component {
       return (
         <div>
           <ButtonGroup
-           displayNoEgg = {this.displayNoEgg}
-           displayNoDairy = {this.displayNoDairy}
-           displayNoMeat={this.displayNoMeat}
-           displayMeat={this.displayMeat}
-           displayNoGluten={this.displayNoGluten}
-           
+            displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
+            displayNoDairy = {this.displayNoDairy}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing no dairy: </h3>
           <Dishes category={this.state.noDairyDishes} />
+         
+        </div>
+      );
+    }//else if
+    else if (this.state.display === "vegan") {
+      return (
+        <div>
+          <ButtonGroup
+            displayNoEgg = {this.displayNoEgg}
+            displayVegan = {this.displayVegan}
+            displayNoDairy = {this.displayNoDairy}
+            displayNoMeat={this.displayNoMeat}
+            displayMeat={this.displayMeat}
+            displayNoGluten={this.displayNoGluten}
+          />
+          <h3> Showing vegan: </h3>
+          <Dishes category={this.state.veganDishes} />
          
         </div>
       );

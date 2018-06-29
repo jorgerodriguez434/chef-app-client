@@ -17,7 +17,7 @@ export class Dish extends React.Component {
       display: "landing",
       name: this.props.stateName, //need to pass these becasue it is for every individual dish
       //and later change the state of name using Onchange
-      ingredients: this.props.stateIngredients,
+      ingredients: this.props.stateIngredients, //I might not have to set this at all
       categories: this.props.stateCategories
     };
   }
@@ -116,11 +116,11 @@ export class Dish extends React.Component {
     if (this.state.display === "landing") {
       return (
         <Entree
-          key={this.props.index}
+          key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
           index={this.props.index}
-          name={this.state.name}
+          name={this.props.stateName}
           image={this.props.dishImage}
-          ingredients={this.state.ingredients}
+          ingredients={this.props.stateIngredients}
           setUpdate={this.setUpdate}
           setDelete={this.setDelete}
         />
@@ -129,24 +129,24 @@ export class Dish extends React.Component {
     if (this.state.display === "set update") {
       return (
         <li key={this.props.index} className="dish">
-          <h2> {this.state.name} </h2>
-          <img src={this.props.dishImage} alt={this.state.name} />
-          <Ingredients ingredients={this.state.ingredients} />
+          <h2> {this.props.stateName} </h2>
+          <img src={this.props.dishImage} alt={this.props.stateName} />
+          <Ingredients ingredients={this.props.stateIngredients} />
           <div className="form">
             <form onSubmit={this.onSubmit}>
               <label htmlFor="dish-name">update name of dish</label>
               <input
                 type="text"
                 className="input my-text"
-                value={this.state.name}
+                value={this.props.stateName}
                 onChange={this.handleNameChange.bind(this)}
               />
 
               <fieldset className="margin-bottom">
                 <legend> update Ingredients </legend>
                 <UpdateInputIngredient
-                  stateIngredients={this.state.ingredients}
-                  stateCategories={this.state.categories}
+                  stateIngredients={this.props.stateIngredients}
+                  stateCategories={this.props.stateCategories}
                 />
                 {/* need to do this to pass the ingredients for every dish
       */}
@@ -178,13 +178,15 @@ export class Dish extends React.Component {
         <div>
           <p> This dish has been updated! </p>
           <Entree
-            key={this.props.index}
-            index={this.props.index}
-            name={this.state.name}
-            image={this.props.dishImage}
-            ingredients={this.state.ingredients}
-            setUpdate={this.setUpdate}
-          />
+          key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
+          index={this.props.index}
+          name={this.props.stateName}
+          image={this.props.dishImage}
+          ingredients={this.props.stateIngredients}
+          setUpdate={this.setUpdate}
+          setDelete={this.setDelete}
+        />
+      );
         </div>
       );
     } //if
@@ -193,9 +195,9 @@ export class Dish extends React.Component {
       return (
         <div>
           <li key={this.props.index} className="dish">
-            <h2> {this.state.name} </h2>
-            <img src={this.props.dishImage} alt={this.state.name} />
-            <Ingredients ingredients={this.state.ingredients} />
+          <h2> {this.props.stateName} </h2>
+          <img src={this.props.dishImage} alt={this.props.stateName} />
+          <Ingredients ingredients={this.props.stateIngredients} />
           </li>
           <p> Are you sure you want to delete this dish? </p>
 

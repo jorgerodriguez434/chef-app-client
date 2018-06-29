@@ -3,8 +3,9 @@ import React from "react";
 const Header = props => (
     <div>
   <header role="banner">
-
-  <button className="button start-button">GET STARTED</button>
+<div className="get-started-container">
+  <button className="get-started-button">GET STARTED</button>
+  </div>
   </header>
   
   </div>
