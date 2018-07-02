@@ -1,14 +1,12 @@
 import React from "react";
 import Ingredients from "./ingredients";
 import { API_BASE_URL } from "../config";
-//import Type from "./type";
-//import InputIngredient from "./input-ingredient";
 import UpdateInputIngredient from "./update-input-ingredient";
 import ClassifyAs from "./classify-as";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Entree from "./entree";
-//import Menu from "./menu";
+
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -18,7 +16,8 @@ export class Dish extends React.Component {
       name: this.props.stateName, //need to pass these becasue it is for every individual dish
       //and later change the state of name using Onchange
       ingredients: this.props.stateIngredients, //I might not have to set this at all
-      categories: this.props.stateCategories
+      categories: this.props.stateCategories,
+      image: this.props.dishImage
     };
   }
 
@@ -38,6 +37,12 @@ export class Dish extends React.Component {
   handleNameChange = e => {
     this.setState({
       name: e.target.value
+    });
+  };
+
+  handleImageChange = e => {
+    this.setState({
+      image: e.target.value
     });
   };
 
@@ -76,7 +81,8 @@ export class Dish extends React.Component {
     const data = {
       name: this.state.name,
       ingredients: this.props.ingredients,
-      categories: this.props.categories
+      categories: this.props.categories,
+      image: this.state.image
     };
 
     this.setState({
@@ -134,16 +140,16 @@ export class Dish extends React.Component {
           <Ingredients ingredients={this.props.stateIngredients} />
           <div className="form">
             <form onSubmit={this.onSubmit}>
-              <label htmlFor="dish-name">update name of dish</label>
+              <label htmlFor="dish-name">Update Name of Dish</label>
               <input
                 type="text"
                 className="input my-text"
-                value={this.props.stateName}
+                value={this.state.name}
                 onChange={this.handleNameChange.bind(this)}
               />
 
               <fieldset className="margin-bottom">
-                <legend> update Ingredients </legend>
+                <legend> Update Ingredients </legend>
                 <UpdateInputIngredient
                   stateIngredients={this.props.stateIngredients}
                   stateCategories={this.props.stateCategories}
@@ -153,12 +159,14 @@ export class Dish extends React.Component {
               </fieldset>
 
               <ClassifyAs />
-              <label htmlFor="dish-img">Choose an image for the dish!</label>
-              <input
-                type="file"
-                className="choose-file-button"
-                ref={this.props.ref}
-              />
+              <label htmlFor="dish-img">Update Image!</label>
+          <input
+            className="input my-text"
+            type="text"
+            placeholder= "URL image"
+            value={this.state.image}
+            onChange={this.handleImageChange.bind(this)}
+           />
 
               <button type="submit" className="button">
                 {" "}
@@ -178,15 +186,15 @@ export class Dish extends React.Component {
         <div>
           <p> This dish has been updated! </p>
           <Entree
-          key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
+          key={this.props.index /*this is the change I needed, use this.props.ingredients, etc*/}
           index={this.props.index}
-          name={this.props.stateName}
+          name={this.state.name}
           image={this.props.dishImage}
-          ingredients={this.props.stateIngredients}
+          ingredients={this.props.ingredients}
           setUpdate={this.setUpdate}
           setDelete={this.setDelete}
         />
-      );
+      
         </div>
       );
     } //if

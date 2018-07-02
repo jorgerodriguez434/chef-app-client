@@ -1,8 +1,6 @@
 import React from "react";
-//import DashBoard from "./dashboard";
-
 import { connect } from "react-redux";
-import PostDish from "./post-dish";
+import Home from "./home";
 
 export class LoginForm extends React.Component {
   constructor() {
@@ -37,7 +35,7 @@ export class LoginForm extends React.Component {
   render() {
     console.log(this.state);
     if (this.state.loggedIn) {
-      return <PostDish />;
+      return <Home />;
     } else {
       return (
         <div>

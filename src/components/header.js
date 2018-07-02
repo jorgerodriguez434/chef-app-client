@@ -4,7 +4,7 @@ const Header = props => (
     <div>
   <header role="banner">
 <div className="get-started-container">
-  <button className="get-started-button">GET STARTED</button>
+  <button onClick={props.onClick} className="get-started-button">GET STARTED</button>
   </div>
   </header>
   

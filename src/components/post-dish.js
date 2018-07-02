@@ -138,10 +138,10 @@ export class PostDish extends React.Component {
         <div>
           <h1> Success! </h1>
           <h2> Dish Name: {this.state.name}</h2>
-
           <h2>
+          <img src={this.state.image} alt={this.state.name} />
             {" "}
-            Ingredients: <Ingredients
+            <Ingredients
               ingredients={this.props.ingredients}
             />{" "}
           </h2>
