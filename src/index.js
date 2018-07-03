@@ -9,8 +9,8 @@ import Menu from "./components/menu";
 import Home from "./components/home";
 import Seating from "./components/seating";
 import PostDish from "./components/post-dish";
-
 import "./index.css";
+
 const App = () => (
   <BrowserRouter>
     <Provider store={store}>

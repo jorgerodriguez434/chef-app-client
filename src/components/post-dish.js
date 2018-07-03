@@ -5,6 +5,7 @@ import InputIngredient from "./input-ingredient"
 import { API_BASE_URL } from "../config";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import "./post-dish.css"
 
 export class PostDish extends React.Component {
   constructor(props) {
@@ -97,6 +98,11 @@ export class PostDish extends React.Component {
      //console.log(this.props);
     if (this.state.display === "landing") {
       return (
+
+      <div>
+         <div className="intro-image-post-dish"> 
+              <h1> POST A DISH </h1>
+        </div>
       <section className="post-dish-outside-container">
         <div className="post-dish-container">
           <p> Please add a dish by entering the following information </p>
@@ -131,6 +137,7 @@ export class PostDish extends React.Component {
         </form>
         </div>
       </section>
+      </div>
       );
     } //if
     else if (this.state.display === "Success!") {

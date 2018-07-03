@@ -1,10 +1,8 @@
 import React from "react";
-//import * as menu from "../menu";
 import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
-//import GlutenFreeDishes from "./gluten-free-dishes";
 import { API_BASE_URL } from "../config";
-//import Ingredients from "./ingredients";
+import "./menu.css";
 
 export default class Menu extends React.Component {
   constructor() {
@@ -147,6 +145,10 @@ export default class Menu extends React.Component {
   render = () => {
     if (this.state.display === "buttons") {
       return (
+      <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
           <ButtonGroup
@@ -159,9 +161,14 @@ export default class Menu extends React.Component {
           />
         </div>
         </section>
+      </div>
       );
     } else if (this.state.display === "no meat") {
       return (
+        <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
           <ButtonGroup
@@ -176,9 +183,14 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.noMeatDishes} />
         </div>
         </section>
+        </div>
       );
     } else if (this.state.display === "meat") {
       return (
+        <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
           <ButtonGroup
@@ -193,9 +205,14 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.meatDishes} />
         </div>
         </section>
+        </div>
       );
     } else if (this.state.display === "no gluten") {
       return (
+        <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
           <ButtonGroup
@@ -210,10 +227,15 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.noGlutenDishes} />
         </div>
         </section>
+        </div>
       );
     } //else if
     else if (this.state.display === "no egg") {
       return (
+        <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
            <ButtonGroup
@@ -229,10 +251,15 @@ export default class Menu extends React.Component {
          
         </div>
         </section>
+        </div>
       );
     }//else if
     else if (this.state.display === "no dairy") {
       return (
+        <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
           <ButtonGroup
@@ -248,10 +275,15 @@ export default class Menu extends React.Component {
          
         </div>
         </section>
+        </div>
       );
     }//else if
     else if (this.state.display === "vegan") {
       return (
+        <div>
+        <div className="intro-image"> 
+              <h1> Menu </h1>
+        </div>
       <section className="background-for-button-group">
         <div className="button-group-container">
           <ButtonGroup
@@ -266,6 +298,7 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.veganDishes} />
         </div>
       </section>
+      </div>
       );
     }//else if
   }; //render
