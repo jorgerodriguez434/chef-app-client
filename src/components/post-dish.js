@@ -124,9 +124,9 @@ export class PostDish extends React.Component {
             ref={this._dishImage}
            />
 
-          <button type="submit" className="button">
+          <button type="submit" className="post-dish-buttons">
             {" "}
-            Post Dish!{" "}
+            POST DISH!{" "}
           </button>
         </form>
         </div>
@@ -145,7 +145,7 @@ export class PostDish extends React.Component {
               ingredients={this.props.ingredients}
             />{" "}
           </h2>
-          <button onClick={this.goBack} className="button">
+          <button onClick={this.goBack} className="post-dish-buttons">
             {" "}
             go back{" "}
           </button>

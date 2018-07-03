@@ -41,6 +41,8 @@ export class InputIngredient extends React.Component {
           <div className="add-ingredients-container">
             <AddIngredients/>
           </div>
+        
+       
           <label htmlFor="ingredient">Ingredient</label>
             <input
               className="input my-text"
@@ -53,14 +55,14 @@ export class InputIngredient extends React.Component {
             />
             
             <button
-              className="ingredient-button"
+              className="post-dish-buttons"
               type="button"
               onClick={this.addIngredient}
             >
               {" "}
-              Add to list
+              ADD TO LIST
             </button>
-          
+        
         </section>
       );
 

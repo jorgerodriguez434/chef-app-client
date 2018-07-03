@@ -147,7 +147,8 @@ export default class Menu extends React.Component {
   render = () => {
     if (this.state.display === "buttons") {
       return (
-        <div>
+        <section className="background-for-button-group">
+        <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -157,10 +158,12 @@ export default class Menu extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
         </div>
+        </section>
       );
     } else if (this.state.display === "no meat") {
       return (
-        <div>
+        <section className="background-for-button-group">
+        <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -172,10 +175,12 @@ export default class Menu extends React.Component {
           <h3> Showing no meats: </h3>
           <Dishes category={this.state.noMeatDishes} />
         </div>
+        </section>
       );
     } else if (this.state.display === "meat") {
       return (
-        <div>
+        <section className="background-for-button-group">
+        <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -187,10 +192,12 @@ export default class Menu extends React.Component {
           <h3> Showing meats: </h3>
           <Dishes category={this.state.meatDishes} />
         </div>
+        </section>
       );
     } else if (this.state.display === "no gluten") {
       return (
-        <div>
+        <section className="background-for-button-group">
+        <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -202,11 +209,13 @@ export default class Menu extends React.Component {
           <h3> Showing no gluten: </h3>
           <Dishes category={this.state.noGlutenDishes} />
         </div>
+        </section>
       );
     } //else if
     else if (this.state.display === "no egg") {
       return (
-        <div>
+        <section className="background-for-button-group">
+        <div className="button-group-container">
            <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -219,11 +228,13 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.noEggDishes} />
          
         </div>
+        </section>
       );
     }//else if
     else if (this.state.display === "no dairy") {
       return (
-        <div>
+        <section className="background-for-button-group">
+        <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -236,11 +247,13 @@ export default class Menu extends React.Component {
           <Dishes category={this.state.noDairyDishes} />
          
         </div>
+        </section>
       );
     }//else if
     else if (this.state.display === "vegan") {
       return (
-        <div>
+      <section className="background-for-button-group">
+        <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
             displayVegan = {this.displayVegan}
@@ -251,8 +264,8 @@ export default class Menu extends React.Component {
           />
           <h3> Showing vegan: </h3>
           <Dishes category={this.state.veganDishes} />
-         
         </div>
+      </section>
       );
     }//else if
   }; //render
