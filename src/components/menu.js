@@ -147,7 +147,7 @@ export default class Menu extends React.Component {
       return (
       <div>
         <div className="intro-image"> 
-              <h1> Menu </h1>
+              <h1> MENU </h1>
         </div>
         <section className="background-for-button-group">
         <div className="button-group-container">

@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./header";
 import PostDish from "./post-dish";
+import "./home.css"
 
 export default class Home extends React.Component {
   constructor() {
@@ -23,6 +24,7 @@ export default class Home extends React.Component {
         <section>
           <Header onClick={this.getStarted} />
           <div className="body-for-landing-page">
+        <div className="main-content">
           <div className="intro-paragraph">
             <h2> THE DESIRED CHEF APP</h2>
             <p>
@@ -51,6 +53,7 @@ export default class Home extends React.Component {
               alt="dish"
             />
           </div>
+        </div>
         </div>
       </section>
       );

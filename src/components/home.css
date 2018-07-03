@@ -1,0 +1,49 @@
+.landing-image{
+    width: 47%;
+    border: none;
+    margin: 10px 10px 10px 10px; 
+    text-align: center;
+  }
+  .image-container{
+    text-align: center;
+    width: 100%;
+    height: 70%;
+    margin: auto;
+   /* background-color: #1e1f23; */
+  }
+  .intro-paragraph{
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    margin: auto;
+  }
+  .body-for-landing-page{
+    width: 90%;
+    height: 100%;
+    background-size: cover;
+    background-color: #2c2c32;
+    margin: auto;
+    opacity: .8;
+    background-image: url("https://static1.squarespace.com/static/569fe8405a566853bcb918f6/t/569ff329dc5cb4a16d8f4872/1453323055647/?format=1500w");
+  } 
+  .main-content{
+    background-color: black;
+    opacity: .9;
+    height: 90%;
+    width: 100%;
+  }
+  .inside-header{
+    background-color: black;
+    opacity: .8;
+    height: 200px;
+    width: 100%;
+    border-top: 1px solid grey;
+    padding-top: 20px;
+  }
+  @media only screen and (min-width: 740px) {
+
+    .inside-header{
+        height: 785px;
+        padding-top: 200px; 
+    }
+  }
