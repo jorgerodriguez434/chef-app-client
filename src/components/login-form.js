@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Home from "./home";
 import RegistrationForm from "./registration-form";
 import * as config from "../config";
+import * as actions from "../actions";
 
 export class LoginForm extends React.Component {
   constructor() {
@@ -26,23 +27,52 @@ export class LoginForm extends React.Component {
       }
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
-    .then(response => {
+    .then(token => {
       //localStorage.setItem
-      if (response === "undefined"){
-        this.setState({
-          loggedIn: false,
-          display: "sign in"
-        });
+      //get token back here
+      console.log('Success:', token);
+      this.props.dispatch(actions.setToken(token));
+      if (token === undefined){
+        return false
       }
-      else {
+      else{
         this.setState({
           loggedIn: true,
           display: "home"
-        })
-      } 
-      console.log('Success:', response)
+        });
+      }
     });
   }
+
+  
+  
+isValidated = () => {
+    //check and verify the token
+    //i might have to dispatch the token so that I can get it, right?
+    if (this.props.token === "undefined"){
+      return false
+    }
+    else {
+      this.setState({
+        loggedIn: true,
+        display: "home"
+      });
+    }
+  }
+
+  /*testing = e => {
+    e.preventDefault();
+    const username = this._usernameRef.current.value;
+    const password = this._passwordRef.current.value;
+    if (this.isValidated(username, password)) {
+      //this.props.dispatch(actions.setLoginSuccess(true));
+      this.setState({ loggedIn: true });
+    } else {
+      //this.props.dispatch(actions.setLoginError("there was an error"));
+      this.setState({ loggedIn: false });
+    }
+  };
+*/
 
   onSubmit = e => {
     console.log("login button clicked!")
@@ -54,7 +84,7 @@ export class LoginForm extends React.Component {
       username,
       password,
     });
-    setTimeout(this.postRequest, 1000); 
+    setTimeout(this.postRequest, 1000);
   }
 
   register = () => {
@@ -66,6 +96,7 @@ export class LoginForm extends React.Component {
 
   render() {
     console.log(this.state);
+    //console.log(this.props);
     if (this.state.display === "sign in") {
       return (
         <div>
@@ -112,17 +143,40 @@ export class LoginForm extends React.Component {
 
 export const mapStateToProps = state => ({
   isLoggedIn: state.isLoggedIn,
-  error: state.error
+  error: state.error,
+  token: state.token
 });
 
 export default connect(mapStateToProps)(LoginForm);
 
 /*
-if (this.state.loggedIn) {
-      return <Home />;
-    } 
-    if(this.state.display === "register") {
-      return (
-        <RegistrationForm/>
-      );
+isValidated = (username, password) => {
+    if (username === "a" && password === "a") {
+      console.log("SUCCESS!");
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  testing = e => {
+    e.preventDefault();
+    const username = this._usernameRef.current.value;
+    const password = this._passwordRef.current.value;
+    if (this.isValidated(username, password)) {
+      //this.props.dispatch(actions.setLoginSuccess(true));
+      this.setState({ loggedIn: true });
+    } else {
+      //this.props.dispatch(actions.setLoginError("there was an error"));
+      this.setState({ loggedIn: false });
+    }
+  };
+*/
+
+/*
+
+this.setState({
+            loggedIn: true,
+            display: "home"
+          });
 */

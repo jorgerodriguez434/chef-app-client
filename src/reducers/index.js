@@ -3,7 +3,8 @@ export const initialState = {
   isLoggedIn: false,
   error: "none",
   ingredients: [],
-  categories: []
+  categories: [],
+  token: "none"
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -43,6 +44,10 @@ export const myAppReducer = (state = initialState, action) => {
     case constants.CLEAR_CATEGORIES:
       return Object.assign({}, state, {
         categories: []
+      });
+      case constants.SET_TOKEN:
+      return Object.assign({}, state, {
+        token: action.token
       });
     default:
       return state;

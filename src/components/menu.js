@@ -26,7 +26,8 @@ export default class Menu extends React.Component {
       .then(res => res.json())
       .then(
         dishes => {
-         // console.log(dishes);
+        //console.log("api get request:");
+         //console.log(dishes);
           this.setState({
             isLoaded: true,
             menu: dishes
