@@ -247,6 +247,7 @@ li {
   margin-top: 20px;
   
  }
+
 /* Non-mobile */
 @media only screen and (min-width: 740px) {
   img {
@@ -285,10 +286,9 @@ li {
   .button{   
     display: inline-block;
     margin-right: 20px;
+
 }
  
-
-
 }
 @media only screen and (min-width: 492px) {
   .link{

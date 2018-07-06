@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import Home from "./home";
 import RegistrationForm from "./registration-form";
 import * as config from "../config";
 import * as actions from "../actions";
+import "./login-form.css"
 
 export class LoginForm extends React.Component {
   constructor() {
@@ -44,36 +45,6 @@ export class LoginForm extends React.Component {
     });
   }
 
-  
-  
-isValidated = () => {
-    //check and verify the token
-    //i might have to dispatch the token so that I can get it, right?
-    if (this.props.token === "undefined"){
-      return false
-    }
-    else {
-      this.setState({
-        loggedIn: true,
-        display: "home"
-      });
-    }
-  }
-
-  /*testing = e => {
-    e.preventDefault();
-    const username = this._usernameRef.current.value;
-    const password = this._passwordRef.current.value;
-    if (this.isValidated(username, password)) {
-      //this.props.dispatch(actions.setLoginSuccess(true));
-      this.setState({ loggedIn: true });
-    } else {
-      //this.props.dispatch(actions.setLoginError("there was an error"));
-      this.setState({ loggedIn: false });
-    }
-  };
-*/
-
   onSubmit = e => {
     console.log("login button clicked!")
     e.preventDefault();
@@ -99,8 +70,10 @@ isValidated = () => {
     //console.log(this.props);
     if (this.state.display === "sign in") {
       return (
-        <div>
-          <h1> Welcome! </h1>
+      <Fragment>
+      <section className="custom-outside-container">
+        <div className="custom-container">
+          <h1> Sign in </h1>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="username">Username</label>
             <input
@@ -128,6 +101,8 @@ isValidated = () => {
             </button>
           </form>
         </div>
+        </section>
+        </Fragment>
       );
     }//if
     else if (this.state.loggedIn) {
@@ -149,34 +124,3 @@ export const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(LoginForm);
 
-/*
-isValidated = (username, password) => {
-    if (username === "a" && password === "a") {
-      console.log("SUCCESS!");
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  testing = e => {
-    e.preventDefault();
-    const username = this._usernameRef.current.value;
-    const password = this._passwordRef.current.value;
-    if (this.isValidated(username, password)) {
-      //this.props.dispatch(actions.setLoginSuccess(true));
-      this.setState({ loggedIn: true });
-    } else {
-      //this.props.dispatch(actions.setLoginError("there was an error"));
-      this.setState({ loggedIn: false });
-    }
-  };
-*/
-
-/*
-
-this.setState({
-            loggedIn: true,
-            display: "home"
-          });
-*/
