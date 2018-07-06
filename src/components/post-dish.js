@@ -143,6 +143,8 @@ export class PostDish extends React.Component {
     else if (this.state.display === "Success!") {
       return (
         <div>
+           <section className="post-dish-outside-container">
+        <div className="post-dish-container">
           <h1> Success! </h1>
           <h2> Dish Name: {this.state.name}</h2>
           <h2>
@@ -156,7 +158,10 @@ export class PostDish extends React.Component {
             {" "}
             go back{" "}
           </button>
+          </div>
+        </section>
         </div>
+        
       );
       //reset State
     }
