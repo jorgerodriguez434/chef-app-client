@@ -2,10 +2,12 @@ import React from "react";
 import Ingredients from "./ingredients";
 import ClassifyAs from "./classify-as";
 import InputIngredient from "./input-ingredient"
+import Links from "./links";
 import { API_BASE_URL } from "../config";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./post-dish.css"
+
 
 export class PostDish extends React.Component {
   constructor(props) {
@@ -100,6 +102,8 @@ export class PostDish extends React.Component {
       return (
 
       <div>
+
+          <Links/>
          <div className="intro-image-post-dish"> 
               <h1> POST A DISH </h1>
         </div>

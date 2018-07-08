@@ -1,10 +1,13 @@
 import * as constants from "../constants/actions.constants";
 export const initialState = {
-  isLoggedIn: false,
+  //isLoggedIn: false,
   error: "none",
   ingredients: [],
   categories: [],
-  token: "none"
+  token: "none",
+  isAuthenticated: false,
+  isPending: false,
+  //error: { message: "", code: "" },
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -15,7 +18,7 @@ export const myAppReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoggedIn: action.isLoggedIn
       });
-    case constants.LOGIN_ERROR:
+    case constants.LOGIN_FAILED:
       return Object.assign({}, state, {
         error: action.error
       });
@@ -53,5 +56,3 @@ export const myAppReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-//guesses: [...state.ingredients, action.ingredient]

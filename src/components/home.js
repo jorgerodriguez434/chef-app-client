@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./header";
-import PostDish from "./post-dish";
+import LoginForm from "./login-form"
 import "./home.css";
 
 export default class Home extends React.Component {
@@ -63,7 +63,7 @@ export default class Home extends React.Component {
       );
     }
     if (this.state.display === "get started") {
-      return <PostDish />;
+      return <LoginForm />;
     }
   };
 }

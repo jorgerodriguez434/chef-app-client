@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import store from "./store";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/login-form";
 import Dashboard from "./components/dashboard";
 import Menu from "./components/menu";
@@ -14,16 +14,10 @@ import "./index.css";
 const App = () => (
   <BrowserRouter>
     <Provider store={store}>
-      <div>
-      <section className="link-group">
-        <Link className="link "to="/home">Home</Link>
-        <Link className="link" to="/dashboard">Dashboard</Link>
-        <Link className="link" to="/menu">Menu</Link>
-        <Link className="link" to="/seating">Seating</Link>
-        <Link className="link" to="/post-dish">Post Dish</Link>
-      </section>
+    <div>
+    
         <Switch>
-          <Route exact path="/" component={LoginForm} />
+          <Route exact path="/login" component={LoginForm} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/menu" component={Menu} />

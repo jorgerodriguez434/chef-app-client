@@ -1,13 +1,19 @@
 import * as constants from "../constants/actions.constants";
 
-export const setLoginSuccess = isLoggedIn => ({
+export const requestLogin = () => ({
   type: constants.LOGIN_SUCCESS,
-  isLoggedIn
+}); 
+
+export const setLoginSuccess = () => ({
+  type: constants.LOGIN_SUCCESS,
 });
 
-export const setLoginError = error => ({
-  type: constants.LOGIN_ERROR,
-  error
+export const setLogOut = () => ({
+  type: constants.LOG_OUT
+});
+
+export const setLoginFailed =  () => ({
+  type: constants.LOGIN_FAILED
 });
 
 export const addIngredient = ingredient => ({

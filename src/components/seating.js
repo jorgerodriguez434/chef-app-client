@@ -3,7 +3,7 @@ import Table from "./table";
 
 const Seating = () => (
   <div>
-    <h2> This is the seating chart! </h2>
+    <h1> Component soon to come! </h1>
     <p> Reserve your seats! Pick any table! </p>
     <Table className="red" number="1"/>
     <Table number="2"/>
