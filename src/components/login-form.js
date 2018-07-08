@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import Home from "./home";
+//import Home from "./home";
 import RegistrationForm from "./registration-form";
 import * as config from "../config";
 import * as actions from "../actions";
 import "./login-form.css"
+import DashBoard from "./dashboard";
 
 export class LoginForm extends React.Component {
   constructor() {
@@ -37,13 +38,20 @@ export class LoginForm extends React.Component {
         return false
       }
       else{
-        this.setState({
+        /*this.setState({
           loggedIn: true,
           display: "home"
-        });
+        }); */
+        this.props.dispatch(actions.setLoginSuccess());
+        if (this.props.state.isAuthenticated){
+          this.setState({
+            display: "dashboard"
+          });
+        }
       }
     });
   }
+
 
   onSubmit = e => {
     console.log("login button clicked!")
@@ -66,8 +74,8 @@ export class LoginForm extends React.Component {
   };
 
   render() {
-    console.log(this.state);
-    //console.log(this.props);
+    //console.log(this.state);
+    console.log(this.props);
     if (this.state.display === "sign in") {
       return (
       <Fragment>
@@ -93,7 +101,7 @@ export class LoginForm extends React.Component {
               Login
             </button>
             <button
-              className="register-button"
+              className="general-button"
               type="button"
               onClick={this.register}
             >
@@ -105,8 +113,8 @@ export class LoginForm extends React.Component {
         </Fragment>
       );
     }//if
-    else if (this.state.loggedIn) {
-      return <Home />;
+    else if (this.state.display === "dashboard") {
+      return <DashBoard />;
     } 
     else if(this.state.display === "register") {
       return (
@@ -117,9 +125,7 @@ export class LoginForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  isLoggedIn: state.isLoggedIn,
-  error: state.error,
-  token: state.token
+  state
 });
 
 export default connect(mapStateToProps)(LoginForm);

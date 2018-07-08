@@ -6,7 +6,7 @@ export const initialState = {
   categories: [],
   token: "none",
   isAuthenticated: false,
-  isPending: false,
+  isPending: false
   //error: { message: "", code: "" },
 };
 
@@ -14,13 +14,29 @@ export const myAppReducer = (state = initialState, action) => {
   console.log(`THE ACTION ${action.type} DISPATCHED!`);
   console.log(`WITH THE PAYLOAD OF ${action.type}`);
   switch (action.type) {
+    case constants.LOGIN_REQUEST:
+      return Object.assign({}, state, {
+        isPending: false
+      });
+
     case constants.LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        isLoggedIn: action.isLoggedIn
+        isAuthenticated: true,
+        isPending: false
+      });
+
+    case constants.LOG_OUT:
+      return Object.assign({}, state, {
+        isAuthenticated: false,
+        isPending: false
       });
     case constants.LOGIN_FAILED:
       return Object.assign({}, state, {
-        error: action.error
+        isPending: false,
+        error: {
+          message: `User does not exist!`,
+          code: 400
+        }
       });
     case constants.ADD_INGREDIENT:
       return Object.assign({}, state, {
@@ -48,7 +64,7 @@ export const myAppReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         categories: []
       });
-      case constants.SET_TOKEN:
+    case constants.SET_TOKEN:
       return Object.assign({}, state, {
         token: action.token
       });

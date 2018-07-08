@@ -35,7 +35,7 @@ export class InputIngredient extends React.Component {
 
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
       return (
         <section >
           <div className="add-ingredients-container">

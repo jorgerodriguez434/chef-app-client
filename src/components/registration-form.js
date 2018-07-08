@@ -1,5 +1,6 @@
 import React from "react";
 import * as config from "../config";
+import LoginForm from "./login-form"
 
 export default class RegistrationForm extends React.Component {
 
@@ -52,8 +53,15 @@ export default class RegistrationForm extends React.Component {
     setTimeout(this.postRequest, 1000); 
   }
 
+  goback = () => {
+    this.setState({
+        display: "login"
+    });
+  }
+
   render = () => {
     console.log(this.state);
+   if (this.state.display === "register"){
     return (
       <div>
         <h1> Register </h1>
@@ -90,14 +98,23 @@ export default class RegistrationForm extends React.Component {
           />
 
           <button
-            className="register-button"
+            className="general-button"
             type="button"
             onClick={this.onSubmit}
           >
-            Register
+            REGISTER
+          </button>
+          <button
+            className="general-button"
+            type="button"
+            onClick={this.goback}
+          >
+            GO BACK
           </button>
         </form>
       </div>
     );
+   }//if
+   else if (this.state.display === "login") return <LoginForm/>
   };
 }

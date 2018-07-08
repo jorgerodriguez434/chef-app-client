@@ -7,6 +7,7 @@ import { API_BASE_URL } from "../config";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./post-dish.css"
+//import { Link } from "react-router-dom";
 
 
 export class PostDish extends React.Component {
@@ -38,6 +39,16 @@ export class PostDish extends React.Component {
   componentDidMount = () => {
     this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.clearCategories());
+    if (this.props.isAuthenticated){
+      this.setState({
+          display: "landing"
+      });
+    }
+    else {
+      this.setState({
+        display: "login"
+    });
+    }
   }
 
   postRequest = () => {
@@ -97,7 +108,7 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
-     //console.log(this.props);
+     console.log(this.props);
     if (this.state.display === "landing") {
       return (
 
@@ -168,13 +179,17 @@ export class PostDish extends React.Component {
         
       );
       //reset State
+    }//if
+    else if(this.state.display === "login"){
+      return <h1> Sign in please </h1>
     }
   };
 }
 
 export const mapStateToProps = state => ({
   ingredients: state.ingredients,
-  categories: state.categories
+  categories: state.categories,
+  isAuthenticated: state.isAuthenticated
 });
 
 export default connect(mapStateToProps)(PostDish);

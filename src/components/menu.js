@@ -2,6 +2,7 @@ import React from "react";
 import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
 import { API_BASE_URL } from "../config";
+import Links from "./links"
 import "./menu.css";
 
 export default class Menu extends React.Component {
@@ -17,7 +18,7 @@ export default class Menu extends React.Component {
       noGlutenDishes: [],
       meatDishes: [],
       veganDishes: [],
-      display: "buttons"
+      display: "landing"
     };
   }
 
@@ -144,9 +145,10 @@ export default class Menu extends React.Component {
   };
 
   render = () => {
-    if (this.state.display === "buttons") {
+    if (this.state.display === "landing") {
       return (
       <div>
+        <Links/>
         <div className="intro-image"> 
               <h1> MENU </h1>
         </div>
@@ -167,6 +169,7 @@ export default class Menu extends React.Component {
     } else if (this.state.display === "no meat") {
       return (
         <div>
+          <Links/>
         <div className="intro-image"> 
               <h1> Menu </h1>
         </div>
@@ -189,6 +192,7 @@ export default class Menu extends React.Component {
     } else if (this.state.display === "meat") {
       return (
         <div>
+          <Links/>
         <div className="intro-image"> 
               <h1> Menu </h1>
         </div>
@@ -211,6 +215,7 @@ export default class Menu extends React.Component {
     } else if (this.state.display === "no gluten") {
       return (
         <div>
+          <Links/>
         <div className="intro-image"> 
               <h1> Menu </h1>
         </div>
@@ -234,6 +239,7 @@ export default class Menu extends React.Component {
     else if (this.state.display === "no egg") {
       return (
         <div>
+          <Links/>
         <div className="intro-image"> 
               <h1> Menu </h1>
         </div>
@@ -258,6 +264,7 @@ export default class Menu extends React.Component {
     else if (this.state.display === "no dairy") {
       return (
         <div>
+          <Links/>
         <div className="intro-image"> 
               <h1> Menu </h1>
         </div>
@@ -282,6 +289,7 @@ export default class Menu extends React.Component {
     else if (this.state.display === "vegan") {
       return (
         <div>
+          <Links/>
         <div className="intro-image"> 
               <h1> Menu </h1>
         </div>

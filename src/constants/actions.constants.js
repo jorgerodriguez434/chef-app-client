@@ -1,6 +1,6 @@
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILED = "LOGIN_FAILED";
-export const REQUEST_LOGIN = "REQUEST_LOGIN";
+export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOG_OUT = "LOG_OUT"
 export const ADD_INGREDIENT = "ADD_INGREDIENT";
 export const ADD_CATEGORY = "ADD_CATEGORY";

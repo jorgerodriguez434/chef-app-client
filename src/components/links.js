@@ -9,7 +9,7 @@ export default class Links extends React.Component {
           <Link className="link " to="/login">
             Log in
           </Link>
-          <Link className="link " to="/home">
+          <Link className="link " to="/">
             Home
           </Link>
           <Link className="link" to="/dashboard">

@@ -1,7 +1,7 @@
 import * as constants from "../constants/actions.constants";
 
 export const requestLogin = () => ({
-  type: constants.LOGIN_SUCCESS,
+  type: constants.LOGIN_REQUEST,
 }); 
 
 export const setLoginSuccess = () => ({
