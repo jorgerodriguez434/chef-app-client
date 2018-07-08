@@ -3,9 +3,11 @@ import ButtonGroup from "./button-group";
 import Dishes from "./dishes";
 import { API_BASE_URL } from "../config";
 import Links from "./links"
+import {connect} from "react-redux";
 import "./menu.css";
+import LoginForm from "./login-form"
 
-export default class Menu extends React.Component {
+export class Menu extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -18,7 +20,7 @@ export default class Menu extends React.Component {
       noGlutenDishes: [],
       meatDishes: [],
       veganDishes: [],
-      display: "landing"
+      display:"landing"
     };
   }
 
@@ -29,10 +31,17 @@ export default class Menu extends React.Component {
         dishes => {
         //console.log("api get request:");
          //console.log(dishes);
+         if (this.props.state.isAuthenticated){
           this.setState({
             isLoaded: true,
-            menu: dishes
+            menu: dishes,
           });
+        }
+        else {
+          this.setState({
+            display: "login"
+          });
+        }
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -44,7 +53,7 @@ export default class Menu extends React.Component {
           });
         }
       ).then(() => this.foodFilter());
-  }
+} 
 
   foodFilter = () => {
     
@@ -310,5 +319,13 @@ export default class Menu extends React.Component {
       </div>
       );
     }//else if
+    else if(this.state.display === "login") return <LoginForm/>
   }; //render
 } //class
+
+
+export const mapStateToProps = state => ({
+  state
+});
+
+export default connect(mapStateToProps)(Menu);

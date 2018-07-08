@@ -1,8 +1,27 @@
 import React from "react";
 import Links from "./links";
+import {connect} from "react-redux";
+import LoginForm from "./login-form"
 
-export default class DashBoard extends React.Component {
+
+export class DashBoard extends React.Component {
+    constructor(){
+      super();
+      this.state = {
+        display: "landing"
+      }
+    }
+
+  componentDidMount = () => {
+    if (!this.props.state.isAuthenticated){
+      this.setState({
+          display: "login"
+      });
+    }
+} 
+
   render() {
+    if (this.state.display === "landing") {
     return (
       <div>
         <Links/>
@@ -11,5 +30,13 @@ export default class DashBoard extends React.Component {
         <h2> Profile </h2>
       </div>
     );
+  }//if
+  else if (this.state.display === "login") return <LoginForm/>
   }
 }
+
+export const mapStateToProps = state => ({
+  state
+});
+
+export default connect(mapStateToProps)(DashBoard);

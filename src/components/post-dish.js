@@ -7,7 +7,7 @@ import { API_BASE_URL } from "../config";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./post-dish.css"
-//import { Link } from "react-router-dom";
+import LoginForm from "./login-form"
 
 
 export class PostDish extends React.Component {
@@ -181,7 +181,7 @@ export class PostDish extends React.Component {
       //reset State
     }//if
     else if(this.state.display === "login"){
-      return <h1> Sign in please </h1>
+      return <LoginForm/>
     }
   };
 }
