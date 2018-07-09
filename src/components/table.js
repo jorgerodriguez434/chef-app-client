@@ -7,7 +7,6 @@ export default class Table extends React.Component {
   }
   handleReserve = () => {
     console.log(`table ${this.props.number} has been clicked!`);
-    //change color
     this.setState({
       reserved: true,
       classColor: "red",
@@ -16,7 +15,6 @@ export default class Table extends React.Component {
   };
   handleCancel = () => {
     console.log(`table ${this.props.number} has been clicked!`);
-    //change color
     this.setState({
       reserved: false,
       classColor: "white",
@@ -53,7 +51,7 @@ export default class Table extends React.Component {
             {this.state.buttonName}{" "}
           </button>
           <h5> How many guests will be accompanying you? </h5>
-          <input className="input my-text"/>
+          <input className="guest-input my-text"/>
         </div>
       );
     }//if

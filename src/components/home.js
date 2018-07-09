@@ -1,9 +1,72 @@
 import React from "react";
+import Links from "./links";
+import LoginForm from "./login-form"
+import PostDish from "./post-dish"
+import HomeContent from "./home-content"
+import { connect } from "react-redux";
+import "./home.css";
 
-const Home = () => (
-  <div>
-    <h2> This is Home! </h2>
-  </div>
-);
+export class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      display: "landing"
+    };
+  }
 
-export default Home;
+  getStarted = () => {
+    console.log("get started button clicked!");
+    this.setState({
+      display: "get started"
+    });
+  };
+  getStartedTwo = () => {
+    console.log("get started button clicked!");
+    this.setState({
+      display: "post dish"
+    });
+  };
+
+  componentDidMount = () => {
+      if (localStorage.getItem("isAuthenticated")){
+        this.setState({
+            display: "secured landing"
+        });
+      }
+  } 
+ 
+  setSecuredLanding = () => {
+      this.setState({
+          display: "secured landing"
+      });
+  }
+//onClick={this.getStarted}
+  render = () => {
+    console.log(this.props.state);
+    console.log(this.state);
+    if (this.state.display === "landing") {
+      return (
+        <HomeContent onClick={this.getStarted}/>
+      );
+    }
+    if (this.state.display === "get started") {
+      return <LoginForm />;
+    }
+     if (this.state.display === "secured landing"){
+      return(
+      <div>
+      <Links/>
+      <HomeContent onClick={this.getStartedTwo}/>
+      </div>)
+    }//if
+    if (this.state.display === "post dish") {
+      return <PostDish />;
+    }
+  };
+}
+
+export const mapStateToProps = state => ({
+  state
+});
+
+export default connect(mapStateToProps)(Home);

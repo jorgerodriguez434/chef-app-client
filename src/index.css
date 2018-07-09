@@ -1,15 +1,39 @@
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: 'Titillium Web', sans-serif;
-  background-color: black;
-  color: silver;
+  background-color:  #181818;
   margin: auto;
+  text-align: center;
+  color: silver
 }
-
+header{
+	  text-align: center;
+  	background-image: url('https://static1.squarespace.com/static/52e968b5e4b04d2aa2a3bba3/535817d6e4b0950857ff2550/53593e12e4b0be1e0c334568/1398357529278/10748270326_e94eeb2435_k.jpg?format=2500w');
+  	background-repeat: no-repeat;
+  	background-size: cover;
+    color: silver;
+    padding-bottom: 60px;
+    opacity: .9;
+    height: 200px;
+    border-top: 1px solid grey;
+    margin-bottom: 20px;
+    /*padding-top: 80px;*/
+}
+.spinner{
+    margin-left: 47.5%;
+    text-align: center;
+}
 label {
   display: block;
   margin: 6px;
+}
+
+a{
+	text-decoration: none;
 }
 
 input,
@@ -32,11 +56,9 @@ li {
   border: 2px solid black;
   margin-left: 30px;
   text-align: center;
-  background-color: white;
+  
   margin: auto;
   cursor: pointer;
-}
-.dish{
 }
 .red{
   background-color: red;
@@ -63,7 +85,8 @@ li {
 }
 .link-group{
   background-color: grey;
-  padding-bottom: 10px;
+  padding: 10px 0px 30px 0px
+  
 }
 .button {
   border-radius: 5px;
@@ -84,27 +107,216 @@ li {
  background-color: #A8A8A8;
 }
 .link{
-  padding-right: 20px;
+  padding: 5px;
+  color: white;
+
+}
+.link:hover{
+  background-color:  #A8A8A8;
 }
 .my-text{
  font-size: 20px;
  text-align: center;
 }
-.input{
+.guest-input{
   margin:auto;
   height: 40px;
   width: 50px;
   background-color: #f2f2f2;
   margin-bottom: 20px;
 }
+.input{
+  margin:auto;
+  height: 40px;
+  width: 200px;
+  background-color: #f2f2f2;
+  margin-bottom: 20px;
+}
+.scroll{
+ height: 40px;
+ margin-bottom: 20px;
+ 
+}
+.option{
+  color:red;
+}
+.checkbox{
+  margin: auto;
+}
+
+.border{
+  border: 2px solid yellow;
+}
+.margin-bottom{
+  margin-bottom: 20px;
+}
+
+.center{
+  text-align: center;
+}
+.classify-as-checkbox{
+  display: inline-block;
+  }
+.label-for-classify-as{
+  display: inline-block;
+  
+}
+.choose-file-button{
+  background-color: #f2f2f2;
+  color: black;
+  margin: auto;
+}
+.add-ingredients-container{
+  float: left;
+}
+.add-ingredient{
+  border: 3px solid gray;
+  padding: 5px 30px 10px;
+  margin-bottom: 9px;
+}
+.add-ingredient:hover {
+  background-color: #333333;
+ }
+ .form{
+   border: 2px solid grey;
+   padding-right: 20px;
+   padding-left: 20px;
+ }
+ .dish{
+   text-align: center;
+ }
+ .login-button{
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: grey;
+  font-size: 17px;
+  height: 50px;
+  width: 200px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  
+ }
+.black{
+  color: black;
+}
+
+.get-started-button:hover{
+  background-color: #A8A8A8;
+}
+.post-dish-buttons{
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-family: 'Titillium Web', sans-serif;
+  background-color:  grey;
+  font-size: 17px;
+  height: 50px;
+  width: 200px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+.post-dish-buttons:hover{
+  background-color: #A8A8A8;
+}
+.float-left{
+  float: left;
+}
+.float-right{
+  float: right;
+}
+.fifty-percent{
+  width: 50%;
+}
+.general-button{
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 17px;
+  color: white;
+  font-family: 'Titillium Web', sans-serif;
+  background-color: grey;
+  font-size: 17px;
+  height: 50px;
+  width: 200px;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  
+ }
+ .logout{
+  float: right;
+  padding: 10px 10px 10px 10px;
+  color: white;
+  text-align: center;
+  margin-right: 20px;
+  background-color: grey;
+  margin-bottom: 10px;
+  
+ }
+ .logout:hover{
+  background-color:  #A8A8A8;
+}
+
 /* Non-mobile */
 @media only screen and (min-width: 740px) {
   img {
     width: 400px;
     height: 300px;
     border: 3px solid grey;
-
   }
-
+  header{
+		height: 785px;
+		/*padding-top: 400px; */
+	}
+	header p{
+		font-size: 25px;
+	}
+	h1{
+		font-size: 50px;
+	}
+	.button{
+		width: 200px;
+  }
+  .login-button{
+    width: 200px;
+  }
+  .post-dish-buttons{
+    width: 200px;
+  }
+  .landing-image{
+    float: left;
+    width: 30%;
+    height: 200px;
+  }
+  .image-container{
+    width: 100%;
+    height: 400px;
+  }
+  .button{   
+    display: inline-block;
+    margin-right: 20px;
 
 }
+ 
+}
+@media only screen and (min-width: 492px) {
+  .link{
+    padding: 10px 20px;
+    color: white;
+    
+  }
+
+}
+
+/*
+ display: inline-block;
+    margin-right: 20px;
+*/

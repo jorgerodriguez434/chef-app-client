@@ -1,11 +1,15 @@
 import React from "react";
+import "./button-group.css"
 
 const ButtonGroup = (props) => (
-  <div>
-    <button className="button" onClick={props.foodFilter}> FILTER </button>
-    <button className="button" onClick={props.displayNoMeat}> NO MEAT </button>
-    <button className="button" onClick={props.displayMeat}> MEAT </button>
-    <button className="button" onClick={props.displayNoGluten}> GLUTEN FREE </button>
+  <div className="button-group">
+    <button className="button" onClick={props.displayNoMeat}> VEGETERIAN DISHES</button>
+    <button className="button" onClick={props.displayVegan}> VEGAN DISHES </button> 
+    <button className="button" onClick={props.displayNoGluten}> GLUTEN FREE DISHES</button>
+    {/*<button className="button" onClick={props.displayNoEgg}> EGG FREE DISHES</button> */}
+    <button className="button" onClick={props.displayNoDairy}> DAIRY FREE DISHES </button>
+    <button className="button" onClick={props.displayMeat}> MEAT DISHES </button>
+  
 </div>
 );
 
