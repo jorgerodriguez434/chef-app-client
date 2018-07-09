@@ -6,7 +6,9 @@ export const initialState = {
   categories: [],
   token: "none",
   isAuthenticated: false,
-  isPending: false
+  isPending: false,
+  data: "no data",
+  display: "landing"
   //error: { message: "", code: "" },
 };
 
@@ -67,6 +69,14 @@ export const myAppReducer = (state = initialState, action) => {
     case constants.SET_TOKEN:
       return Object.assign({}, state, {
         token: action.token
+      });
+      case constants.UPDATE:
+      return Object.assign({}, state, {
+        data: action.data
+      });
+      case constants.SET_DISPLAY:
+      return Object.assign({}, state, {
+        display: action.display
       });
     default:
       return state;

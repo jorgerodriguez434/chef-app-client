@@ -10,3 +10,6 @@ export const SET_INGREDIENT = "SET_INGREDIENT";
 export const CLEAR_INGREDIENTS = "CLEAR_INGREDIENT";
 export const CLEAR_CATEGORIES = "CLEAR_CATEGORIES";
 export const SET_TOKEN = "SET_TOKEN";
+export const UPDATE = "UPDATE";
+export const SET_DISPLAY = "SET_DISPLAY";
+

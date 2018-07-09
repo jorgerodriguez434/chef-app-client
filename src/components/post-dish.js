@@ -40,14 +40,10 @@ export class PostDish extends React.Component {
     this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.clearCategories());
     if (localStorage.getItem("isAuthenticated")){
-      this.setState({
-          display: "landing"
-      });
+      this.props.dispatch(actions.setDisplay("landing"));
     }
     else {
-      this.setState({
-        display: "login"
-    });
+      this.props.dispatch(actions.setDisplay("login"));
     }
   }
 
@@ -109,11 +105,11 @@ export class PostDish extends React.Component {
 
   render = () => {
      console.log(this.props);
-    if (this.state.display === "landing") {
+     console.log(this.state);
+    if (this.props.display === "landing") {
       return (
 
       <div>
-
           <Links/>
          <div className="intro-image-post-dish"> 
               <h1> POST A DISH </h1>
@@ -180,7 +176,7 @@ export class PostDish extends React.Component {
       );
       //reset State
     }//if
-    else if(this.state.display === "login"){
+    else if(this.props.display === "login"){
       return <LoginForm/>
     }
   };
@@ -189,7 +185,9 @@ export class PostDish extends React.Component {
 export const mapStateToProps = state => ({
   ingredients: state.ingredients,
   categories: state.categories,
-  isAuthenticated: state.isAuthenticated
+  isAuthenticated: state.isAuthenticated,
+  data: state.data,
+  display: state.display
 });
 
 export default connect(mapStateToProps)(PostDish);

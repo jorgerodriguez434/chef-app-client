@@ -54,3 +54,13 @@ export const setToken = token => ({
   token
 });
 
+export const update = data => ({
+  type: constants.UPDATE,
+  data
+});
+
+export const setDisplay = display => ({
+  type: constants.SET_DISPLAY,
+  display
+});
+

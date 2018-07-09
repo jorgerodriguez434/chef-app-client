@@ -2,7 +2,7 @@ import React from "react";
 import Links from "./links";
 import {connect} from "react-redux";
 import LoginForm from "./login-form"
-
+import * as actions from "../actions";
 
 export class DashBoard extends React.Component {
     constructor(){
@@ -13,15 +13,16 @@ export class DashBoard extends React.Component {
     }
 
   componentDidMount = () => {
-    if (!localStorage.getItem("isAuthenticated")){
-      this.setState({
-          display: "login"
-      });
+    if (localStorage.getItem("isAuthenticated")){
+      this.props.dispatch(actions.setDisplay("landing"));
+    }
+    else {
+      this.props.dispatch(actions.setDisplay("login"));
     }
 } 
 
   render() {
-    if (this.state.display === "landing") {
+    if (this.props.state.display === "landing") {
     return (
       <div>
         <Links/>
@@ -31,7 +32,7 @@ export class DashBoard extends React.Component {
       </div>
     );
   }//if
-  else if (this.state.display === "login") return <LoginForm/>
+  else if (this.props.state.display === "login") return <LoginForm/>
   }
 }
 
