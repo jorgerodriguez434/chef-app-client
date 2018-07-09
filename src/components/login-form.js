@@ -25,25 +25,25 @@ export class LoginForm extends React.Component {
       method: 'POST', 
       body: JSON.stringify(data), 
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       }
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
     .then(token => {
-      //localStorage.setItem
-      //get token back here
+  
       localStorage.setItem('token', token);
       console.log('Success:', token);
       this.props.dispatch(actions.setToken(token));
       if (token === undefined){
-        localStorage.setItem("isAuthenticated", false);
+        //localStorage.setItem("isAuthenticated", false);
+        this.props.dispatch(actions.setLoginFailed());
         return false;
         
       }
       else{
         this.props.dispatch(actions.setLoginSuccess());
         localStorage.setItem('isAuthenticated', true);
-        if (this.props.state.isAuthenticated){
+        if (localStorage.getItem("isAuthenticated")){
           this.setState({
             display: "dashboard"
           });
@@ -63,6 +63,7 @@ export class LoginForm extends React.Component {
       username,
       password,
     });
+    this.props.dispatch(actions.requestLogin());
     setTimeout(this.postRequest, 1000);
   }
 
@@ -100,6 +101,10 @@ export class LoginForm extends React.Component {
             <button className="login-button" type="submit">
               Login
             </button>
+            <h2>{this.props.state.isPending ? "Logging in..." : null}</h2>
+            <h3>
+              {this.props.state.error ? this.props.state.error.message : null}
+            </h3>
             <button
               className="general-button"
               type="button"

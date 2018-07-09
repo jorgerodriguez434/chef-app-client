@@ -26,7 +26,7 @@ export class Menu extends React.Component {
   }
 
   componentDidMount() {
-    fetch(API_BASE_URL)
+    fetch(API_BASE_URL, {headers:  {"Authentication": `bearer {localStorage.getItem("token")}`}})
       .then(res => res.json())
       .then(
         dishes => {
@@ -146,8 +146,8 @@ export class Menu extends React.Component {
   };
 
   render = () => {
-    console.log(this.props);
-    console.log(this.state);
+    //console.log(this.props);
+    //console.log(this.state);
     if (this.props.state.display === "landing") {
       return (
       <div>

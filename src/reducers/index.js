@@ -1,15 +1,13 @@
 import * as constants from "../constants/actions.constants";
 export const initialState = {
-  //isLoggedIn: false,
-  error: "none",
   ingredients: [],
   categories: [],
   token: "none",
+  data: "no data",
+  display: "landing",
   isAuthenticated: false,
   isPending: false,
-  data: "no data",
-  display: "landing"
-  //error: { message: "", code: "" },
+  error: { message: "", code: "" },
 };
 
 export const myAppReducer = (state = initialState, action) => {

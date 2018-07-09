@@ -21,8 +21,8 @@ export class Links extends React.Component {
     this.setState({
         name: "foo"
     });
-    //this.props.dispatch(actions.update('POST A DISH'));
     this.props.dispatch(actions.setDisplay("login"));
+    this.props.dispatch(actions.setLogOut());
   };
 
   wait = () => {

@@ -13,10 +13,7 @@ export class Dish extends React.Component {
     super(props);
     this.state = {
       display: "landing",
-      name: this.props.stateName, //need to pass these becasue it is for every individual dish
-      //and later change the state of name using Onchange
-      ingredients: this.props.stateIngredients, //I might not have to set this at all
-      categories: this.props.stateCategories,
+      name: this.props.stateName, 
       image: this.props.dishImage
     };
   }
@@ -38,6 +35,7 @@ export class Dish extends React.Component {
     this.setState({
       name: e.target.value
     });
+    
   };
 
   handleImageChange = e => {
@@ -117,8 +115,18 @@ export class Dish extends React.Component {
     });
   };
 
+  componentDidMount = () => {
+    /*this.setState({
+        name: this.props.stateName
+    }); 
+    this.props.dispatch(actions.update(this.props.stateName));
+    console.log(this.props.stateName);
+    console.log(this.state);
+    console.log("hi there"); */
+  }
+
   render = () => {
-    //console.log(this.props);
+    
     if (this.state.display === "landing") {
       return (
         <Entree
@@ -133,6 +141,7 @@ export class Dish extends React.Component {
       );
     } //if
     if (this.state.display === "set update") {
+      console.log(this.props)
       return (
         <li key={this.props.index} className="dish">
           <h2> {this.props.stateName} </h2>
@@ -232,7 +241,8 @@ export class Dish extends React.Component {
 
 export const mapStateToProps = state => ({
   ingredients: state.ingredients,
-  categories: state.categories
+  categories: state.categories,
+  data: state.data
 });
 
 export default connect(mapStateToProps)(Dish);

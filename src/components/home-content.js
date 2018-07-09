@@ -8,8 +8,6 @@ export class HomeContent extends React.Component {
     render = () => {
 
         return (
-
-
             <section>
             <Header onClick={this.props.onClick} />
             <div className="body-for-landing-page">
