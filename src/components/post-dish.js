@@ -75,7 +75,7 @@ export class PostDish extends React.Component {
     /*this.setState({
       display: "landing",
     });*/
-    this.props.dispatch(actions.setDisplay("landing"))
+    this.props.dispatch(actions.setDisplay("landing"));
     this.props.dispatch(actions.clearIngredients());
   };
 
