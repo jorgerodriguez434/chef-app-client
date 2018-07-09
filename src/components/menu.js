@@ -31,7 +31,7 @@ export class Menu extends React.Component {
         dishes => {
         //console.log("api get request:");
          //console.log(dishes);
-         if (this.props.state.isAuthenticated){
+         if (localStorage.getItem("isAuthenticated")){
           this.setState({
             isLoaded: true,
             menu: dishes,

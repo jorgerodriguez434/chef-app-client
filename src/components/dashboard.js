@@ -13,7 +13,7 @@ export class DashBoard extends React.Component {
     }
 
   componentDidMount = () => {
-    if (!this.props.state.isAuthenticated){
+    if (!localStorage.getItem("isAuthenticated")){
       this.setState({
           display: "login"
       });
@@ -25,7 +25,7 @@ export class DashBoard extends React.Component {
     return (
       <div>
         <Links/>
-        <h1> Component soon to come!  </h1>
+        <h1> Under Construction!  </h1>
         <p> This is the dashboard! </p>
         <h2> Profile </h2>
       </div>

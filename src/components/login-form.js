@@ -32,17 +32,17 @@ export class LoginForm extends React.Component {
     .then(token => {
       //localStorage.setItem
       //get token back here
+      localStorage.setItem('token', token);
       console.log('Success:', token);
       this.props.dispatch(actions.setToken(token));
       if (token === undefined){
-        return false
+        localStorage.setItem("isAuthenticated", false);
+        return false;
+        
       }
       else{
-        /*this.setState({
-          loggedIn: true,
-          display: "home"
-        }); */
         this.props.dispatch(actions.setLoginSuccess());
+        localStorage.setItem('isAuthenticated', true);
         if (this.props.state.isAuthenticated){
           this.setState({
             display: "dashboard"

@@ -39,7 +39,7 @@ export class PostDish extends React.Component {
   componentDidMount = () => {
     this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.clearCategories());
-    if (this.props.isAuthenticated){
+    if (localStorage.getItem("isAuthenticated")){
       this.setState({
           display: "landing"
       });

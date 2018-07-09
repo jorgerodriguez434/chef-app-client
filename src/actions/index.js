@@ -6,6 +6,7 @@ export const requestLogin = () => ({
 
 export const setLoginSuccess = () => ({
   type: constants.LOGIN_SUCCESS,
+
 });
 
 export const setLogOut = () => ({

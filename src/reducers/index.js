@@ -16,7 +16,7 @@ export const myAppReducer = (state = initialState, action) => {
   switch (action.type) {
     case constants.LOGIN_REQUEST:
       return Object.assign({}, state, {
-        isPending: false
+        isPending: true
       });
 
     case constants.LOGIN_SUCCESS:

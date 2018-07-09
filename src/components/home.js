@@ -28,7 +28,7 @@ export class Home extends React.Component {
   };
 
   componentDidMount = () => {
-      if (this.props.state.isAuthenticated){
+      if (localStorage.getItem("isAuthenticated")){
         this.setState({
             display: "secured landing"
         });
