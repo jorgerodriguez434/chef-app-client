@@ -5,7 +5,7 @@ export const initialState = {
   token: "none",
   data: "no data",
   display: "landing",
-  isAuthenticated: false,
+  isAuthenticated: localStorage.getItem("isAuthenticated"),
   isPending: false,
   error: { message: "", code: "" },
 };

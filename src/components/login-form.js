@@ -6,6 +6,7 @@ import * as config from "../config";
 import * as actions from "../actions";
 import "./login-form.css"
 import DashBoard from "./dashboard";
+import { RingLoader } from 'react-spinners';
 
 export class LoginForm extends React.Component {
   constructor() {
@@ -35,7 +36,6 @@ export class LoginForm extends React.Component {
       console.log('Success:', token);
       this.props.dispatch(actions.setToken(token));
       if (token === undefined){
-        //localStorage.setItem("isAuthenticated", false);
         this.props.dispatch(actions.setLoginFailed());
         return false;
         
@@ -64,7 +64,7 @@ export class LoginForm extends React.Component {
       password,
     });
     this.props.dispatch(actions.requestLogin());
-    setTimeout(this.postRequest, 1000);
+    setTimeout(this.postRequest, 3000);
   }
 
   register = () => {
@@ -101,7 +101,14 @@ export class LoginForm extends React.Component {
             <button className="login-button" type="submit">
               Login
             </button>
-            <h2>{this.props.state.isPending ? "Logging in..." : null}</h2>
+            {/*<h2>{this.props.state.isPending ? "Logging in..." : null}</h2> */}
+          <div className="spinner">
+            <RingLoader
+          color={'#123abc'} 
+          loading={this.props.state.isPending}
+          
+        />
+        </div>
             <h3>
               {this.props.state.error ? this.props.state.error.message : null}
             </h3>

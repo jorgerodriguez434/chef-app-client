@@ -23,6 +23,10 @@ header{
     margin-bottom: 20px;
     /*padding-top: 80px;*/
 }
+.spinner{
+    margin-left: 47.5%;
+    text-align: center;
+}
 label {
   display: block;
   margin: 6px;

@@ -28,6 +28,11 @@ export class Links extends React.Component {
   wait = () => {
     setTimeout(this.logout, 2000);
   } 
+
+  onClick = () => {
+      console.log("clicked!");
+      this.props.dispatch(actions.setDisplay("landing"));
+  }
   render() {
   
       return (
@@ -36,16 +41,16 @@ export class Links extends React.Component {
             <Link className="link " to="/">
               Home
             </Link>
-            <Link className="link" to="/dashboard">
+            <Link className="link" to="/dashboard" onClick={this.onClick}>
               Dashboard
             </Link>
-            <Link className="link" to="/menu">
+            <Link className="link" to="/menu" onClick={this.onClick}>
               Menu
             </Link>
-            <Link className="link" to="/seating">
+            <Link className="link" to="/seating" onClick={this.onClick}>
               Seating
             </Link>
-            <Link className="link" to="/post-dish">
+            <Link className="link" to="/post-dish" onClick={this.onClick}>
               Post Dish
             </Link>
             <button className="logout" onClick={this.wait}>

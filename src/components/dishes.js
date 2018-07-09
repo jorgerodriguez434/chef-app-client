@@ -60,4 +60,3 @@ export default class Dishes extends React.Component {
     }
   };
 }
-

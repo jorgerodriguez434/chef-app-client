@@ -29,9 +29,10 @@ export class PostDish extends React.Component {
     this.addCategory(e);
      this.setName();
      this.setImage();
-     this.setState({
+     /*this.setState({
       display: "Success!"
-    }); 
+    }); */
+    this.props.dispatch(actions.setDisplay("Success!"))
     setTimeout(this.postRequest, 1000); 
    
   };
@@ -40,12 +41,16 @@ export class PostDish extends React.Component {
     this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.clearCategories());
     if (localStorage.getItem("isAuthenticated")){
+      console.log("authenticated!");
       this.props.dispatch(actions.setDisplay("landing"));
     }
     else {
       this.props.dispatch(actions.setDisplay("login"));
+      /*this.setState({
+          display: "login"
+      });  */
     }
-  }
+  } 
 
   postRequest = () => {
     const data = {
@@ -58,7 +63,8 @@ export class PostDish extends React.Component {
       method: 'POST', 
       body: JSON.stringify(data), 
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authentication": `bearer {localStorage.getItem("token")}`
       }
     }).then(res => res.json())
     .catch(error => console.error('Error:', error))
@@ -66,9 +72,10 @@ export class PostDish extends React.Component {
   } 
 
   goBack = () => {
-    this.setState({
+    /*this.setState({
       display: "landing",
-    });
+    });*/
+    this.props.dispatch(actions.setDisplay("landing"))
     this.props.dispatch(actions.clearIngredients());
   };
 
@@ -105,7 +112,6 @@ export class PostDish extends React.Component {
 
   render = () => {
      console.log(this.props);
-     console.log(this.state);
     if (this.props.display === "landing") {
       return (
 
@@ -151,7 +157,7 @@ export class PostDish extends React.Component {
       </div>
       );
     } //if
-    else if (this.state.display === "Success!") {
+    if (this.props.display === "Success!") {
       return (
         <div>
            <section className="post-dish-outside-container">
@@ -176,7 +182,7 @@ export class PostDish extends React.Component {
       );
       //reset State
     }//if
-    else if(this.props.display === "login"){
+    if(this.props.display === "login"){
       return <LoginForm/>
     }
   };
@@ -186,7 +192,6 @@ export const mapStateToProps = state => ({
   ingredients: state.ingredients,
   categories: state.categories,
   isAuthenticated: state.isAuthenticated,
-  data: state.data,
   display: state.display
 });
 
