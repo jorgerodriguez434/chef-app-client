@@ -29,7 +29,7 @@ export class UpdateSingleIngredient extends React.Component {
 
             <li key={this.props.index} className="add-ingredient">
             {this.state.ingredient}
-            <button type="button" onClick={this.onClick}> remove123 </button>
+            <button type="button" onClick={this.onClick} className="remove-button border"> remove979 </button>
           </li>
 
 

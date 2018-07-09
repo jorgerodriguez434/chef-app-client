@@ -60,7 +60,7 @@ handleChange = e => {
           </div>
          <label htmlFor="ingredient">Ingredient</label>
             <input
-              className="input my-text"
+              className="input my-text width-90"
               type="text"
               placeholder="e.g. lettuce"
               ref={this._ingredient}
@@ -70,12 +70,12 @@ handleChange = e => {
             />
             
             <button
-              className="ingredient-button"
+              className="button"
               type="button"
               onClick={this.addIngredient}
             >
               {" "}
-              Add to list 456
+              ADD TO LIST
             </button>
             
 

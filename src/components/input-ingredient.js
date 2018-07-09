@@ -45,7 +45,7 @@ export class InputIngredient extends React.Component {
        
           <label htmlFor="ingredient">Ingredient</label>
             <input
-              className="input my-text"
+              className="input my-text width-90"
               type="text"
               placeholder="e.g. lettuce"
               ref={this._ingredient}
@@ -55,7 +55,7 @@ export class InputIngredient extends React.Component {
             />
             
             <button
-              className="post-dish-buttons"
+              className="button"
               type="button"
               onClick={this.addIngredient}
             >

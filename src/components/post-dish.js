@@ -126,7 +126,7 @@ export class PostDish extends React.Component {
           <form onSubmit={this.onSubmit}>
           <label htmlFor="dish-name">Name of dish</label>
           <input
-            className="input my-text"
+            className="input my-text width-90"
             type="text"
             placeholder="e.g. Burger Deluxe"
             ref={this._dishName}
@@ -141,13 +141,13 @@ export class PostDish extends React.Component {
           <ClassifyAs/>
           <label htmlFor="dish-img">Choose a url image for the dish!</label>
           <input
-            className="input my-text"
+            className="input my-text width-90"
             type="text"
             placeholder= "URL image"
             ref={this._dishImage}
            />
 
-          <button type="submit" className="post-dish-buttons">
+          <button type="submit" className="button">
             {" "}
             POST DISH!{" "}
           </button>

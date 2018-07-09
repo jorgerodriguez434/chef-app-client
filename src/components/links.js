@@ -26,13 +26,17 @@ export class Links extends React.Component {
   };
 
   wait = () => {
-    setTimeout(this.logout, 2000);
+    setTimeout(this.logout, 1000);
   } 
 
   onClick = () => {
       console.log("clicked!");
       this.props.dispatch(actions.setDisplay("landing"));
   }
+  /*dashboard = () => {
+    console.log("dashboard clicked!");
+    this.props.dispatch(actions.setDisplay("dashboard"));
+}*/
   render() {
   
       return (

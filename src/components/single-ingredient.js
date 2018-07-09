@@ -30,7 +30,7 @@ export class SingleIngredient extends React.Component {
 
             <li key={this.props.index} className="add-ingredient">
             {this.props.stateIngredient}
-            <button type="button" onClick={this.remove}> remove </button>
+            <button type="button" onClick={this.remove} className="remove-button"> remove </button>
           </li>
 
 

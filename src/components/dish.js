@@ -170,7 +170,7 @@ export class Dish extends React.Component {
               <ClassifyAs />
               <label htmlFor="dish-img">Update Image!</label>
           <input
-            className="input my-text"
+            className="input my-text width-90"
             type="text"
             placeholder= "URL image"
             value={this.state.image}
