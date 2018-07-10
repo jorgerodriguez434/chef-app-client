@@ -46,7 +46,11 @@ export class LoginForm extends React.Component {
         if (localStorage.getItem("isAuthenticated")){
           this.setState({
             display: "dashboard"
-          });
+          }); 
+          /*this.props.dispatch(actions.setDisplay("dashboard"));
+            this.setState({
+            display: ""
+          });  */
         }
       }
     });

@@ -16,7 +16,8 @@ export class PostDish extends React.Component {
     this.state = {
       display: "landing",
       name: "none",
-      image: "none"
+      image: "none",
+      message: ""
     };
     this._dishName = React.createRef();
     this._dishImage = React.createRef();
@@ -32,8 +33,24 @@ export class PostDish extends React.Component {
      /*this.setState({
       display: "Success!"
     }); */
-    this.props.dispatch(actions.setDisplay("Success!"))
+    if (this.props.ingredients.length === 0) {
+      const message = "You must have at least 1 ingredient!";
+      console.log(message);
+      this.setState({
+        message,
+        display: "error"
+      });
+
+      this.props.dispatch(actions.setDisplay("error"))
+      
+      return false;
+
+    } else {
+  
+    this.props.dispatch(actions.setDisplay("Success!"));
     setTimeout(this.postRequest, 1000); 
+    }
+    
    
   };
 
@@ -59,6 +76,7 @@ export class PostDish extends React.Component {
       categories: this.props.categories,
       image: this.state.image
     }
+
     fetch(API_BASE_URL, {
       method: 'POST', 
       body: JSON.stringify(data), 
@@ -135,9 +153,8 @@ export class PostDish extends React.Component {
 
           <fieldset className="margin-bottom">
             <legend> Add Ingredients </legend>
-            <InputIngredient/>
+            <InputIngredient _required={this.state.required}/>
           </fieldset>
-
           <ClassifyAs/>
           <label htmlFor="dish-img">Choose a url image for the dish!</label>
           <input
@@ -184,6 +201,86 @@ export class PostDish extends React.Component {
     }//if
     if(this.props.display === "login"){
       return <LoginForm/>
+    }
+
+
+
+
+
+    if (this.props.display === "error"){
+      return (
+
+
+
+
+
+
+
+
+
+
+<div>
+          <Links/>
+         <div className="intro-image-post-dish"> 
+              <h1> POST A DISH </h1>
+        </div>
+      <section className="post-dish-outside-container">
+        <div className="post-dish-container">
+          <p> Please add a dish by entering the following information </p>
+          <form onSubmit={this.onSubmit}>
+          <label htmlFor="dish-name">Name of dish</label>
+          <input
+            className="input my-text width-90"
+            type="text"
+            placeholder="e.g. Burger Deluxe"
+            ref={this._dishName}
+            required
+          />
+
+          <fieldset className="margin-bottom">
+            <legend> Add Ingredients </legend>
+            <InputIngredient/>
+            {<h2> {this.state.message} </h2>}
+          </fieldset>
+           
+          <ClassifyAs/>
+          <label htmlFor="dish-img">Choose a url image for the dish!</label>
+          <input
+            className="input my-text width-90"
+            type="text"
+            placeholder= "URL image"
+            ref={this._dishImage}
+           />
+
+          <button type="submit" className="button">
+            {" "}
+            POST DISH!{" "}
+          </button>
+        </form>
+        </div>
+      </section>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      );
     }
   };
 }
