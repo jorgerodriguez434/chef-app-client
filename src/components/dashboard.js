@@ -3,7 +3,7 @@ import Links from "./links";
 import {connect} from "react-redux";
 import LoginForm from "./login-form"
 import * as actions from "../actions";
-
+import "./dashboard.css"
 export class DashBoard extends React.Component {
     constructor(){
       super();
@@ -27,8 +27,16 @@ export class DashBoard extends React.Component {
       <div>
         <Links/>
         <h1> Welcome, {localStorage.getItem("username")}!  </h1>
-        <p> This is the dashboard! </p>
+      
+    <div className="dashboard-outside-container">
+      <div className="dashboard-container"> 
+        <p> This is your dashboard! </p>
         <h2> Profile </h2>
+        <div className="profile-pic">
+         <h3> No profile pic </h3>
+         </div>
+      </div>
+    </div>
       </div>
     );
   }//if
