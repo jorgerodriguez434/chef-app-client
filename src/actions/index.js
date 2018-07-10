@@ -2,6 +2,7 @@ import * as constants from "../constants/actions.constants";
 
 export const requestLogin = () => ({
   type: constants.LOGIN_REQUEST,
+
 }); 
 
 export const setLoginSuccess = () => ({
@@ -63,4 +64,10 @@ export const setDisplay = display => ({
   type: constants.SET_DISPLAY,
   display
 });
+
+export const setUsername = username => ({
+  type: constants.SET_USERNAME,
+  username
+});
+
 

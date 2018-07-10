@@ -57,6 +57,9 @@ export class Links extends React.Component {
             <Link className="link" to="/post-dish" onClick={this.onClick}>
               Post Dish
             </Link>
+          {/*<div className="username">
+            {localStorage.getItem("username")}
+      </div> */}
             <button className="logout" onClick={this.wait}>
               {" "}
               {this.state.name}

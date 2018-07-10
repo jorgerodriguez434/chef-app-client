@@ -283,6 +283,12 @@ li {
 .width-90{
   width: 90%;
 }
+.username{
+  float: right;
+  border: 2px solid black;
+  color: black;
+}
+
 
 
 /* Non-mobile */

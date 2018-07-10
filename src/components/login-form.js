@@ -68,6 +68,8 @@ export class LoginForm extends React.Component {
       password,
     });
     this.props.dispatch(actions.requestLogin());
+    this.props.dispatch(actions.setUsername(username));
+    localStorage.setItem('username', username);
     setTimeout(this.postRequest, 3000);
   }
 

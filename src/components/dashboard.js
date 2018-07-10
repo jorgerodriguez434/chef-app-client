@@ -26,7 +26,7 @@ export class DashBoard extends React.Component {
     return (
       <div>
         <Links/>
-        <h1> Under Construction!  </h1>
+        <h1> Welcome, {localStorage.getItem("username")}!  </h1>
         <p> This is the dashboard! </p>
         <h2> Profile </h2>
       </div>

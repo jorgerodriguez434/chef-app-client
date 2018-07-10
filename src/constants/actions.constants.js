@@ -12,4 +12,5 @@ export const CLEAR_CATEGORIES = "CLEAR_CATEGORIES";
 export const SET_TOKEN = "SET_TOKEN";
 export const UPDATE = "UPDATE";
 export const SET_DISPLAY = "SET_DISPLAY";
+export const SET_USERNAME = "SET_USERNAME";
 
