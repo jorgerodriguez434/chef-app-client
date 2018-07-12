@@ -5,7 +5,7 @@ import Links from "./links"
 const Seating = () => (
   <div>
     <Links/>
-    <h1> Component soon to come! </h1>
+    <h1> Coming soon! </h1>
     <p> Reserve your seats! Pick any table! </p>
     <Table className="red" number="1"/>
     <Table number="2"/>

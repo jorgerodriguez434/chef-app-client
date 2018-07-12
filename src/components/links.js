@@ -19,7 +19,7 @@ export class Links extends React.Component {
     localStorage.removeItem("token");
     localStorage.removeItem("isAuthenticated");
     this.setState({
-        name: "foo"
+        name: "Logged out!"
     });
     this.props.dispatch(actions.setDisplay("login"));
     this.props.dispatch(actions.setLogOut());
@@ -57,9 +57,9 @@ export class Links extends React.Component {
             <Link className="link" to="/post-dish" onClick={this.onClick}>
               Post Dish
             </Link>
-          {/*<div className="username">
+          <div className="username">
             {localStorage.getItem("username")}
-      </div> */}
+      </div> 
             <button className="logout" onClick={this.wait}>
               {" "}
               {this.state.name}

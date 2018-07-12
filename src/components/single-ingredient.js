@@ -22,10 +22,6 @@ export class SingleIngredient extends React.Component {
     }
 
     render = () => {
-        /*console.log("this.state")
-        console.log(this.state);
-        console.log("this.props")
-        console.log(this.props); */
         return (
 
             <li key={this.props.index} className="add-ingredient">

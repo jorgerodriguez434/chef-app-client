@@ -1,14 +1,13 @@
 import React from "react";
-//import SingleInputIngredient from "./single-input-ingredient";
-//import ClassifyAs from "./classify-as"
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import AddIngredients from "./add-ingredients";
+import "./input-ingredient.css"
 
 export class InputIngredient extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       value: ""
     }
@@ -37,21 +36,20 @@ export class InputIngredient extends React.Component {
   render() {
     //console.log(this.props);
       return (
-        <section >
+        <section className="input-ingredient-and-add-to-list-button-and-add-ingredients-container"> {/* here*/}
           <div className="add-ingredients-container">
             <AddIngredients/>
           </div>
         
-       
+       <div className="">
           <label htmlFor="ingredient">Ingredient</label>
             <input
-              className="input my-text width-90"
+              className="input my-text width-90 input-ingredient"
               type="text"
               placeholder="e.g. lettuce"
               ref={this._ingredient}
               value={this.state.value}
               onChange={this.handleChange.bind(this)}
-              
             />
             
             <button
@@ -62,7 +60,7 @@ export class InputIngredient extends React.Component {
               {" "}
               ADD TO LIST
             </button>
-        
+        </div>
         </section>
       );
 

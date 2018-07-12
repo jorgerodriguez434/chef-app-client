@@ -3,7 +3,7 @@ import InputIngredient from "./input-ingredient";
 
 import React from "react";
 
-const Burger = (props) => (
+const PostForm = (props) => (
      <div>
         <form onSubmit={this.props.onSubmit}>
           <label htmlFor="dish-name">Name of dish</label>
@@ -32,4 +32,4 @@ const Burger = (props) => (
   </div>
 );
 
-export default Burger;
+export default PostForm;

@@ -58,6 +58,8 @@ handleChange = e => {
             <div className="add-ingredients-container">
           <AddUpdateIngredients stateIngredients={this.props.ingredients}/>
           </div>
+
+      <div className="">
          <label htmlFor="ingredient">Ingredient</label>
             <input
               className="input my-text width-90"
@@ -77,7 +79,7 @@ handleChange = e => {
               {" "}
               ADD TO LIST
             </button>
-            
+      </div>
 
           
         </section>

@@ -1,0 +1,12 @@
+.add-ingredients-main-box{
+    float: left;
+    width: 50%;
+    text-align: center;
+  }
+  .input-ingredient{
+    text-align: center;
+  }
+  .input-ingredient-and-add-to-list-button-and-add-ingredients-container{
+    float: left;
+    padding: 50px 50px 50px 50px;
+  }

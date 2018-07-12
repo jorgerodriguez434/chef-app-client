@@ -5,7 +5,8 @@ import RegistrationForm from "./registration-form";
 import * as config from "../config";
 import * as actions from "../actions";
 import "./login-form.css"
-import DashBoard from "./dashboard";
+//import DashBoard from "./dashboard";
+import PostDish from  "./post-dish";
 import { RingLoader } from 'react-spinners';
 
 export class LoginForm extends React.Component {
@@ -45,7 +46,7 @@ export class LoginForm extends React.Component {
         localStorage.setItem('isAuthenticated', true);
         if (localStorage.getItem("isAuthenticated")){
           this.setState({
-            display: "dashboard"
+            display: "post dish"
           }); 
           /*this.props.dispatch(actions.setDisplay("dashboard"));
             this.setState({
@@ -88,6 +89,7 @@ export class LoginForm extends React.Component {
       <Fragment>
       <section className="custom-outside-container">
         <div className="custom-container">
+        <p> (To demo app, sign in with username: testing123, password: testing123) </p>
           <h1> Sign in </h1>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="username">Username</label>
@@ -131,8 +133,8 @@ export class LoginForm extends React.Component {
         </Fragment>
       );
     }//if
-    else if (this.state.display === "dashboard") {
-      return <DashBoard />;
+    else if (this.state.display === "post dish") {
+      return <PostDish />;
     } 
     else if(this.state.display === "register") {
       return (
