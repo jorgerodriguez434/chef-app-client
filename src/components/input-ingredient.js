@@ -22,7 +22,8 @@ export class InputIngredient extends React.Component {
   }
 
 
- addIngredient = () => {
+ addIngredient = e => {
+   e.preventDefault();
   console.log("add ingredient button clicked!");
   const ingredient = this._ingredient.current.value;
  // console.log(ingredient);
@@ -54,7 +55,7 @@ export class InputIngredient extends React.Component {
             
             <button
               className="button"
-              type="button"
+              type="submit"
               onClick={this.addIngredient}
             >
               {" "}

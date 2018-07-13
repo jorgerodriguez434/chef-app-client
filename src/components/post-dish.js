@@ -134,8 +134,16 @@ export class PostDish extends React.Component {
           <section className="post-dish-outside-container">
             <div className="post-dish-container">
               <p> Please add a dish by entering the following information </p>
+              <form>
+              <fieldset className="margin-bottom add-ingredients-main-box">
+                  <legend> Add Ingredients </legend>
+                  <InputIngredient _required={this.state.required} />
+                </fieldset>
+                </form>
               <form onSubmit={this.onSubmit}>
-                <label htmlFor="dish-name">Name of dish</label>
+              
+
+                 <label htmlFor="dish-name">Name of dish</label>
                 <input
                   className="input my-text width-90"
                   type="text"
@@ -144,10 +152,6 @@ export class PostDish extends React.Component {
                   required
                 />
 
-                <fieldset className="margin-bottom add-ingredients-main-box">
-                  <legend> Add Ingredients </legend>
-                  <InputIngredient _required={this.state.required} />
-                </fieldset>
                 <ClassifyAs />
                 <label htmlFor="dish-img">
                   Choose a url image for the dish!
