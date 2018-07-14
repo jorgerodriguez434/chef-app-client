@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-
+import "./links.css"
 
 export class Links extends React.Component {
 
@@ -40,26 +40,18 @@ export class Links extends React.Component {
   render() {
   
       return (
-        <div>
+        <div className="outside-link-group-container">
           <section className="link-group">
-            <Link className="link " to="/">
+            <Link className="link" to="/">
               Home
-            </Link>
-            <Link className="link" to="/dashboard" onClick={this.onClick}>
-              Dashboard
             </Link>
             <Link className="link" to="/menu" onClick={this.onClick}>
               Menu
             </Link>
-            <Link className="link" to="/seating" onClick={this.onClick}>
-              Seating
-            </Link>
             <Link className="link" to="/post-dish" onClick={this.onClick}>
               Post Dish
             </Link>
-          <div className="username">
-            {localStorage.getItem("username")}
-      </div> 
+       
             <button className="logout" onClick={this.wait}>
               {" "}
               {this.state.name}

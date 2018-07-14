@@ -1,7 +1,7 @@
 import React from "react";
 
 const ClassifyAs= props => (
-  <div>
+  <div required>
 
     <label htmlFor="contains-meat" className="label-for-classify-as"> Contains Meat </label>
     <input className="classify-as-checkbox" value="contains-meat" type="checkbox" name="contains-meat" />
@@ -22,6 +22,14 @@ const ClassifyAs= props => (
       value="contains-egg"
       type="checkbox"
       name="contains-egg"
+    />
+
+    <label htmlFor="none-apply" className="label-for-classify-as"> None apply</label>
+    <input
+      className="classify-as-checkbox"
+      value="none-apply"
+      type="checkbox"
+      name="none-apply"
     />
   </div>
 );

@@ -8,7 +8,8 @@ export const initialState = {
   isAuthenticated: localStorage.getItem("isAuthenticated"),
   isPending: false,
   error: { message: "", code: "" },
-  username: ""
+  username: "",
+  dishName: ""
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -80,6 +81,11 @@ export const myAppReducer = (state = initialState, action) => {
       case constants.SET_USERNAME:
       return Object.assign({}, state, {
         username: action.username
+      });
+
+      case constants.SET_DISHNAME:
+      return Object.assign({}, state, {
+        dishName: action.dishName
       });
     default:
       return state;

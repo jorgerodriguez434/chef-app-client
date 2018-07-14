@@ -1,0 +1,19 @@
+.outside-link-group-container{
+    background-color: white;
+    background-image: url("https://static1.squarespace.com/static/57d6b5dd2994cab476e95790/57d95d67b8a79bf906f67b41/57d9657df5e231a184e8140a/1473865090916/Stocksy_txp0f79248d7x2100_Large_461838.jpg?format=2500w");
+
+}
+.link{
+    padding: 100px;
+    color: black;
+    border: 2px solid red;
+  }
+  .link-group{
+    background-color:white;
+    padding: 10px 0px 30px 0px;
+    text-align: center;
+    margin: auto;
+    padding-left: 6%;
+    color: black;
+    opacity: .9;
+  }

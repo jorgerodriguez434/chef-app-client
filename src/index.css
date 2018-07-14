@@ -73,6 +73,9 @@ li {
 .white-color{
   color: white;
 }
+.black-font{
+  color: black;
+}
 .white-background{
   background-color: white;
 }
@@ -84,14 +87,7 @@ li {
   padding-bottom: 20px;
   text-align: center;
 }
-.link-group{
-  background-color: grey;
-  padding: 10px 0px 30px 0px;
-  text-align: center;
-  margin: auto;
-  padding-left: 10%;
-  
-}
+
 .button {
   border-radius: 5px;
   cursor: pointer;
@@ -110,11 +106,7 @@ li {
  .button:hover {
  background-color: #A8A8A8;
 }
-.link{
-  padding: 5px;
-  color: white;
 
-}
 .link:hover{
   background-color:  #A8A8A8;
 }
@@ -259,7 +251,7 @@ li {
  .logout{
   float: right;
   padding: 10px 10px 10px 10px;
-  color: white;
+  color: black;
   text-align: center;
   margin-right: 20px;
   background-color: grey;
@@ -336,8 +328,7 @@ li {
 @media only screen and (min-width: 492px) {
   .link{
     padding: 10px 20px;
-    color: white;
-    
+  
   }
 
 }

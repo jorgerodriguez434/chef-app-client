@@ -70,4 +70,8 @@ export const setUsername = username => ({
   username
 });
 
+export const setDishName = dishName => ({
+  type: constants.SET_USERNAME,
+  dishName
+});
 

@@ -13,4 +13,5 @@ export const SET_TOKEN = "SET_TOKEN";
 export const UPDATE = "UPDATE";
 export const SET_DISPLAY = "SET_DISPLAY";
 export const SET_USERNAME = "SET_USERNAME";
+export const SET_DISHNAME= "SET_DISHNAME";
 
