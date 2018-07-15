@@ -107,9 +107,7 @@ li {
  background-color: #A8A8A8;
 }
 
-.link:hover{
-  background-color:  #A8A8A8;
-}
+
 .my-text{
  font-size: 20px;
  text-align: center;
@@ -248,16 +246,7 @@ li {
   margin-top: 20px;
   
  }
- .logout{
-  float: right;
-  padding: 10px 10px 10px 10px;
-  color: black;
-  text-align: center;
-  margin-right: 20px;
-  background-color: grey;
-  margin-bottom: 10px;
-  
- }
+
  .logout:hover{
   background-color:  #A8A8A8;
 }
@@ -324,13 +313,6 @@ li {
 }
 
  
-}
-@media only screen and (min-width: 492px) {
-  .link{
-    padding: 10px 20px;
-  
-  }
-
 }
 
 /*
