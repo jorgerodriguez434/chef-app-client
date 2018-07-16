@@ -43,7 +43,7 @@ export class InputIngredient extends React.Component {
           </div>
         
        <div className="">
-          <label htmlFor="ingredient">Ingredient</label>
+          <label htmlFor="ingredient" className="ingredient-label">Ingredient</label>
             <input
               className="input my-text width-90 input-ingredient"
               type="text"

@@ -1,11 +1,12 @@
 import React from "react";
 import Links from "./links";
-import LoginForm from "./login-form"
+//import LoginForm from "./login-form"
 import PostDish from "./post-dish"
 import HomeContent from "./home-content"
 import { connect } from "react-redux";
 //import * as actions from "../actions";
 import "./home.css";
+import { Redirect } from 'react-router-dom'
 
 export class Home extends React.Component {
   constructor() {
@@ -52,7 +53,7 @@ export class Home extends React.Component {
       );
     }
     if (this.state.display === "get started") {
-      return <LoginForm />;
+      return <Redirect to='/login'/>
     }
      if (this.state.display === "secured landing"){
       return(

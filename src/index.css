@@ -23,10 +23,7 @@ header{
     margin-bottom: 20px;
     /*padding-top: 80px;*/
 }
-.spinner{
-    margin-left: 47.5%;
-    text-align: center;
-}
+
 label {
   display: block;
   margin: 6px;
@@ -160,18 +157,10 @@ li {
   color: black;
   margin: auto;
 }
-.add-ingredients-container{
-  float: left;
+.red-font{
+  color: red;
 }
-.add-ingredient{
-  border: 3px solid gray;
-  padding: 5px 30px 10px;
-  margin-bottom: 9px;
-  float: left;
-}
-.add-ingredient:hover {
-  background-color: #333333;
- }
+
  .form{
    border: 2px solid grey;
    padding-right: 20px;

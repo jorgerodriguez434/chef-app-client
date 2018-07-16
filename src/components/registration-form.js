@@ -1,6 +1,7 @@
 import React from "react";
 import * as config from "../config";
-import LoginForm from "./login-form"
+//import LoginForm from "./login-form"
+import { Redirect } from 'react-router-dom'
 
 export default class RegistrationForm extends React.Component {
 
@@ -11,12 +12,14 @@ export default class RegistrationForm extends React.Component {
       lastName: "",
       username: "",
       password: "",
-      display: "register"
+      display: "register",
+      message: null
     }
     this._nameRef = React.createRef();
     this._lastNameRef = React.createRef();
     this._usernameRef = React.createRef();
     this._passwordRef = React.createRef();
+    this._confirmPasseword = React.createRef();
   }
 
   postRequest = () => {
@@ -34,8 +37,23 @@ export default class RegistrationForm extends React.Component {
         'Content-Type': 'application/json'
       }
     }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response));
+    .catch(error => {
+      console.error('Error:', error);
+
+    })
+    .then(response => {
+      console.log('Success:', response);
+      if (response.reason === "ValidationError"){
+        this.setState({
+          message: "Username already taken!"
+      });
+      }
+      else {
+      this.setState({
+          display: "login"
+      });
+    }
+    });
   }
   onSubmit = e => {
     e.preventDefault();
@@ -43,14 +61,40 @@ export default class RegistrationForm extends React.Component {
     const password = this._passwordRef.current.value;
     const name = this._nameRef.current.value;
     const lastName = this._lastNameRef.current.value;
+    const confirmPassword = this._confirmPasseword.current.value;
 
     this.setState({
       username,
       password,
       name,
-      lastName
+      lastName,
+      confirmPassword
     });
+    //if 
+
+    if (password !== confirmPassword){
+        this.setState({
+          message: "Passwords must match!"
+        });
+        setTimeout( () => {
+          this.setState({
+            message: ""
+          })}, 1500); 
+        return false;
+    }
+    else if(password.length < 10){
+      this.setState({
+        message: "Password must be at least 10 characters long!"
+      });
+      setTimeout( () => {
+        this.setState({
+          message: ""
+        })}, 1500); 
+      return false;
+    }
+
     setTimeout(this.postRequest, 1000); 
+
   }
 
   goback = () => {
@@ -65,7 +109,7 @@ export default class RegistrationForm extends React.Component {
     return (
       <div>
         <h1> Register </h1>
-        <form onSubmit={this.testing}>
+        <form onSubmit={this.onSubmit}>
           <label htmlFor="name">Name</label>
           <input type="text" ref={this._nameRef} className="input my-text" required/>
           <label htmlFor="last-name">Last Name</label>
@@ -95,12 +139,12 @@ export default class RegistrationForm extends React.Component {
             type="password"
             ref={this._confirmPasseword}
             className="input my-text"
+            required
           />
-
+          <p>{this.state.message}</p>
           <button
             className="general-button"
-            type="button"
-            onClick={this.onSubmit}
+            type="submit"
           >
             REGISTER
           </button>
@@ -115,6 +159,6 @@ export default class RegistrationForm extends React.Component {
       </div>
     );
    }//if
-   else if (this.state.display === "login") return <LoginForm/>
+   else if (this.state.display === "login") return <Redirect to='/login'/>
   };
 }

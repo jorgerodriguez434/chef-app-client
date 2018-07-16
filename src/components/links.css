@@ -11,7 +11,7 @@
     background-color: white;
     text-align: center;
     margin: auto;
-    padding-top: 40px;
+    padding-top: 50px;
     padding-bottom: 40px;
     padding-left: 19%;
     color: black;
@@ -23,7 +23,7 @@
 }
 .logout-div{
     margin-right: 20px;
-   padding: 0px 0px 21px 0px;
+   padding: 0px 0px 15px 0px;
    margin-bottom: 10px;
     float: right;
     overflow:hidden;
@@ -58,7 +58,16 @@
       
       }
       .link-group{
-          padding-left: 8%;
+          padding-left: 14%;
+        }
+  }
+  @media only screen and (min-width: 940px) {
+    .link{
+        padding: 10px 20px;
+      
+      }
+      .link-group{
+          padding-left: 6%;
         }
   }
 

@@ -1,20 +1,27 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-//import Home from "./home";
-import RegistrationForm from "./registration-form";
+import { Redirect } from 'react-router-dom'
+//import RegistrationForm from "./registration-form";
 import * as config from "../config";
 import * as actions from "../actions";
 import "./login-form.css"
-//import DashBoard from "./dashboard";
-import PostDish from  "./post-dish";
+
+//import PostDish from  "./post-dish";
 import { RingLoader } from 'react-spinners';
 
 export class LoginForm extends React.Component {
   constructor() {
     super();
-    this.state = { loggedIn: false, display: "sign in", username:"", password:"" };
+    this.state = { loggedIn: false, display:"sign in", username:"", password:"" };
     this._usernameRef = React.createRef();
     this._passwordRef = React.createRef();
+  }
+
+  componentDidMount = () => {
+    //this.props.state.dispatch(actions.setDisplay("sign in"));
+    /*this.setState({
+      display: "landing"
+    }); */
   }
 
 
@@ -48,10 +55,7 @@ export class LoginForm extends React.Component {
           this.setState({
             display: "post dish"
           }); 
-          /*this.props.dispatch(actions.setDisplay("dashboard"));
-            this.setState({
-            display: ""
-          });  */
+          //this.props.dispatch(actions.setDisplay("post dish"));
         }
       }
     });
@@ -82,14 +86,14 @@ export class LoginForm extends React.Component {
   };
 
   render() {
-    //console.log(this.state);
+    console.log(this.state);
     console.log(this.props);
     if (this.state.display === "sign in") {
       return (
       <Fragment>
       <section className="custom-outside-container">
         <div className="custom-container">
-        <p> (To demo app, sign in with username: testing123, password: testing123) </p>
+        <p> (To demo app, sign in with username: testing1234, password: testing1234) </p>
           <h1> Sign in </h1>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="username">Username</label>
@@ -134,11 +138,11 @@ export class LoginForm extends React.Component {
       );
     }//if
     else if (this.state.display === "post dish") {
-      return <PostDish />;
+      return <Redirect to='/post-dish'/>
     } 
     else if(this.state.display === "register") {
       return (
-        <RegistrationForm/>
+        <Redirect to='/register'/>
       );
     }
   }

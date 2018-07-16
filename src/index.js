@@ -10,6 +10,7 @@ import Home from "./components/home";
 import Seating from "./components/seating";
 import PostDish from "./components/post-dish";
 import "./index.css";
+import RegistrationForm from "./components/registration-form";
 
 const App = () => (
   <BrowserRouter>
@@ -23,6 +24,7 @@ const App = () => (
           <Route exact path="/menu" component={Menu} />
           <Route exact path="/seating" component={Seating} />
           <Route exact path="/post-dish" component={PostDish} />
+          <Route exact path="/register" component={RegistrationForm} />
         </Switch>
       </div>
     </Provider>

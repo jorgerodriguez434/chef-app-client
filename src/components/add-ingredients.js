@@ -9,7 +9,7 @@ export class AddIngredients extends React.Component {
         {" "}
         {this.props.ingredients.map((ingredient, index) => {
           return (
-            <SingleIngredient key={index} index={index} stateIngredient={ingredient}/>
+            <SingleIngredient className="" key={index} index={index} stateIngredient={ingredient}/>
           );
         })}{" "}
       </ul>

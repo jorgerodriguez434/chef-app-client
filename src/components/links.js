@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./links.css"
 
+
 export class Links extends React.Component {
 
     constructor(){

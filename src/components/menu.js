@@ -5,8 +5,9 @@ import { API_BASE_URL } from "../config";
 import Links from "./links"
 import {connect} from "react-redux";
 import "./menu.css";
-import LoginForm from "./login-form"
+//import LoginForm from "./login-form"
 import * as actions from "../actions";
+import { Redirect } from 'react-router-dom'
 
 export class Menu extends React.Component {
   constructor() {
@@ -313,7 +314,7 @@ export class Menu extends React.Component {
       </div>
       );
     }//else if
-    else if(this.props.state.display === "login") return <LoginForm/>
+    else if(this.props.state.display === "login") return <Redirect to='/login'/>
   }; //render
 } //class
 

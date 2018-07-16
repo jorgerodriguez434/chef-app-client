@@ -7,8 +7,9 @@ import { API_BASE_URL } from "../config";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./post-dish.css";
-import LoginForm from "./login-form";
-//import InputDishName from "./input-dish-name"
+//import LoginForm from "./login-form";
+import { Redirect } from "react-router-dom";
+import { RingLoader } from "react-spinners";
 
 export class PostDish extends React.Component {
   constructor(props) {
@@ -17,16 +18,11 @@ export class PostDish extends React.Component {
       display: "landing",
       name: "none",
       image: "none",
-      message: ""
+      message: "",
+      isPending: false
     };
-     this._dishName = React.createRef();
+    this._dishName = React.createRef();
     this._dishImage = React.createRef();
-  }
-
-  setMessageToNull = () => {
-        this.setState({
-          message: null
-        })
   }
 
   onSubmit = e => {
@@ -36,31 +32,64 @@ export class PostDish extends React.Component {
     this.addCategory(e);
     this.setName();
     this.setImage();
-    if (this.props.ingredients.length === 0) {
+    this.setState({
+      isPending: true
+    });
 
-      this.setState({
-        message: "You must enter at least 1 ingredient!"
-      });
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1000);
+    });
 
-
-      //this.props.dispatch(actions.setDisplay("You must enter at least 1 ingredient!"));
-      //setTimeout(this.goBack, 1500);
-      alert("You must enter at least 1 ingredient!");
-      return false;
-    }
-
-    else if(this.props.categories.length === 0){
-      //this.props.dispatch(actions.setDisplay("no categories"));
-      //setTimeout(this.goBack2, 1500);
-      alert("You must check at least one checkbox.");
-      this.props.categories.length++;
-    }
-    
-    else {
-      this.props.dispatch(actions.setDisplay("Success!"));
-      setTimeout(this.postRequest, 1000);
-    }
-  };
+    promise.then(() => {
+      if (this.props.ingredients.length === 0) {
+        setTimeout(() => {
+          this.setState({
+            message: "You must enter at least 1 ingredient!",
+            isPending: false
+          });
+        }, 3000);
+        setTimeout(() => {
+          this.setState({
+            message: null
+          });
+        }, 5000);
+        return false;
+      } else if (this.props.categories.length === 0) {
+        this.setState({
+          message: "You must check at least 1 checkbox!"
+        });
+        setTimeout(() => {
+          this.setState({
+            message: null
+          });
+        }, 1500);
+        return false;
+      } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
+        setTimeout(() => {
+          this.setState({
+            message: "URL image must be a valid URL!",
+            isPending: false
+          });
+        }, 3000);
+        setTimeout(() => {
+          this.setState({
+            message: null
+          });
+        }, 5000);
+        return false;
+      } else {
+        setTimeout(() => {
+          this.props.dispatch(actions.setDisplay("Success!"));
+          this.setState({
+            isPending: false
+          });
+        }, 2000);
+        setTimeout(this.postRequest, 3000);
+      }
+    });
+  }; //onSubmit
 
   componentDidMount = () => {
     this.props.dispatch(actions.clearIngredients());
@@ -87,7 +116,9 @@ export class PostDish extends React.Component {
       headers: {
         "Content-Type": "application/json",
         Authentication: `bearer {localStorage.getItem("token")}`
-      }
+      },
+      type: "HEAD",
+      url: this.state.image
     })
       .then(res => res.json())
       .catch(error => console.error("Error:", error))
@@ -97,19 +128,21 @@ export class PostDish extends React.Component {
   goBack = () => {
     this.props.dispatch(actions.setDisplay("landing"));
     this.props.dispatch(actions.clearIngredients());
+    this.props.dispatch(actions.clearCategories());
+    this.setState({
+      image: "none"
+    });
   };
-
 
   setName = () => {
     const name = this._dishName.current.value;
     this.setState({
       name
-    }); 
+    });
   };
 
   setImage = () => {
     const image = this._dishImage.current.value;
-    console.log(image);
     this.setState({
       image
     });
@@ -124,11 +157,15 @@ export class PostDish extends React.Component {
       if (checkbox.checked) {
         this.props.dispatch(actions.addCategory(checkbox.value));
       }
+
       return checkbox.value;
     });
   };
 
   render = () => {
+    console.log("image:");
+    console.log(this.state.image);
+    console.log(this.state);
     console.log(this.props);
     if (this.props.display === "landing") {
       return (
@@ -140,40 +177,46 @@ export class PostDish extends React.Component {
           <section className="post-dish-outside-container">
             <div className="post-dish-container">
               <p> Please add a dish by entering the following information </p>
+
               <form>
-              <fieldset className="margin-bottom add-ingredients-main-box">
+                <fieldset className="margin-bottom add-ingredients-main-box">
                   <legend> Add Ingredients </legend>
                   <InputIngredient _required={this.state.required} />
                 </fieldset>
-                </form>
+              </form>
               <form onSubmit={this.onSubmit}>
-              
-              <fieldset className="">
-              <legend> The dish </legend>
-                 <label htmlFor="dish-name">Name of dish</label>
-                <input
-                  className="input my-text width-90"
-                  type="text"
-                  placeholder="e.g. Burger Deluxe"
-                  ref={this._dishName}
-                  required
-      /> 
-                <ClassifyAs />
-                <label htmlFor="dish-img">
-                  Choose a url image for the dish!
-                </label>
-                <input
-                  className="input my-text width-90"
-                  type="text"
-                  placeholder="URL image"
-                  ref={this._dishImage}
-                  required
-                />
-
-                <button type="submit" className="button">
-                  {" "}
-                  POST DISH!{" "}
-                </button>
+                <fieldset className="">
+                  <legend> The dish </legend>
+                  <label htmlFor="dish-name">Name of dish</label>
+                  <input
+                    className="input my-text width-90"
+                    type="text"
+                    placeholder="e.g. Burger Deluxe"
+                    ref={this._dishName}
+                    required
+                  />
+                  <ClassifyAs />
+                  <label htmlFor="dish-img">
+                    Choose a url image for the dish!
+                  </label>
+                  <input
+                    className="input my-text width-90"
+                    type="text"
+                    placeholder="URL image"
+                    ref={this._dishImage}
+                    required
+                  />
+                  <p className="red-font"> {this.state.message}</p>
+                  <div className="spinner">
+                    <RingLoader
+                      color={"#123abc"}
+                      loading={this.state.isPending}
+                    />
+                  </div>
+                  <button type="submit" className="button">
+                    {" "}
+                    POST DISH!{" "}
+                  </button>
                 </fieldset>
               </form>
             </div>
@@ -203,114 +246,9 @@ export class PostDish extends React.Component {
       //reset State
     } //if
     if (this.props.display === "login") {
-      return <LoginForm />;
+      this.props.dispatch(actions.setDisplay("login"));
+      return <Redirect to="/login" />;
     }
-
-    if (this.props.display === "You must enter at least 1 ingredient!") {
-      return (
-        <div>
-        <Links />
-        <div className="intro-image-post-dish">
-          <h1> POST A DISH </h1>
-        </div>
-        <section className="post-dish-outside-container">
-          <div className="post-dish-container">
-            <p> Please add a dish by entering the following information </p>
-            <form>
-            <fieldset className="margin-bottom add-ingredients-main-box">
-                <legend> Add Ingredients </legend>
-                <InputIngredient _required={this.state.required} />
-                {<h2> {this.state.message} </h2>}
-              </fieldset>
-              </form>
-            <form onSubmit={this.onSubmit}>
-            
-            <fieldset className="">
-            <legend> The dish </legend>
-               <label htmlFor="dish-name">Name of dish</label>
-              <input
-                className="input my-text width-90"
-                type="text"
-                placeholder="e.g. Burger Deluxe"
-                ref={this._dishName}
-                required
-    /> 
-              <ClassifyAs />
-              <label htmlFor="dish-img">
-                Choose a url image for the dish!
-              </label>
-              <input
-                className="input my-text width-90"
-                type="text"
-                placeholder="URL image"
-                ref={this._dishImage}
-                required
-              />
-
-              <button type="submit" className="button">
-                {" "}
-                POST DISH!{" "}
-              </button>
-              </fieldset>
-            </form>
-          </div>
-        </section>
-      </div>
-      );
-    }//if
-    if (this.props.display === "no categories") {
-      return (
-        <div>
-        <Links />
-        <div className="intro-image-post-dish">
-          <h1> POST A DISH </h1>
-        </div>
-        <section className="post-dish-outside-container">
-          <div className="post-dish-container">
-            <p> Please add a dish by entering the following information </p>
-            <form>
-            <fieldset className="margin-bottom add-ingredients-main-box">
-                <legend> Add Ingredients </legend>
-                <InputIngredient _required={this.state.required} />
-               
-              </fieldset>
-              </form>
-            <form onSubmit={this.onSubmit}>
-            
-            <fieldset className="">
-            <legend> The dish </legend>
-               <label htmlFor="dish-name">Name of dish</label>
-              <input
-                className="input my-text width-90"
-                type="text"
-                placeholder="e.g. Burger Deluxe"
-                ref={this._dishName}
-                required
-    /> 
-              <ClassifyAs />
-              <h2> Please check at least one! </h2>
-              <label htmlFor="dish-img">
-                Choose a url image for the dish!
-              </label>
-              <input
-                className="input my-text width-90"
-                type="text"
-                placeholder="URL image"
-                ref={this._dishImage}
-                required
-              />
-
-              <button type="submit" className="button">
-                {" "}
-                POST DISH!{" "}
-              </button>
-              </fieldset>
-            </form>
-          </div>
-        </section>
-      </div>
-      );
-    }//if
   };
 }
 
@@ -318,9 +256,8 @@ export const mapStateToProps = state => ({
   ingredients: state.ingredients,
   categories: state.categories,
   isAuthenticated: state.isAuthenticated,
-  display: state.display
+  display: state.display,
+  isPending: state.isPending
 });
 
 export default connect(mapStateToProps)(PostDish);
-
-

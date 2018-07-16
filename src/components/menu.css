@@ -17,6 +17,9 @@
   height: 100%;
   background-color: #2c2c32;
   margin: auto;
+  text-align: center;
+ 
+ 
 }
 .button-group-container{
   background-color: black;
@@ -25,6 +28,9 @@
   width: 100%;
   padding-top: 80px;
   padding-bottom: 80px;
+  text-align: center;
+  padding: 30px 30px 30px 30px;
+  margin: auto;
   }
 
   @media only screen and (min-width: 740px) {
@@ -34,10 +40,3 @@
    
   }
 
-  @media only screen and (min-width: 492px) {
-    .link{
-     
-    
-    }
-  
-  }

@@ -6,7 +6,7 @@ import ClassifyAs from "./classify-as";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Entree from "./entree";
-
+import "./dish.css"
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -129,7 +129,7 @@ export class Dish extends React.Component {
     
     if (this.state.display === "landing") {
       return (
-        <Entree
+        <Entree className="dish"
           key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
           index={this.props.index}
           name={this.props.stateName}
