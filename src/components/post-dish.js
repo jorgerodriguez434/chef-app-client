@@ -25,6 +25,14 @@ export class PostDish extends React.Component {
     this._dishImage = React.createRef();
   }
 
+  setMessageToNull = () => {
+    setTimeout(() => {
+      this.setState({
+        message: null
+      });
+    }, 1500);
+  };
+
   onSubmit = e => {
     console.log("clicked");
     e.preventDefault();
@@ -42,51 +50,56 @@ export class PostDish extends React.Component {
       }, 1000);
     });
 
+    const anotherPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1500);
+    });
+
     promise.then(() => {
       if (this.props.ingredients.length === 0) {
-        setTimeout(() => {
-          this.setState({
-            message: "You must enter at least 1 ingredient!",
-            isPending: false
-          });
-        }, 3000);
-        setTimeout(() => {
-          this.setState({
-            message: null
-          });
-        }, 5000);
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            console.log(this.props.ingredients.length);
+            this.setState({
+              message: "You must enter at least 1 ingredient!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
         return false;
       } else if (this.props.categories.length === 0) {
-        this.setState({
-          message: "You must check at least 1 checkbox!"
-        });
-        setTimeout(() => {
-          this.setState({
-            message: null
-          });
-        }, 1500);
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "You must check at least one checkbox!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
         return false;
       } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
-        setTimeout(() => {
-          this.setState({
-            message: "URL image must be a valid URL!",
-            isPending: false
-          });
-        }, 3000);
-        setTimeout(() => {
-          this.setState({
-            message: null
-          });
-        }, 5000);
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "You must enter a valid image URL!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
         return false;
       } else {
-        setTimeout(() => {
-          this.props.dispatch(actions.setDisplay("Success!"));
-          this.setState({
-            isPending: false
-          });
-        }, 2000);
-        setTimeout(this.postRequest, 3000);
+        anotherPromise
+          .then(() => {
+            this.props.dispatch(actions.setDisplay("Success!"));
+            this.setState({
+              isPending: false
+            });
+          })
+          .then(this.postRequest);
       }
     });
   }; //onSubmit
@@ -167,6 +180,7 @@ export class PostDish extends React.Component {
     console.log(this.state.image);
     console.log(this.state);
     console.log(this.props);
+    console.log(this.props.ingredients.length);
     if (this.props.display === "landing") {
       return (
         <div>
