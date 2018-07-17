@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import Entree from "./entree";
 import "./dish.css"
+import { RingLoader } from "react-spinners";
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -14,7 +15,9 @@ export class Dish extends React.Component {
     this.state = {
       display: "landing",
       name: this.props.stateName, 
-      image: this.props.dishImage
+      image: this.props.dishImage,
+      isPending: false,
+      message: null
     };
   }
 
@@ -48,7 +51,69 @@ export class Dish extends React.Component {
     e.preventDefault();
     console.log("submitted!");
     this.addCategory(e);
-    setTimeout(this.putRequest, 1000);
+    this.setState({
+        isPending: true
+    });
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1000);
+    });
+
+    const anotherPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1500);
+    });
+
+    promise.then(() => {
+      if (this.props.ingredients.length === 0) {
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            console.log(this.props.ingredients.length);
+            this.setState({
+              message: "You must enter at least 1 ingredient!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
+        return false;
+      } else if (this.props.categories.length === 0) {
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "You must check at least one checkbox!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
+        return false;
+      } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "You must enter a valid image URL!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
+        return false;
+      } else {
+        anotherPromise
+          .then(() => {
+            //this.props.dispatch(actions.setDisplay("Success!"));
+            this.setState({
+              isPending: false
+            });
+          })
+          .then(this.putRequest);
+      }
+    });
+
+    //setTimeout(this.putRequest, 1000);
   };
 
   deleteDish = () => {
@@ -147,6 +212,18 @@ export class Dish extends React.Component {
           <h2> {this.props.stateName} </h2>
           <img src={this.props.dishImage} alt={this.props.stateName} />
           <Ingredients ingredients={this.props.stateIngredients} />
+          <form>
+          <fieldset className="margin-bottom">
+                <legend> Update Ingredients </legend>
+                <UpdateInputIngredient
+                  stateIngredients={this.props.stateIngredients}
+                  stateCategories={this.props.stateCategories}
+                />
+                {/* need to do this to pass the ingredients for every dish
+      */}
+              </fieldset>
+
+            </form>
           <div className="form">
             <form onSubmit={this.onSubmit}>
               <label htmlFor="dish-name">Update Name of Dish</label>
@@ -157,16 +234,7 @@ export class Dish extends React.Component {
                 onChange={this.handleNameChange.bind(this)}
               />
 
-              <fieldset className="margin-bottom">
-                <legend> Update Ingredients </legend>
-                <UpdateInputIngredient
-                  stateIngredients={this.props.stateIngredients}
-                  stateCategories={this.props.stateCategories}
-                />
-                {/* need to do this to pass the ingredients for every dish
-      */}
-              </fieldset>
-
+             
               <ClassifyAs />
               <label htmlFor="dish-img">Update Image!</label>
           <input
@@ -182,6 +250,13 @@ export class Dish extends React.Component {
                 UPDATE DISH!{" "}
               </button>
             </form>
+            <p className="red-font"> {this.state.message}</p>
+            <div className="spinner">
+                    <RingLoader
+                      color={"#123abc"}
+                      loading={this.state.isPending}
+                    />
+                  </div>
             <button type="button" className="button" onClick={this.goBack}>
               {" "}
               GO BACK{" "}
@@ -193,13 +268,13 @@ export class Dish extends React.Component {
     if (this.state.display === "dish updated") {
       return (
         <div>
-          <p> This dish has been updated! </p>
-          <Entree
-          key={this.props.index /*this is the change I needed, use this.props.ingredients, etc*/}
+          <p> Success! </p>
+          <Entree className="dish"
+          key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
           index={this.props.index}
-          name={this.state.name}
+          name={this.props.stateName}
           image={this.props.dishImage}
-          ingredients={this.props.ingredients}
+          ingredients={this.props.stateIngredients}
           setUpdate={this.setUpdate}
           setDelete={this.setDelete}
         />

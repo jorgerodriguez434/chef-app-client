@@ -24,7 +24,7 @@
    }
   
   
-  @media only screen and (min-width: 805px) {
+  @media only screen and (min-width: 900px) {
     img {
       width: 400px;
       height: 300px;
@@ -34,7 +34,7 @@
     .add-ingredients-main-box{
       float: left;
       width: 50%;
-      padding-bottom: 143px;
+      padding-bottom: 180px;
     }
     .input-ingredient-and-add-to-list-button-and-add-ingredients-container{
       float: left;

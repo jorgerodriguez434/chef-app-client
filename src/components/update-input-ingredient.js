@@ -29,8 +29,9 @@ export class UpdateInputIngredient extends React.Component {
       }); 
   } 
 
- addIngredient = () => {
-  
+ addIngredient = e => {
+   
+  e.preventDefault();
   console.log("clicked 126");
   const ingredient = this._ingredient.current.value;
   this.props.dispatch(actions.addIngredient(ingredient));
@@ -73,7 +74,7 @@ handleChange = e => {
             
             <button
               className="button"
-              type="button"
+              type="submit"
               onClick={this.addIngredient}
             >
               {" "}
