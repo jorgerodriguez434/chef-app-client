@@ -6,7 +6,7 @@ import Links from "./links"
 import {connect} from "react-redux";
 import "./menu.css";
 //import LoginForm from "./login-form"
-import * as actions from "../actions";
+//import * as actions from "../actions";
 import { Redirect } from 'react-router-dom'
 
 export class Menu extends React.Component {
@@ -38,10 +38,13 @@ export class Menu extends React.Component {
             isLoaded: true,
             menu: dishes,
           });
-          this.props.dispatch(actions.setDisplay("landing"));
+          //this.props.dispatch(actions.setDisplay("landing"));
         }
-        else {
-          this.props.dispatch(actions.setDisplay("login"));
+       else {
+          //this.props.dispatch(actions.setDisplay("login"));
+          this.setState({
+            display: "login"
+          });
         }
         },
         // Note: it's important to handle errors here
@@ -107,41 +110,55 @@ export class Menu extends React.Component {
 
   displayNoMeat = () => {
    
-    this.props.dispatch(actions.setDisplay("no meat"));
+    //this.props.dispatch(actions.setDisplay("no meat"));
+    this.setState({
+      display: "no meat"
+    });
     console.log("no meat:");
     console.log(this.state.noMeatDishes);
   };
   displayMeat = () => {
     //this.componentDidMount();
-    this.props.dispatch(actions.setDisplay("meat"));
+   // this.props.dispatch(actions.setDisplay("meat"));
+   this.setState({
+    display: "meat"
+  });
     console.log("meat:");
     console.log(this.state.meatDishes);
   };
   displayNoGluten = () => {
-    this.props.dispatch(actions.setDisplay("no gluten"));
+    //this.props.dispatch(actions.setDisplay("no gluten"));
+    this.setState({
+      display: "no gluten"
+    });
     console.log("no gluten:");
     console.log(this.state.noGlutenDishes);
   };
 
   displayNoEgg = () => {
-  
-    this.props.dispatch(actions.setDisplay("no egg"));
+    //this.props.dispatch(actions.setDisplay("no egg"));
+    this.setState({
+      display: "no egg"
+    });
     console.log("no egg:");
     console.log(this.state.noEggDishes);
   };
 
   displayNoDairy = () => {
 
-    //this.componentDidMount();
-    this.props.dispatch(actions.setDisplay("no dairy"));
+    //this.props.dispatch(actions.setDisplay("no dairy"));
+    this.setState({
+      display: "no dairy"
+    });
     console.log("no dairy:");
     console.log(this.state.noDairyDishes);
   };
 
   displayVegan = () => {
-  
-    //this.componentDidMount();
-    this.props.dispatch(actions.setDisplay("vegan"));
+   // this.props.dispatch(actions.setDisplay("vegan"));
+   this.setState({
+    display: "vegan"
+  });
     console.log("vegan:");
     console.log(this.state.veganDishes);
   };
@@ -149,7 +166,7 @@ export class Menu extends React.Component {
   render = () => {
     //console.log(this.props);
     //console.log(this.state);
-    if (this.props.state.display === "landing") {
+    if (this.state.display === "landing") {
       return (
       <div>
         <Links/>
@@ -170,7 +187,7 @@ export class Menu extends React.Component {
         </section>
       </div>
       );
-    } else if (this.props.state.display === "no meat") {
+    } else if (this.state.display=== "no meat") {
       return (
         <div>
           <Links/>
@@ -193,7 +210,7 @@ export class Menu extends React.Component {
         </section>
         </div>
       );
-    } else if (this.props.state.display === "meat") {
+    } else if (this.state.display === "meat") {
       return (
         <div>
           <Links/>
@@ -216,7 +233,7 @@ export class Menu extends React.Component {
         </section>
         </div>
       );
-    } else if (this.props.state.display === "no gluten") {
+    } else if (this.state.display === "no gluten") {
       return (
         <div>
           <Links/>
@@ -240,7 +257,7 @@ export class Menu extends React.Component {
         </div>
       );
     } //else if
-    else if (this.props.state.display === "no egg") {
+    else if (this.state.display === "no egg") {
       return (
         <div>
           <Links/>
@@ -265,7 +282,7 @@ export class Menu extends React.Component {
         </div>
       );
     }//else if
-    else if (this.props.state.display === "no dairy") {
+    else if (this.state.display === "no dairy") {
       return (
         <div>
           <Links/>
@@ -290,7 +307,7 @@ export class Menu extends React.Component {
         </div>
       );
     }//else if
-    else if (this.props.state.display === "vegan") {
+    else if (this.state.display === "vegan") {
       return (
         <div>
           <Links/>
@@ -314,7 +331,7 @@ export class Menu extends React.Component {
       </div>
       );
     }//else if
-    else if(this.props.state.display === "login") return <Redirect to='/login'/>
+    else if(this.state.display === "login") return <Redirect to='/login'/>
   }; //render
 } //class
 

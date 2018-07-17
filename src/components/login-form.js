@@ -1,27 +1,25 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom'
-//import RegistrationForm from "./registration-form";
 import * as config from "../config";
 import * as actions from "../actions";
 import "./login-form.css"
-
-//import PostDish from  "./post-dish";
 import { RingLoader } from 'react-spinners';
 
 export class LoginForm extends React.Component {
   constructor() {
     super();
-    this.state = { loggedIn: false, display:"sign in", username:"", password:"" };
+    this.state = { display: "login", username:"", password:"" };
     this._usernameRef = React.createRef();
     this._passwordRef = React.createRef();
   }
 
   componentDidMount = () => {
-    //this.props.state.dispatch(actions.setDisplay("sign in"));
+    //this.props.state.dispatch(actions.setDisplay("login"));
     /*this.setState({
       display: "landing"
     }); */
+    console.log("login form mounted");
   }
 
 
@@ -55,12 +53,18 @@ export class LoginForm extends React.Component {
           this.setState({
             display: "post dish"
           }); 
-          //this.props.dispatch(actions.setDisplay("post dish"));
+          this.props.dispatch(actions.setDisplay("landing"));
         }
       }
     });
   }
-
+/*
+  this.setState({
+      display: "get started"
+    }); 
+    //this.props.dispatch(actions.setDisplay("get started"));
+    this.props.dispatch(actions.setDisplay("login"));
+*/
 
   onSubmit = e => {
     console.log("login button clicked!")
@@ -83,12 +87,13 @@ export class LoginForm extends React.Component {
     this.setState({
       display: "register"
     });
+    //this.props.dispatch(actions.setDisplay("register"));
   };
 
   render() {
     console.log(this.state);
     console.log(this.props);
-    if (this.state.display === "sign in") {
+    if (this.state.display === "login") {
       return (
       <Fragment>
       <section className="custom-outside-container">

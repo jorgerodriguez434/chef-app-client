@@ -4,7 +4,7 @@ export const initialState = {
   categories: [],
   token: "none",
   data: "no data",
-  display: "landing",
+  displayRedux: "landing",
   isAuthenticated: localStorage.getItem("isAuthenticated"),
   isPending: false,
   error: { message: "", code: "" },
@@ -76,7 +76,7 @@ export const myAppReducer = (state = initialState, action) => {
       });
       case constants.SET_DISPLAY:
       return Object.assign({}, state, {
-        display: action.display
+        displayRedux: action.display
       });
       case constants.SET_USERNAME:
       return Object.assign({}, state, {

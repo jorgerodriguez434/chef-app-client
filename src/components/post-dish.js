@@ -94,7 +94,10 @@ export class PostDish extends React.Component {
       } else {
         anotherPromise
           .then(() => {
-            this.props.dispatch(actions.setDisplay("Success!"));
+            //this.props.dispatch(actions.setDisplay("Success!"));
+            this.setState({
+                display: "Success!"
+            });
             this.setState({
               isPending: false
             });
@@ -109,9 +112,13 @@ export class PostDish extends React.Component {
     this.props.dispatch(actions.clearCategories());
     if (localStorage.getItem("isAuthenticated")) {
       console.log("authenticated!");
-      this.props.dispatch(actions.setDisplay("landing"));
+      //this.props.dispatch(actions.setDisplay("landing"));
+
     } else {
-      this.props.dispatch(actions.setDisplay("login"));
+      //this.props.dispatch(actions.setDisplay("login"));
+      this.setState({
+          display: "login"
+      }); 
     }
   };
 
@@ -176,12 +183,9 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
-    console.log("image:");
-    console.log(this.state.image);
     console.log(this.state);
     console.log(this.props);
-    console.log(this.props.ingredients.length);
-    if (this.props.display === "landing") {
+    if (this.state.display === "landing") {
       return (
         <div>
           <Links />
@@ -238,7 +242,7 @@ export class PostDish extends React.Component {
         </div>
       );
     } //if
-    if (this.props.display === "Success!") {
+    if (this.state.display === "Success!") {
       return (
         <div>
           <section className="post-dish-outside-container">
@@ -259,10 +263,9 @@ export class PostDish extends React.Component {
       );
       //reset State
     } //if
-    if (this.props.display === "login") {
-      this.props.dispatch(actions.setDisplay("login"));
-      return <Redirect to="/login" />;
-    }
+     if (this.state.display=== "login") {
+       return <Redirect to="/" />;
+     }
   };
 }
 
@@ -270,7 +273,7 @@ export const mapStateToProps = state => ({
   ingredients: state.ingredients,
   categories: state.categories,
   isAuthenticated: state.isAuthenticated,
-  display: state.display,
+  displayRedux: state.displayRedux,
   isPending: state.isPending
 });
 

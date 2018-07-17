@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./links.css"
-
+import { Redirect } from 'react-router-dom'
 
 export class Links extends React.Component {
 
     constructor(){
         super();
         this.state = {
-            name: "Log out"
+            name: "Log out",
+            display: "landing"
         }
     }
 
@@ -20,9 +21,10 @@ export class Links extends React.Component {
     localStorage.removeItem("token");
     localStorage.removeItem("isAuthenticated");
     this.setState({
-        name: "Logged out!"
+        name: "Logged out!",
+        display: "login"
     });
-    this.props.dispatch(actions.setDisplay("login"));
+    //this.props.dispatch(actions.setDisplay("landing"));
     this.props.dispatch(actions.setLogOut());
   };
 
@@ -39,7 +41,7 @@ export class Links extends React.Component {
     this.props.dispatch(actions.setDisplay("dashboard"));
 }*/
   render() {
-  
+  if (this.state.display === "landing"){
       return (
         <div className="outside-link-group-container">
           <section className="link-group">
@@ -61,6 +63,11 @@ export class Links extends React.Component {
           </section>
         </div>
       );
+    }//if
+
+    if (this.state.display === "login"){
+      return <Redirect to='/login'/>
+    }//if
   }
 }
 

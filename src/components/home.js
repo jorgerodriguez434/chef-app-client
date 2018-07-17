@@ -22,6 +22,7 @@ export class Home extends React.Component {
       display: "get started"
     }); 
     //this.props.dispatch(actions.setDisplay("get started"));
+    //this.props.dispatch(actions.setDisplay("login"));
   };
   getStartedTwo = () => {
     console.log("get started button clicked!");
@@ -38,8 +39,11 @@ export class Home extends React.Component {
         //this.props.dispatch(actions.setDisplay("secured landing"));
       }
       /*else{
-        this.props.dispatch(actions.setDisplay("landing"))
-      } */
+        //this.props.dispatch(actions.setDisplay("landing"))
+        this.setState({ 
+            display: "login"
+        }); */
+      //} 
     }
   
  
@@ -65,7 +69,7 @@ export class Home extends React.Component {
     if (this.state.display === "post dish") {
       return <PostDish />;
     }
-    //if (this.props.state.display === "login") return <HomeContent onClick={this.getStarted}/>
+    //if (this.state.display === "login") return <Redirect to='/login'/>
    
   };
 }
