@@ -91,7 +91,11 @@ export class PostDish extends React.Component {
           })
           .then(this.setMessageToNull);
         return false;
-      } else {
+      } 
+      // else if () {
+      
+      // } 
+      else {
         anotherPromise
           .then(() => {
             //this.props.dispatch(actions.setDisplay("Success!"));

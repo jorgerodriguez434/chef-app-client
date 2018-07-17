@@ -47,6 +47,14 @@ export class Dish extends React.Component {
     });
   };
 
+  setMessageToNull = () => {
+    setTimeout(() => {
+      this.setState({
+        message: null
+      });
+    }, 1500);
+  };
+
   onSubmit = e => {
     e.preventDefault();
     console.log("submitted!");
@@ -211,7 +219,9 @@ export class Dish extends React.Component {
         <li key={this.props.index} className="dish">
           <h2> {this.props.stateName} </h2>
           <img src={this.props.dishImage} alt={this.props.stateName} />
+          <div className="ingredients"> 
           <Ingredients ingredients={this.props.stateIngredients} />
+          </div>
           <form>
           <fieldset className="margin-bottom">
                 <legend> Update Ingredients </legend>
@@ -259,7 +269,7 @@ export class Dish extends React.Component {
                   </div>
             <button type="button" className="button" onClick={this.goBack}>
               {" "}
-              GO BACK{" "}
+              CANCEL{" "}
             </button>
           </div>
         </li>
@@ -299,7 +309,7 @@ export class Dish extends React.Component {
           </button>
           <button type="button" className="button" onClick={this.goBack}>
             {" "}
-            GO BACK{" "}
+            CANCEL{" "}
           </button>
         </div>
       );

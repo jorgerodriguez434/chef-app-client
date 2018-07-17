@@ -3,6 +3,7 @@
     margin: auto;
     text-align: center;
     margin-right: 37px;
+    
 }
 .ingredients{
    
@@ -12,3 +13,12 @@
     padding-right: 37px;
     /* in entree.js */
 }
+
+@media only screen and (min-width: 900px) {
+    .dish{
+    
+        width: 700px;
+        margin-right: 140px;
+    }
+   
+  }

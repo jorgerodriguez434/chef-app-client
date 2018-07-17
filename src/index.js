@@ -12,6 +12,7 @@ import PostDish from "./components/post-dish";
 import "./index.css";
 import RegistrationForm from "./components/registration-form";
 
+
 const App = () => (
   <BrowserRouter>
     <Provider store={store}>

@@ -53,18 +53,11 @@ export class LoginForm extends React.Component {
           this.setState({
             display: "post dish"
           }); 
-          this.props.dispatch(actions.setDisplay("landing"));
+          //this.props.dispatch(actions.setDisplay("landing"));
         }
       }
     });
   }
-/*
-  this.setState({
-      display: "get started"
-    }); 
-    //this.props.dispatch(actions.setDisplay("get started"));
-    this.props.dispatch(actions.setDisplay("login"));
-*/
 
   onSubmit = e => {
     console.log("login button clicked!")
@@ -115,10 +108,7 @@ export class LoginForm extends React.Component {
               className="input my-text"
               required
             />
-            <button className="login-button" type="submit">
-              Login
-            </button>
-            {/*<h2>{this.props.state.isPending ? "Logging in..." : null}</h2> */}
+            <div className="spinner-container">
           <div className="spinner">
             <RingLoader
           color={'#123abc'} 
@@ -126,9 +116,16 @@ export class LoginForm extends React.Component {
           
         />
         </div>
-            <h3>
+      </div>
+      <h3>
               {this.props.state.error ? this.props.state.error.message : null}
             </h3>
+            <button className="login-button" type="submit">
+              Login
+            </button>
+            {/*<h2>{this.props.state.isPending ? "Logging in..." : null}</h2> */}
+        
+          
             <button
               className="general-button"
               type="button"

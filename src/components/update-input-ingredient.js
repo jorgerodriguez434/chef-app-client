@@ -30,7 +30,6 @@ export class UpdateInputIngredient extends React.Component {
   } 
 
  addIngredient = e => {
-   
   e.preventDefault();
   console.log("clicked 126");
   const ingredient = this._ingredient.current.value;
@@ -56,7 +55,7 @@ handleChange = e => {
   render() {
       return (
         <section >
-            <div className="add-ingredients-container">
+            <div className="">
           <AddUpdateIngredients stateIngredients={this.props.ingredients}/>
           </div>
 

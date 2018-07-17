@@ -1,10 +1,10 @@
 import React from "react";
 import * as config from "../config";
-//import LoginForm from "./login-form"
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
+import { RingLoader } from "react-spinners";
+import "./registration.css";
 
 export default class RegistrationForm extends React.Component {
-
   constructor() {
     super();
     this.state = {
@@ -13,8 +13,9 @@ export default class RegistrationForm extends React.Component {
       username: "",
       password: "",
       display: "register",
-      message: null
-    }
+      message: null,
+      isPending: false
+    };
     this._nameRef = React.createRef();
     this._lastNameRef = React.createRef();
     this._usernameRef = React.createRef();
@@ -23,38 +24,53 @@ export default class RegistrationForm extends React.Component {
   }
 
   postRequest = () => {
-    
     const data = {
       name: this.state.name,
       lastName: this.state.lastName,
       username: this.state.username,
       password: this.state.password
-    }
+    };
     fetch(config.API_USERS_URL, {
-      method: 'POST', 
-      body: JSON.stringify(data), 
-      headers:{
-        'Content-Type': 'application/json'
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
       }
-    }).then(res => res.json())
-    .catch(error => {
-      console.error('Error:', error);
-
     })
-    .then(response => {
-      console.log('Success:', response);
-      if (response.reason === "ValidationError"){
-        this.setState({
-          message: "Username already taken!"
+      .then(res => res.json())
+      .catch(error => {
+        console.error("Error:", error);
+      })
+      .then(response => {
+        console.log("Success:", response);
+        if (response.reason === "ValidationError") {
+          this.setState({
+            message: response.message,
+            isPending: false
+          });
+          setTimeout(() => {
+            this.setState({
+              message: ""
+            });
+          }, 1500);
+          return false;
+        } else {
+          this.setState({
+            display: "Success!",
+            isPending: false
+          });
+        }
       });
-      }
-      else {
+  };
+
+  setMessageToNull = () => {
+    setTimeout(() => {
       this.setState({
-          display: "login"
+        message: null
       });
-    }
-    });
-  }
+    }, 1500);
+  };
+
   onSubmit = e => {
     e.preventDefault();
     const username = this._usernameRef.current.value;
@@ -70,95 +86,145 @@ export default class RegistrationForm extends React.Component {
       lastName,
       confirmPassword
     });
-    //if 
+    this.setState({
+      isPending: true
+    });
 
-    if (password !== confirmPassword){
-        this.setState({
-          message: "Passwords must match!"
-        });
-        setTimeout( () => {
-          this.setState({
-            message: ""
-          })}, 1500); 
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1000);
+    });
+
+    const anotherPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1500);
+    });
+
+    promise.then(() => {
+      if (password !== confirmPassword) {
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "Passwords must match!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
         return false;
-    }
-    else if(password.length < 10){
-      this.setState({
-        message: "Password must be at least 10 characters long!"
-      });
-      setTimeout( () => {
-        this.setState({
-          message: ""
-        })}, 1500); 
-      return false;
-    }
+      } //if
+      else if (password.length < 10) {
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "Password must be at least 10 characters long!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
 
-    setTimeout(this.postRequest, 1000); 
+        return false;
+      } //else if
+      else{
+          promise.then(this.postRequest);
+      }
+    }); //promise
 
-  }
+     
+  };
 
   goback = () => {
     this.setState({
-        display: "login"
+      display: "login"
     });
-  }
+  };
+
+  goToLogin = () => {
+    this.setState({
+      display: "login"
+    });
+  };
 
   render = () => {
     console.log(this.state);
-   if (this.state.display === "register"){
-    return (
-      <div>
-        <h1> Register </h1>
-        <form onSubmit={this.onSubmit}>
-          <label htmlFor="name">Name</label>
-          <input type="text" ref={this._nameRef} className="input my-text" required/>
-          <label htmlFor="last-name">Last Name</label>
-          <input
-            type="text"
-            ref={this._lastNameRef}
-            className="input my-text"
-            required
-          />
+    if (this.state.display === "register") {
+      return (
+        <div>
+          <h1> Register </h1>
+          <form onSubmit={this.onSubmit}>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              ref={this._nameRef}
+              className="input my-text"
+              required
+            />
+            <label htmlFor="last-name">Last Name</label>
+            <input
+              type="text"
+              ref={this._lastNameRef}
+              className="input my-text"
+              required
+            />
 
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            ref={this._usernameRef}
-            className="input my-text"
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            ref={this._passwordRef}
-            className="input my-text"
-            required
-          />
-          <label htmlFor="confirm-password">Confirm Password</label>
-          <input
-            type="password"
-            ref={this._confirmPasseword}
-            className="input my-text"
-            required
-          />
-          <p>{this.state.message}</p>
-          <button
-            className="general-button"
-            type="submit"
-          >
-            REGISTER
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              ref={this._usernameRef}
+              className="input my-text"
+              required
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              ref={this._passwordRef}
+              className="input my-text"
+              required
+            />
+            <label htmlFor="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              ref={this._confirmPasseword}
+              className="input my-text"
+              required
+            />
+            <p>{this.state.message}</p>
+
+            <div className="spinner">
+              <RingLoader color={"#123abc"} loading={this.state.isPending} />
+            </div>
+            <button className="general-button" type="submit">
+              REGISTER
+            </button>
+            <button
+              className="general-button"
+              type="button"
+              onClick={this.goback}
+            >
+              GO BACK
+            </button>
+          </form>
+        </div>
+      );
+    } //if
+    else if (this.state.display === "login") return <Redirect to="/login" />;
+    else if (this.state.display === "Success!") {
+      return (
+        <div>
+          <h1> Success! </h1>
+          <p> You can now log in!</p>
+
+          <button className="general-button" onClick={this.goToLogin}>
+            {" "}
+            Go to Login{" "}
           </button>
-          <button
-            className="general-button"
-            type="button"
-            onClick={this.goback}
-          >
-            GO BACK
-          </button>
-        </form>
-      </div>
-    );
-   }//if
-   else if (this.state.display === "login") return <Redirect to='/login'/>
-  };
+        </div>
+      );
+    }
+  }; //render
 }
+
+//"Success!"
