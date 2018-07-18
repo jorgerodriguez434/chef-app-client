@@ -43,6 +43,12 @@
     opacity: .8;
 
    }
+  .spinner-logout{
+    width: 50px;
+    height: 20px;
+    float: right;
+    margin-right: 10px;
+  }
 
 
 @media only screen and (min-width: 492px) {

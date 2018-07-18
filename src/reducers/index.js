@@ -36,7 +36,7 @@ export const myAppReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isPending: false,
         error: {
-          message: `User does not exist!`,
+          message: `Username or password is incorrect!`,
           code: 400
         }
       });

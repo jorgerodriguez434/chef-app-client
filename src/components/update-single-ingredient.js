@@ -13,14 +13,7 @@ export class UpdateSingleIngredient extends React.Component {
 
     onClick = () => {
     console.log("clicked123");
-    console.log(this.state);
-    //remove this state, how?
-    //this.props.dispatch(actions.setIngredient(this.state.ingredient))
-   /* this.setState({
-            ingredient: undefined
-    }); */
-
-  
+    console.log(this.state);  
     }
 
     render = () => {
@@ -37,7 +30,7 @@ export class UpdateSingleIngredient extends React.Component {
     }
 
 }
-//<SingleIngredient key={index} index={index} ingredient={ingredient}/>
+
 export const mapStateToProps = state => ({
     ingredients: state.ingredients,
     categories: state.categories

@@ -97,7 +97,6 @@ export class PostDish extends React.Component {
       else {
         anotherPromise
           .then(() => {
-            //this.props.dispatch(actions.setDisplay("Success!"));
             this.setState({
                 display: "Success!"
             });
@@ -115,10 +114,10 @@ export class PostDish extends React.Component {
     this.props.dispatch(actions.clearCategories());
     if (localStorage.getItem("isAuthenticated")) {
       console.log("authenticated!");
-      //this.props.dispatch(actions.setDisplay("landing"));
+      
 
     } else {
-      //this.props.dispatch(actions.setDisplay("login"));
+      
       this.setState({
           display: "login"
       }); 
@@ -149,11 +148,11 @@ export class PostDish extends React.Component {
   };
 
   goBack = () => {
-    this.props.dispatch(actions.setDisplay("landing"));
     this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.clearCategories());
     this.setState({
-      image: "none"
+      image: "none",
+      display:"menu"
     });
   };
 
@@ -254,11 +253,14 @@ export class PostDish extends React.Component {
               <h2> Dish Name: {this.state.name}</h2>
               <h2>
                 <img src={this.state.image} alt={this.state.name} />{" "}
+              <div className="ingredients">
                 <Ingredients ingredients={this.props.ingredients} />{" "}
+                </div>
               </h2>
+            
               <button onClick={this.goBack} className="post-dish-buttons">
                 {" "}
-                go back{" "}
+                GO TO MENU{" "}
               </button>
             </div>
           </section>
@@ -269,6 +271,9 @@ export class PostDish extends React.Component {
      if (this.state.display=== "login") {
        return <Redirect to="/login" />;
      }
+     if (this.state.display=== "menu") {
+      return <Redirect to="/menu" />;
+    }
   };
 }
 

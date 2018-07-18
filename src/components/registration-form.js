@@ -152,7 +152,8 @@ export default class RegistrationForm extends React.Component {
     console.log(this.state);
     if (this.state.display === "register") {
       return (
-        <div>
+      <section className="registration-outside-container" aria-live="polite"> 
+        <div className="registration-container">
           <h1> Register </h1>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="name">Name</label>
@@ -208,6 +209,7 @@ export default class RegistrationForm extends React.Component {
             </button>
           </form>
         </div>
+      </section>
       );
     } //if
     else if (this.state.display === "login") return <Redirect to="/login" />;

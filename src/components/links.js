@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./links.css"
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 export class Links extends React.Component {
 
@@ -11,7 +11,8 @@ export class Links extends React.Component {
         super();
         this.state = {
             name: "Log out",
-            display: "landing"
+            display: "landing",
+            isPending: false
         }
     }
 
@@ -22,13 +23,17 @@ export class Links extends React.Component {
     localStorage.removeItem("isAuthenticated");
     this.setState({
         name: "Logged out!",
-        display: "login"
+        display: "login",
+        isPending: false
     });
-    //this.props.dispatch(actions.setDisplay("landing"));
     this.props.dispatch(actions.setLogOut());
   };
 
   wait = () => {
+    this.setState({
+        name: "Logging out...",
+        isPending: true
+    });
     setTimeout(this.logout, 1000);
   } 
 
@@ -36,10 +41,6 @@ export class Links extends React.Component {
       console.log("clicked!");
       this.props.dispatch(actions.setDisplay("landing"));
   }
-  /*dashboard = () => {
-    console.log("dashboard clicked!");
-    this.props.dispatch(actions.setDisplay("dashboard"));
-}*/
   render() {
   if (this.state.display === "landing"){
       return (
@@ -54,6 +55,8 @@ export class Links extends React.Component {
             <Link className="link" to="/post-dish" onClick={this.onClick}>
               Post Dish
             </Link>
+          
+
        <div className="logout-div">
             <button className="logout" onClick={this.wait}>
               {" "}

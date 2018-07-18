@@ -9,7 +9,8 @@ export class InputIngredient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      value: "",
+      message: ""
     }
     this._ingredient = React.createRef();
   }
@@ -26,11 +27,25 @@ export class InputIngredient extends React.Component {
    e.preventDefault();
   console.log("add ingredient button clicked!");
   const ingredient = this._ingredient.current.value;
- // console.log(ingredient);
-  this.props.dispatch(actions.addIngredient(ingredient));
-  this.setState({
-    value: "",
-  })
+  if (ingredient === ""){
+      this.setState({
+          message: "Must not be blank!"
+      });
+      setTimeout(() => {
+        this.setState({
+          message: null
+        });
+      }, 1500);
+  }
+
+  else {
+    this.props.dispatch(actions.addIngredient(ingredient));
+    this.setState({
+      value: "",
+    });
+  }
+
+ 
 }
 
 
@@ -52,6 +67,7 @@ export class InputIngredient extends React.Component {
               value={this.state.value}
               onChange={this.handleChange.bind(this)}
             />
+            <p className="red-font" aria-live="assertive"> {this.state.message}</p>
             
             <button
               className="button"

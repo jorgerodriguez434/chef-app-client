@@ -14,11 +14,16 @@
     /* in entree.js */
 }
 
-@media only screen and (min-width: 900px) {
-    .dish{
-    
-        width: 700px;
-        margin-right: 140px;
-    }
+.set-delete{
    
+    margin: auto;
+    text-align: center;
+    width: 100px;
+    padding-right: 3px;
+}
+
+@media only screen and (min-width: 700px) {
+    .set-delete{
+    width: 350px;
+    }
   }

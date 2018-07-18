@@ -138,8 +138,15 @@ export class Dish extends React.Component {
       .then(response => console.log("Success:", response));
 
       this.setState({
-          display: "dish deleted"
+          display: "dish deleted",
+          message: "Dish has been deleted!"
       });
+
+      setTimeout(() => {
+        this.setState({
+          message: null
+        });
+      }, 1500);
   };
 
   setDelete = () => {
@@ -224,14 +231,12 @@ export class Dish extends React.Component {
           <Ingredients ingredients={this.props.stateIngredients} />
           </div>
           <form>
-          <fieldset className="margin-bottom">
+          <fieldset className="margin-bottom "> {/* add-ingredients-main-box */}
                 <legend> Update Ingredients </legend>
                 <UpdateInputIngredient
                   stateIngredients={this.props.stateIngredients}
                   stateCategories={this.props.stateCategories}
                 />
-                {/* need to do this to pass the ingredients for every dish
-      */}
               </fieldset>
 
             </form>
@@ -286,9 +291,9 @@ export class Dish extends React.Component {
           <li key={this.props.index} className="dish">
           <h2> {this.props.stateName} </h2>
           <img src={this.props.dishImage} alt={this.props.stateName} />
-          <Ingredients ingredients={this.props.stateIngredients} />
-          </li>
-          <p> Are you sure you want to delete this dish? </p>
+        
+          
+          <p className="set-delete"> Are you sure you want to delete this dish? </p>
 
           <button type="button" className="button" onClick={this.deleteDish}>
             {" "}
@@ -298,13 +303,15 @@ export class Dish extends React.Component {
             {" "}
             CANCEL{" "}
           </button>
+          </li>
         </div>
+        
       );
     }//if
     if (this.state.display === "dish deleted") {
       return (
         <div>
-          <p> Dish has been deleted! </p>
+          <p className="ingredients"> {this.state.message}</p>
         </div>
       );
     } //if
