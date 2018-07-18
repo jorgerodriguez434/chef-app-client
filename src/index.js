@@ -11,6 +11,7 @@ import Seating from "./components/seating";
 import PostDish from "./components/post-dish";
 import "./index.css";
 import RegistrationForm from "./components/registration-form";
+import SuccessUpdated from "./components/success-updated";
 
 
 const App = () => (
@@ -26,6 +27,7 @@ const App = () => (
           <Route exact path="/seating" component={Seating} />
           <Route exact path="/post-dish" component={PostDish} />
           <Route exact path="/register" component={RegistrationForm} />
+          <Route exact path="/success-updated" component={SuccessUpdated} />
         </Switch>
       </div>
     </Provider>

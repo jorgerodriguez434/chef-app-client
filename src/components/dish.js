@@ -8,6 +8,7 @@ import * as actions from "../actions";
 import Entree from "./entree";
 import "./dish.css"
 import { RingLoader } from "react-spinners";
+import { Redirect } from "react-router-dom";
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -276,21 +277,7 @@ export class Dish extends React.Component {
       );
     } //if
     if (this.state.display === "dish updated") {
-      return (
-        <div>
-          <p> Success! </p>
-          <Entree className="dish"
-          key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
-          index={this.props.index}
-          name={this.props.stateName}
-          image={this.props.dishImage}
-          ingredients={this.props.stateIngredients}
-          setUpdate={this.setUpdate}
-          setDelete={this.setDelete}
-        />
-      
-        </div>
-      );
+      return <Redirect to="/success-updated" />;
     } //if
 
     if (this.state.display === "set delete") {

@@ -7,7 +7,6 @@ import { API_BASE_URL } from "../config";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./post-dish.css";
-//import LoginForm from "./login-form";
 import { Redirect } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 
@@ -268,7 +267,7 @@ export class PostDish extends React.Component {
       //reset State
     } //if
      if (this.state.display=== "login") {
-       return <Redirect to="/" />;
+       return <Redirect to="/login" />;
      }
   };
 }
