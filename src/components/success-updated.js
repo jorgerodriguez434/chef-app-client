@@ -26,9 +26,10 @@ export class SuccessUpdated extends React.Component {
         >
           <div className="success-updated-container">
             <h1> Success! </h1>
+            <h2>Your dish has been updated! </h2>
             <button className="button" onClick={this.goBack}>
               {" "}
-              GO BACK{" "}
+              GO TO MENU{" "}
             </button>
           </div>
         </section>

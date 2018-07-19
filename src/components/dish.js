@@ -197,20 +197,15 @@ export class Dish extends React.Component {
   };
 
   componentDidMount = () => {
-    /*this.setState({
-        name: this.props.stateName
-    }); 
-    this.props.dispatch(actions.update(this.props.stateName));
-    console.log(this.props.stateName);
-    console.log(this.state);
-    console.log("hi there"); */
+
+    console.log("hi there");
   }
 
   render = () => {
     
     if (this.state.display === "landing") {
       return (
-        <Entree className="dish"
+        <Entree className=""
           key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
           index={this.props.index}
           name={this.props.stateName}
@@ -231,7 +226,7 @@ export class Dish extends React.Component {
           <Ingredients ingredients={this.props.stateIngredients} />
           </div>
           <form>
-          <fieldset className="margin-bottom "> {/* add-ingredients-main-box */}
+          <fieldset className="margin-bottom "> {/*  */}
                 <legend> Update Ingredients </legend>
                 <UpdateInputIngredient
                   stateIngredients={this.props.stateIngredients}

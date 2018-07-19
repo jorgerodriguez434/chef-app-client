@@ -8,12 +8,7 @@
   
   }
   .link-group{
-    background-color: white;
-    text-align: center;
-    margin: auto;
-    padding-top: 50px;
-    padding-bottom: 40px;
-    padding-left: 19%;
+    background-color: white;   
     color: black;
     opacity: .9;
     height: 130px;
@@ -43,12 +38,8 @@
     opacity: .8;
 
    }
-  .spinner-logout{
-    width: 50px;
-    height: 20px;
-    float: right;
-    margin-right: 10px;
-  }
+
+ 
 
 
 @media only screen and (min-width: 492px) {

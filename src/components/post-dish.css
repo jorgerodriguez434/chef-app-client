@@ -41,6 +41,15 @@
     border: 3px solid grey; /* in dish */
   
   }
+  .post-dish-spinner{
+    margin: auto;
+     width: 80px;
+     height: 80px;  
+     border: 2ps solid red;
+}
+.post-dish-spinner-container{
+  margin-left: 30px;
+}
   
   @media only screen and (min-width: 900px) {
     .intro-image-post-dish{
@@ -51,5 +60,15 @@
       height: 300px;
       border: 3px solid grey;
     }
+
+    .post-dish-spinner{
+      margin: auto;
+       width: 80px;
+       height: 80px;  
+       
+  }
+  .post-dish-spinner-container{
+    margin-left: 20px;
+  }
   
   }

@@ -1,29 +1,30 @@
 .dish{
     
-    margin: auto;
-    text-align: center;
-    margin-right: 37px;
-    
+  border: 2px solid green;
+  
+/* in entree.js */
 }
 .ingredients{
    
-    margin: auto;
-    text-align: center;
-    width: 200px;
-    padding-right: 37px;
+  
     /* in entree.js */
 }
 
 .set-delete{
    
-    margin: auto;
-    text-align: center;
-    width: 100px;
-    padding-right: 3px;
+  
 }
 
 @media only screen and (min-width: 700px) {
     .set-delete{
-    width: 350px;
+    
+    }
+    .dish{
+       
+        
+    }
+    .ingredients{
+        
+        /* in entree.js */
     }
   }

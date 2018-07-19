@@ -168,12 +168,12 @@ export class Menu extends React.Component {
     //console.log(this.state);
     if (this.state.display === "landing") {
       return (
-      <div>
+      <div className="border-green">
         <Links/>
         <div className="intro-image"> 
               <h1> MENU </h1>
         </div>
-        <section className="background-for-button-group">
+       
         <div className="button-group-container">
           <ButtonGroup
             displayNoEgg = {this.displayNoEgg}
@@ -184,7 +184,7 @@ export class Menu extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
         </div>
-        </section>
+     
       </div>
       );
     } else if (this.state.display=== "no meat") {
@@ -228,7 +228,9 @@ export class Menu extends React.Component {
             displayNoGluten={this.displayNoGluten}
           />
           <h3> Showing meats: </h3>
+        <div aria-live="polite" className="list-of-dishes">
           <Dishes category={this.state.meatDishes} />
+        </div>
         </div>
         </section>
         </div>

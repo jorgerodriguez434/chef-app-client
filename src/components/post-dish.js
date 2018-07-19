@@ -198,15 +198,15 @@ export class PostDish extends React.Component {
             <div className="post-dish-container">
               <p> Please add a dish by entering the following information </p>
 
-              <form>
-                <fieldset className="margin-bottom add-ingredients-main-box">
-                  <legend> Add Ingredients </legend>
+              <form className="border">
+            
+                 <h2> Add Ingredients </h2>
                   <InputIngredient _required={this.state.required} />
-                </fieldset>
+              
               </form>
-              <form onSubmit={this.onSubmit}>
-                <fieldset className="">
-                  <legend> The dish </legend>
+              <form onSubmit={this.onSubmit} className="border">
+                
+                  <h2> The dish </h2>
                   <label htmlFor="dish-name">Name of dish</label>
                   <input
                     className="input my-text width-90"
@@ -227,17 +227,19 @@ export class PostDish extends React.Component {
                     required
                   />
                   <p className="red-font"> {this.state.message}</p>
-                  <div className="spinner">
+                <div className="post-dish-spinner-container">
+                  <div className="post-dish-spinner">
                     <RingLoader
                       color={"#123abc"}
                       loading={this.state.isPending}
                     />
                   </div>
+                </div>
                   <button type="submit" className="button">
                     {" "}
                     POST DISH!{" "}
                   </button>
-                </fieldset>
+                
               </form>
             </div>
           </section>
