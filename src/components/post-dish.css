@@ -27,29 +27,23 @@
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  .update-dish-container{
-    background-color: black;
-    opacity: .9;
-    height: 90%;
-    width: 25%;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    
-  }
   img {
     width: 70%;
     border: 3px solid grey; /* in dish */
   
   }
   .post-dish-spinner{
+     
     margin: auto;
-     width: 80px;
-     height: 80px;  
-     border: 2ps solid red;
+    width: 80px;
+    height: 80px;  
+     
 }
 .post-dish-spinner-container{
-  margin-left: 30px;
+ 
+  margin-left: 20px;
 }
+
   
   @media only screen and (min-width: 900px) {
     .intro-image-post-dish{
@@ -69,6 +63,12 @@
   }
   .post-dish-spinner-container{
     margin-left: 20px;
+  }
+  .the-dish{
+    
+    width: 50%;
+    float: right;
+    
   }
   
   }

@@ -1,6 +1,4 @@
 import React from "react";
-//import SingleInputIngredient from "./single-input-ingredient";
-//import ClassifyAs from "./classify-as"
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import AddUpdateIngredients from "./add-update-ingredients";

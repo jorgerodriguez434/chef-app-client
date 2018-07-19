@@ -1,15 +1,15 @@
 .add-ingredients-main-box{
     
-    text-align: center;
-    padding-bottom: 20px;
+    
+  padding-bottom: 20px;
+ 
   }
   .input-ingredient{
-    text-align: center;
+    
   }
   .input-ingredient-and-add-to-list-button-and-add-ingredients-container{
      
-    text-align: center;
-    margin: auto;
+   
   }
   .add-ingredient{
     border: 3px solid gray;
@@ -37,7 +37,7 @@
       padding-bottom: 279px;
     }
     .input-ingredient-and-add-to-list-button-and-add-ingredients-container{
-      float: left;
+      
     }
     .add-ingredients-container{
       float: left;
@@ -50,16 +50,10 @@
 
   @media only screen and (min-width: 1370px) {
     .add-ingredients-main-box{
-      
-      padding-bottom: 269px;
+      width: 50%;
+     
     
     }
 
   }
-  @media only screen and (min-width: 1550px) {
-    .add-ingredients-main-box{
-      
-      padding-bottom: 223px;
-    }
-
-  }
+ 

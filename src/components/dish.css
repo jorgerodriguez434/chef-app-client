@@ -2,6 +2,8 @@
     
   border: 2px solid green;
   
+  
+  
 /* in entree.js */
 }
 .ingredients{
@@ -14,17 +16,64 @@
    
   
 }
+.dish-button {
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: grey;
+    font-size: 17px;
+    height: 50px;
+    width: 90%;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 20px;
+   }
 
-@media only screen and (min-width: 700px) {
+   .update-forms{
+       border: 8px solid pink;
+       
+      
+       /* in dish.js */
+   }
+   .name-and-image-and-ingredients{
+       /* in dish.js */
+       border: 8px solid purple;
+   } 
+
+@media only screen and (min-width: 900px) {
     .set-delete{
     
     }
     .dish{
-       
-        
+      /* text-align: left; */
+      /*width: 50%; */
+     /* float: left; */
+    }
+    .dish-button {
+        margin: 0px 0px 0px 0px;
+        width: 200px;
+        display: inline;
+        margin-right: 15px;
+        margin-top: 10px;
     }
     .ingredients{
         
         /* in entree.js */
     }
+    .update-forms{
+       
+        border: 8px solid pink;
+        width: 50%;
+        float: right;
+        /* in dish.js */
+    }
+    .name-and-image-and-ingredients{
+        /* in dish.js */
+        width: 50%;
+        float: left;
+        border: 8px solid purple;
+    } 
   }

@@ -6,7 +6,9 @@ import ClassifyAs from "./classify-as";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Entree from "./entree";
-import "./dish.css"
+import "./dish.css";
+import "./update-input-ingredients.css";
+
 import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
 
@@ -22,10 +24,13 @@ export class Dish extends React.Component {
     };
   }
 
-  setUpdate = () => {
+  setUpdate = (e) => {
     this.setState({
-      display: "set update"
+      display: "set update",
     });
+    
+    this.props.dispatch(actions.setDishName(this.state.name));
+    this.props.dispatch(actions.setDishImage(this.state.image));
     console.log("update button clicked!");
   };
 
@@ -202,7 +207,7 @@ export class Dish extends React.Component {
   }
 
   render = () => {
-    
+  
     if (this.state.display === "landing") {
       return (
         <Entree className=""
@@ -220,22 +225,25 @@ export class Dish extends React.Component {
       console.log(this.props)
       return (
         <li key={this.props.index} className="dish">
+      <div className="name-and-image-and-ingredients" aria-live="polite">
           <h2> {this.props.stateName} </h2>
           <img src={this.props.dishImage} alt={this.props.stateName} />
           <div className="ingredients"> 
           <Ingredients ingredients={this.props.stateIngredients} />
           </div>
-          <form>
-          <fieldset className="margin-bottom "> {/*  */}
-                <legend> Update Ingredients </legend>
+        </div>
+      <section className="update-forms" aria-live="polite"> {/* in dish.css*/}
+          <form className="update-ingredients-container"> {/*in update-ingredients.css*/}
+          
+                <h2> Update Ingredients </h2>
                 <UpdateInputIngredient
                   stateIngredients={this.props.stateIngredients}
                   stateCategories={this.props.stateCategories}
                 />
-              </fieldset>
+  
 
             </form>
-          <div className="form">
+         
             <form onSubmit={this.onSubmit}>
               <label htmlFor="dish-name">Update Name of Dish</label>
               <input
@@ -260,7 +268,8 @@ export class Dish extends React.Component {
                 {" "}
                 UPDATE DISH!{" "}
               </button>
-            </form>
+           
+
             <p className="red-font"> {this.state.message}</p>
             <div className="spinner">
                     <RingLoader
@@ -272,7 +281,8 @@ export class Dish extends React.Component {
               {" "}
               CANCEL{" "}
             </button>
-          </div>
+            </form>
+          </section>
         </li>
       );
     } //if
@@ -316,7 +326,9 @@ export class Dish extends React.Component {
 export const mapStateToProps = state => ({
   ingredients: state.ingredients,
   categories: state.categories,
-  data: state.data
+  image: state.reduxDishImage,
+  dishName: state.reduxDishName
+
 });
 
 export default connect(mapStateToProps)(Dish);

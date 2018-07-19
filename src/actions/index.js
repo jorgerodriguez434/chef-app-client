@@ -71,7 +71,12 @@ export const setUsername = username => ({
 });
 
 export const setDishName = dishName => ({
-  type: constants.SET_USERNAME,
+  type: constants.SET_DISHNAME,
   dishName
+});
+
+export const setDishImage = image => ({
+  type: constants.SET_IMAGE,
+  image
 });
 

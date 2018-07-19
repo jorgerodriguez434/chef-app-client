@@ -198,13 +198,13 @@ export class PostDish extends React.Component {
             <div className="post-dish-container">
               <p> Please add a dish by entering the following information </p>
 
-              <form className="border">
+              <form className="add-ingredients-main-box">
             
                  <h2> Add Ingredients </h2>
-                  <InputIngredient _required={this.state.required} />
+                  <InputIngredient />
               
               </form>
-              <form onSubmit={this.onSubmit} className="border">
+              <form onSubmit={this.onSubmit} className="the-dish">
                 
                   <h2> The dish </h2>
                   <label htmlFor="dish-name">Name of dish</label>
@@ -215,7 +215,9 @@ export class PostDish extends React.Component {
                     ref={this._dishName}
                     required
                   />
+                <div className="checkbox-container">
                   <ClassifyAs />
+                  </div>
                   <label htmlFor="dish-img">
                     Choose a url image for the dish!
                   </label>

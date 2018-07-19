@@ -12,7 +12,8 @@ import PostDish from "./components/post-dish";
 import "./index.css";
 import RegistrationForm from "./components/registration-form";
 import SuccessUpdated from "./components/success-updated";
-
+import UpdateDish from "./components/update-dish";
+import Dish from "./components/dish";
 
 const App = () => (
   <BrowserRouter>
@@ -28,6 +29,8 @@ const App = () => (
           <Route exact path="/post-dish" component={PostDish} />
           <Route exact path="/register" component={RegistrationForm} />
           <Route exact path="/success-updated" component={SuccessUpdated} />
+          <Route exact path="/update-dish" component={UpdateDish} />
+          <Route exact path="/dish" component={Dish} />
         </Switch>
       </div>
     </Provider>

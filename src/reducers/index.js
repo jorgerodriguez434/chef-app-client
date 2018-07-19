@@ -9,7 +9,8 @@ export const initialState = {
   isPending: false,
   error: { message: "", code: "" },
   username: "",
-  dishName: ""
+  reduxDishName: "",
+  reduxDishImage: ""
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -85,7 +86,11 @@ export const myAppReducer = (state = initialState, action) => {
 
       case constants.SET_DISHNAME:
       return Object.assign({}, state, {
-        dishName: action.dishName
+        reduxDishName: action.dishName
+      });
+      case constants.SET_IMAGE:
+      return Object.assign({}, state, {
+        reduxDishImage: action.image
       });
     default:
       return state;
