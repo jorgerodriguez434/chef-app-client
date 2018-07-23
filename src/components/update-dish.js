@@ -9,6 +9,7 @@ import { RingLoader } from "react-spinners";
 import InputIngredient  from "./input-ingredient";
 //import Ingredients from "./ingredients";
 import { Redirect } from "react-router-dom";
+import "./update-dish.css";
 
 export class UpdateDish extends React.Component {
   constructor(props) {
@@ -173,8 +174,8 @@ export class UpdateDish extends React.Component {
       if (this.state.display === "landing") {
         return (
 
-            
-
+    <section className="update-dish-outside-container">   
+        <div className="update-dish-container">
             <section className="dish">
             {/*  <div className="name-and-image-and-ingredients" aria-live="polite">
               <h2> {this.props.dishName} </h2>
@@ -193,7 +194,7 @@ export class UpdateDish extends React.Component {
       
                   </form>
                
-                  <form onSubmit={this.onSubmit} className="update-the-dish-container">
+                  <form onSubmit={this.onSubmit} className="the-dish">
                   <h2> The Dish </h2>
                     <label htmlFor="dish-name">Update Name of Dish</label>
                     <input
@@ -234,6 +235,8 @@ export class UpdateDish extends React.Component {
                   </form>
                 </section>
               </section>
+        </div>
+    </section>
         );
       }//if
       else if(this.state.display === "menu") return <Redirect to="/menu" />;
