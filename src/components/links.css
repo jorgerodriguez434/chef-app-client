@@ -1,71 +1,76 @@
 .outside-link-group-container{
-    background-image: url("https://static1.squarespace.com/static/57d6b5dd2994cab476e95790/57d95d67b8a79bf906f67b41/57d9657df5e231a184e8140a/1473865090916/Stocksy_txp0f79248d7x2100_Large_461838.jpg?format=2500w");
-    height: 130px;
+  background-image: url("https://static1.squarespace.com/static/57d6b5dd2994cab476e95790/57d95d67b8a79bf906f67b41/57d9657df5e231a184e8140a/1473865090916/Stocksy_txp0f79248d7x2100_Large_461838.jpg?format=2500w");
+  height: 130px;
 }
 .link{
-    padding: 10px;
-    color: black;
-  
-  }
-  .link-group{
-    background-color: white;   
-    color: black;
-    opacity: .9;
-    height: 130px;
-  }
-  .link:hover{
-  background-color:  tomato;
+  padding: 10px;
+  color: black;
+
+}
+.link-group{
+  background-color: white;
+  text-align: center;
+  margin: auto;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  padding-left: 19%;
+  color: black;
+  opacity: .9;
+  height: 130px;
+}
+.link:hover{
+background-color:  tomato;
 }
 .logout-div{
-    margin-right: 20px;
-   padding: 0px 0px 15px 0px;
-   margin-bottom: 10px;
-    float: right;
-    overflow:hidden;
-    position: relative;
-    top: 50%;
-    transform: perspective(1px) translateY(-50%);
+  margin-right: 20px;
+ padding: 0px 0px 15px 0px;
+ margin-bottom: 10px;
+  float: right;
+  overflow:hidden;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
 }
 .logout{
-    
-    padding: 10px 10px 10px 10px;
-    color: white;
-    text-align: center;
-    background-color: grey;
-    border-radius: 5px;
-    font-family: 'Titillium Web', sans-serif;
-    cursor: pointer;
-    opacity: .8;
+  
+  padding: 10px 10px 10px 10px;
+  color: white;
+  text-align: center;
+  background-color: grey;
+  border-radius: 5px;
+  font-family: 'Titillium Web', sans-serif;
+  cursor: pointer;
+  opacity: .8;
 
-   }
+ }
 
- 
+
 
 
 @media only screen and (min-width: 492px) {
+  .link-group{
+      padding-left: 14%;
+      
+    }
+
+}
+@media only screen and (min-width: 740px) {
+  .link{
+      padding: 10px 20px;
+    
+    }
     .link-group{
         padding-left: 14%;
-        
       }
-  
 }
-  @media only screen and (min-width: 740px) {
-    .link{
-        padding: 10px 20px;
-      
+@media only screen and (min-width: 940px) {
+  .link{
+      padding: 10px 20px;
+    
+    }
+    .link-group{
+        padding-left: 6%;
       }
-      .link-group{
-          padding-left: 14%;
-        }
-  }
-  @media only screen and (min-width: 940px) {
-    .link{
-        padding: 10px 20px;
-      
-      }
-      .link-group{
-          padding-left: 6%;
-        }
-  }
+}
 
   

@@ -1,12 +1,29 @@
 .update-ingredients-container{
-    border: 2px solid red;
+    
+}
+.update-the-dish-container{
+    
+}
+.update-input-ingredient{
+   
+    
+}
+.update-add-ingredients-container{
+    border: 5px dotted rgba(19, 19, 131, 0.664);
+    
 }
 
 @media only screen and (min-width: 740px) {
     .update-ingredients-container{
-        border: 2px solid red;
+      
         width: 50%;
         float: left;
+        
+    }
+    .update-the-dish-container{
+        
+        width: 50%;
+        float: right;
     }
    
   }

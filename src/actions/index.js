@@ -80,3 +80,8 @@ export const setDishImage = image => ({
   image
 });
 
+export const setId = id => ({
+  type: constants.SET_ID,
+  id
+});
+

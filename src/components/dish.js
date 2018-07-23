@@ -1,16 +1,17 @@
 import React from "react";
-import Ingredients from "./ingredients";
+
 import { API_BASE_URL } from "../config";
-import UpdateInputIngredient from "./update-input-ingredient";
-import ClassifyAs from "./classify-as";
+
+
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Entree from "./entree";
 import "./dish.css";
 import "./update-input-ingredients.css";
 
-import { RingLoader } from "react-spinners";
+//import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
+
 
 export class Dish extends React.Component {
   constructor(props) {
@@ -24,13 +25,24 @@ export class Dish extends React.Component {
     };
   }
 
+
   setUpdate = (e) => {
     this.setState({
       display: "set update",
     });
-    
+    this.props.dispatch(actions.clearCategories());
+    this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.setDishName(this.state.name));
     this.props.dispatch(actions.setDishImage(this.state.image));
+    this.props.dispatch(actions.setId(this.props.dishId));
+    this.props.stateIngredients.map(ingredient => {
+      this.props.dispatch(actions.addIngredient(ingredient));
+      return ingredient;
+    });
+    this.props.stateCategories.map(category => {
+      this.props.dispatch(actions.addCategory(category));
+      return category;
+    }); 
     console.log("update button clicked!");
   };
 
@@ -98,7 +110,7 @@ export class Dish extends React.Component {
           .then(() => {
             console.log("another promise");
             this.setState({
-              message: "You must check at least one checkbox!",
+              message: "You must check at least one category!",
               isPending: false
             });
           })
@@ -203,11 +215,11 @@ export class Dish extends React.Component {
 
   componentDidMount = () => {
 
-    console.log("hi there");
+    console.log("dish component mounted");
   }
 
   render = () => {
-  
+      console.log(this.props);
     if (this.state.display === "landing") {
       return (
         <Entree className=""
@@ -223,68 +235,7 @@ export class Dish extends React.Component {
     } //if
     if (this.state.display === "set update") {
       console.log(this.props)
-      return (
-        <li key={this.props.index} className="dish">
-      <div className="name-and-image-and-ingredients" aria-live="polite">
-          <h2> {this.props.stateName} </h2>
-          <img src={this.props.dishImage} alt={this.props.stateName} />
-          <div className="ingredients"> 
-          <Ingredients ingredients={this.props.stateIngredients} />
-          </div>
-        </div>
-      <section className="update-forms" aria-live="polite"> {/* in dish.css*/}
-          <form className="update-ingredients-container"> {/*in update-ingredients.css*/}
-          
-                <h2> Update Ingredients </h2>
-                <UpdateInputIngredient
-                  stateIngredients={this.props.stateIngredients}
-                  stateCategories={this.props.stateCategories}
-                />
-  
-
-            </form>
-         
-            <form onSubmit={this.onSubmit}>
-              <label htmlFor="dish-name">Update Name of Dish</label>
-              <input
-                type="text"
-                className="input my-text"
-                value={this.state.name}
-                onChange={this.handleNameChange.bind(this)}
-              />
-
-             
-              <ClassifyAs />
-              <label htmlFor="dish-img">Update Image!</label>
-          <input
-            className="input my-text width-90"
-            type="text"
-            placeholder= "URL image"
-            value={this.state.image}
-            onChange={this.handleImageChange.bind(this)}
-           />
-
-              <button type="submit" className="button">
-                {" "}
-                UPDATE DISH!{" "}
-              </button>
-           
-
-            <p className="red-font"> {this.state.message}</p>
-            <div className="spinner">
-                    <RingLoader
-                      color={"#123abc"}
-                      loading={this.state.isPending}
-                    />
-                  </div>
-            <button type="button" className="button" onClick={this.goBack}>
-              {" "}
-              CANCEL{" "}
-            </button>
-            </form>
-          </section>
-        </li>
-      );
+      return <Redirect to="/update-dish" />;
     } //if
     if (this.state.display === "dish updated") {
       return <Redirect to="/success-updated" />;

@@ -10,7 +10,8 @@ export const initialState = {
   error: { message: "", code: "" },
   username: "",
   reduxDishName: "",
-  reduxDishImage: ""
+  reduxDishImage: "",
+  reduxId: ""
 };
 
 export const myAppReducer = (state = initialState, action) => {
@@ -91,6 +92,10 @@ export const myAppReducer = (state = initialState, action) => {
       case constants.SET_IMAGE:
       return Object.assign({}, state, {
         reduxDishImage: action.image
+      });
+      case constants.SET_ID:
+      return Object.assign({}, state, {
+        reduxId: action.id
       });
     default:
       return state;

@@ -193,10 +193,11 @@ export default class RegistrationForm extends React.Component {
               required
             />
             <p>{this.state.message}</p>
-
+        <div className="spinner-container">
             <div className="spinner">
               <RingLoader color={"#123abc"} loading={this.state.isPending} />
             </div>
+        </div>
             <button className="general-button" type="submit">
               REGISTER
             </button>
@@ -215,7 +216,8 @@ export default class RegistrationForm extends React.Component {
     else if (this.state.display === "login") return <Redirect to="/login" />;
     else if (this.state.display === "Success!") {
       return (
-        <div>
+      <section className="success-register-outside-container" aria-live="polite">
+        <div className="success-register-container ">
           <h1> Success! </h1>
           <p> You can now log in!</p>
 
@@ -224,6 +226,7 @@ export default class RegistrationForm extends React.Component {
             Go to Login{" "}
           </button>
         </div>
+        </section>
       );
     }
   }; //render

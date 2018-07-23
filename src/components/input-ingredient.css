@@ -1,22 +1,12 @@
 .add-ingredients-main-box{
-    
-    
   padding-bottom: 20px;
- 
   }
-  .input-ingredient{
-    
-  }
-  .input-ingredient-and-add-to-list-button-and-add-ingredients-container{
-     
-   
-  }
+
   .add-ingredient{
     border: 3px solid gray;
-    padding: 5px 30px 10px;
     margin-bottom: 9px;
     text-align: center;
-    margin-right: 30px;
+    
     
   }
   .add-ingredient:hover {
@@ -24,7 +14,7 @@
    }
   
   
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: 740px) {
     img {
       width: 400px;
       height: 300px;
@@ -32,28 +22,29 @@
     }
 
     .add-ingredients-main-box{
-      float: left;
+      display: inline-block;
       width: 50%;
-      padding-bottom: 279px;
-    }
-    .input-ingredient-and-add-to-list-button-and-add-ingredients-container{
+      vertical-align: top;
+     
       
     }
     .add-ingredients-container{
-      float: left;
+    
+     /* width: 50%;
+      display: inline-block;
+      margin-right: 10px;  */
     }
     .add-ingredient{
-      float: left;
+      
       margin-right: 5px;
     }
-  }
-
-  @media only screen and (min-width: 1370px) {
-    .add-ingredients-main-box{
-      width: 50%;
+    .input-and-button{
      
-    
+      /*display:inline-block;
+      vertical-align: top;
+      padding-left: 10px;
+      padding-right: 10px; */
     }
-
   }
+
  

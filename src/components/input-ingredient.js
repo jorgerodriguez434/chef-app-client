@@ -57,7 +57,7 @@ export class InputIngredient extends React.Component {
             <AddIngredients/>
           </div>
         
-       <div className="">
+       <div className="input-and-button">
           <label htmlFor="ingredient" className="ingredient-label">Ingredient</label>
             <input
               className="input my-text width-90 input-ingredient"
@@ -67,7 +67,7 @@ export class InputIngredient extends React.Component {
               value={this.state.value}
               onChange={this.handleChange.bind(this)}
             />
-            <p className="red-font" aria-live="assertive"> {this.state.message}</p>
+            <p className="red-font" aria-live="polite"> {this.state.message}</p>
             
             <button
               className="button"

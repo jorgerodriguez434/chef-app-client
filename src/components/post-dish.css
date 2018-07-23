@@ -45,7 +45,7 @@
 }
 
   
-  @media only screen and (min-width: 900px) {
+  @media only screen and (min-width: 740px) {
     .intro-image-post-dish{
       height: 700px;
     }
@@ -67,7 +67,9 @@
   .the-dish{
     
     width: 50%;
-    float: right;
+    display: inline-block;
+   
+    /* left side is in input-ingredient.css*/
     
   }
   

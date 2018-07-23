@@ -1,6 +1,6 @@
 .dish{
     
-  border: 2px solid green;
+ 
   
   
   
@@ -33,17 +33,17 @@
    }
 
    .update-forms{
-       border: 8px solid pink;
+      
        
       
        /* in dish.js */
    }
    .name-and-image-and-ingredients{
        /* in dish.js */
-       border: 8px solid purple;
+    
    } 
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 740px) {
     .set-delete{
     
     }
@@ -65,15 +65,14 @@
     }
     .update-forms{
        
-        border: 8px solid pink;
-        width: 50%;
-        float: right;
+       
+        
+        
         /* in dish.js */
     }
     .name-and-image-and-ingredients{
         /* in dish.js */
-        width: 50%;
-        float: left;
-        border: 8px solid purple;
+   
+       
     } 
   }

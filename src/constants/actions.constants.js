@@ -15,5 +15,6 @@ export const SET_DISPLAY = "SET_DISPLAY";
 export const SET_USERNAME = "SET_USERNAME";
 export const SET_DISHNAME= "SET_DISHNAME";
 export const SET_IMAGE= " SET_IMAGE=";
+export const SET_ID= " SET_ID";
 
 
