@@ -10,7 +10,6 @@ body {
   margin-right: 30px;
   color: silver;
   text-align: center;
-  
 }
 header{
 	  text-align: center;
@@ -28,6 +27,10 @@ header{
 label {
   display: block;
   margin-bottom: 6px;
+}
+.black-background{
+  background-color: black;
+  opacity: .9;
 }
 
 a{
