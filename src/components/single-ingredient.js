@@ -8,9 +8,6 @@ export class SingleIngredient extends React.Component {
         super(props);
         this.state = {
             ingredient: this.props.stateIngredient
-            //this does not get updated, when it goues throguh the loop again, i dont know why
-            //the ingredient stays with the state, and does not change 
-            //it would only change with this setState
         } 
     }
 

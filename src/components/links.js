@@ -66,11 +66,11 @@ export class Links extends React.Component {
           </section>
         </div>
       );
-    }//if
+    }
 
     if (this.state.display === "login"){
       return <Redirect to='/login'/>
-    }//if
+    }
   }
 }
 

@@ -6,7 +6,7 @@
     border: 3px solid gray;
     margin-bottom: 9px;
     text-align: center;
-    
+  
     
   }
   .add-ingredient:hover {
@@ -25,26 +25,17 @@
       display: inline-block;
       width: 50%;
       vertical-align: top;
-     
       
     }
-    .add-ingredients-container{
-    
-     /* width: 50%;
-      display: inline-block;
-      margin-right: 10px;  */
-    }
+   
     .add-ingredient{
       
       margin-right: 5px;
+      width: 60%;
+      margin-left: 20%;
+      margin-right: 20%;
     }
-    .input-and-button{
-     
-      /*display:inline-block;
-      vertical-align: top;
-      padding-left: 10px;
-      padding-right: 10px; */
-    }
+    
   }
 
  

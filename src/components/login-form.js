@@ -85,7 +85,6 @@ export class LoginForm extends React.Component {
     this.setState({
       display: "register"
     });
-    //this.props.dispatch(actions.setDisplay("register"));
   };
 
   render() {
@@ -131,8 +130,6 @@ export class LoginForm extends React.Component {
                 <button className="login-button" type="submit">
                   Login
                 </button>
-                {/*<h2>{this.props.state.isPending ? "Logging in..." : null}</h2> */}
-
                 <button
                   className="general-button"
                   type="button"
@@ -145,7 +142,7 @@ export class LoginForm extends React.Component {
           </section>
         </Fragment>
       );
-    } //if
+    } 
     else if (this.state.display === "post dish") {
       return <Redirect to="/post-dish" />;
     } else if (this.state.display === "register") {

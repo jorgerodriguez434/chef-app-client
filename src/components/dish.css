@@ -1,21 +1,4 @@
-.dish{
-    
- 
-  
-  
-  
-/* in entree.js */
-}
-.ingredients{
-   
-  
-    /* in entree.js */
-}
 
-.set-delete{
-   
-  
-}
 .dish-button {
     border-radius: 5px;
     cursor: pointer;
@@ -32,26 +15,8 @@
     margin-top: 20px;
    }
 
-   .update-forms{
-      
-       
-      
-       /* in dish.js */
-   }
-   .name-and-image-and-ingredients{
-       /* in dish.js */
-    
-   } 
-
 @media only screen and (min-width: 740px) {
-    .set-delete{
     
-    }
-    .dish{
-      /* text-align: left; */
-      /*width: 50%; */
-     /* float: left; */
-    }
     .dish-button {
         margin: 0px 0px 0px 0px;
         width: 200px;
@@ -59,20 +24,4 @@
         margin-right: 15px;
         margin-top: 10px;
     }
-    .ingredients{
-        
-        /* in entree.js */
-    }
-    .update-forms{
-       
-       
-        
-        
-        /* in dish.js */
-    }
-    .name-and-image-and-ingredients{
-        /* in dish.js */
-   
-       
-    } 
-  }
+}

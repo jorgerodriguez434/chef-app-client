@@ -32,34 +32,29 @@ export class PostDish extends React.Component {
     }, 1500);
   };
 
-  onSubmit = e => {
-    console.log("clicked");
-    e.preventDefault();
-    console.log(this.props);
-    this.addCategory(e);
-    this.setName();
-    this.setImage();
-    this.setState({
-      isPending: true
-    });
-
-    const promise = new Promise((resolve, reject) => {
+  promisePostRequest = () => {
+    const submit = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve("Success!");
       }, 1000);
     });
 
-    const anotherPromise = new Promise((resolve, reject) => {
+    const error= new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Error!");
+      }, 1500);
+    });
+
+    const success = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve("Success!");
       }, 1500);
     });
 
-    promise.then(() => {
+    submit.then(() => {
       if (this.props.ingredients.length === 0) {
-        anotherPromise
+        error
           .then(() => {
-            console.log("another promise");
             console.log(this.props.ingredients.length);
             this.setState({
               message: "You must enter at least 1 ingredient!",
@@ -69,20 +64,18 @@ export class PostDish extends React.Component {
           .then(this.setMessageToNull);
         return false;
       } else if (this.props.categories.length === 0) {
-        anotherPromise
+        error
           .then(() => {
-            console.log("another promise");
             this.setState({
-              message: "You must check at least one checkbox!",
+              message: "You must check at least one category!",
               isPending: false
             });
           })
           .then(this.setMessageToNull);
         return false;
       } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
-        anotherPromise
+        error
           .then(() => {
-            console.log("another promise");
             this.setState({
               message: "You must enter a valid image URL!",
               isPending: false
@@ -91,11 +84,8 @@ export class PostDish extends React.Component {
           .then(this.setMessageToNull);
         return false;
       } 
-      // else if () {
-      
-      // } 
       else {
-        anotherPromise
+        success
           .then(() => {
             this.setState({
                 display: "Success!"
@@ -107,7 +97,21 @@ export class PostDish extends React.Component {
           .then(this.postRequest);
       }
     });
-  }; //onSubmit
+  }
+
+  onSubmit = e => {
+    console.log("clicked");
+    e.preventDefault();
+    console.log(this.props);
+    this.addCategory(e);
+    this.setName();
+    this.setImage();
+    this.setState({
+      isPending: true
+    });
+    this.promisePostRequest();
+  
+  };
 
   componentDidMount = () => {
     this.props.dispatch(actions.clearIngredients());

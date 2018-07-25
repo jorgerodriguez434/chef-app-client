@@ -23,7 +23,7 @@ export default class Dishes extends React.Component {
     if (this.state.display === "landing") {
       return (
         <ul>
-          {this.props.category.map((dish, index) => { //from menu.js the props  <Dishes category={this.state.noMeatDishes} />
+          {this.props.category.map((dish, index) => { //in menu.js the props  <Dishes category={this.state.noMeatDishes} />
             return (
               <Dish 
                 dishId = {dish._id}
@@ -32,16 +32,14 @@ export default class Dishes extends React.Component {
                 dish={dish}
                 stateName={dish.name}
                 dishImage={dish.image}
-                stateIngredients={dish.ingredients} //its not the same thing, this cannot be global
-                //because it is every individual dish
-                //The global state only works for one dish, only in the post dish component
+                stateIngredients={dish.ingredients}
                 stateCategories = {dish.categories}
               />
             );
           })}
         </ul>
-      ); //return
-    } //if
+      );
+    }
     if (this.state.display === "update") {
       return (
         <ul>
@@ -56,7 +54,7 @@ export default class Dishes extends React.Component {
             );
           })}
         </ul>
-      ); //return
+      );
     }
   };
 }

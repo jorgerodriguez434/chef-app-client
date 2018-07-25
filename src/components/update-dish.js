@@ -7,7 +7,7 @@ import "./update-input-ingredients.css";
 import ClassifyAs from "./classify-as";
 import { RingLoader } from "react-spinners";
 import InputIngredient  from "./input-ingredient";
-//import Ingredients from "./ingredients";
+import Ingredients from "./ingredients";
 import { Redirect } from "react-router-dom";
 import "./update-dish.css";
 
@@ -53,22 +53,28 @@ export class UpdateDish extends React.Component {
 
   updateRequestPromise = () => {
 
-    const promise = new Promise((resolve, reject) => {
+    const submit = new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve("Success!");
         }, 1000);
       });
   
-      const anotherPromise = new Promise((resolve, reject) => {
+      const error = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Error!");
+        }, 1500);
+      });
+
+      const success = new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve("Success!");
         }, 1500);
       });
   
 
-    promise.then(() => {
+    submit.then(() => {
         if (this.props.ingredients.length === 0) {
-          anotherPromise
+          error
             .then(() => {
               console.log("another promise");
               console.log(this.props.ingredients.length);
@@ -80,7 +86,7 @@ export class UpdateDish extends React.Component {
             .then(this.setMessageToNull);
           return false;
         } else if (this.props.categories.length === 0) {
-          anotherPromise
+            error
             .then(() => {
               console.log("another promise");
               this.setState({
@@ -91,7 +97,7 @@ export class UpdateDish extends React.Component {
             .then(this.setMessageToNull);
           return false;
         } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
-          anotherPromise
+            error
             .then(() => {
               console.log("another promise");
               this.setState({
@@ -102,7 +108,7 @@ export class UpdateDish extends React.Component {
             .then(this.setMessageToNull);
           return false;
         } else {
-          anotherPromise
+            success
             .then(() => {
               this.setState({
                 isPending: false
@@ -177,13 +183,13 @@ export class UpdateDish extends React.Component {
     <section className="update-dish-outside-container">   
         <div className="update-dish-container">
             <section className="dish">
-            {/*  <div className="name-and-image-and-ingredients" aria-live="polite">
+             <div className="name-and-image-and-ingredients" aria-live="polite">
               <h2> {this.props.dishName} </h2>
                 <img src={this.props.image} alt={this.props.dishName} />
                 <div className="ingredients"> 
                 <Ingredients ingredients={this.props.ingredients} />
                 </div> 
-              </div> */}
+              </div> 
             <section className="update-forms" aria-live="polite"> {/* in dish.css*/}
                 <form className="update-ingredients-container"> {/*in update-ingredients.css*/}
                 
@@ -199,7 +205,7 @@ export class UpdateDish extends React.Component {
                     <label htmlFor="dish-name">Update Name of Dish</label>
                     <input
                       type="text"
-                      className="input my-text"
+                      className="input my-text width-90"
                       value={this.state.name}
                       onChange={this.handleNameChange.bind(this)}
                     />

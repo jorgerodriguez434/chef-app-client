@@ -50,7 +50,7 @@ export class InputIngredient extends React.Component {
 
 
   render() {
-    //console.log(this.props);
+   
       return (
         <section className="input-ingredient-and-add-to-list-button-and-add-ingredients-container"> {/* here*/}
           <div className="add-ingredients-container">

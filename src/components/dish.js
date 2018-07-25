@@ -130,7 +130,6 @@ export class Dish extends React.Component {
       } else {
         anotherPromise
           .then(() => {
-            //this.props.dispatch(actions.setDisplay("Success!"));
             this.setState({
               isPending: false
             });
@@ -138,8 +137,6 @@ export class Dish extends React.Component {
           .then(this.putRequest);
       }
     });
-
-    //setTimeout(this.putRequest, 1000);
   };
 
   deleteDish = () => {
@@ -232,14 +229,14 @@ export class Dish extends React.Component {
           setDelete={this.setDelete}
         />
       );
-    } //if
+    } 
     if (this.state.display === "set update") {
       console.log(this.props)
       return <Redirect to="/update-dish" />;
-    } //if
+    } 
     if (this.state.display === "dish updated") {
       return <Redirect to="/success-updated" />;
-    } //if
+    } 
 
     if (this.state.display === "set delete") {
       return (
@@ -263,14 +260,14 @@ export class Dish extends React.Component {
         </div>
         
       );
-    }//if
+    }
     if (this.state.display === "dish deleted") {
       return (
         <div>
           <p className="ingredients"> {this.state.message}</p>
         </div>
       );
-    } //if
+    } 
   };
 }
 

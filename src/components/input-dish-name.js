@@ -11,18 +11,14 @@ export class InputDishName extends React.Component {
         }
 
         this._dishName = React.createRef();
-        //or this._dishName = this.refs._dishName.value;
     }
     
 
     setName = () => {
         const dishName = this._dishName.current.value;
-        //or const dishName = = this.refs._dishName.value;
         this.props.dispatch(actions.setDishName(dishName));
 
     }
-
-
 
     render = () => {
         return (

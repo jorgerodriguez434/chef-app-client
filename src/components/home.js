@@ -1,10 +1,8 @@
 import React from "react";
 import Links from "./links";
-//import LoginForm from "./login-form"
 import PostDish from "./post-dish"
 import HomeContent from "./home-content"
 import { connect } from "react-redux";
-//import * as actions from "../actions";
 import "./home.css";
 import { Redirect } from 'react-router-dom'
 
@@ -21,8 +19,6 @@ export class Home extends React.Component {
     this.setState({
       display: "get started"
     }); 
-    //this.props.dispatch(actions.setDisplay("get started"));
-    //this.props.dispatch(actions.setDisplay("login"));
   };
   getStartedTwo = () => {
     console.log("get started button clicked!");
@@ -36,18 +32,12 @@ export class Home extends React.Component {
        this.setState({
             display: "secured landing"
         }); 
-        //this.props.dispatch(actions.setDisplay("secured landing"));
       }
-      /*else{
-        //this.props.dispatch(actions.setDisplay("landing"))
-        this.setState({ 
-            display: "login"
-        }); */
-      //} 
+     
     }
   
  
-//onClick={this.getStarted}
+
   render = () => {
     console.log(this.props.state);
     console.log(this.state);
@@ -69,7 +59,6 @@ export class Home extends React.Component {
     if (this.state.display === "post dish") {
       return <PostDish />;
     }
-    //if (this.state.display === "login") return <Redirect to='/login'/>
    
   };
 }
