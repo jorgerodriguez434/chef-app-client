@@ -225,6 +225,7 @@ export class PostDish extends React.Component {
                   <label htmlFor="dish-img">
                     Choose a url image for the dish!
                   </label>
+                  <p> If you cannot find a valid link, use this: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1024px-No_image_3x4.svg.png</p>
                   <input
                     className="input my-text width-90"
                     type="text"
