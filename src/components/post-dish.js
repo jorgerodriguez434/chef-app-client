@@ -169,16 +169,20 @@ export class PostDish extends React.Component {
 
   setImage = () => {
     const image = this._dishImage.current.value;
-    if (image.match(/\.(jpeg|jpg|gif|png)$/) === null){
-      this.setState({
-        image: 'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'
-      });
-    }
-    else {
-      this.setState({
-        image
-      });
-    }
+    // if (image.match(/\.(jpeg|jpg|gif|png)$/) === null){
+    //   this.setState({
+    //     image: 'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'
+    //   });
+    // }
+    // else {
+    //   this.setState({
+    //     image
+    //   });
+    // }
+
+    this.setState({
+          image
+        });
   
   };
 
@@ -197,8 +201,7 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
-    console.log(this.state);
-    console.log(this.props);
+    
     if (this.state.display === "landing") {
       return (
         <div>
