@@ -78,8 +78,7 @@ export class PostDish extends React.Component {
           .then(() => {
             this.setState({
               message: "You must enter a valid image URL!",
-              isPending: false,
-              image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1024px-No_image_3x4.svg.png'
+              isPending: false
             });
           })
           .then(this.setMessageToNull);
@@ -170,9 +169,17 @@ export class PostDish extends React.Component {
 
   setImage = () => {
     const image = this._dishImage.current.value;
-    this.setState({
-      image
-    });
+    if (image.match(/\.(jpeg|jpg|gif|png)$/) === null){
+      this.setState({
+        image: 'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'
+      });
+    }
+    else {
+      this.setState({
+        image
+      });
+    }
+  
   };
 
   addCategory = e => {
