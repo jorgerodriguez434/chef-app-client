@@ -114,7 +114,7 @@ export default class RegistrationForm extends React.Component {
           })
           .then(this.setMessageToNull);
         return false;
-      } //if
+      } 
       else if (password.length < 10) {
         anotherPromise
           .then(() => {
@@ -127,11 +127,11 @@ export default class RegistrationForm extends React.Component {
           .then(this.setMessageToNull);
 
         return false;
-      } //else if
+      } 
       else{
           promise.then(this.postRequest);
       }
-    }); //promise
+    }); 
 
      
   };
@@ -229,7 +229,5 @@ export default class RegistrationForm extends React.Component {
         </section>
       );
     }
-  }; //render
+  };
 }
-
-//"Success!"

@@ -5,8 +5,6 @@ import { API_BASE_URL } from "../config";
 import Links from "./links"
 import {connect} from "react-redux";
 import "./menu.css";
-//import LoginForm from "./login-form"
-//import * as actions from "../actions";
 import { Redirect } from 'react-router-dom'
 
 export class Menu extends React.Component {
@@ -27,21 +25,22 @@ export class Menu extends React.Component {
   }
 
   componentDidMount() {
-    fetch(API_BASE_URL, {headers:  {"Authentication": `bearer {localStorage.getItem("token")}`}})
+    console.log(localStorage.getItem("token"));
+    const myHeaders = new Headers();
+
+myHeaders.append('Content-Type', 'application/json');
+myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
+    fetch(API_BASE_URL, {headers:  myHeaders})
       .then(res => res.json())
       .then(
         dishes => {
-        //console.log("api get request:");
-         //console.log(dishes);
          if (localStorage.getItem("isAuthenticated")){
           this.setState({
             isLoaded: true,
             menu: dishes,
           });
-          //this.props.dispatch(actions.setDisplay("landing"));
         }
        else {
-          //this.props.dispatch(actions.setDisplay("login"));
           this.setState({
             display: "login"
           });
@@ -73,21 +72,13 @@ export class Menu extends React.Component {
 
     this.state.menu.map(dish => {
       if (dish.categories.indexOf("contains-meat") !== -1) meatDishes.push(dish);
-      //dispatch add meat dish
       else if(dish.categories.indexOf("contains-meat") === -1) noMeatDishes.push(dish);
-      //dispatch add no meat dish
       if (dish.categories.indexOf("contains-gluten") !== -1) glutenDishes.push(dish);
-      //dispatch add gluten dishes
       else if(dish.categories.indexOf("contains-gluten") === -1) noGlutenDishes.push(dish)
-       //dispatch add no gluten dishes
       if (dish.categories.indexOf("contains-dairy") !== -1) dairyDishes.push(dish);
-       //dispatch dairy dishes
       else if (dish.categories.indexOf("contains-dairy") === -1) noDairyDishes.push(dish);
-       //dispatch no dairy dishes
       if (dish.categories.indexOf("contains-egg") !== -1) eggDishes.push(dish);
-       //dispatch egg gluten dishes
       else if (dish.categories.indexOf("contains-egg") === -1) noEggDishes.push(dish); 
-       //dispatch no egg dishes
       if (dish.categories.indexOf("contains-egg") === -1 && dish.categories.indexOf("contains-dairy") === -1 && dish.categories.indexOf("contains-meat") === -1 ) veganDishes.push(dish);
 
       return dish;
@@ -109,8 +100,6 @@ export class Menu extends React.Component {
 
 
   displayNoMeat = () => {
-   
-    //this.props.dispatch(actions.setDisplay("no meat"));
     this.setState({
       display: "no meat"
     });
@@ -118,8 +107,6 @@ export class Menu extends React.Component {
     console.log(this.state.noMeatDishes);
   };
   displayMeat = () => {
-    //this.componentDidMount();
-   // this.props.dispatch(actions.setDisplay("meat"));
    this.setState({
     display: "meat"
   });
@@ -127,7 +114,6 @@ export class Menu extends React.Component {
     console.log(this.state.meatDishes);
   };
   displayNoGluten = () => {
-    //this.props.dispatch(actions.setDisplay("no gluten"));
     this.setState({
       display: "no gluten"
     });
@@ -136,7 +122,6 @@ export class Menu extends React.Component {
   };
 
   displayNoEgg = () => {
-    //this.props.dispatch(actions.setDisplay("no egg"));
     this.setState({
       display: "no egg"
     });
@@ -145,8 +130,6 @@ export class Menu extends React.Component {
   };
 
   displayNoDairy = () => {
-
-    //this.props.dispatch(actions.setDisplay("no dairy"));
     this.setState({
       display: "no dairy"
     });
@@ -155,7 +138,6 @@ export class Menu extends React.Component {
   };
 
   displayVegan = () => {
-   // this.props.dispatch(actions.setDisplay("vegan"));
    this.setState({
     display: "vegan"
   });
@@ -164,8 +146,6 @@ export class Menu extends React.Component {
   };
 
   render = () => {
-    //console.log(this.props);
-    //console.log(this.state);
     if (this.state.display === "landing") {
       return (
       <div className="">

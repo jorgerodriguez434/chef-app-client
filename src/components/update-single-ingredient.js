@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-//import * as actions from "../actions";
 
 export class UpdateSingleIngredient extends React.Component {
 
@@ -24,11 +23,8 @@ export class UpdateSingleIngredient extends React.Component {
             {this.state.ingredient}
             <button type="button" onClick={this.onClick} className="remove-button border"> remove979 </button>
           </li>
-
-
         );
     }
-
 }
 
 export const mapStateToProps = state => ({

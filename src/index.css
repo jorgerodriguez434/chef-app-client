@@ -2,8 +2,6 @@
   box-sizing: border-box;
 }
 body {
-
-  /*padding: 0; */
   font-family: 'Titillium Web', sans-serif;
   background-color: black;
   margin-left: 30px;
@@ -22,7 +20,6 @@ header{
     height: 200px;
     border-top: 1px solid grey;
     margin-bottom: 20px;
-    /*padding-top: 80px;*/
 }
 label {
   display: block;
@@ -150,12 +147,6 @@ ul {
 .classify-as-checkbox:hover{
   background-color: blue;
 }
-.label-for-classify-as{
-  /*display: inline-block;*/
-  
-  
-   
-}
 .checkbox-container{
   
   margin-bottom: 20px;
@@ -270,7 +261,6 @@ ul {
 
   header{
 		height: 785px;
-		/*padding-top: 400px; */
 	}
 	header p{
 		font-size: 25px;
@@ -287,21 +277,8 @@ ul {
   .post-dish-buttons{
     width: 200px;
   }
- 
- 
- /* .button{   
-    display: inline-block;
-    margin-right: 20px; 
-}*/
-.button-group{
-  /*padding-bottom: 100px;
-  padding-top: 100px;*/
-}
 .width-90{
   width: 200px;
-}
-.label-for-classify-as{
-  /*display: inline-block;*/
 }
 
  

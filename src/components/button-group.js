@@ -1,5 +1,4 @@
 import React from "react";
-import "./button-group.css"
 
 const ButtonGroup = (props) => (
   <div className="button-group">

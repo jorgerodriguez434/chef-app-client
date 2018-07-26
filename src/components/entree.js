@@ -42,9 +42,9 @@ if (this.state.display === "landing"){
           <button className="dish-button" onClick={this.props.setDelete}> DELETE </button>
         </li>
         );
-    }//if 
+    }
     else if (this.state.display === "update dish") return <Redirect to="/update-dish" />;
-  }//render
+  }
 }
 
 

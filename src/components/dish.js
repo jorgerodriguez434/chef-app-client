@@ -1,34 +1,27 @@
 import React from "react";
-
 import { API_BASE_URL } from "../config";
-
-
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Entree from "./entree";
 import "./dish.css";
 import "./update-input-ingredients.css";
-
-//import { RingLoader } from "react-spinners";
 import { Redirect } from "react-router-dom";
-
 
 export class Dish extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       display: "landing",
-      name: this.props.stateName, 
+      name: this.props.stateName,
       image: this.props.dishImage,
       isPending: false,
       message: null
     };
   }
 
-
-  setUpdate = (e) => {
+  setUpdate = e => {
     this.setState({
-      display: "set update",
+      display: "set update"
     });
     this.props.dispatch(actions.clearCategories());
     this.props.dispatch(actions.clearIngredients());
@@ -42,7 +35,7 @@ export class Dish extends React.Component {
     this.props.stateCategories.map(category => {
       this.props.dispatch(actions.addCategory(category));
       return category;
-    }); 
+    });
     console.log("update button clicked!");
   };
 
@@ -56,7 +49,6 @@ export class Dish extends React.Component {
     this.setState({
       name: e.target.value
     });
-    
   };
 
   handleImageChange = e => {
@@ -78,7 +70,7 @@ export class Dish extends React.Component {
     console.log("submitted!");
     this.addCategory(e);
     this.setState({
-        isPending: true
+      isPending: true
     });
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -130,7 +122,6 @@ export class Dish extends React.Component {
       } else {
         anotherPromise
           .then(() => {
-            //this.props.dispatch(actions.setDisplay("Success!"));
             this.setState({
               isPending: false
             });
@@ -138,8 +129,6 @@ export class Dish extends React.Component {
           .then(this.putRequest);
       }
     });
-
-    //setTimeout(this.putRequest, 1000);
   };
 
   deleteDish = () => {
@@ -154,16 +143,16 @@ export class Dish extends React.Component {
       .catch(error => console.error("Error:", error))
       .then(response => console.log("Success:", response));
 
-      this.setState({
-          display: "dish deleted",
-          message: "Dish has been deleted!"
-      });
+    this.setState({
+      display: "dish deleted",
+      message: "Dish has been deleted!"
+    });
 
-      setTimeout(() => {
-        this.setState({
-          message: null
-        });
-      }, 1500);
+    setTimeout(() => {
+      this.setState({
+        message: null
+      });
+    }, 1500);
   };
 
   setDelete = () => {
@@ -199,31 +188,31 @@ export class Dish extends React.Component {
       .then(response => console.log("Success:", response));
   };
 
-  addCategory = e => {
-    this.props.dispatch(actions.clearCategories());
-    const checkboxes = e.currentTarget.getElementsByClassName(
-      "classify-as-checkbox"
-    );
+  // addCategory = e => {
+  //  // this.props.dispatch(actions.clearCategories());
+  //   const checkboxes = e.currentTarget.getElementsByClassName(
+  //     "classify-as-checkbox"
+  //   );
+  //   //checkboxObject.checked = true|false
 
-    Object.values(checkboxes).map(checkbox => {
-      if (checkbox.checked) {
-        this.props.dispatch(actions.addCategory(checkbox.value));
-      }
-      return checkbox.value;
-    });
-  };
+  //   Object.values(checkboxes).map(checkbox => {
+  //     if (checkbox.checked) {
+  //       this.props.dispatch(actions.addCategory(checkbox.value));
+  //     }
+  //     return checkbox.value;
+  //   });
+  // };
 
   componentDidMount = () => {
-
-    console.log("dish component mounted");
-  }
+    console.log("dish mounted");
+  };
 
   render = () => {
-      console.log(this.props);
     if (this.state.display === "landing") {
       return (
-        <Entree className=""
-          key={this.props.index /*this is the change I need it, use this.props.stateName, etc*/}
+        <Entree
+          className=""
+          key={this.props.index}
           index={this.props.index}
           name={this.props.stateName}
           image={this.props.dishImage}
@@ -232,45 +221,45 @@ export class Dish extends React.Component {
           setDelete={this.setDelete}
         />
       );
-    } //if
+    }
     if (this.state.display === "set update") {
-      console.log(this.props)
       return <Redirect to="/update-dish" />;
-    } //if
+    }
     if (this.state.display === "dish updated") {
       return <Redirect to="/success-updated" />;
-    } //if
+    }
 
     if (this.state.display === "set delete") {
       return (
         <div>
           <li key={this.props.index} className="dish">
-          <h2> {this.props.stateName} </h2>
-          <img src={this.props.dishImage} alt={this.props.stateName} />
-        
-          
-          <p className="set-delete"> Are you sure you want to delete this dish? </p>
+            <h2> {this.props.stateName} </h2>
+            <img src={this.props.dishImage} alt={this.props.stateName} />
 
-          <button type="button" className="button" onClick={this.deleteDish}>
-            {" "}
-            YES{" "}
-          </button>
-          <button type="button" className="button" onClick={this.goBack}>
-            {" "}
-            CANCEL{" "}
-          </button>
+            <p className="set-delete">
+              {" "}
+              Are you sure you want to delete this dish?{" "}
+            </p>
+
+            <button type="button" className="button" onClick={this.deleteDish}>
+              {" "}
+              YES{" "}
+            </button>
+            <button type="button" className="button" onClick={this.goBack}>
+              {" "}
+              CANCEL{" "}
+            </button>
           </li>
         </div>
-        
       );
-    }//if
+    }
     if (this.state.display === "dish deleted") {
       return (
         <div>
           <p className="ingredients"> {this.state.message}</p>
         </div>
       );
-    } //if
+    }
   };
 }
 
@@ -279,7 +268,6 @@ export const mapStateToProps = state => ({
   categories: state.categories,
   image: state.reduxDishImage,
   dishName: state.reduxDishName
-
 });
 
 export default connect(mapStateToProps)(Dish);
