@@ -188,19 +188,20 @@ export class Dish extends React.Component {
       .then(response => console.log("Success:", response));
   };
 
-  addCategory = e => {
-    this.props.dispatch(actions.clearCategories());
-    const checkboxes = e.currentTarget.getElementsByClassName(
-      "classify-as-checkbox"
-    );
+  // addCategory = e => {
+  //  // this.props.dispatch(actions.clearCategories());
+  //   const checkboxes = e.currentTarget.getElementsByClassName(
+  //     "classify-as-checkbox"
+  //   );
+  //   //checkboxObject.checked = true|false
 
-    Object.values(checkboxes).map(checkbox => {
-      if (checkbox.checked) {
-        this.props.dispatch(actions.addCategory(checkbox.value));
-      }
-      return checkbox.value;
-    });
-  };
+  //   Object.values(checkboxes).map(checkbox => {
+  //     if (checkbox.checked) {
+  //       this.props.dispatch(actions.addCategory(checkbox.value));
+  //     }
+  //     return checkbox.value;
+  //   });
+  // };
 
   componentDidMount = () => {
     console.log("dish mounted");

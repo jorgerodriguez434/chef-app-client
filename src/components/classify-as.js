@@ -11,6 +11,7 @@ const ClassifyAs = props => (
       value="contains-meat"
       type="checkbox"
       name="contains-meat"
+      id="contains-meat"
     />
 
     <label htmlFor="contains-gluten" className="label-for-classify-as">
@@ -22,6 +23,7 @@ const ClassifyAs = props => (
       value="contains-gluten"
       type="checkbox"
       name="contains-gluten"
+      id="contains-gluten"
     />
     <label htmlFor="contains-dairy" className="label-for-classify-as">
       {" "}
@@ -32,6 +34,7 @@ const ClassifyAs = props => (
       value="contains-dairy"
       type="checkbox"
       name="contains-dairy"
+      id="contains-dairy"
     />
 
     <label htmlFor="contains-egg" className="label-for-classify-as">
@@ -43,6 +46,7 @@ const ClassifyAs = props => (
       value="contains-egg"
       type="checkbox"
       name="contains-egg"
+      id="contains-egg"
     />
 
     <label htmlFor="none-apply" className="label-for-classify-as">
@@ -54,6 +58,7 @@ const ClassifyAs = props => (
       value="none-apply"
       type="checkbox"
       name="none-apply"
+      id="none-apply"
     />
   </div>
 );

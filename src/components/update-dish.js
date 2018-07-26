@@ -85,18 +85,20 @@ export class UpdateDish extends React.Component {
             })
             .then(this.setMessageToNull);
           return false;
-        } else if (this.props.categories.length === 0) {
-            error
-            .then(() => {
-              console.log("another promise");
-              this.setState({
-                message: "You must check at least one category!",
-                isPending: false
-              });
-            })
-            .then(this.setMessageToNull);
-          return false;
-        } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
+        } 
+        // else if (this.props.categories.length === 0) {
+        //     error
+        //     .then(() => {
+        //       console.log("another promise");
+        //       this.setState({
+        //         message: "You must check at least one category!",
+        //         isPending: false
+        //       });
+        //     })
+        //     .then(this.setMessageToNull);
+        //   return false;
+        // }
+         else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
             error
             .then(() => {
               console.log("another promise");
@@ -156,7 +158,7 @@ export class UpdateDish extends React.Component {
   };
 
   addCategory = e => {
-    this.props.dispatch(actions.clearCategories());
+    
     const checkboxes = e.currentTarget.getElementsByClassName(
       "classify-as-checkbox"
     );
@@ -170,9 +172,27 @@ export class UpdateDish extends React.Component {
   };
 
   componentDidMount = () => {
-
+    this.props.dispatch(actions.clearCategories());
     console.log("update dish component mounted");
     console.log(this.props);
+    this.props.categories.map(category => {
+        if (category === "contains-meat"){
+            document.getElementById("contains-meat").checked = true;
+        }
+        if (category === "contains-gluten"){
+            document.getElementById("contains-gluten").checked = true;
+        }
+        if (category === "contains-egg"){
+            document.getElementById("contains-egg").checked = true;
+        }
+        if (category === "contains-dairy"){
+            document.getElementById("contains-dairy").checked = true;
+        }
+        if (category === "none-apply"){
+            document.getElementById("none-apply").checked = true;
+        }
+        return category
+    });
   }
 
   render = () => {

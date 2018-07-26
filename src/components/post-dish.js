@@ -141,7 +141,7 @@ export class PostDish extends React.Component {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        Authentication: `bearer {localStorage.getItem("token")}`
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
       },
       type: "HEAD",
       url: this.state.image

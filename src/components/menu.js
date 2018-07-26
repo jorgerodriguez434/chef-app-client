@@ -25,7 +25,12 @@ export class Menu extends React.Component {
   }
 
   componentDidMount() {
-    fetch(API_BASE_URL, {headers:  {"Authentication": `bearer {localStorage.getItem("token")}`}})
+    console.log(localStorage.getItem("token"));
+    const myHeaders = new Headers();
+
+myHeaders.append('Content-Type', 'application/json');
+myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
+    fetch(API_BASE_URL, {headers:  myHeaders})
       .then(res => res.json())
       .then(
         dishes => {
