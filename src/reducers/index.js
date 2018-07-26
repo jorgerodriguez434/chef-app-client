@@ -5,7 +5,7 @@ export const initialState = {
   token: "none",
   data: "no data",
   displayRedux: "landing",
-  isAuthenticated: localStorage.getItem("isAuthenticated"),
+  isAuthenticated: false,//localStorage.getItem("isAuthenticated"),
   isPending: false,
   error: { message: "", code: "" },
   username: "",
