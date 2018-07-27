@@ -145,6 +145,12 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
     console.log(this.state.veganDishes);
   };
 
+  goBack = () => {
+    this.setState({
+        display: "landing"
+    });
+  }
+
   render = () => {
     if (this.state.display === "landing") {
       return (
@@ -176,14 +182,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
-          <ButtonGroup
-            displayNoEgg = {this.displayNoEgg}
-            displayVegan = {this.displayVegan}
-            displayNoDairy = {this.displayNoDairy}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
-          />
+       <button className="button" onClick={this.goBack}> BACK TO MENU </button>
           <h3> Showing no meats: </h3>
           <Dishes category={this.state.noMeatDishes} />
         </div>
@@ -199,14 +198,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
-          <ButtonGroup
-            displayNoEgg = {this.displayNoEgg}
-            displayVegan = {this.displayVegan}
-            displayNoDairy = {this.displayNoDairy}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
-          />
+        <button className="button" onClick={this.goBack}> BACK TO MENU </button>
           <h3> Showing meats: </h3>
         <div aria-live="polite" className="list-of-dishes">
           <Dishes category={this.state.meatDishes} />
@@ -224,14 +216,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
-          <ButtonGroup
-            displayNoEgg = {this.displayNoEgg}
-            displayVegan = {this.displayVegan}
-            displayNoDairy = {this.displayNoDairy}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
-          />
+        <button className="button" onClick={this.goBack}> BACK TO MENU </button>
           <h3> Showing no gluten: </h3>
           <Dishes category={this.state.noGlutenDishes} />
         </div>
@@ -248,14 +233,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
-           <ButtonGroup
-            displayNoEgg = {this.displayNoEgg}
-            displayVegan = {this.displayVegan}
-            displayNoDairy = {this.displayNoDairy}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
-          />
+        <button className="button" onClick={this.goBack}> BACK TO MENU </button>
           <h3> Showing no egg: </h3>
           <Dishes category={this.state.noEggDishes} />
          
@@ -273,14 +251,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </div>
         <section className="background-for-button-group">
         <div className="button-group-container">
-          <ButtonGroup
-            displayNoEgg = {this.displayNoEgg}
-            displayVegan = {this.displayVegan}
-            displayNoDairy = {this.displayNoDairy}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
-          />
+        <button className="button" onClick={this.goBack}> BACK TO MENU </button>
           <h3> Showing no dairy: </h3>
           <Dishes category={this.state.noDairyDishes} />
          
@@ -298,14 +269,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </div>
       <section className="background-for-button-group">
         <div className="button-group-container">
-          <ButtonGroup
-            displayNoEgg = {this.displayNoEgg}
-            displayVegan = {this.displayVegan}
-            displayNoDairy = {this.displayNoDairy}
-            displayNoMeat={this.displayNoMeat}
-            displayMeat={this.displayMeat}
-            displayNoGluten={this.displayNoGluten}
-          />
+        <button className="button" onClick={this.goBack}> BACK TO MENU </button>
           <h3> Showing vegan: </h3>
           <Dishes category={this.state.veganDishes} />
         </div>
