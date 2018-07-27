@@ -74,17 +74,6 @@ export class PostDish extends React.Component {
           .then(this.setMessageToNull);
         return false;
       } 
-      // else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
-      //   error
-      //     .then(() => {
-      //       this.setState({
-      //         message: "You must enter a valid image URL!",
-      //         isPending: false
-      //       });
-      //     })
-      //     .then(this.setMessageToNull);
-      //   return false;
-      // } 
       else {
         success
           .then(() => {
@@ -95,7 +84,6 @@ export class PostDish extends React.Component {
               isPending: false
             });
           })
-          // .then(this.postRequest);
       }
     });
   }
@@ -169,48 +157,100 @@ export class PostDish extends React.Component {
   };
 
   burger = () => {
-    console.log('burger image clicked!');
     this.setState({
-        image: "https://icon2.kisspng.com/20180203/oaw/kisspng-hamburger-cheeseburger-veggie-burger-cartoon-clip-burgers-cliparts-5a765956e579e2.36672725151770555894.jpg",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzfGG6GyZ4WKV8BnzwDmY--G_t5Hz5m23OtwXbg7-mw9pkPu8y",
         burgerBorder: "border",
-        saladBorder: ""
+        saladBorder: "",
+        steakBorder:"",
+        noMeatBorder:"",
+        genericBorder: ""
     });
   }
   salad = () => {
-    console.log('salad image clicked!');
     this.setState({
         image: "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg",
         saladBorder: "border",
-        burgerBorder: ""
+        burgerBorder: "",
+        noMeatBorder:"",
+        steakBorder:"",
+        genericBorder: ""
     });
   }
 
-  setImage = () => {
-      console.log("post request");
-      this.setState({
-        display: "Success!"
-      })
-      this.postRequest();
+  noMeat = () => {
+    this.setState({
+      image: "https://png.pngtree.com/element_origin_min_pic/17/09/25/314fe5b73bf5d737d138b0566e95810b.jpg",
+      noMeatBorder: "border",
+      burgerBorder: "",
+      steakBorder:"",
+      saladBorder:"",
+      genericBorder: ""
+  });
+  }
+  steak = () => {
+    this.setState({
+      image: "https://png.pngtree.com/element_origin_min_pic/16/08/28/1657c29a1f544a1.jpg",
+      steakBorder: "border",
+      saladBorder: "",
+      burgerBorder: "",
+      noMeatBorder:"",
+      genericBorder: ""
+  });
   }
 
-  // setImage = () => {
-  //   const image = this._dishImage.current.value;
-  //   // if (image.match(/\.(jpeg|jpg|gif|png)$/) === null){
-  //   //   this.setState({
-  //   //     image: 'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'
-  //   //   });
-  //   // }
-  //   // else {
-  //   //   this.setState({
-  //   //     image
-  //   //   });
-  //   // }
+  generic = () => {
+    this.setState({
+      image: "https://t4.ftcdn.net/jpg/00/59/69/95/240_F_59699563_A0mCz2LkgfPHrj0PbAPd0FaccfOrPELQ.jpg",
+      steakBorder: "",
+      saladBorder: "",
+      burgerBorder: "",
+      noMeatBorder:"",
+      genericBorder: "border"
+  });
+  }
 
-  //   this.setState({
-  //         image
-  //       });
-  
-  // };
+  setImage = () => {
+    this.setState({
+      isPending: true
+    })
+    const wait = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1000);
+    });
+
+    const anotherPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("Success!");
+      }, 1500);
+    });
+
+    wait.then(() => {
+      if (this.state.image === "none") {
+        anotherPromise
+          .then(() => {
+            console.log("another promise");
+            this.setState({
+              message: "You must select a picture!",
+              isPending: false
+            });
+          })
+          .then(this.setMessageToNull);
+        return false;
+      }
+      else {
+        anotherPromise
+          .then(() => {
+            this.setState({
+              isPending: false,
+              display: "Success!"
+            });
+          })
+          .then(this.postRequest);
+      }
+    })
+    
+  }
 
   addCategory = e => {
     const checkboxes = e.currentTarget.getElementsByClassName(
@@ -259,16 +299,6 @@ export class PostDish extends React.Component {
                 <div className="checkbox-container">
                   <ClassifyAs />
                   </div>
-                  {/* <label htmlFor="dish-img">
-                    Choose a url image for the dish!
-                  </label>
-                  <input
-                    className="input my-text width-90"
-                    type="text"
-                    placeholder="URL image"
-                    ref={this._dishImage}
-                    required
-                  /> */}
                   <p className="red-font"> {this.state.message}</p>
                 <div className="post-dish-spinner-container">
                   <div className="post-dish-spinner">
@@ -325,34 +355,23 @@ export class PostDish extends React.Component {
 
 
         <div>
-          <h1> select a picture! </h1>
-          <img className={`choose-pic ${this.state.burgerBorder}`} src="https://icon2.kisspng.com/20180203/oaw/kisspng-hamburger-cheeseburger-veggie-burger-cartoon-clip-burgers-cliparts-5a765956e579e2.36672725151770555894.jpg" onClick={this.burger} />
-          <img className={`choose-pic ${this.state.saladBorder}`} src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg" onClick={this.salad} />
+          <h1> Select a picture! </h1>
+          <img className={`choose-pic ${this.state.burgerBorder}`} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzfGG6GyZ4WKV8BnzwDmY--G_t5Hz5m23OtwXbg7-mw9pkPu8y" onClick={this.burger} alt="burger"/>
+          <img className={`choose-pic ${this.state.noMeatBorder}`} src=" https://png.pngtree.com/element_origin_min_pic/17/09/25/314fe5b73bf5d737d138b0566e95810b.jpg" onClick={this.noMeat} alt="burger"/>
+          <img className={`choose-pic ${this.state.saladBorder}`} src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg" onClick={this.salad} alt="salad"/>
+          <img className={`choose-pic ${this.state.steakBorder}`} src="https://png.pngtree.com/element_origin_min_pic/16/08/28/1657c29a1f544a1.jpg" onClick={this.steak} alt="steak"/>
+          <img className={`choose-pic ${this.state.genericBorder}`} src="https://t4.ftcdn.net/jpg/00/59/69/95/240_F_59699563_A0mCz2LkgfPHrj0PbAPd0FaccfOrPELQ.jpg" onClick={this.generic} alt="generic"/>
+          <p className="red-font"> {this.state.message}</p>
+          <div className="post-dish-spinner">
+                    <RingLoader
+                      color={"#123abc"}
+                      loading={this.state.isPending}
+                    />
+                  </div>
           <button className="button" onClick={this.setImage}> SET IMAGE </button>
-          {/* 
-            i wanna have 4 pictures
-            On click, depending on the picture,
-            the dish will have that picture
-            So how to do it?
-            e.g
-
-            if (this.pic.clicked){
-              then this pic is the pic of the dish
-            }
-
-            <img src="image-src.jps" onClick={this.Burger} />
-
-            Burger = () => {
-              this.setState({
-                  image: "burger.jpg"
-              });
-            }
-            https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg
-          
-          
-          
-          */}
           </div>
+          
+        
       );
     }
   };
@@ -367,3 +386,8 @@ export const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(PostDish);
+
+/*
+
+<img className={`choose-pic ${this.state.burgeBorder}`} src=" https://png.pngtree.com/element_origin_min_pic/16/08/28/1657c29a1f544a1.jpg" onClick={this.burger} alt="no-meat"/>
+*/
