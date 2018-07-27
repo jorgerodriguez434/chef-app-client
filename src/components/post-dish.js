@@ -21,7 +21,7 @@ export class PostDish extends React.Component {
       isPending: false
     };
     this._dishName = React.createRef();
-    this._dishImage = React.createRef();
+   // this._dishImage = React.createRef();
   }
 
   setMessageToNull = () => {
@@ -73,28 +73,29 @@ export class PostDish extends React.Component {
           })
           .then(this.setMessageToNull);
         return false;
-      } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
-        error
-          .then(() => {
-            this.setState({
-              message: "You must enter a valid image URL!",
-              isPending: false
-            });
-          })
-          .then(this.setMessageToNull);
-        return false;
       } 
+      // else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
+      //   error
+      //     .then(() => {
+      //       this.setState({
+      //         message: "You must enter a valid image URL!",
+      //         isPending: false
+      //       });
+      //     })
+      //     .then(this.setMessageToNull);
+      //   return false;
+      // } 
       else {
         success
           .then(() => {
             this.setState({
-                display: "Success!"
+                display: "select a picture!"
             });
             this.setState({
               isPending: false
             });
           })
-          .then(this.postRequest);
+          // .then(this.postRequest);
       }
     });
   }
@@ -105,7 +106,7 @@ export class PostDish extends React.Component {
     console.log(this.props);
     this.addCategory(e);
     this.setName();
-    this.setImage();
+    //this.setImage();
     this.setState({
       isPending: true
     });
@@ -167,24 +168,49 @@ export class PostDish extends React.Component {
     });
   };
 
-  setImage = () => {
-    const image = this._dishImage.current.value;
-    // if (image.match(/\.(jpeg|jpg|gif|png)$/) === null){
-    //   this.setState({
-    //     image: 'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'
-    //   });
-    // }
-    // else {
-    //   this.setState({
-    //     image
-    //   });
-    // }
-
+  burger = () => {
+    console.log('burger image clicked!');
     this.setState({
-          image
-        });
+        image: "https://icon2.kisspng.com/20180203/oaw/kisspng-hamburger-cheeseburger-veggie-burger-cartoon-clip-burgers-cliparts-5a765956e579e2.36672725151770555894.jpg",
+        burgerBorder: "border",
+        saladBorder: ""
+    });
+  }
+  salad = () => {
+    console.log('salad image clicked!');
+    this.setState({
+        image: "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg",
+        saladBorder: "border",
+        burgerBorder: ""
+    });
+  }
+
+  setImage = () => {
+      console.log("post request");
+      this.setState({
+        display: "Success!"
+      })
+      this.postRequest();
+  }
+
+  // setImage = () => {
+  //   const image = this._dishImage.current.value;
+  //   // if (image.match(/\.(jpeg|jpg|gif|png)$/) === null){
+  //   //   this.setState({
+  //   //     image: 'http://www.bsmc.net.au/wp-content/uploads/No-image-available.jpg'
+  //   //   });
+  //   // }
+  //   // else {
+  //   //   this.setState({
+  //   //     image
+  //   //   });
+  //   // }
+
+  //   this.setState({
+  //         image
+  //       });
   
-  };
+  // };
 
   addCategory = e => {
     const checkboxes = e.currentTarget.getElementsByClassName(
@@ -201,7 +227,7 @@ export class PostDish extends React.Component {
   };
 
   render = () => {
-    
+
     if (this.state.display === "landing") {
       return (
         <div>
@@ -233,7 +259,7 @@ export class PostDish extends React.Component {
                 <div className="checkbox-container">
                   <ClassifyAs />
                   </div>
-                  <label htmlFor="dish-img">
+                  {/* <label htmlFor="dish-img">
                     Choose a url image for the dish!
                   </label>
                   <input
@@ -242,7 +268,7 @@ export class PostDish extends React.Component {
                     placeholder="URL image"
                     ref={this._dishImage}
                     required
-                  />
+                  /> */}
                   <p className="red-font"> {this.state.message}</p>
                 <div className="post-dish-spinner-container">
                   <div className="post-dish-spinner">
@@ -292,6 +318,42 @@ export class PostDish extends React.Component {
      }
      if (this.state.display=== "menu") {
       return <Redirect to="/menu" />;
+    }
+    if (this.state.display=== "select a picture!") {
+      console.log(this.state);
+      return (
+
+
+        <div>
+          <h1> select a picture! </h1>
+          <img className={`choose-pic ${this.state.burgerBorder}`} src="https://icon2.kisspng.com/20180203/oaw/kisspng-hamburger-cheeseburger-veggie-burger-cartoon-clip-burgers-cliparts-5a765956e579e2.36672725151770555894.jpg" onClick={this.burger} />
+          <img className={`choose-pic ${this.state.saladBorder}`} src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg" onClick={this.salad} />
+          <button className="button" onClick={this.setImage}> SET IMAGE </button>
+          {/* 
+            i wanna have 4 pictures
+            On click, depending on the picture,
+            the dish will have that picture
+            So how to do it?
+            e.g
+
+            if (this.pic.clicked){
+              then this pic is the pic of the dish
+            }
+
+            <img src="image-src.jps" onClick={this.Burger} />
+
+            Burger = () => {
+              this.setState({
+                  image: "burger.jpg"
+              });
+            }
+            https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg
+          
+          
+          
+          */}
+          </div>
+      );
     }
   };
 }
