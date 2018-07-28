@@ -1,5 +1,5 @@
 import React from "react";
-import * as config from "../config";
+//import * as config from "../config";
 import { Redirect } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import "./registration.css";
@@ -30,7 +30,7 @@ export default class RegistrationForm extends React.Component {
       username: this.state.username,
       password: this.state.password
     };
-    fetch(config.API_USERS_URL, {
+    fetch('https://thawing-ravine-79238.herokuapp.com/api/users', {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -154,7 +154,7 @@ export default class RegistrationForm extends React.Component {
       return (
       <section className="registration-outside-container" aria-live="polite"> 
         <div className="registration-container">
-          <h1> Register </h1>
+          <h1> Register123 </h1>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="name">Name</label>
             <input
