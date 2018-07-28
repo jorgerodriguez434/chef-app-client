@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import * as config from "../config";
+//import * as config from "../config";
 import * as actions from "../actions";
 import "./login-form.css";
 import { RingLoader } from "react-spinners";
@@ -28,7 +28,7 @@ export class LoginForm extends React.Component {
       username: this.state.username,
       password: this.state.password
     };
-    fetch('https://thawing-ravine-79238.herokuapp.com/api/auth/login', {
+    fetch("facebook.com", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
