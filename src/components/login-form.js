@@ -100,7 +100,7 @@ export class LoginForm extends React.Component {
                 (To demo app, sign in with username: testing1234, password:
                 testing1234){" "}
               </p>
-              <h1> Sign in </h1>
+              <h1> Sign in 123</h1>
               <form onSubmit={this.onSubmit}>
                 <label htmlFor="username">Username</label>
                 <input
