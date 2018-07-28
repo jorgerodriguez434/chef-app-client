@@ -28,7 +28,7 @@ export class LoginForm extends React.Component {
       username: this.state.username,
       password: this.state.password
     };
-    fetch(config.API_AUTH_LOGIN_URL, {
+    fetch('https://thawing-ravine-79238.herokuapp.com/api/auth/login', {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
