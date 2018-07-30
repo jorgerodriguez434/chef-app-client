@@ -1,5 +1,5 @@
 {
-  "name": "chef-app-client-2",
+  "name": "chef-app-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
