@@ -111,9 +111,10 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
    this.setState({
     display: "meat"
   });
+  this.props.dispatch(actions.setDisplay("meat"))
     console.log("meat:");
     console.log(this.state.meatDishes);
-    this.props.dispatch(actions.update());
+  
   };
   displayNoGluten = () => {
     this.setState({
@@ -191,7 +192,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
         </section>
         </div>
       );
-    } else if (this.state.display === "meat") {
+    } else if (this.props.state.displayRedux === "meat") {
       return (
         <div>
           <Links/>
