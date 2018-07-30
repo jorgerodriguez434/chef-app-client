@@ -74,7 +74,7 @@ export const myAppReducer = (state = initialState, action) => {
       });
       case constants.UPDATE:
       return Object.assign({}, state, {
-        data: action.data
+        data: "update"
       });
       case constants.SET_DISPLAY:
       return Object.assign({}, state, {

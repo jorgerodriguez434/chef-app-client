@@ -5,7 +5,8 @@ import { API_BASE_URL } from "../config";
 import Links from "./links"
 import {connect} from "react-redux";
 import "./menu.css";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
+import * as actions from "../actions";
 
 export class Menu extends React.Component {
   constructor() {
@@ -112,6 +113,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
   });
     console.log("meat:");
     console.log(this.state.meatDishes);
+    this.props.state.dispatch(actions.update());
   };
   displayNoGluten = () => {
     this.setState({
