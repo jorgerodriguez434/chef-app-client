@@ -154,7 +154,7 @@ export default class RegistrationForm extends React.Component {
       return (
       <section className="registration-outside-container" aria-live="polite"> 
         <div className="registration-container">
-          <h1> Register123 </h1>
+          <h1> Register </h1>
           <form onSubmit={this.onSubmit}>
             <label htmlFor="name">Name</label>
             <input

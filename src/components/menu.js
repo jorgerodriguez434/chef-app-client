@@ -113,7 +113,7 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
   });
     console.log("meat:");
     console.log(this.state.meatDishes);
-    this.props.state.dispatch(actions.update());
+    this.props.dispatch(actions.update());
   };
   displayNoGluten = () => {
     this.setState({
