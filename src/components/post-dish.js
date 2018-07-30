@@ -249,7 +249,7 @@ export class PostDish extends React.Component {
 
   seafood = () => {
     this.setState({
-      image: "https://media.istockphoto.com/vectors/taco-cartoon-vector-id510106211?k=6&m=510106211&s=612x612&w=0&h=C7yqDCYFi4-8aBsrr5TbWqx6_7N-x3d7anu4JsVdaB0=",
+      image: "https://static.vecteezy.com/system/resources/previews/000/161/855/non_2x/seafood-cartoon-free-vector.jpg",
       steakBorder: "",
       saladBorder: "",
       burgerBorder: "",
@@ -413,7 +413,7 @@ export class PostDish extends React.Component {
           <img className={`choose-pic ${this.state.saladBorder}`} src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4587564.jpg" onClick={this.salad} alt="salad"/>
           <img className={`choose-pic ${this.state.steakBorder}`} src="https://png.pngtree.com/element_origin_min_pic/16/08/28/1657c29a1f544a1.jpg" onClick={this.steak} alt="steak"/>
           <img className={`choose-pic ${this.state.genericBorder}`} src="https://t4.ftcdn.net/jpg/00/59/69/95/240_F_59699563_A0mCz2LkgfPHrj0PbAPd0FaccfOrPELQ.jpg" onClick={this.generic} alt="generic"/>
-          <img className={`choose-pic ${this.state.chickenBorder}`} src="https://cdn1.vectorstock.com/i/thumb-large/09/35/chicken-meat-on-the-bone-icon-cartoon-vector-13580935.jpg" onClick={this.chicken} alt="chickeb"/>
+          <img className={`choose-pic ${this.state.chickenBorder}`} src="https://cdn1.vectorstock.com/i/thumb-large/09/35/chicken-meat-on-the-bone-icon-cartoon-vector-13580935.jpg" onClick={this.chicken} alt="chicken"/>
           <img className={`choose-pic ${this.state.tacosBorder}`} src="https://media.istockphoto.com/vectors/taco-cartoon-vector-id510106211?k=6&m=510106211&s=612x612&w=0&h=C7yqDCYFi4-8aBsrr5TbWqx6_7N-x3d7anu4JsVdaB0=" onClick={this.tacos} alt="tacos"/>
           <img className={`choose-pic ${this.state.seafoodBorder}`} src="https://static.vecteezy.com/system/resources/previews/000/161/855/non_2x/seafood-cartoon-free-vector.jpg" onClick={this.seafood} alt="seafood"/>
           <p className="red-font"> {this.state.message}</p>
