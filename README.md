@@ -1,6 +1,10 @@
-# Song Organizer
+# The Chef App
 
-A user can create a playlist by adding songs. Upon adding songs, a user can remove or update song. These songs will stay with you wherever you go! Check the app out here: https://lychee-shortcake-58019.herokuapp.com/
+This app is for chefs or anyone that likes to cook! When a user logs in, he/she will be directed to the post a dish page.
+Once here, the user must add ingredients, followed by the dish name, and finally the user must select a category for the dish.
+If no category applies, simply select none-apply, and then you are all set! Last thing is to select a picture for your dish!
+
+Check the app out here: https://chef-app-client.herokuapp.com/
 
 ## Requirements
 * Create a client prototype that allows non-technical users to do something interesting or valuable with the API.
