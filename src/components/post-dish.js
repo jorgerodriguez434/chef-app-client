@@ -221,7 +221,7 @@ export class PostDish extends React.Component {
 
   chicken = () => {
     this.setState({
-      image: "https://t4.ftcdn.net/jpg/00/59/69/95/240_F_59699563_A0mCz2LkgfPHrj0PbAPd0FaccfOrPELQ.jpg",
+      image: "https://cdn1.vectorstock.com/i/thumb-large/09/35/chicken-meat-on-the-bone-icon-cartoon-vector-13580935.jpg",
       steakBorder: "",
       saladBorder: "",
       burgerBorder: "",
