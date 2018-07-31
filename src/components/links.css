@@ -10,8 +10,7 @@
 	background-color: white;
 	text-align: center;
 	margin: auto;
-	padding-top: 50px;
-	padding-bottom: 40px;
+	padding-top: 40px;
 	color: black;
 	opacity: .9;
 	height: 130px;
@@ -20,29 +19,22 @@
 	background-color: tomato;
 }
 .logout-div {
-	margin-right: 20px;
-	padding: 0px 0px 15px 0px;
-	margin-bottom: 10px;
-	float: right;
-	overflow: hidden;
-	position: relative;
-	top: 50%;
-	transform: perspective(1px) translateY(-50%);
+	text-align: center;
 }
 .logout {
-	padding: 10px 10px 10px 10px;
-	color: white;
-	text-align: center;
-	background-color: grey;
 	border-radius: 5px;
-	font-family: 'Titillium Web', sans-serif;
 	cursor: pointer;
+	font-size: 14px;
+	color: white;
+	font-family: 'Titillium Web', sans-serif;
+	background-color: grey;
+	height: 30px;
+	width: 80px;
+	display: block;
+	margin: auto;
+	margin-bottom: 23px;
+	margin-top: 5px;
 	opacity: .8;
-}
-@media only screen and (min-width: 492px) {
-	.link-group {
-		padding-left: 14%;
-	}
 }
 @media only screen and (min-width: 740px) {
 	.link {
@@ -50,6 +42,22 @@
 	}
 	.link-group {
 		padding-left: 14%;
+	}
+	.logout-div {
+		margin-right: 20px;
+		padding: 0px 0px 15px 0px;
+		margin-bottom: 10px;
+		float: right;
+		overflow: hidden;
+		position: relative;
+		top: 50%;
+		transform: perspective(1px) translateY(-50%);
+	}
+	.link-group {
+		height: 100px;
+	}
+	.outside-link-group-container {
+		height: 100px;
 	}
 }
 @media only screen and (min-width: 940px) {
