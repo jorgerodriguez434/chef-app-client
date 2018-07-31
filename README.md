@@ -22,9 +22,12 @@ Check the app out here: https://chef-app-client.herokuapp.com/
 
 ## Screenshots
  ![image](https://user-images.githubusercontent.com/18128525/43462848-cb1ac958-949c-11e8-9eb5-23747c992f1a.png)
- ![image](https://user-images.githubusercontent.com/18128525/39194306-0aa27202-47a3-11e8-8fd2-7a1a01919d32.png)
- ![image](https://user-images.githubusercontent.com/18128525/39194420-52966334-47a3-11e8-92c1-abaf737f2c1f.png)
- ![image](https://user-images.githubusercontent.com/18128525/39194841-25152dd6-47a4-11e8-9ec3-9fe7aa80113d.png)
+ ![image](https://user-images.githubusercontent.com/18128525/43462927-fc40962a-949c-11e8-9eb7-6d2d107d3aa8.png)
+ ![image](https://user-images.githubusercontent.com/18128525/43462967-0e7ce000-949d-11e8-8ccf-14741fff1c65.png)
+ ![image](https://user-images.githubusercontent.com/18128525/43463041-461172e2-949d-11e8-9a3d-39a770628d16.png)
+ ![image](https://user-images.githubusercontent.com/18128525/43463097-6b7ac484-949d-11e8-99ee-e4b708fccc27.png)
+ ![image](https://user-images.githubusercontent.com/18128525/43463105-7373d126-949d-11e8-8bc4-75d8cc3f0b32.png)
+ ![image](https://user-images.githubusercontent.com/18128525/43463156-8fe11f4e-949d-11e8-93cd-a32cef782a37.png)
 
 ## API Documentatiom
    ### Dish attributes
