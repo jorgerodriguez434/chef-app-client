@@ -4,7 +4,7 @@ This app is for chefs or anyone that likes to cook! When a user logs in, he/she 
 Once here, the user must add ingredients, followed by the dish name, and finally the user must select a category for the dish.
 If no category applies, simply select none-apply, and then the user is all set! Then the user will be asked to select a picture for their dish! 
 
-The dishes will appear in the following categories: vegeterian, vegan, gluten free, dairy free, and meats. This makes it easier for chefs to keep their dishes up to date, and makes it easier to accommodate guests! This app will keep track of all the dishes 
+The dishes will appear in the following categories: vegeterian, vegan, gluten free, dairy free, and meats. This makes it easier for chefs to keep their dishes up to date, and makes it easier to accommodate guests! This app will keep track of all the dishes!
 
 Check the app out here: https://chef-app-client.herokuapp.com/
 
