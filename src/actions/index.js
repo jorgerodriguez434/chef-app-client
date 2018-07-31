@@ -55,9 +55,9 @@ export const setToken = token => ({
   token
 });
 
-export const update = data => ({
+export const update = () => ({
   type: constants.UPDATE,
-  data
+
 });
 
 export const setDisplay = display => ({

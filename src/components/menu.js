@@ -248,7 +248,7 @@ export class Menu extends React.Component {
           </section>
         </div>
       );
-    } //else if
+    } 
     else if (this.state.display === "no egg") {
       return (
         <div>
@@ -268,7 +268,7 @@ export class Menu extends React.Component {
           </section>
         </div>
       );
-    } //else if
+    }
     else if (this.state.display === "no dairy") {
       return (
         <div>
@@ -288,7 +288,7 @@ export class Menu extends React.Component {
           </section>
         </div>
       );
-    } //else if
+    }
     else if (this.state.display === "vegan") {
       return (
         <div>
@@ -308,10 +308,10 @@ export class Menu extends React.Component {
           </section>
         </div>
       );
-    } //else if
+    } 
     else if (this.state.display === "login") return <Redirect to="/login" />;
-  }; //render
-} //class
+  }; 
+} 
 
 export const mapStateToProps = state => ({
   state

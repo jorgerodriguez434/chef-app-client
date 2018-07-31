@@ -1,5 +1,4 @@
 import React from "react";
-//import * as config from "../config";
 import { Redirect } from "react-router-dom";
 import { RingLoader } from "react-spinners";
 import "./registration.css";
@@ -212,7 +211,7 @@ export default class RegistrationForm extends React.Component {
         </div>
       </section>
       );
-    } //if
+    } 
     else if (this.state.display === "login") return <Redirect to="/login" />;
     else if (this.state.display === "Success!") {
       return (

@@ -1,41 +1,30 @@
-.add-ingredients-main-box{
-  padding-bottom: 20px;
-  }
-
-  .add-ingredient{
-    border: 3px solid gray;
-    margin-bottom: 9px;
-    text-align: center;
-  
-    /* in single-ingredient */
-  }
-  .add-ingredient:hover {
-    background-color: #333333;
-   }
-  
-  
-  @media only screen and (min-width: 740px) {
-    img {
-      width: 400px;
-      height: 300px;
-      border: 3px solid grey;
-    }
-
-    .add-ingredients-main-box{
-      display: inline-block;
-      width: 50%;
-      vertical-align: top;
-      
-    }
-   
-    .add-ingredient{
-      
-      margin-right: 5px;
-      width: 60%;
-      margin-left: 20%;
-      margin-right: 20%;
-    }
-    
-  }
-
- 
+.add-ingredients-main-box {
+	padding-bottom: 20px;
+}
+.add-ingredient {
+	border: 3px solid gray;
+	margin-bottom: 9px;
+	text-align: center;
+	/* in single-ingredient */
+}
+.add-ingredient:hover {
+	background-color: #333333;
+}
+@media only screen and (min-width: 740px) {
+	img {
+		width: 400px;
+		height: 300px;
+		border: 3px solid grey;
+	}
+	.add-ingredients-main-box {
+		display: inline-block;
+		width: 50%;
+		vertical-align: top;
+	}
+	.add-ingredient {
+		margin-right: 5px;
+		width: 60%;
+		margin-left: 20%;
+		margin-right: 20%;
+	}
+}
