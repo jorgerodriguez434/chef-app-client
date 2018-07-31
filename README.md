@@ -27,7 +27,6 @@ Check the app out here: https://chef-app-client.herokuapp.com/
  ![image](https://user-images.githubusercontent.com/18128525/43463041-461172e2-949d-11e8-9a3d-39a770628d16.png)
  ![image](https://user-images.githubusercontent.com/18128525/43463097-6b7ac484-949d-11e8-99ee-e4b708fccc27.png)
  ![image](https://user-images.githubusercontent.com/18128525/43463105-7373d126-949d-11e8-8bc4-75d8cc3f0b32.png)
- ![image](https://user-images.githubusercontent.com/18128525/43463156-8fe11f4e-949d-11e8-93cd-a32cef782a37.png)
 
 ## API Documentatiom
    ### Dish attributes
