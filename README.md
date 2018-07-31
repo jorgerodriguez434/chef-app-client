@@ -9,12 +9,16 @@ The dishes will appear in the following categories: vegeterian, vegan, gluten fr
 Check the app out here: https://chef-app-client.herokuapp.com/
 
 ## Requirements
-* Create a client prototype that allows non-technical users to do something interesting or valuable with the API.
-* Serve static files: The server, in addition to offering a REST API, will need to serve your client and any other static assets (for instance, images).
-* Implement a REST API with all four CRUD operations.
-* Comprehensive Tests for the API Layer: Each API endpoint should have test coverage.
-* Use Continuous Integration.
-* The final version should work on both mobile and desktop.
+* Do something interesting or useful
+* Be a fullstack app using HTML, CSS, React, Node, Express, and Mongoose (or the stack you've agreed on with your mentor and program manager).
+* Both client- and server-side code should be tested, and you should use TravisCI for continuous integration and deployment.
+* Your app should be responsive, and should work just as well on mobile devices as it does on desktop devices.
+* All code should be high quality, error free, commented as necessary, and clean. When a hiring manager looks at your code, you want them to think "This person has great coding habits".
+* The styling on your client should be polished. That means choosing fonts and colors that make sense, correctly sizing different components, and ensuring that it looks great on both mobile and desktop devices.
+* You should have a comprehensive README.md file on your GitHub repo that clearly explains the project (we'll discuss this step in detail at the end of this lesson).
+* Your app should have a landing page that explains what the app does and how to get started, in addition to pages required to deliver the main functionality.
+* You must deploy a live, publicly-accessible version of your app.
+* You should set up a demo user account and indicate on the landing page how to use it.
 
 ## Screenshots
  ![image](https://user-images.githubusercontent.com/18128525/39194207-cc4194ac-47a2-11e8-9a32-06630e403276.png)
