@@ -132,7 +132,7 @@ export class Dish extends React.Component {
   };
 
   deleteDish = () => {
-    console.log("dele");
+    console.log("delete");
     fetch(`${API_BASE_URL}/${this.props.dishId}`, {
       method: "DELETE",
       headers: {
@@ -187,21 +187,6 @@ export class Dish extends React.Component {
       .catch(error => console.error("Error:", error))
       .then(response => console.log("Success:", response));
   };
-
-  // addCategory = e => {
-  //  // this.props.dispatch(actions.clearCategories());
-  //   const checkboxes = e.currentTarget.getElementsByClassName(
-  //     "classify-as-checkbox"
-  //   );
-  //   //checkboxObject.checked = true|false
-
-  //   Object.values(checkboxes).map(checkbox => {
-  //     if (checkbox.checked) {
-  //       this.props.dispatch(actions.addCategory(checkbox.value));
-  //     }
-  //     return checkbox.value;
-  //   });
-  // };
 
   componentDidMount = () => {
     console.log("dish mounted");

@@ -152,6 +152,37 @@ myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
     this.setState({
         display: "landing"
     });
+    console.log(localStorage.getItem("token"));
+    const myHeaders = new Headers();
+
+myHeaders.append('Content-Type', 'application/json');
+myHeaders.append('Authorization', `Bearer${localStorage.getItem("token")}`);
+    fetch(API_BASE_URL, {headers:  myHeaders})
+      .then(res => res.json())
+      .then(
+        dishes => {
+         if (localStorage.getItem("isAuthenticated")){
+          this.setState({
+            isLoaded: true,
+            menu: dishes,
+          });
+        }
+       else {
+          this.setState({
+            display: "login"
+          });
+        }
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      ).then(() => this.foodFilter());
   }
 
   render = () => {
