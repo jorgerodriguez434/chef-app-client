@@ -28,31 +28,27 @@ Check the app out here: https://chef-app-client.herokuapp.com/
 
 ## API Documentatiom
    ### Playlist attributes
-   * Song (String)
-   * Artist (String)
-   * Genre (String)
-   ### GET all songs
-   * ${Base url}/api/playlist
-   ### POST a song
-   * ${Base url}/api/playlist
-   * Takes a song, artist, and genre as parameters
-   ### DELETE a song
-   * ${Base url}/api/playlist/${id}
-   ### UPDATE a song
-   * ${Base url}/api/playlist/${id}
+   * name (String)
+   * ingredients (Array)
+   ### GET all dishes
+   * ${Base url}/api/dishes
+   ### POST a dish
+   * ${Base url}/api/dishes
+   * Takes a ingredients and dish name as parameters
+   ### DELETE a dish
+   * ${Base url}/api/dishes/${id}
+   ### UPDATE a dish
+   * ${Base url}/api/dishes/${id}
 
 ## Technology used
 * JavaScript
 * CSS
 * HTML
-* JQuery
 * Express
 * Node.js
+* React
+* Mongoose
 
 ## Future Components
 * Search bar
-* Login page
-* Multiple playlists
-* Play songs/videos
-* Pictures of artists
-* Get concert tickets
+* Post-a-sauce page
