@@ -27,7 +27,7 @@ Check the app out here: https://chef-app-client.herokuapp.com/
  ![image](https://user-images.githubusercontent.com/18128525/39194841-25152dd6-47a4-11e8-9ec3-9fe7aa80113d.png)
 
 ## API Documentatiom
-   ### Playlist attributes
+   ### Dish attributes
    * name (String)
    * ingredients (Array)
    ### GET all dishes
