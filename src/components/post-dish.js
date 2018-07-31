@@ -91,7 +91,6 @@ export class PostDish extends React.Component {
     console.log(this.props);
     this.addCategory(e);
     this.setName();
-    //this.setImage();
     this.setState({
       isPending: true
     });
@@ -326,14 +325,14 @@ export class PostDish extends React.Component {
           </div>
           <section className="post-dish-outside-container">
             <div className="post-dish-container">
-              <p> Please add a dish by entering the following information </p>
+              <h2> Please add a dish by entering the following information </h2>
 
               <form className="add-ingredients-main-box">
-                <h2> Add Ingredients </h2>
+                <h3> Add Ingredients </h3>
                 <InputIngredient />
               </form>
               <form onSubmit={this.onSubmit} className="the-dish">
-                <h2> The dish </h2>
+                <h3> The dish </h3>
                 <label htmlFor="dish-name">Name of dish</label>
                 <input
                   className="input my-text width-90"
