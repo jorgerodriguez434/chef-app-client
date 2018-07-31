@@ -15,7 +15,6 @@ Check the app out here: https://chef-app-client.herokuapp.com/
 * Comprehensive Tests for the API Layer: Each API endpoint should have test coverage.
 * Use Continuous Integration.
 * The final version should work on both mobile and desktop.
-* Accessibility: The final version of your app must follow a11y best practices.
 
 ## Screenshots
  ![image](https://user-images.githubusercontent.com/18128525/39194207-cc4194ac-47a2-11e8-9a32-06630e403276.png)
