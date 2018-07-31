@@ -2,7 +2,7 @@
 
 This app is for chefs or anyone that likes to cook! When a user logs in, he/she will be directed to the post a dish page.
 Once here, the user must add ingredients, followed by the dish name, and finally the user must select a category for the dish.
-If no category applies, simply select none-apply, and then you are all set! Last thing is to select a picture for your dish!
+If no category applies, simply select none-apply, and then the user is all set! Then the user will be asked to select a picture for their dish!
 
 Check the app out here: https://chef-app-client.herokuapp.com/
 
