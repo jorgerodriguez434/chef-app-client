@@ -27,11 +27,11 @@ export class Menu extends React.Component {
 
   fetchDishes = () => {
     console.log(localStorage.getItem("token"));
-    const myHeaders = new Headers();
+    //const myHeaders = new Headers();
 
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", `Bearer${localStorage.getItem("token")}`);
-    fetch(API_BASE_URL, { headers: myHeaders })
+    //myHeaders.append("Content-Type", "application/json");
+    //myHeaders.append("Authorization", `Bearer${localStorage.getItem("token")}`);
+    fetch(API_BASE_URL, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
       .then(res => res.json())
       .then(
         dishes => {
