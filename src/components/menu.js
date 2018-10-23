@@ -117,47 +117,47 @@ export class Menu extends React.Component {
     this.setState({
       display: "no meat"
     });
-    console.log("no meat:");
-    console.log(this.state.noMeatDishes);
+    // console.log("no meat:");
+    // console.log(this.state.noMeatDishes);
   };
   displayMeat = () => {
     this.setState({
       display: "meat"
     });
     this.props.dispatch(actions.setDisplay("meat"));
-    console.log("meat:");
-    console.log(this.state.meatDishes);
+    // console.log("meat:");
+    // console.log(this.state.meatDishes);
   };
   displayNoGluten = () => {
     this.setState({
       display: "no gluten"
     });
-    console.log("no gluten:");
-    console.log(this.state.noGlutenDishes);
+    // console.log("no gluten:");
+    // console.log(this.state.noGlutenDishes);
   };
 
   displayNoEgg = () => {
     this.setState({
       display: "no egg"
     });
-    console.log("no egg:");
-    console.log(this.state.noEggDishes);
+    // console.log("no egg:");
+    // console.log(this.state.noEggDishes);
   };
 
   displayNoDairy = () => {
     this.setState({
       display: "no dairy"
     });
-    console.log("no dairy:");
-    console.log(this.state.noDairyDishes);
+    // console.log("no dairy:");
+    // console.log(this.state.noDairyDishes);
   };
 
   displayVegan = () => {
     this.setState({
       display: "vegan"
     });
-    console.log("vegan:");
-    console.log(this.state.veganDishes);
+    // console.log("vegan:");
+    // console.log(this.state.veganDishes);
   };
 
   goBack = () => {

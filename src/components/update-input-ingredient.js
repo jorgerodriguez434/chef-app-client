@@ -26,7 +26,7 @@ export class UpdateInputIngredient extends React.Component {
 
   addIngredient = e => {
     e.preventDefault();
-    console.log("clicked 126");
+    // console.log("clicked 126");
     const ingredient = this._ingredient.current.value;
     this.props.dispatch(actions.addIngredient(ingredient));
     this.setState({

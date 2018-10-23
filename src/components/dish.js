@@ -67,7 +67,7 @@ export class Dish extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("submitted!");
+    // console.log("submitted!");
     this.addCategory(e);
     this.setState({
       isPending: true
@@ -188,9 +188,9 @@ export class Dish extends React.Component {
       .then(response => console.log("Success:", response));
   };
 
-  componentDidMount = () => {
-    console.log("dish mounted");
-  };
+  // componentDidMount = () => {
+  //   console.log("dish mounted");
+  // };
 
   render = () => {
     if (this.state.display === "landing") {

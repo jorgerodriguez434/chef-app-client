@@ -15,13 +15,13 @@ export class Home extends React.Component {
   }
 
   getStarted = () => {
-    console.log("get started button clicked!");
+    // console.log("get started button clicked!");
     this.setState({
       display: "get started"
     }); 
   };
   getStartedTwo = () => {
-    console.log("get started button clicked!");
+    // console.log("get started button clicked!");
     this.setState({
       display: "post dish"
     });
@@ -39,8 +39,8 @@ export class Home extends React.Component {
  
 
   render = () => {
-    console.log(this.props.state);
-    console.log(this.state);
+    // console.log(this.props.state);
+    // console.log(this.state);
     if (this.state.display === "landing") {
       return (
         <HomeContent onClick={this.getStarted}/>

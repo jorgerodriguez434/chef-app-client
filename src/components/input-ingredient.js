@@ -22,7 +22,7 @@ export class InputIngredient extends React.Component {
 
   addIngredient = e => {
     e.preventDefault();
-    console.log("add ingredient button clicked!");
+    // console.log("add ingredient button clicked!");
     const ingredient = this._ingredient.current.value;
     if (ingredient === "") {
       this.setState({

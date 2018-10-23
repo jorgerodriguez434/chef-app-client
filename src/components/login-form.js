@@ -19,9 +19,9 @@ export class LoginForm extends React.Component {
     this._passwordRef = React.createRef();
   }
 
-  componentDidMount = () => {
-    console.log("login form mounted");
-  };
+  // componentDidMount = () => {
+  //   console.log("login form mounted");
+  // };
 
   postRequest = () => {
     const data = {
@@ -88,8 +88,8 @@ export class LoginForm extends React.Component {
   };
 
   render() {
-    console.log(this.state);
-    console.log(this.props);
+    // console.log(this.state);
+    // console.log(this.props);
     if (this.state.display === "login") {
       return (
         <Fragment>

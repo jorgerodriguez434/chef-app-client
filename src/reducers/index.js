@@ -15,8 +15,8 @@ export const initialState = {
 };
 
 export const myAppReducer = (state = initialState, action) => {
-  console.log(`THE ACTION ${action.type} DISPATCHED!`);
-  console.log(`WITH THE PAYLOAD OF ${action.type}`);
+  // console.log(`THE ACTION ${action.type} DISPATCHED!`);
+  // console.log(`WITH THE PAYLOAD OF ${action.type}`);
   switch (action.type) {
     case constants.LOGIN_REQUEST:
       return Object.assign({}, state, {

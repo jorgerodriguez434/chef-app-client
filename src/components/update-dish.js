@@ -72,8 +72,8 @@ export class UpdateDish extends React.Component {
       if (this.props.ingredients.length === 0) {
         error
           .then(() => {
-            console.log("another promise");
-            console.log(this.props.ingredients.length);
+            // console.log("another promise");
+            // console.log(this.props.ingredients.length);
             this.setState({
               message: "You must enter at least 1 ingredient!",
               isPending: false
@@ -84,7 +84,7 @@ export class UpdateDish extends React.Component {
       } else if (this.state.image.match(/\.(jpeg|jpg|gif|png)$/) === null) {
         error
           .then(() => {
-            console.log("another promise");
+            // console.log("another promise");
             this.setState({
               message: "You must enter a valid image URL!",
               isPending: false
@@ -106,7 +106,7 @@ export class UpdateDish extends React.Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("submitted!");
+    // console.log("submitted!");
     this.addCategory(e);
     this.setState({
       isPending: true
@@ -115,7 +115,7 @@ export class UpdateDish extends React.Component {
   };
 
   putRequest = () => {
-    console.log("put request");
+    // console.log("put request");
     const data = {
       name: this.state.name,
       ingredients: this.props.ingredients,

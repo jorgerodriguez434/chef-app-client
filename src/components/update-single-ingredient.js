@@ -10,8 +10,8 @@ export class UpdateSingleIngredient extends React.Component {
   }
 
   onClick = () => {
-    console.log("clicked123");
-    console.log(this.state);
+    // console.log("clicked123");
+    // console.log(this.state);
   };
 
   render = () => {

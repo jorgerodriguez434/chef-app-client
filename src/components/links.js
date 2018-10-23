@@ -16,7 +16,7 @@ export class Links extends React.Component {
   }
 
   logout = () => {
-    console.log("logout button clicked!");
+    // console.log("logout button clicked!");
     localStorage.removeItem("token");
     localStorage.removeItem("isAuthenticated");
     this.setState({

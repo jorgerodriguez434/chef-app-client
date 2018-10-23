@@ -86,7 +86,7 @@ export class PostDish extends React.Component {
   };
 
   onSubmit = e => {
-    console.log("clicked");
+    // console.log("clicked");
     e.preventDefault();
     console.log(this.props);
     this.addCategory(e);
