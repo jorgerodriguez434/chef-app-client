@@ -101,7 +101,7 @@ export class PostDish extends React.Component {
     this.props.dispatch(actions.clearIngredients());
     this.props.dispatch(actions.clearCategories());
     if (localStorage.getItem("isAuthenticated")) {
-      console.log("authenticated!");
+      // console.log("authenticated!");
     } else {
       this.setState({
         display: "login"

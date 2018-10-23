@@ -36,7 +36,7 @@ export class Links extends React.Component {
   };
 
   onClick = () => {
-    console.log("clicked!");
+    // console.log("clicked!");
     this.props.dispatch(actions.setDisplay("landing"));
   };
   render() {

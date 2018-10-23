@@ -5,6 +5,7 @@ const Header = props => (
   <header role="banner">
 <div className="inside-header">
 <h1> THE CHEF APP </h1>
+<p> An app that keeps track of all your favorite dishes!</p>
   <button onClick={props.onClick} className="button">GET STARTED</button>
 </div>
   </header>
