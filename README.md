@@ -8,18 +8,6 @@ The dishes will appear in the following categories: vegeterian, vegan, gluten fr
 
 Check the app out here: https://chef-app-client.herokuapp.com/
 
-## Requirements
-* Do something interesting or useful
-* Be a fullstack app using HTML, CSS, React, Node, Express, and Mongoose (or the stack you've agreed on with your mentor and program manager).
-* Both client- and server-side code should be tested, and you should use TravisCI for continuous integration and deployment.
-* Your app should be responsive, and should work just as well on mobile devices as it does on desktop devices.
-* All code should be high quality, error free, commented as necessary, and clean. When a hiring manager looks at your code, you want them to think "This person has great coding habits".
-* The styling on your client should be polished. That means choosing fonts and colors that make sense, correctly sizing different components, and ensuring that it looks great on both mobile and desktop devices.
-* You should have a comprehensive README.md file on your GitHub repo that clearly explains the project (we'll discuss this step in detail at the end of this lesson).
-* Your app should have a landing page that explains what the app does and how to get started, in addition to pages required to deliver the main functionality.
-* You must deploy a live, publicly-accessible version of your app.
-* You should set up a demo user account and indicate on the landing page how to use it.
-
 ## Screenshots
  ![image](https://user-images.githubusercontent.com/18128525/43462848-cb1ac958-949c-11e8-9eb5-23747c992f1a.png)
  ![image](https://user-images.githubusercontent.com/18128525/43462927-fc40962a-949c-11e8-9eb7-6d2d107d3aa8.png)
